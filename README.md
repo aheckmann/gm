@@ -1,4 +1,4 @@
-# GM
+# gm
 GraphicsMagick for node
 
 ## getting started
