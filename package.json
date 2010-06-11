@@ -1,0 +1,11 @@
+{ "name": "gm"
+, "description": "Graphics Magick for node."
+, "version": "0.1.0"
+, "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>"
+, "keywords": ["nodejs", "graphics magick", "graphics", "magick", "image"]
+, "engines": { "node": ">= 0.1.96" }
+, "directories": { "lib": "./lib"}
+, "bugs": "http://github.com/aheckmann/gm/issues"
+, "licenses": [{ "type": "MIT", "url": "http://www.opensource.org/licenses/mit-license.php"}]
+, "main": "./lib/gm"
+}
