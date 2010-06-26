@@ -6,50 +6,34 @@ First download and install "GraphicsMagick":http://www.graphicsmagick.org/
 
 ## example:
      
-    gm.convert(image.tempfile)
-      .size(120,120)
-      .resize(120,120)
-      .noProfile()
-      .name('/path/to/thumbnails/'+image.filename)
-      .write(function(err){
-        if (!err) print('done!')
-      }
-    
-or
-
-    gm.mogrify(image.tempfile)
-      .resize(250,400)
-      .format("png")
-      .size(250,400)
-      .dir('/path/to/out')
-      .noProfile()
-      .write(function(err){
-        if (!err) print('success!')
-      })
+  coming soon
 
 ## methods
-gm includes light support for the GraphicsMagick `convert` and `mogrify` commands.
 
-  - convert
-    - name
+  - getters
     - size
-    - resize
-    - noProfile
-    - write
-    - makeArgs
-    - cmd
-    
-  - mogrify
     - format
-    - dir
-    - createDir
-    - size
+    - depth
+    - color
+    - res
+    - filesize
+    - identify
+
+  - manipulation
     - resize
+    - scale
+    - resample
+    - rotate
+    - flip
+    - flop
+    - crop
+    - magnify
+    - minify
+    - quality
+    - thumb
     - noProfile
-    - write
-    - makeArgs
-    - cmd
-  
+    - name
+ 
   More docs coming soon.
   
 ## node version
