@@ -1,39 +1,39 @@
 # gm
 GraphicsMagick for node
 
-  var gm = require('./lib/gm')
+    var gm = require('./lib/gm')
 
-  // resize and remove EXIF profile data
-  gm('/path/to/my/img.jpg')
-    .resize(240, 240)
-    .noProfile()
-    .write('/path/to/resize.png', function(err){
-      if (!err) print('done')
-  })
+    // resize and remove EXIF profile data
+    gm('/path/to/my/img.jpg')
+      .resize(240, 240)
+      .noProfile()
+      .write('/path/to/resize.png', function(err){
+        if (!err) print('done')
+    })
   
-  // obtain the size of an image
-  gm('/path/to/my/img.jpg')
-    .size(function(err, size){
-      if (!err)
-        print( size.width > size.height ? 'wider' : 'taller than you' )
-    })
+    // obtain the size of an image
+    gm('/path/to/my/img.jpg')
+      .size(function(err, size){
+        if (!err)
+          print( size.width > size.height ? 'wider' : 'taller than you' )
+      })
 
-  // output all available image properties
-  gm('/path/to/img.png')
-    .identify(function(err, data){
-      if (!err) sys.puts(sys.inspect(data))
-    })
+    // output all available image properties
+    gm('/path/to/img.png')
+      .identify(function(err, data){
+        if (!err) sys.puts(sys.inspect(data))
+      })
 
-  // crazytown
-  gm('/path/to/my/img.jpg')
-    .flip()
-    .magnify()
-    .rotate('green', 45)
-    .blur(7, 3)
-    .crop(300, 300, 150, 130)
-    .write('/path/to/crazy.jpg', function(err){
-      if (!err) print('crazytown has arrived')
-    })
+    // crazytown
+    gm('/path/to/my/img.jpg')
+      .flip()
+      .magnify()
+      .rotate('green', 45)
+      .blur(7, 3)
+      .crop(300, 300, 150, 130)
+      .write('/path/to/crazy.jpg', function(err){
+        if (!err) print('crazytown has arrived')
+      })
     
 
 ## getting started
