@@ -1,0 +1,12 @@
+var gm = require('../lib/gm')
+  , sys = require('sys')
+  , p = function(what){ sys.puts(sys.inspect(what)) }
+  , dir = __dirname + '/imgs'
+  
+gm(dir + '/original.jpg')
+  .resample(420, 120)
+  .write(dir + '/resample.jpg', function(err){
+    if (err) return p(arguments)
+    p(this.outname + " created  ::  " + arguments[3])
+  }
+) 
