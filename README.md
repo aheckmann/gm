@@ -1,26 +1,61 @@
 # gm
 GraphicsMagick for node
 
+  var gm = require('./lib/gm')
+
+  // resize and remove EXIF profile data
+  gm('/path/to/my/img.jpg')
+    .resize(240, 240)
+    .noProfile()
+    .write('/path/to/resize.png', function(err){
+      if (!err) print('done')
+  })
+  
+  // obtain the size of an image
+  gm('/path/to/my/img.jpg')
+    .size(function(err, size){
+      if (!err)
+        print( size.width > size.height ? 'wider' : 'taller than you' )
+    })
+
+  // output all available image properties
+  gm('/path/to/img.png')
+    .identify(function(err, data){
+      if (!err) sys.puts(sys.inspect(data))
+    })
+
+  // crazytown
+  gm('/path/to/my/img.jpg')
+    .flip()
+    .magnify()
+    .rotate('green', 45)
+    .blur(7, 3)
+    .crop(300, 300, 150, 130)
+    .write('/path/to/crazy.jpg', function(err){
+      if (!err) print('crazytown has arrived')
+    })
+    
+
 ## getting started
 First download and install "GraphicsMagick":http://www.graphicsmagick.org/
 
-## example:
+## examples:
      
-  coming soon
+  check out the examples directory to play around
 
 ## methods
 
   - getters
-    - size
-    - format
-    - depth
-    - color
-    - res
-    - filesize
-    - identify
+    - size - returns the size (WxH) of the image
+    - format - returns the image format (gif, jpeg, png, etc)
+    - depth - returns the image color depth 
+    - color - returns the number of colors
+    - res   - returns the image resolution
+    - filesize - returns image filesize
+    - identify - returns all image data available
 
   - manipulation
-    - resize
+    - resize 
     - scale
     - resample
     - rotate
@@ -30,18 +65,14 @@ First download and install "GraphicsMagick":http://www.graphicsmagick.org/
     - magnify
     - minify
     - quality
-    - thumb
-    - noProfile
-    - name
+    - thumb - create thumbnails based on minimum sizes
+    - blur
+    - noProfile - removes EXIF, ICM, etc profile data
  
-  More docs coming soon.
   
 ## node version
 Compatible with v0.1.96+
   
-## insperation
-Inspired by "magickal-node":http://github.com/quiiver/magickal-node
-   
 ## License 
 
 (The MIT License)
