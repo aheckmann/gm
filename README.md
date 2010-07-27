@@ -24,6 +24,12 @@ GraphicsMagick for node
         if (!err) sys.puts(sys.inspect(data))
       })
 
+    // pull out the first frame of an animated gif and save as png
+    gm('/path/to/animated.gif[0]')
+      .write('/path/to/firstframe.png', function(err){
+        if (err) print('aaw, shucks')
+      })
+
     // crazytown
     gm('/path/to/my/img.jpg')
       .flip()
