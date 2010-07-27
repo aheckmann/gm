@@ -1,3 +1,12 @@
+## v0.1.1 - 7/27/2010
+
+  * add modulate method
+  * add colorize method
+  * add charcoal method
+  * add chop method
+  * bug fix in write without a callback
+
+
 ## v0.1.0 - 6/27/2010
 
   * no longer supporting mogrify

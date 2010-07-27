@@ -62,11 +62,15 @@ First download and install "GraphicsMagick":http://www.graphicsmagick.org/
     - flip
     - flop
     - crop
+    - chop
     - magnify
     - minify
     - quality
-    - thumb - create thumbnails based on minimum sizes
+    - colorize
+    - modulate
     - blur
+    - charcoal
+    - thumb - create thumbnails based on minimum sizes
     - noProfile - removes EXIF, ICM, etc profile data
  
   
