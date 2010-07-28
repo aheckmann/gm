@@ -43,7 +43,7 @@ GraphicsMagick for node
     
 
 ## getting started
-First download and install "GraphicsMagick":http://www.graphicsmagick.org/
+First download and install [GraphicsMagick](http://www.graphicsmagick.org/)
 
 Then either use npm:
     npm install gm
@@ -54,7 +54,7 @@ or clone the repo:
 ## examples:
      
   Check out the examples directory to play around. 
-  Also take a look at the "Extending gm":http://wiki.github.com/aheckmann/gm/extending-gm
+  Also take a look at the [Extending gm](http://wiki.github.com/aheckmann/gm/extending-gm)
   page to see how to customize gm to your own needs.
 
 
