@@ -45,7 +45,7 @@ GraphicsMagick for node
 ## getting started
 First download and install "GraphicsMagick":http://www.graphicsmagick.org/
 
-Then you either use npm:
+Then either use npm:
     npm install gm
 
 or clone the repo:
