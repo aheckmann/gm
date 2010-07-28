@@ -91,6 +91,7 @@ or clone the repo:
     - comment
     - contrast
     - cycle
+    - depth
  
   
 ## Node version
