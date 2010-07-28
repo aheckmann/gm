@@ -53,7 +53,10 @@ or clone the repo:
 
 ## examples:
      
-  check out the examples directory to play around
+  Check out the examples directory to play around. 
+  Also take a look at the "Extending gm":http://wiki.github.com/aheckmann/gm/extending-gm
+  page to see how to customize gm to your own needs.
+
 
 ## methods
 
