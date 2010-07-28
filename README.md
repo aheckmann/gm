@@ -83,6 +83,7 @@ or clone the repo:
     - quality
     - colorize
     - modulate
+    - colors
     - blur
     - charcoal
     - thumb - create thumbnails based on minimum sizes
