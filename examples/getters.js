@@ -1,6 +1,4 @@
-var gm = require('../lib/gm')
-  , sys = require('sys')
-  , p = function(what){ sys.puts(sys.inspect(what)) }
+var gm = require('../gm')
   , dir = __dirname + '/imgs'
 
 var methods = [
@@ -16,8 +14,8 @@ var methods = [
 var image = gm(dir + '/original.png')
 methods.forEach(function(method){
   image[method](function(err, result){
-    p(method + " result:")
-    p(result)
+    console.log(method + " result:")
+    console.dir(result)
   })
 })
 

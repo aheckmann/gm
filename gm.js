@@ -14,7 +14,7 @@ function gm(source){
 }
   
 
-require("./plugin/getters")(gm.prototype)
-require("./plugin/args")(gm.prototype)
-require("./plugin/thumb")(gm.prototype)
-require("./plugin/command")(gm.prototype)
+require("./lib/getters")(gm.prototype)
+require("./lib/args")(gm.prototype)
+require("./lib/thumb")(gm.prototype)
+require("./lib/command")(gm.prototype)
