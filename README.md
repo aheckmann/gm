@@ -92,6 +92,9 @@ or clone the repo:
 ## Node version
 Compatible with v0.1.96+
   
+## Inspiration
+http://github.com/quiiver/magickal-node
+
 ## License 
 
 (The MIT License)
