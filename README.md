@@ -42,23 +42,23 @@ GraphicsMagick for node
       })
     
 
-## getting started
+## Getting started
 First download and install [GraphicsMagick](http://www.graphicsmagick.org/)
 
-Then either use npm:
+then either use npm:
     npm install gm
 
 or clone the repo:
     git clone git://github.com/aheckmann/gm.git
 
-## examples:
+## Examples:
      
   Check out the examples directory to play around. 
   Also take a look at the [Extending gm](http://wiki.github.com/aheckmann/gm/extending-gm)
   page to see how to customize gm to your own needs.
 
 
-## methods
+## Methods
 
   - getters
     - size - returns the size (WxH) of the image
@@ -89,7 +89,7 @@ or clone the repo:
     - noProfile - removes EXIF, ICM, etc profile data
  
   
-## node version
+## Node version
 Compatible with v0.1.96+
   
 ## License 
