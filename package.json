@@ -7,5 +7,5 @@
 , "directories": { "lib": "./lib"}
 , "bugs": "http://github.com/aheckmann/gm/issues"
 , "licenses": [{ "type": "MIT", "url": "http://www.opensource.org/licenses/mit-license.php"}]
-, "main": "./lib/gm"
+, "main": "./gm"
 }
