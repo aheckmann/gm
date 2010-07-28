@@ -89,6 +89,7 @@ or clone the repo:
     - thumb - create thumbnails based on minimum sizes
     - noProfile - removes EXIF, ICM, etc profile data
     - comment
+    - contrast
  
   
 ## Node version
