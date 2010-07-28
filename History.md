@@ -1,3 +1,8 @@
+## v0.1.2 - 7/28/2010
+
+  * refactor project into separate modules
+
+
 ## v0.1.1 - 7/27/2010
 
   * add modulate method
