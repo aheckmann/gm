@@ -90,6 +90,7 @@ or clone the repo:
     - noProfile - removes EXIF, ICM, etc profile data
     - comment
     - contrast
+    - cycle
  
   
 ## Node version
