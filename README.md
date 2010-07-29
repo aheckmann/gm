@@ -110,6 +110,8 @@ or clone the repo:
     - negative
     - noise
     - paint
+    - raise
+    - lower
  
   
 ## Node version
