@@ -96,6 +96,8 @@ or clone the repo:
     - dither
     - edge
     - emboss
+    - enhance
+    - equalize
     - monochrome
  
   
