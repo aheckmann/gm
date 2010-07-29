@@ -100,6 +100,7 @@ or clone the repo:
     - enhance
     - equalize
     - gamma
+    - implode
     - monochrome
  
   
