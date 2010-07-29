@@ -17,4 +17,5 @@ function gm(source){
 require("./lib/getters")(gm.prototype)
 require("./lib/args")(gm.prototype)
 require("./lib/thumb")(gm.prototype)
+require("./lib/morph")(gm.prototype)
 require("./lib/command")(gm.prototype)

@@ -104,8 +104,9 @@ or clone the repo:
     - implode
     - label
     - limit
-    - monochrome
     - median
+    - monochrome
+    - morph
  
   
 ## Node version
