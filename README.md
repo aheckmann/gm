@@ -92,6 +92,7 @@ or clone the repo:
     - contrast
     - cycle
     - depth
+    - despeckle
  
   
 ## Node version
