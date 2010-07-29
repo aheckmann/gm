@@ -109,6 +109,7 @@ or clone the repo:
     - morph
     - negative
     - noise
+    - paint
  
   
 ## Node version
