@@ -1,7 +1,7 @@
 # gm
 GraphicsMagick for node
 
-    var gm = require('./lib/gm')
+    var gm = require('./gm')
 
     // resize and remove EXIF profile data
     gm('/path/to/my/img.jpg')
