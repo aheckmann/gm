@@ -37,6 +37,7 @@ GraphicsMagick for node
       .rotate('green', 45)
       .blur(7, 3)
       .crop(300, 300, 150, 130)
+      .edge(3)
       .write('/path/to/crazy.jpg', function(err){
         if (!err) print('crazytown has arrived')
       })
