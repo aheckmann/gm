@@ -94,6 +94,7 @@ or clone the repo:
     - depth
     - despeckle
     - dither
+    - edge
     - monochrome
  
   
