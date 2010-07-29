@@ -108,6 +108,7 @@ or clone the repo:
     - monochrome
     - morph
     - negative
+    - noise
  
   
 ## Node version
