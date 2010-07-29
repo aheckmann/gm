@@ -1,4 +1,7 @@
-var gm = require('../gm')
+
+// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
+
+var gm = require('../')
   , dir = __dirname + '/imgs'
 
 var methods = [
