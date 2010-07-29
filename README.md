@@ -113,6 +113,7 @@ or clone the repo:
     - raise
     - lower
     - region
+    - sepia
  
   
 ## Node version
