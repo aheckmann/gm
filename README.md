@@ -95,6 +95,7 @@ or clone the repo:
     - despeckle
     - dither
     - edge
+    - emboss
     - monochrome
  
   
