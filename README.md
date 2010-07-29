@@ -112,6 +112,7 @@ or clone the repo:
     - paint
     - raise
     - lower
+    - region
  
   
 ## Node version
