@@ -4,8 +4,8 @@
 var gm = require('../')
   , dir = __dirname + '/imgs'
 
-var methods = [
-  "size"
+var methods = 
+[ "size"
 , "identify"
 , "format"
 , "depth"
