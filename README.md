@@ -101,6 +101,7 @@ or clone the repo:
     - equalize
     - gamma
     - implode
+    - label
     - monochrome
  
   
