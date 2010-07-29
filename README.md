@@ -105,6 +105,7 @@ or clone the repo:
     - label
     - limit
     - monochrome
+    - median
  
   
 ## Node version
