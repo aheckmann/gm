@@ -98,6 +98,7 @@ or clone the repo:
     - emboss
     - enhance
     - equalize
+    - gamma
     - monochrome
  
   
