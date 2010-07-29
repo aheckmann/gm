@@ -93,6 +93,7 @@ or clone the repo:
     - cycle
     - depth
     - despeckle
+    - dither
     - monochrome
  
   
