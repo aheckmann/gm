@@ -1,0 +1,3 @@
+examples/imgs/*
+!examples/imgs/original.jpg
+!examples/imgs/original.png
