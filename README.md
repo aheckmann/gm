@@ -102,6 +102,7 @@ or clone the repo:
     - gamma
     - implode
     - label
+    - limit
     - monochrome
  
   
