@@ -107,6 +107,7 @@ or clone the repo:
     - median
     - monochrome
     - morph
+    - negative
  
   
 ## Node version
