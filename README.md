@@ -89,6 +89,7 @@ or clone the repo:
     - charcoal
     - thumb - create thumbnails based on minimum sizes
     - noProfile - removes EXIF, ICM, etc profile data
+    - antialias
     - comment
     - contrast
     - cycle
