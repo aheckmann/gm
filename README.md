@@ -71,27 +71,15 @@ or clone the repo:
     - identify - returns all image data available
 
   - manipulation
-    - resize 
-    - scale
-    - resample
-    - rotate
-    - flip
-    - flop
-    - crop
-    - chop
-    - magnify
-    - minify
-    - quality
-    - colorize
-    - modulate
-    - colors
+    - antialias
     - blur
     - charcoal
-    - thumb - create thumbnails based on minimum sizes
-    - noProfile - removes EXIF, ICM, etc profile data
-    - antialias
+    - chop
+    - colors
+    - colorize
     - comment
     - contrast
+    - crop
     - cycle
     - depth
     - despeckle
@@ -100,21 +88,33 @@ or clone the repo:
     - emboss
     - enhance
     - equalize
+    - flip
+    - flop
     - gamma
     - implode
     - label
     - limit
+    - lower
+    - magnify
     - median
+    - minify
+    - modulate
     - monochrome
     - morph
     - negative
     - noise
+    - noProfile - removes EXIF, ICM, etc profile data
     - paint
+    - quality
     - raise
-    - lower
     - region
+    - resample
+    - resize 
     - roll
+    - rotate
+    - scale
     - sepia
+    - thumb - create thumbnails based on minimum sizes
  
   
 ## Node version
