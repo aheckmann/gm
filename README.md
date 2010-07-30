@@ -21,7 +21,7 @@ GraphicsMagick for node
     // output all available image properties
     gm('/path/to/img.png')
       .identify(function(err, data){
-        if (!err) sys.puts(sys.inspect(data))
+        if (!err) console.dir(data)
       })
 
     // pull out the first frame of an animated gif and save as png
@@ -32,7 +32,7 @@ GraphicsMagick for node
 
     // crazytown
     gm('/path/to/my/img.jpg')
-      .flip()
+      .flip() 
       .magnify()
       .rotate('green', 45)
       .blur(7, 3)
@@ -54,7 +54,7 @@ or clone the repo:
 
 ## Examples:
      
-  Check out the examples directory to play around. 
+  Check out the [examples](http://github.com/aheckmann/gm/tree/master/examples/) directory to play around. 
   Also take a look at the [Extending gm](http://wiki.github.com/aheckmann/gm/extending-gm)
   page to see how to customize gm to your own needs.
 
