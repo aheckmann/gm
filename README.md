@@ -117,6 +117,7 @@ or clone the repo:
     - sharpen
     - solarize
     - spread
+    - swirl
     - thumb - create thumbnails based on minimum sizes
  
   
