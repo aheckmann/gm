@@ -116,6 +116,7 @@ or clone the repo:
     - sepia
     - sharpen
     - solarize
+    - spread
     - thumb - create thumbnails based on minimum sizes
  
   
