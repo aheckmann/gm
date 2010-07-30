@@ -114,6 +114,7 @@ or clone the repo:
     - rotate
     - scale
     - sepia
+    - sharpen
     - thumb - create thumbnails based on minimum sizes
  
   
