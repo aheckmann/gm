@@ -1,3 +1,43 @@
+## v0.2.0 - 7/29/2010
+
+new methods
+ 
+  - swirl 
+  - spread 
+  - solarize 
+  - sharpen 
+  - roll 
+  - sepia 
+  - region 
+  - raise 
+  - lower 
+  - paint 
+  - noise 
+  - negative 
+  - morph 
+  - median 
+  - antialias 
+  - limit 
+  - label 
+  - implode
+  - gamma
+  - enhance 
+  - equalize 
+  - emboss
+  - edge
+  - dither
+  - monochrome
+  - despeckle 
+  - depth 
+  - cycle 
+  - contrast 
+  - comment 
+  - colors 
+
+added more default args to several methods
+added more examples
+
+
 ## v0.1.2 - 7/28/2010
 
   * refactor project into separate modules
