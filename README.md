@@ -72,6 +72,7 @@ or clone the repo:
 
   - manipulation
     - antialias
+    - bitdepth
     - blur
     - charcoal
     - chop
@@ -81,7 +82,6 @@ or clone the repo:
     - contrast
     - crop
     - cycle
-    - depth
     - despeckle
     - dither
     - edge
