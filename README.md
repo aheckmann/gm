@@ -62,7 +62,7 @@ or clone the repo:
 ## Methods
 
   - getters
-    - size - returns the size (WxH) of the image
+    - [size](http://aheckmann.github.com/gm/#size) - returns the size (WxH) of the image
     - format - returns the image format (gif, jpeg, png, etc)
     - depth - returns the image color depth 
     - color - returns the number of colors
