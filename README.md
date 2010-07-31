@@ -62,63 +62,63 @@ or clone the repo:
 ## Methods
 
   - getters
-    - [size](http://aheckmann.github.com/gm/#size) - returns the size (WxH) of the image
-    - format - returns the image format (gif, jpeg, png, etc)
-    - depth - returns the image color depth 
-    - color - returns the number of colors
-    - res   - returns the image resolution
-    - filesize - returns image filesize
-    - identify - returns all image data available
+    - [size](http://aheckmann.github.com/gm/#getters) - returns the size (WxH) of the image
+    - [format](http://aheckmann.github.com/gm/#getters) - returns the image format (gif, jpeg, png, etc)
+    - [depth](http://aheckmann.github.com/gm/#getters) - returns the image color depth 
+    - [color](http://aheckmann.github.com/gm/#getters) - returns the number of colors
+    - [res](http://aheckmann.github.com/gm/#getters)   - returns the image resolution
+    - [filesize](http://aheckmann.github.com/gm/#getters) - returns image filesize
+    - [identify](http://aheckmann.github.com/gm/#getters) - returns all image data available
 
   - manipulation
-    - antialias
-    - bitdepth
-    - blur
-    - charcoal
-    - chop
-    - colors
-    - colorize
-    - comment
-    - contrast
-    - crop
-    - cycle
-    - despeckle
-    - dither
-    - edge
-    - emboss
-    - enhance
-    - equalize
-    - flip
-    - flop
-    - gamma
-    - implode
-    - label
-    - limit
-    - lower
-    - magnify
-    - median
-    - minify
-    - modulate
-    - monochrome
-    - morph
-    - negative
-    - noise
-    - noProfile - removes EXIF, ICM, etc profile data
-    - paint
-    - quality
-    - raise
-    - region
-    - resample
-    - resize 
-    - roll
-    - rotate
-    - scale
-    - sepia
-    - sharpen
-    - solarize
-    - spread
-    - swirl
-    - thumb - create thumbnails based on minimum sizes
+    - [antialias](http://aheckmann.github.com/gm/#antialias)
+    - [bitdepth](http://aheckmann.github.com/gm/#bitdepth)
+    - [blur](http://aheckmann.github.com/gm/#blur)
+    - [charcoal](http://aheckmann.github.com/gm/#charcoal)
+    - [chop](http://aheckmann.github.com/gm/#chop)
+    - [colors](http://aheckmann.github.com/gm/#colors)
+    - [colorize](http://aheckmann.github.com/gm/#colorize)
+    - [comment](http://aheckmann.github.com/gm/#comment)
+    - [contrast](http://aheckmann.github.com/gm/#contrast)
+    - [crop](http://aheckmann.github.com/gm/#crop)
+    - [cycle](http://aheckmann.github.com/gm/#cycle)
+    - [despeckle](http://aheckmann.github.com/gm/#despeckle)
+    - [dither](http://aheckmann.github.com/gm/#dither)
+    - [edge](http://aheckmann.github.com/gm/#edge)
+    - [emboss](http://aheckmann.github.com/gm/#emboss)
+    - [enhance](http://aheckmann.github.com/gm/#enhance)
+    - [equalize](http://aheckmann.github.com/gm/#equalize)
+    - [flip](http://aheckmann.github.com/gm/#flip)
+    - [flop](http://aheckmann.github.com/gm/#flop)
+    - [gamma](http://aheckmann.github.com/gm/#gamma)
+    - [implode](http://aheckmann.github.com/gm/#implode)
+    - [label](http://aheckmann.github.com/gm/#label)
+    - [limit](http://aheckmann.github.com/gm/#limit)
+    - [lower](http://aheckmann.github.com/gm/#lower)
+    - [magnify](http://aheckmann.github.com/gm/#magnify)
+    - [median](http://aheckmann.github.com/gm/#median)
+    - [minify](http://aheckmann.github.com/gm/#minify)
+    - [modulate](http://aheckmann.github.com/gm/#modulate)
+    - [monochrome](http://aheckmann.github.com/gm/#monochrome)
+    - [morph](http://aheckmann.github.com/gm/#morph)
+    - [negative](http://aheckmann.github.com/gm/#negative)
+    - [noise](http://aheckmann.github.com/gm/#noise)
+    - [noProfile](http://aheckmann.github.com/gm/#profile) - removes EXIF, ICM, etc profile data
+    - [paint](http://aheckmann.github.com/gm/#paint)
+    - [quality](http://aheckmann.github.com/gm/#quality)
+    - [raise](http://aheckmann.github.com/gm/#raise)
+    - [region](http://aheckmann.github.com/gm/#region)
+    - [resample](http://aheckmann.github.com/gm/#resample)
+    - [resize](http://aheckmann.github.com/gm/#resize) 
+    - [roll](http://aheckmann.github.com/gm/#roll)
+    - [rotate](http://aheckmann.github.com/gm/#rotate)
+    - [scale](http://aheckmann.github.com/gm/#scale)
+    - [sepia](http://aheckmann.github.com/gm/#sepia)
+    - [sharpen](http://aheckmann.github.com/gm/#sharpen)
+    - [solarize](http://aheckmann.github.com/gm/#solarize)
+    - [spread](http://aheckmann.github.com/gm/#spread)
+    - [swirl](http://aheckmann.github.com/gm/#swirl)
+    - [thumb](http://aheckmann.github.com/gm/#thumb) - create thumbnails based on minimum sizes
  
   
 ## Node version
