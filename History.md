@@ -1,3 +1,8 @@
+## v0.2.1 - 7/31/2010
+
+  * fixed naming conflict. depth() manipulation method renamed bitdepth() 
+  * added better docs
+
 ## v0.2.0 - 7/29/2010
 
 new methods
