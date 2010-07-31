@@ -8,7 +8,7 @@
 	<style type="text/css">
 		body {
   		margin-top: 1.0em;
-  		background-color: #D1FFD1;
+  		background-color: #EDFFED;
 		  font-family: "Helvetica,Arial,FreeSans";
   		color: #333;
     }
@@ -19,9 +19,9 @@
 		h1 { font-size: 3.8em; margin-bottom: 3px; color: #333; }
 		h1 .small { font-size: 0.4em; }
 		h1 a { text-decoration: none; color: #333; }
-		h2 { font-size: 1.5em; }
-    h3 { text-align: center; }
-    a {  }
+		h2 { font-size: 1.5em; margin-top: 45px; }
+    li { list-style: none; }
+    code { font: 12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
     .download { float: right; }
 		pre { background: #000; color: #fff; padding: 15px;}
@@ -56,13 +56,13 @@
 })</code></pre>
         </p>
         <ul>
-          <li>size - returns the size (WxH) of the image</li>
-          <li>format - returns the image format (gif, jpeg, png, etc)</li>
-          <li>depth - returns the image color depth</li>
-          <li>color - returns the number of colors</li>
-          <li>res - returns the image resolution</li>
-          <li>filesize - returns image filesize</li>
-          <li>identify - returns all image data available</li>
+          <li><code>size</code> - returns the size (WxH) of the image</li>
+          <li><code>format</code> - returns the image format (gif, jpeg, png, etc)</li>
+          <li><code>depth</code> - returns the image color depth</li>
+          <li><code>color</code> - returns the number of colors</li>
+          <li><code>res</code> - returns the image resolution</li>
+          <li><code>filesize</code> - returns image filesize</li>
+          <li><code>identify</code> - returns all image data available</li>
         </ul>
       </li>
       <li><h3>manipulation</h3>
@@ -102,161 +102,202 @@
           <p>Crops the image to the given <code>width</code> and <code>height</code> at the given <code>x</code> and <code>y</code> position.</p>
             <pre><code>gm("img.png").crop(width, height, x, y)</code></pre>
           </li>
-          <li>cycle
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").cycle(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-cycle">cycle</a>
+          <p>Displace the image colormap by amount. <code>amount</code> is the number of positions each colormap entry is shifted.</p>
+            <pre><code>gm("img.png").cycle(amount)</code></pre>
           </li>
-          <li>depth
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").depth(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-depth">depth</a>
+          <p>Specifies the number of bits of color to preserve in the image. See the <a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-depth">docs</a> for more detail.</p>
+            <pre><code>gm("img.png").depth(bits)</code></pre>
           </li>
-          <li>despeckle
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").despeckle(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html">despeckle</a>
+            <p>Reduces the speckles within the image.</p>
+            <pre><code>gm("img.png").despeckle()</code></pre>
           </li>
-          <li>dither
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").dither(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-dither">dither</a>
+          <p>Applies Floyd/Steinberg error diffusion to the image. Pass <code>false</code> to disable dithering.<br><small>Note: either <code>.colors()</code> or <code>.monochrome()</code> must be used for this to take effect.</small></p>
+            <pre><code>gm("img.png").dither([bool])</code></pre>
           </li>
-          <li>edge
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").edge(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html">edge</a>
+          <p>Emphasizes edges in an image. Takes an optional <code>radius</code> of the emphasis to apply.</p>
+            <pre><code>gm("img.png").edge([radius])</code></pre>
           </li>
-          <li>emboss
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").emboss(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html">emboss</a>
+          <p>Embosses the image. Takes an optional <code>radius</code>.</p>
+            <pre><code>gm("img.png").emboss([radius])</code></pre>
           </li>
-          <li>enhance
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").enhance(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html">enhance</a>
+            <p>Enhances the image.</p>
+            <pre><code>gm("img.png").enhance()</code></pre>
           </li>
-          <li>equalize
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").equalize(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html">equalize</a>
+            <p>Performs histogram equalization to the image.</p>
+            <pre><code>gm("img.png").equalize()</code></pre>
           </li>
-          <li>flip
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").flip(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-flip">flip</a>
+          <p>Creates a mirror image <small>(vertically)</small>.</p>
+            <pre><code>gm("img.png").flip()</code></pre>
           </li>
-          <li>flop
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").flop(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-flop">flop</a>
+          <p>Creates a mirror image <small>(horizontally)</small>.</p>
+            <pre><code>gm("img.png").flop()</code></pre>
           </li>
-          <li>gamma
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").gamma(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-gamma">gamma</a>
+            <p>Adjusts the level of gamma correction.</p>
+            <pre><code>gm("img.png").gamma(r, g, b)</code></pre>
           </li>
-          <li>implode
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").implode(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html">implode</a>
+          <p>Implodes the image pixels around the center. Takes an optional <code>factor</code>.</p>
+            <pre><code>gm("img.png").implode([factor])</code></pre>
           </li>
-          <li>label
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").label(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-label">label</a>
+            <p>Assigns a label to an image.</p>
+            <pre><code>gm("img.png").label(name)</code></pre>
           </li>
-          <li>limit
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").limit(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-limit">limit</a>
+          <p>Sets resource limits.</p>
+          <dl>
+            <dt><code>type</code></dt>
+            <dd>disk|file|map|memory|pixels|threads</dd>
+            <dt><code>val</code></dt>
+            <dd>follows the same rules as specified in the GraphicsMagick
+          <a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-limit">docs</a>
+            </dd>
+          </dl>
+          <pre><code>gm("img.png").limit(type, val)</code></pre>
           </li>
-          <li>lower
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").lower(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-raise">lower</a>
+            <p>Creates a pseudo 3D lowering effect of the images edges.</p>
+            <pre><code>gm("img.png").lower(width, height)</code></pre>
           </li>
-          <li>magnify
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").magnify(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html">magnify</a>
+          <p>Magnifies the image <code>factor</code> times.</p>
+            <pre><code>gm("img.png").magnify(factor)</code></pre>
           </li>
-          <li>median
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").median(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html">median</a>
+          <p>Applies a median filter to the image. The optional param <code>radius</code> adjusts the weight of the effect.</p>
+            <pre><code>gm("img.png").median([radius])</code></pre>
           </li>
-          <li>minify
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").minify(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html">minify</a>
+          <p>Minifies the image <code>factor</code> times.</p>
+            <pre><code>gm("img.png").minify(factor)</code></pre>
           </li>
-          <li>modulate
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").modulate(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-modulate">modulate</a>
+            <p>Varies the brightness, saturation, and hue of the image.</p>
+            <pre><code>gm("img.png").modulate(b [, s [, h]])</code></pre>
           </li>
-          <li>monochrome
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").monochrome(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html">monochrome</a>
+            <p>Transforms the image to black and white.</p>
+            <pre><code>gm("img.png").monochrome()</code></pre>
           </li>
-          <li>morph
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").morph(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-morph">morph</a>
+            <p>Morphs two images together.</p>
+            <dl>
+              <dt><code>otherImg</code></dt>
+              <dd>the path to another img</dd>
+              <dt><code>outName</code></dt>
+              <dd>the path where the image will be saved</dd>
+              <dt><code>callback</code></dt>
+              <dd>A function to be executed when morphing is complete. <code>callback</code> will be passed the standard args that <code>.write()</code> receives.</dd>
+            </dl>  
+            <pre><code>gm("img.png").morph(otherImg, outName, callback)</code></pre>
           </li>
-          <li>negative
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").negative(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-negate">negative</a>
+            <p>Replaces every pixel with its complementary color.</p>
+            <pre><code>gm("img.png").negative()</code></pre>
           </li>
-          <li>noise
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").noise(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-noise">noise</a>
+            <p>Add or reduce noise in the image.</p>
+            <dl>
+              <dt><code>radius|type</code></dt>
+              <dd>To add noise pass one of the following:
+                <ul>
+                  <li>uniform</li>
+                  <li>gaussian</li>
+                  <li>multiplicative</li>
+                  <li>impulse</li>
+                  <li>laplacian</li>
+                  <li>poisson</li>
+                </ul> 
+              </dd>
+              <dd>Otherwise the argument will be interpreted as a <code>radius</code> which adjusts the weight of the effect.</dd>
+            </dl>
+            <pre><code>gm("img.png").noise(radius|type)</code></pre>
           </li>
-          <li>noProfile - removes EXIF, ICM, etc profile data
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").noProfile(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-profile">noProfile</a>
+            <p>Removes EXIF, ICM, etc profile data.</p>
+            <pre><code>gm("img.png").noProfile()</code></pre>
           </li>
-          <li>paint
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").paint(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-paint">paint</a>
+            <p>Simulates an oil painting.</p>
+            <pre><code>gm("img.png").paint(radius)</code></pre>
           </li>
-          <li>quality
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").quality(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-quality">quality</a>
+          <p>Adjusts the jpeg|miff|png|tiff compression level. <code>val</code> ranges from 0 to 100 (best).</p>
+            <pre><code>gm("img.png").quality(val)</code></pre>
           </li>
-          <li>raise
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").raise(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-raise">raise</a>
+            <p>Creates a pseudo 3D raising effect of the images edges.</p>
+            <pre><code>gm("img.png").raise(width, height)</code></pre>
           </li>
-          <li>region
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").region(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-region">region</a>
+          <p>Specifies that all following methods only apply to the area specified by <code>width, height, x, y</code>.</p>
+            <pre><code>gm("img.png").region(width, height, x, y).sepia()</code></pre>
+            <p>In this case, the sepia effect would only be applied within the area specified by <code>width, height, x, y</code>.</p>
           </li>
-          <li>resample
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").resample(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-resample">resample</a>
+            <p>Resamples the image to specified horizontal and vertical resolution.</p>
+            <pre><code>gm("img.png").resample(horizontal, vertical)</code></pre>
           </li>
-          <li>resize
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").resize(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-resize">resize</a>
+            <p>Resize the image.</p>
+            <pre><code>gm("img.png").resize(width, height)</code></pre>
           </li>
-          <li>roll
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").roll(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-roll">roll</a>
+          <p>Rolls an image vertically or horizontally.</p>
+            <pre><code>gm("img.png").roll(horizontalInt, verticalInt)</code></pre>
           </li>
-          <li>rotate
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").rotate(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-rotate">rotate</a>
+          <p>Rotates the image by <code>degrees</code> and fills the background with <code>color</code>.</p>
+            <pre><code>gm("img.png").rotate(color, degrees)</code></pre>
           </li>
-          <li>scale
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").scale(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-scale">scale</a>
+            <p>Scales the image.</p>
+            <pre><code>gm("img.png").scale(width, height)</code></pre>
           </li>
-          <li>sepia
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").sepia(width, height, x, y)</code></pre>
+          <li><a href="#">sepia</a>
+            <p>A convenience method to apply a sepia effect to the image.</p>
+            <pre><code>gm("img.png").sepia()</code></pre>
           </li>
-          <li>sharpen
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").sharpen(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-sharpen">sharpen</a>
+            <p>Sharpens the image.</p>
+            <pre><code>gm("img.png").sharpen(radius [, sigma])</code></pre>
           </li>
-          <li>solarize
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").solarize(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-solarize">solarize</a>
+          <p>Negates all pixels above <code>threshold</code> percent.</p>
+            <pre><code>gm("img.png").solarize(threshold)</code></pre>
           </li>
-          <li>spread
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").spread(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-spread">spread</a>
+          <p>Desplaces pixels by a random <code>amount</code>.</p>
+            <pre><code>gm("img.png").spread(amount)</code></pre>
           </li>
-          <li>swirl
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").swirl(width, height, x, y)</code></pre>
+          <li><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-swirl">swirl</a>
+          <p>Swirls pixels arount the center of the image. <code>degrees</code> specifies the tightness of the swirl.</p>
+            <pre><code>gm("img.png").swirl(degrees)</code></pre>
           </li>
-          <li>thumb - create thumbnails based on minimum sizes
-            <p>Removes pixels from the interior of an image.</p>
-            <pre><code>gm("img.png").thumb(width, height, x, y)</code></pre>
+          <li><a href="#">thumb</a>
+            <p>Creates a thumbnail based on minimum sizes.</p>
+            <dl>
+              <dt><code>width</code></dt>
+              <dd>the minimum width of the thumbnail</dd>
+              <dt><code>height</code></dt>
+              <dd>the minimum height of the thumbnail</dd>
+              <dt><code>outName</code></dt>
+              <dd>the path where the image will be saved</dd>
+              <dt><code>callback</code></dt>
+              <dd>called after the thumbnail is written. receives the same args that <code>.write(err, stdout, stderr, command)</code> receives.</dd>
+            </dl>
+            <pre><code>gm("img.png").thumb(width, height, outName, callback)</code></pre>
           </li>
         </ul>
 
