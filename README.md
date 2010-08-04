@@ -78,6 +78,7 @@ or clone the repo:
     - [chop](http://aheckmann.github.com/gm/#chop)
     - [colors](http://aheckmann.github.com/gm/#colors)
     - [colorize](http://aheckmann.github.com/gm/#colorize)
+    - [colorspace](http://aheckmann.github.com/gm/#colorspace)
     - [comment](http://aheckmann.github.com/gm/#comment)
     - [contrast](http://aheckmann.github.com/gm/#contrast)
     - [crop](http://aheckmann.github.com/gm/#crop)
