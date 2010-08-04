@@ -8,7 +8,7 @@
 , "licenses": [{ "type": "MIT", "url": "http://www.opensource.org/licenses/mit-license.php"}]
 , "main": "./index"
 , "contributors": [
-    { "name": "teropa", github: "http://github.com/teropa" }
+    { "name": "teropa", "github": "http://github.com/teropa" }
   ]
 , "repository":
   { "type": "git"
