@@ -104,7 +104,7 @@ or clone the repo:
     - [morph](http://aheckmann.github.com/gm/#morph)
     - [negative](http://aheckmann.github.com/gm/#negative)
     - [noise](http://aheckmann.github.com/gm/#noise)
-    - [noProfile](http://aheckmann.github.com/gm/#profile) - removes EXIF, ICM, etc profile data
+    - [noProfile](http://aheckmann.github.com/gm/#profile)
     - [paint](http://aheckmann.github.com/gm/#paint)
     - [quality](http://aheckmann.github.com/gm/#quality)
     - [raise](http://aheckmann.github.com/gm/#raise)
@@ -119,7 +119,7 @@ or clone the repo:
     - [solarize](http://aheckmann.github.com/gm/#solarize)
     - [spread](http://aheckmann.github.com/gm/#spread)
     - [swirl](http://aheckmann.github.com/gm/#swirl)
-    - [thumb](http://aheckmann.github.com/gm/#thumb) - create thumbnails based on minimum sizes
+    - [thumb](http://aheckmann.github.com/gm/#thumb)
  
   
 ## Node version
