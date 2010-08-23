@@ -299,10 +299,12 @@
               <dd>the minimum height of the thumbnail</dd>
               <dt><code>outName</code></dt>
               <dd>the path where the image will be saved</dd>
+              <dt><code>quality</code></dt>
+              <dd>Adjusts the image compression level. Ranges from 0 to 100 (best).</dd>
               <dt><code>callback</code></dt>
               <dd>called after the thumbnail is written. receives the same args that <code>.write(err, stdout, stderr, command)</code> receives.</dd>
             </dl>
-            <pre><code>gm("img.png").thumb(width, height, outName, callback)</code></pre>
+            <pre><code>gm("img.png").thumb(width, height, outName, quality, callback)</code></pre>
           </li>
         </ul>
   <br>
