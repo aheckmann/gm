@@ -1,3 +1,10 @@
+
+## v0.2.2 - 8/22/2010
+
+  * add quality option to thumb()
+  * add teropa to contributors
+  * added support for colorspace()
+
 ## v0.2.1 - 7/31/2010
 
   * fixed naming conflict. depth() manipulation method renamed bitdepth() 
