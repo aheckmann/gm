@@ -9,7 +9,7 @@
 , "main": "./index"
 , "contributors": 
   [ { "name": "Aaron Heckmann", "email": "aaron.heckmann+github@gmail.com" }
-  , { "name": "teropa", "github": "http://github.com/teropa" }
+  , { "name": "Tero Parviainen", "github": "http://github.com/teropa" }
   ]
 , "repository":
   { "type": "git"
