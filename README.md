@@ -40,8 +40,19 @@ GraphicsMagick for node
       .edge(3)
       .write('/path/to/crazy.jpg', function(err){
         if (!err) print('crazytown has arrived')
+      }) 
+
+    // annotate an image with some graphics
+    gm('/path/to/my/img.jpg')
+      .setStroke("#ffffff")
+      .drawCircle(10, 10, 20, 10)
+      .setFont("Helvetica.ttf")
+      .setPointSize(12)
+      .drawText(30, 20, "Hello!")
+      .write("/path/to/drawing.png", function(err){
+        if (!err) print('done')
       })
-    
+   
 
 ## Getting started
 First download and install [GraphicsMagick](http://www.graphicsmagick.org/)
@@ -121,9 +132,31 @@ or clone the repo:
     - [swirl](http://aheckmann.github.com/gm/#swirl)
     - [thumb](http://aheckmann.github.com/gm/#thumb) - create thumbnails based on minimum sizes
  
-  
+  - drawing primitives
+    - [color](http://aheckmann.github.com/gm/#color)
+    - [draw](http://aheckmann.github.com/gm/#draw)
+    - [drawArc](http://aheckmann.github.com/gm/#drawArc)
+    - [drawBezier](http://aheckmann.github.com/gm/#drawBezier)
+    - [drawCircle](http://aheckmann.github.com/gm/#drawCircle)
+    - [drawEllipse](http://aheckmann.github.com/gm/#drawEllipse)
+    - [drawLine](http://aheckmann.github.com/gm/#drawLine)
+    - [drawPoint](http://aheckmann.github.com/gm/#drawPoint)
+    - [drawPolygon](http://aheckmann.github.com/gm/#drawPolygon)
+    - [drawPolyline](http://aheckmann.github.com/gm/#drawPolyline)
+    - [drawRectangle](http://aheckmann.github.com/gm/#drawRectangle)
+    - [drawRoundRectangle](http://aheckmann.github.com/gm/#drawRoundRectangle)
+    - [drawText](http://aheckmann.github.com/gm/#drawText)
+    - [matte](http://aheckmann.github.com/gm/#matte)
+    - [noFill](http://aheckmann.github.com/gm/#noFill)
+    - [noStroke](http://aheckmann.github.com/gm/#noStroke)
+    - [setFill](http://aheckmann.github.com/gm/#setFill)
+    - [setFont](http://aheckmann.github.com/gm/#setFont)
+    - [setPointSize](http://aheckmann.github.com/gm/#setPointSize)
+    - [setStroke](http://aheckmann.github.com/gm/#setStroke)
+    - [setStrokeWidth](http://aheckmann.github.com/gm/#setStrokeWidth)
+      
 ## Node version
-Compatible with v0.1.96+
+Compatible with v0.1.96+g
   
 ## Inspiration
 http://github.com/quiiver/magickal-node
