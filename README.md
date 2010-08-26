@@ -133,7 +133,6 @@ or clone the repo:
     - [thumb](http://aheckmann.github.com/gm/#thumb)
  
   - drawing primitives
-    - [color](http://aheckmann.github.com/gm/#color)
     - [draw](http://aheckmann.github.com/gm/#draw)
     - [drawArc](http://aheckmann.github.com/gm/#drawArc)
     - [drawBezier](http://aheckmann.github.com/gm/#drawBezier)
@@ -144,16 +143,13 @@ or clone the repo:
     - [drawPolygon](http://aheckmann.github.com/gm/#drawPolygon)
     - [drawPolyline](http://aheckmann.github.com/gm/#drawPolyline)
     - [drawRectangle](http://aheckmann.github.com/gm/#drawRectangle)
-    - [drawRoundRectangle](http://aheckmann.github.com/gm/#drawRoundRectangle)
     - [drawText](http://aheckmann.github.com/gm/#drawText)
-    - [matte](http://aheckmann.github.com/gm/#matte)
-    - [noFill](http://aheckmann.github.com/gm/#noFill)
-    - [noStroke](http://aheckmann.github.com/gm/#noStroke)
-    - [setFill](http://aheckmann.github.com/gm/#setFill)
-    - [setFont](http://aheckmann.github.com/gm/#setFont)
-    - [setPointSize](http://aheckmann.github.com/gm/#setPointSize)
-    - [setStroke](http://aheckmann.github.com/gm/#setStroke)
-    - [setStrokeWidth](http://aheckmann.github.com/gm/#setStrokeWidth)
+    - [fill](http://aheckmann.github.com/gm/#fill)
+    - [font](http://aheckmann.github.com/gm/#font)
+    - [fontSize](http://aheckmann.github.com/gm/#fontSize)
+    - [stroke](http://aheckmann.github.com/gm/#stroke)
+    - [strokeWidth](http://aheckmann.github.com/gm/#strokeWidth)
+    - [setDraw](http://aheckmann.github.com/gm/#setDraw)
       
 ## Node version
 Compatible with v0.1.96+g
