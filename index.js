@@ -16,5 +16,6 @@ function gm(source){
 
 require("./lib/getters")(gm.prototype)
 require("./lib/args")(gm.prototype)
+require("./lib/drawing")(gm.prototype)
 require("./lib/convenience")(gm.prototype)
 require("./lib/command")(gm.prototype)
