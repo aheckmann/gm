@@ -131,7 +131,7 @@ or clone the repo:
     - [swirl](http://aheckmann.github.com/gm/#swirl)
     - [thumb](http://aheckmann.github.com/gm/#thumb)
  
-  - drawing primitives
+  - drawing primitives (docs coming soon)
     - [draw](http://aheckmann.github.com/gm/#draw)
     - [drawArc](http://aheckmann.github.com/gm/#drawArc)
     - [drawBezier](http://aheckmann.github.com/gm/#drawBezier)
