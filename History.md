@@ -1,4 +1,8 @@
 
+## v0.3.0 - 8/26/2010
+
+  * add drawing api
+
 ## v0.2.2 - 8/22/2010
 
   * add quality option to thumb()
