@@ -44,11 +44,10 @@ GraphicsMagick for node
 
     // annotate an image with some graphics
     gm('/path/to/my/img.jpg')
-      .setStroke("#ffffff")
+      .stroke("#ffffff")
       .drawCircle(10, 10, 20, 10)
-      .setFont("Helvetica.ttf")
-      .setPointSize(12)
-      .drawText(30, 20, "Hello!")
+      .font("Helvetica.ttf", 12)
+      .drawText(30, 20, "GMagick!")
       .write("/path/to/drawing.png", function(err){
         if (!err) print('done')
       })
