@@ -42,7 +42,7 @@ GraphicsMagick for node
         if (!err) print('crazytown has arrived')
       }) 
 
-    // annotate an image with some graphics
+    // annotate an image
     gm('/path/to/my/img.jpg')
       .stroke("#ffffff")
       .drawCircle(10, 10, 20, 10)
