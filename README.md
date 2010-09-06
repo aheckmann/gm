@@ -53,7 +53,7 @@ GraphicsMagick for node
       })
 
     // creating an image
-    gm.new(200, 400, "#ddff99f3")
+    gm(200, 400, "#ddff99f3")
       .drawText(10, 50, "from scratch")
       .write("/path/to/brandNewImg.jpg", function(err){
         // ...

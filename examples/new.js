@@ -4,7 +4,7 @@
 var gm = require('../')
   , dir = __dirname + '/imgs'
 
-gm.new(525, 110, "#00ff55aa")
+gm(525, 110, "#00ff55aa")
   .fontSize(68)
   .stroke("#efe", 2)
   .fill("#555")
