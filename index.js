@@ -7,7 +7,7 @@ module.exports = gm
 function gm(source){
   if (!(this instanceof gm))
     return new gm(source)
-  this.source = source
+  this.source = source || ""
   this.data = {}
   this._in = []
   this._out = []
