@@ -75,6 +75,13 @@ or clone the repo:
   Also take a look at the [Extending gm](http://wiki.github.com/aheckmann/gm/extending-gm)
   page to see how to customize gm to your own needs.
 
+## Constructor:
+
+  There are a few ways you can use the `gm` image constructor.
+
+  - 1) `gm(path)` When you pass a string as the first argument it is interpreted as the path to an image you intend to manipulate.
+  - 2) `gm(width, height)` When you pass two arguments it tells gm to create a new image on the fly with the provided dimensions. And you can still chain just like you do with pre-existing images too.
+  - 3) `gm(width, height, color)` The same as #2 but you may also specify a background color for the created image.
 
 ## Methods
 
