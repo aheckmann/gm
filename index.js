@@ -3,17 +3,29 @@
 
 module.exports = gm
 
-
-function gm(source){
+function gm(source, height, color){
   if (!(this instanceof gm))
-    return new gm(source)
-  this.source = source || ""
+    return new gm(source, height, color)
+
   this.data = {}
   this._in = []
   this._out = []
+
+  var width
+
+  if (height){
+    // new images
+    width = source
+    source = ""
+    this.arg(
+      [ "-size", width + "x" + height ]
+      .concat( color ? ['"xc:'+ color + '"'] : [] )
+    )
+  }
+
+  this.source = source
 }
   
-require("./lib/static")
 require("./lib/getters")(gm.prototype)
 require("./lib/args")(gm.prototype)
 require("./lib/drawing")(gm.prototype)
