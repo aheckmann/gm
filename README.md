@@ -51,6 +51,13 @@ GraphicsMagick for node
       .write("/path/to/drawing.png", function(err){
         if (!err) print('done')
       })
+
+    // creating an image
+    gm.new(200, 400, "#ddff99f3")
+      .drawText(10, 50, "from scratch")
+      .write("/path/to/brandNewImg.jpg", function(err){
+        // ...
+      })
    
 
 ## Getting started
