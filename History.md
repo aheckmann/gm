@@ -1,4 +1,9 @@
 
+## v0.3.1 - 9/06/2010
+
+  * can now create images from scratch
+  * add type method
+
 ## v0.3.0 - 8/26/2010
 
   * add drawing api
