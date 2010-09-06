@@ -1,4 +1,8 @@
 
+## v0.3.2 - 9/06/2010
+
+  * new images are now created using same gm() constructor
+
 ## v0.3.1 - 9/06/2010
 
   * can now create images from scratch
