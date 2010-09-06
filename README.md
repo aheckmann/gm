@@ -165,8 +165,6 @@ or clone the repo:
     - [strokeWidth](http://aheckmann.github.com/gm/#strokeWidth)
     - [setDraw](http://aheckmann.github.com/gm/#setDraw)
 
-  - generating a new image
-    - [new]
       
 ## Node version
 Compatible with v0.1.96+g
