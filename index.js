@@ -13,7 +13,7 @@ function gm(source){
   this._out = []
 }
   
-
+require("./lib/static")
 require("./lib/getters")(gm.prototype)
 require("./lib/args")(gm.prototype)
 require("./lib/drawing")(gm.prototype)
