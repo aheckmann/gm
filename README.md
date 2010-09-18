@@ -144,7 +144,7 @@ or clone the repo:
     - [spread](http://aheckmann.github.com/gm/#spread)
     - [swirl](http://aheckmann.github.com/gm/#swirl)
     - [thumb](http://aheckmann.github.com/gm/#thumb)
-    - [type]
+    - [type](http://aheckmann.github.com/gm/#type)
  
   - drawing primitives (docs coming soon)
     - [draw](http://aheckmann.github.com/gm/#draw)
