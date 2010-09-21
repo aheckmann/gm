@@ -146,7 +146,7 @@ or clone the repo:
     - [thumb](http://aheckmann.github.com/gm/#thumb)
     - [type](http://aheckmann.github.com/gm/#type)
  
-  - drawing primitives (docs coming soon)
+  - drawing primitives
     - [draw](http://aheckmann.github.com/gm/#draw)
     - [drawArc](http://aheckmann.github.com/gm/#drawArc)
     - [drawBezier](http://aheckmann.github.com/gm/#drawBezier)
