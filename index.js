@@ -32,8 +32,3 @@ require("./lib/drawing")(gm.prototype)
 require("./lib/convenience")(gm.prototype)
 require("./lib/command")(gm.prototype)
 
-// todo: remove in 0.4
-gm.new = function(w, h, c){
-  console.warn("gm.new has been removed. Use gm(width, height [, color]) from now on.")
-  return gm(w, h, c)
-}
