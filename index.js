@@ -2,6 +2,12 @@
 // gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
 
 /**
+ * Module dependencies.
+ */
+
+var escape = require('./lib/utils').escape;
+
+/**
  * Constructor.
  *
  * @param {String|Number} path - path to img source or width of img to create
@@ -32,6 +38,8 @@ function gm (source, height, color) {
     }
 
     this.arg(arg);
+  } else {
+    source = escape(source);
   }
 
   this.source = source;
