@@ -1,64 +1,64 @@
 # gm
 GraphicsMagick for node
 
-    var gm = require('./gm')
+    var gm = require('./gm');
 
     // resize and remove EXIF profile data
     gm('/path/to/my/img.jpg')
-      .resize(240, 240)
-      .noProfile()
-      .write('/path/to/resize.png', function(err){
-        if (!err) print('done')
-    })
-  
+    .resize(240, 240)
+    .noProfile()
+    .write('/path/to/resize.png', function (err) {
+      if (!err) console.log('done');
+    });
+
     // obtain the size of an image
     gm('/path/to/my/img.jpg')
-      .size(function(err, size){
-        if (!err)
-          print( size.width > size.height ? 'wider' : 'taller than you' )
-      })
+    .size(function (err, size) {
+      if (!err)
+        console.log(size.width > size.height ? 'wider' : 'taller than you');
+    });
 
     // output all available image properties
     gm('/path/to/img.png')
-      .identify(function(err, data){
-        if (!err) console.dir(data)
-      })
+    .identify(function (err, data) {
+      if (!err) console.dir(data)
+    });
 
     // pull out the first frame of an animated gif and save as png
     gm('/path/to/animated.gif[0]')
-      .write('/path/to/firstframe.png', function(err){
-        if (err) print('aaw, shucks')
-      })
+    .write('/path/to/firstframe.png', function (err) {
+      if (err) console.log('aaw, shucks');
+    });
 
     // crazytown
     gm('/path/to/my/img.jpg')
-      .flip() 
-      .magnify()
-      .rotate('green', 45)
-      .blur(7, 3)
-      .crop(300, 300, 150, 130)
-      .edge(3)
-      .write('/path/to/crazy.jpg', function(err){
-        if (!err) print('crazytown has arrived')
-      }) 
+    .flip()
+    .magnify()
+    .rotate('green', 45)
+    .blur(7, 3)
+    .crop(300, 300, 150, 130)
+    .edge(3)
+    .write('/path/to/crazy.jpg', function (err) {
+      if (!err) console.log('crazytown has arrived');
+    })
 
     // annotate an image
     gm('/path/to/my/img.jpg')
-      .stroke("#ffffff")
-      .drawCircle(10, 10, 20, 10)
-      .font("Helvetica.ttf", 12)
-      .drawText(30, 20, "GMagick!")
-      .write("/path/to/drawing.png", function(err){
-        if (!err) print('done')
-      })
+    .stroke("#ffffff")
+    .drawCircle(10, 10, 20, 10)
+    .font("Helvetica.ttf", 12)
+    .drawText(30, 20, "GMagick!")
+    .write("/path/to/drawing.png", function (err) {
+      if (!err) console.log('done');
+    });
 
     // creating an image
     gm(200, 400, "#ddff99f3")
-      .drawText(10, 50, "from scratch")
-      .write("/path/to/brandNewImg.jpg", function(err){
-        // ...
-      })
-   
+    .drawText(10, 50, "from scratch")
+    .write("/path/to/brandNewImg.jpg", function (err) {
+      // ...
+    });
+
 
 ## Getting started
 First download and install [GraphicsMagick](http://www.graphicsmagick.org/)
@@ -70,7 +70,7 @@ or clone the repo:
     git clone git://github.com/aheckmann/gm.git
 
 ## Examples:
-     
+
   Check out the [examples](http://github.com/aheckmann/gm/tree/master/examples/) directory to play around. 
   Also take a look at the [Extending gm](http://wiki.github.com/aheckmann/gm/extending-gm)
   page to see how to customize gm to your own needs.
@@ -134,7 +134,7 @@ or clone the repo:
     - [raise](http://aheckmann.github.com/gm/#raise)
     - [region](http://aheckmann.github.com/gm/#region)
     - [resample](http://aheckmann.github.com/gm/#resample)
-    - [resize](http://aheckmann.github.com/gm/#resize) 
+    - [resize](http://aheckmann.github.com/gm/#resize)
     - [roll](http://aheckmann.github.com/gm/#roll)
     - [rotate](http://aheckmann.github.com/gm/#rotate)
     - [scale](http://aheckmann.github.com/gm/#scale)
@@ -145,7 +145,7 @@ or clone the repo:
     - [swirl](http://aheckmann.github.com/gm/#swirl)
     - [thumb](http://aheckmann.github.com/gm/#thumb)
     - [type](http://aheckmann.github.com/gm/#type)
- 
+
   - drawing primitives
     - [draw](http://aheckmann.github.com/gm/#draw)
     - [drawArc](http://aheckmann.github.com/gm/#drawArc)
@@ -165,14 +165,14 @@ or clone the repo:
     - [strokeWidth](http://aheckmann.github.com/gm/#strokeWidth)
     - [setDraw](http://aheckmann.github.com/gm/#setDraw)
 
-      
+
 ## Node version
-Compatible with v0.1.96+g
-  
+Compatible with > v0.1.96
+
 ## Inspiration
 http://github.com/quiiver/magickal-node
 
-## License 
+## License
 
 (The MIT License)
 
