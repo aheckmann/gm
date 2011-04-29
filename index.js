@@ -31,13 +31,12 @@ function gm (source, height, color) {
     width = source;
     source = "";
 
-    var arg = ["-size", width + "x" + height];
+    this.in("-size", width + "x" + height);
 
     if (color) {
-      arg = arg.concat(['"xc:'+ color + '"']);
+      this.in("xc:"+ color);
     }
 
-    this.arg(arg);
   } else {
     source = escape(source);
   }
