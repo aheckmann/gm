@@ -1,4 +1,11 @@
 
+## v0.4.1 - 04/28/2011
+
+  * shell args are now escaped (thanks @visionmedia)
+  * added; gm.in()
+  * added; gm.out()
+  * various refactoring
+
 ## v0.4.0 - 9/21/2010
 
   * removed deprecated `new` method
