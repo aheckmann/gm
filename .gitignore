@@ -2,4 +2,5 @@ examples/imgs/*
 !examples/imgs/original.jpg
 !examples/imgs/original.png
 !examples/imgs/morpher.jpg
-
+*.swp
+*.swo
