@@ -1,4 +1,8 @@
 
+## v0.4.2 - 05/10/2011
+
+  * added; resize options support
+
 ## v0.4.1 - 04/28/2011
 
   * shell args are now escaped (thanks @visionmedia)
