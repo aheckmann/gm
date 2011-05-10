@@ -3,11 +3,11 @@
 
 var gm = require('../')
   , dir = __dirname + '/imgs'
-  
+
 gm(dir + '/original.jpg')
-  .resize(18, 10)
+  .resize(58, 50, '%')
   .write(dir + '/resize.jpg', function(err){
     if (err) return console.dir(arguments)
     console.log(this.outname + " created  ::  " + arguments[3])
   }
-) 
+)
