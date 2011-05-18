@@ -1,4 +1,9 @@
 
+## v0.4.3 - 05/17/2011
+
+  * added; bunch of tests
+  * fixed; polygon, polyline, bezier drawing bug
+
 ## v0.4.2 - 05/10/2011
 
   * added; resize options support
