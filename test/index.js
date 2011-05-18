@@ -18,7 +18,7 @@ fs.readdirSync(__dirname).forEach(function (file) {
 
   if (!fs.statSync(filename).isFile()) return;
 
-  require(filename)(test(), dir, finish);
+  require(filename)(test(), dir, finish, gm);
 });
 
 function finish (err) {
