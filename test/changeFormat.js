@@ -4,7 +4,7 @@
 module.exports = function (gm, dir, finish) {
 
   gm
-  .write(dir + '/changedformat.jpg', function changeformat (err) {
+  .write(dir + '/changedformat.png', function changeformat (err) {
     finish(err);
   });
 }

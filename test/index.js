@@ -5,7 +5,7 @@ var dir = __dirname + '/../examples/imgs';
 var gm = require('../')
 
 function test () {
-  return gm(dir + '/original.png');
+  return gm(dir + '/original.jpg');
 }
 
 var fs = require('fs');
