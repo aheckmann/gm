@@ -1,4 +1,10 @@
 
+## v0.5.0 - 07/07/2011
+
+  * added; gm#trim() support [lepokle]
+  * added; gm#inputIs() support
+  * fixed; 'geometry does not contain image' error: gh-17
+
 ## v0.4.3 - 05/17/2011
 
   * added; bunch of tests
