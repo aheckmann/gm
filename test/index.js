@@ -2,25 +2,51 @@
 // gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
 
 var dir = __dirname + '/../examples/imgs';
-var gm = require('../')
+var gm = require('../');
+var assert = require('assert');
+var gleak = require('gleak');
+var fs = require('fs');
+
+var files = fs.readdirSync(__dirname).filter(filter);
+var pending, total = pending = files.length;
+
+function filter (file) {
+  if (!/\.js$/.test(file)) return false;
+  if ('index.js' === file) return false;
+
+  var filename = __dirname + '/' + file;
+  if (!fs.statSync(filename).isFile()) return false;
+  return true;
+}
 
 function test () {
   return gm(dir + '/original.jpg');
 }
 
-var fs = require('fs');
+function finish (filename) {
+  return function (err) {
+    if (err) throw new Error(err);
 
-fs.readdirSync(__dirname).forEach(function (file) {
-  if (!/\.js$/.test(file)) return;
-  if ('index.js' === file) return;
+    --pending;
+    process.stderr.write(
+        '\u001B[30m'
+      + (new Array(total - pending)).join('√')
+      + '\u001B[0m'
+      + '\u001B[30m'
+      + (new Array(pending)).join('░')
+      + '\u001B[0m'
+      + '\r'
+    );
 
-  var filename = __dirname + '/' + file;
+    if (pending) return;
 
-  if (!fs.statSync(filename).isFile()) return;
-
-  require(filename)(test(), dir, finish, gm);
-});
-
-function finish (err) {
-  if (err) throw new Error(err);
+    var leaks = gleak.detect();
+    assert.equal(0, leaks.length, "global leaks detected: " + leaks);
+    console.error("\n\u001B[32mAll tests passed\u001B[0m")
+  }
 }
+
+files.forEach(function (file) {
+  var filename = __dirname + '/' + file;
+  require(filename)(test(), dir, finish(filename), gm);
+});
