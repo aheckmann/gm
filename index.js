@@ -5,13 +5,13 @@
  * Module dependencies.
  */
 
-var escape = require('./lib/utils').escape;
+var Stream = require('stream').Stream;
 
 /**
  * Constructor.
  *
- * @param {String|Number} path - path to img source or width of img to create
- * @param {Number} [height] - optional height of img to create
+ * @param {String|Number} path - path to img source or ReadableStream or width of img to create
+ * @param {Number} [height] - optional filename of ReadableStream or height of img to create
  * @param {String} [color] - optional hex background color of created img
  */
 
@@ -22,11 +22,10 @@ function gm (source, height, color) {
     return new gm(source, height, color);
   }
 
-  this.data = {};
-  this._in = [];
-  this._out = [];
-
-  if (height) {
+  if(source instanceof Stream) {
+    this.sourceStream = source;
+    source = height || 'unknown.jpg';
+  } else if (height) {
     // new images
     width = source;
     source = "";
@@ -37,8 +36,6 @@ function gm (source, height, color) {
       this.in("xc:"+ color);
     }
 
-  } else {
-    source = escape(source);
   }
 
   this.source = source;

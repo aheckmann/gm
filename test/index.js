@@ -4,7 +4,7 @@
 var dir = __dirname + '/../examples/imgs';
 var gm = require('../');
 var assert = require('assert');
-var gleak = require('gleak');
+var gleak = require('gleak')();
 var fs = require('fs');
 
 var files = fs.readdirSync(__dirname).filter(filter);
