@@ -111,8 +111,8 @@ or clone the repo:
   There are a few ways you can use the `gm` image constructor.
 
   - 1) `gm(path)` When you pass a string as the first argument it is interpreted as the path to an image you intend to manipulate.
-  - 2) `gm(width, height)` When you pass two arguments it tells gm to create a new image on the fly with the provided dimensions. And you can still chain just like you do with pre-existing images too. See [here](http://github.com/aheckmann/gm/blob/master/examples/new.js) for an example.
-  - 3) `gm(width, height, color)` The same as #2 but you may also specify a background color for the created image.
+  - 2) `gm(stream, [filename])` You may also pass a ReadableStream as the first argument, with an optional file name for format inference.
+  - 3) `gm(width, height, [color])` When you pass two integer arguments, gm will create a new image on the fly with the provided dimensions and an optional background color. And you can still chain just like you do with pre-existing images too. See [here](http://github.com/aheckmann/gm/blob/master/examples/new.js) for an example.
 
 ## Methods
 
@@ -197,6 +197,9 @@ or clone the repo:
     - [strokeWidth](http://aheckmann.github.com/gm/#strokeWidth)
     - [setDraw](http://aheckmann.github.com/gm/#setDraw)
 
+  - image output
+    - **write** - writes the processed image data to the specified filename
+    - **stream** - provides a ReadableStream with the processed image data
 
 ## Node version
 Compatible with > v0.1.96
