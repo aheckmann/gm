@@ -1,64 +1,95 @@
 # gm
 GraphicsMagick for node
 
-    var gm = require('./gm');
 
-    // resize and remove EXIF profile data
-    gm('/path/to/my/img.jpg')
-    .resize(240, 240)
-    .noProfile()
-    .write('/path/to/resize.png', function (err) {
-      if (!err) console.log('done');
-    });
+## Basic Usage
+```` js
+var fs = require('fs')
+  , gm = require('./gm');
 
-    // obtain the size of an image
-    gm('/path/to/my/img.jpg')
-    .size(function (err, size) {
-      if (!err)
-        console.log(size.width > size.height ? 'wider' : 'taller than you');
-    });
+// resize and remove EXIF profile data
+gm('/path/to/my/img.jpg')
+.resize(240, 240)
+.noProfile()
+.write('/path/to/resize.png', function (err) {
+  if (!err) console.log('done');
+});
 
-    // output all available image properties
-    gm('/path/to/img.png')
-    .identify(function (err, data) {
-      if (!err) console.dir(data)
-    });
+// obtain the size of an image
+gm('/path/to/my/img.jpg')
+.size(function (err, size) {
+  if (!err)
+    console.log(size.width > size.height ? 'wider' : 'taller than you');
+});
 
-    // pull out the first frame of an animated gif and save as png
-    gm('/path/to/animated.gif[0]')
-    .write('/path/to/firstframe.png', function (err) {
-      if (err) console.log('aaw, shucks');
-    });
+// output all available image properties
+gm('/path/to/img.png')
+.identify(function (err, data) {
+  if (!err) console.dir(data)
+});
 
-    // crazytown
-    gm('/path/to/my/img.jpg')
-    .flip()
-    .magnify()
-    .rotate('green', 45)
-    .blur(7, 3)
-    .crop(300, 300, 150, 130)
-    .edge(3)
-    .write('/path/to/crazy.jpg', function (err) {
-      if (!err) console.log('crazytown has arrived');
-    })
+// pull out the first frame of an animated gif and save as png
+gm('/path/to/animated.gif[0]')
+.write('/path/to/firstframe.png', function (err) {
+  if (err) console.log('aaw, shucks');
+});
 
-    // annotate an image
-    gm('/path/to/my/img.jpg')
-    .stroke("#ffffff")
-    .drawCircle(10, 10, 20, 10)
-    .font("Helvetica.ttf", 12)
-    .drawText(30, 20, "GMagick!")
-    .write("/path/to/drawing.png", function (err) {
-      if (!err) console.log('done');
-    });
+// crazytown
+gm('/path/to/my/img.jpg')
+.flip()
+.magnify()
+.rotate('green', 45)
+.blur(7, 3)
+.crop(300, 300, 150, 130)
+.edge(3)
+.write('/path/to/crazy.jpg', function (err) {
+  if (!err) console.log('crazytown has arrived');
+})
 
-    // creating an image
-    gm(200, 400, "#ddff99f3")
-    .drawText(10, 50, "from scratch")
-    .write("/path/to/brandNewImg.jpg", function (err) {
-      // ...
-    });
+// annotate an image
+gm('/path/to/my/img.jpg')
+.stroke("#ffffff")
+.drawCircle(10, 10, 20, 10)
+.font("Helvetica.ttf", 12)
+.drawText(30, 20, "GMagick!")
+.write("/path/to/drawing.png", function (err) {
+  if (!err) console.log('done');
+});
 
+// creating an image
+gm(200, 400, "#ddff99f3")
+.drawText(10, 50, "from scratch")
+.write("/path/to/brandNewImg.jpg", function (err) {
+  // ...
+});
+````
+
+## Image paths or Streams
+```` js
+// can provide either a file path or a ReadableStream
+// (from a local file or incoming network request)
+var readableStream = fs.createReadableStream('/path/to/my/img.jpg');
+gm(readableStream, 'img.jpg')
+.write('/path/to/reformat.png', function (err) {
+  if (!err) console.log('done');
+});
+
+// can also stream output to a ReadableStream
+// (can be piped to a local file or remote server)
+gm('/path/to/my/img.jpg')
+.stream(function (err, stdout, stderr) {
+  var writableStream = fs.createWritableStream('/path/to/my/reformat.png');
+  stdout.pipe(writableStream);
+});
+
+// combine the two for true streaming image processing
+var readableStream = fs.createReadableStream('/path/to/my/img.jpg');
+gm(readableStream, 'img.jpg')
+.stream(function (err, stdout, stderr) {
+  var writableStream = fs.createWritableStream('/path/to/my/reformat.png');
+  stdout.pipe(writableStream);
+});
+````
 
 ## Getting started
 First download and install [GraphicsMagick](http://www.graphicsmagick.org/)
