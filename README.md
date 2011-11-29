@@ -77,16 +77,26 @@ gm(readableStream, 'img.jpg')
 // can also stream output to a ReadableStream
 // (can be piped to a local file or remote server)
 gm('/path/to/my/img.jpg')
+.resize('200', '200')
 .stream(function (err, stdout, stderr) {
-  var writableStream = fs.createWritableStream('/path/to/my/reformat.png');
+  var writableStream = fs.createWritableStream('/path/to/my/resized.jpg');
+  stdout.pipe(writableStream);
+});
+
+// pass a format or filename to stream() and
+// gm will provide image data in that format
+gm('/path/to/my/img.jpg')
+.stream('png', function (err, stdout, stderr) {
+  var writableStream = fs.createWritableStream('/path/to/my/reformated.png');
   stdout.pipe(writableStream);
 });
 
 // combine the two for true streaming image processing
 var readableStream = fs.createReadableStream('/path/to/my/img.jpg');
 gm(readableStream, 'img.jpg')
+.resize('200', '200')
 .stream(function (err, stdout, stderr) {
-  var writableStream = fs.createWritableStream('/path/to/my/reformat.png');
+  var writableStream = fs.createWritableStream('/path/to/my/resized.jpg');
   stdout.pipe(writableStream);
 });
 ````
