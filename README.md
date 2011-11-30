@@ -68,8 +68,8 @@ gm(200, 400, "#ddff99f3")
 ```` js
 // can provide either a file path or a ReadableStream
 // (from a local file or incoming network request)
-var readableStream = fs.createReadableStream('/path/to/my/img.jpg');
-gm(readableStream, 'img.jpg')
+var readStream = fs.createReadStream('/path/to/my/img.jpg');
+gm(readStream, 'img.jpg')
 .write('/path/to/reformat.png', function (err) {
   if (!err) console.log('done');
 });
@@ -79,25 +79,25 @@ gm(readableStream, 'img.jpg')
 gm('/path/to/my/img.jpg')
 .resize('200', '200')
 .stream(function (err, stdout, stderr) {
-  var writableStream = fs.createWritableStream('/path/to/my/resized.jpg');
-  stdout.pipe(writableStream);
+  var writeStream = fs.createWriteStream('/path/to/my/resized.jpg');
+  stdout.pipe(writeStream);
 });
 
 // pass a format or filename to stream() and
 // gm will provide image data in that format
 gm('/path/to/my/img.jpg')
 .stream('png', function (err, stdout, stderr) {
-  var writableStream = fs.createWritableStream('/path/to/my/reformated.png');
-  stdout.pipe(writableStream);
+  var writeStream = fs.createWriteStream('/path/to/my/reformated.png');
+  stdout.pipe(writeStream);
 });
 
 // combine the two for true streaming image processing
-var readableStream = fs.createReadableStream('/path/to/my/img.jpg');
-gm(readableStream, 'img.jpg')
+var readStream = fs.createReadStream('/path/to/my/img.jpg');
+gm(readStream, 'img.jpg')
 .resize('200', '200')
 .stream(function (err, stdout, stderr) {
-  var writableStream = fs.createWritableStream('/path/to/my/resized.jpg');
-  stdout.pipe(writableStream);
+  var writeStream = fs.createWriteStream('/path/to/my/resized.jpg');
+  stdout.pipe(writeStream);
 });
 ````
 
