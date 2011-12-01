@@ -22,6 +22,10 @@ function gm (source, height, color) {
     return new gm(source, height, color);
   }
 
+  this.data = {};
+  this._in = [];
+  this._out = [];
+
   if(source instanceof Stream) {
     this.sourceStream = source;
     source = height || 'unknown.jpg';
