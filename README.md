@@ -99,6 +99,20 @@ gm(readStream, 'img.jpg')
   var writeStream = fs.createWriteStream('/path/to/my/resized.jpg');
   stdout.pipe(writeStream);
 });
+
+// when working with input streams and any 'identify'
+// operation (size, format, etc), you must pass "{bufferStream: true}" if
+// you also need to convert (write() or stream()) the image afterwards
+// NOTE: this temporarily buffers the image stream in Node memory
+var readStream = fs.createReadStream('/path/to/my/img.jpg');
+gm(readStream, 'img.jpg')
+.size({bufferStream: true}, function(err, size) {
+  this.resize(size.width / 2, size.height / 2)
+  this.write('/path/to/resized.jpg', function (err) {
+    if (!err) console.log('done');
+  });
+}
+
 ````
 
 ## Getting started
