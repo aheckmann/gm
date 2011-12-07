@@ -58,6 +58,12 @@ GraphicsMagick for node
     .write("/path/to/brandNewImg.jpg", function (err) {
       // ...
     });
+    
+    // use ImageMagick instead of GraphicsMagick
+    gm('/path/to/img.png', true)
+    .identify(function (err, data) {
+      if (!err) console.dir(data)
+    });
 
 
 ## Getting started
