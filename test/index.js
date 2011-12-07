@@ -23,6 +23,10 @@ function test () {
   return gm(dir + '/original.jpg');
 }
 
+function testIM () {
+	return gm(dir + '/original.jpg', 'convert');
+}
+
 function finish (filename) {
   return function (err) {
     if (err) {
@@ -51,5 +55,10 @@ function finish (filename) {
 
 files.forEach(function (file) {
   var filename = __dirname + '/' + file;
-  require(filename)(test(), dir, finish(filename), gm);
+
+  if (process.argv[2] && process.argv[2] == "im") {
+	require(filename)(testIM(), dir, finish(filename), gm);
+  } else {
+	require(filename)(test(), dir, finish(filename), gm);
+  }
 });
