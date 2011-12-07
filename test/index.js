@@ -25,7 +25,10 @@ function test () {
 
 function finish (filename) {
   return function (err) {
-    if (err) throw new Error(err);
+    if (err) {
+		console.log(filename);
+		throw new Error(err);
+	}
 
     --pending;
     process.stderr.write(
