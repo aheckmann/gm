@@ -19,7 +19,7 @@ function gm (source, height, color, useImageMagick) {
   var width;
 
   if (!(this instanceof gm)) {
-    return new gm(source, height, color);
+    return new gm(source, height, color, useImageMagick);
   }
 
   this.data = {};
@@ -35,6 +35,7 @@ function gm (source, height, color, useImageMagick) {
 
     if (typeof(color) != "boolean") {
       this.in("xc:"+ color);
+	  useImageMagick = (useImageMagick);
     } else {
       useImageMagick = (color);
 	}
