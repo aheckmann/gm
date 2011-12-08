@@ -15,33 +15,37 @@ var escape = require('./lib/utils').escape;
  * @param {String} [color] - optional hex background color of created img
  */
 
-function gm (source, height, color) {
+function gm (source, height, color, useImageMagick) {
   var width;
 
   if (!(this instanceof gm)) {
-    return new gm(source, height, color);
+    return new gm(source, height, color, useImageMagick);
   }
 
   this.data = {};
   this._in = [];
   this._out = [];
 
-  if (height) {
+  if (parseInt(height, 10) != 0 || height == "0") {
     // new images
     width = source;
     source = "";
 
     this.in("-size", width + "x" + height);
 
-    if (color) {
+    if (typeof(color) != "boolean") {
       this.in("xc:"+ color);
-    }
-
+	  useImageMagick = (useImageMagick);
+    } else {
+      useImageMagick = (color);
+	}
   } else {
     source = escape(source);
+	useImageMagick = (height);
   }
 
   this.source = source;
+  this.useImageMagick = useImageMagick;
 }
 
 /**
