@@ -26,7 +26,7 @@ function gm (source, height, color, useImageMagick) {
   this._in = [];
   this._out = [];
 
-  if (typeof(height) == "number") {
+  if (parseInt(height, 10) != 0 || height == "0") {
     // new images
     width = source;
     source = "";
