@@ -1,64 +1,119 @@
 # gm
 GraphicsMagick for node
 
-    var gm = require('./gm');
 
-    // resize and remove EXIF profile data
-    gm('/path/to/my/img.jpg')
-    .resize(240, 240)
-    .noProfile()
-    .write('/path/to/resize.png', function (err) {
-      if (!err) console.log('done');
-    });
+## Basic Usage
+```` js
+var fs = require('fs')
+  , gm = require('./gm');
 
-    // obtain the size of an image
-    gm('/path/to/my/img.jpg')
-    .size(function (err, size) {
-      if (!err)
-        console.log(size.width > size.height ? 'wider' : 'taller than you');
-    });
+// resize and remove EXIF profile data
+gm('/path/to/my/img.jpg')
+.resize(240, 240)
+.noProfile()
+.write('/path/to/resize.png', function (err) {
+  if (!err) console.log('done');
+});
 
-    // output all available image properties
-    gm('/path/to/img.png')
-    .identify(function (err, data) {
-      if (!err) console.dir(data)
-    });
+// obtain the size of an image
+gm('/path/to/my/img.jpg')
+.size(function (err, size) {
+  if (!err)
+    console.log(size.width > size.height ? 'wider' : 'taller than you');
+});
 
-    // pull out the first frame of an animated gif and save as png
-    gm('/path/to/animated.gif[0]')
-    .write('/path/to/firstframe.png', function (err) {
-      if (err) console.log('aaw, shucks');
-    });
+// output all available image properties
+gm('/path/to/img.png')
+.identify(function (err, data) {
+  if (!err) console.dir(data)
+});
 
-    // crazytown
-    gm('/path/to/my/img.jpg')
-    .flip()
-    .magnify()
-    .rotate('green', 45)
-    .blur(7, 3)
-    .crop(300, 300, 150, 130)
-    .edge(3)
-    .write('/path/to/crazy.jpg', function (err) {
-      if (!err) console.log('crazytown has arrived');
-    })
+// pull out the first frame of an animated gif and save as png
+gm('/path/to/animated.gif[0]')
+.write('/path/to/firstframe.png', function (err) {
+  if (err) console.log('aaw, shucks');
+});
 
-    // annotate an image
-    gm('/path/to/my/img.jpg')
-    .stroke("#ffffff")
-    .drawCircle(10, 10, 20, 10)
-    .font("Helvetica.ttf", 12)
-    .drawText(30, 20, "GMagick!")
-    .write("/path/to/drawing.png", function (err) {
-      if (!err) console.log('done');
-    });
+// crazytown
+gm('/path/to/my/img.jpg')
+.flip()
+.magnify()
+.rotate('green', 45)
+.blur(7, 3)
+.crop(300, 300, 150, 130)
+.edge(3)
+.write('/path/to/crazy.jpg', function (err) {
+  if (!err) console.log('crazytown has arrived');
+})
 
-    // creating an image
-    gm(200, 400, "#ddff99f3")
-    .drawText(10, 50, "from scratch")
-    .write("/path/to/brandNewImg.jpg", function (err) {
-      // ...
-    });
+// annotate an image
+gm('/path/to/my/img.jpg')
+.stroke("#ffffff")
+.drawCircle(10, 10, 20, 10)
+.font("Helvetica.ttf", 12)
+.drawText(30, 20, "GMagick!")
+.write("/path/to/drawing.png", function (err) {
+  if (!err) console.log('done');
+});
 
+// creating an image
+gm(200, 400, "#ddff99f3")
+.drawText(10, 50, "from scratch")
+.write("/path/to/brandNewImg.jpg", function (err) {
+  // ...
+});
+````
+
+## Image paths or Streams
+```` js
+// can provide either a file path or a ReadableStream
+// (from a local file or incoming network request)
+var readStream = fs.createReadStream('/path/to/my/img.jpg');
+gm(readStream, 'img.jpg')
+.write('/path/to/reformat.png', function (err) {
+  if (!err) console.log('done');
+});
+
+// can also stream output to a ReadableStream
+// (can be piped to a local file or remote server)
+gm('/path/to/my/img.jpg')
+.resize('200', '200')
+.stream(function (err, stdout, stderr) {
+  var writeStream = fs.createWriteStream('/path/to/my/resized.jpg');
+  stdout.pipe(writeStream);
+});
+
+// pass a format or filename to stream() and
+// gm will provide image data in that format
+gm('/path/to/my/img.jpg')
+.stream('png', function (err, stdout, stderr) {
+  var writeStream = fs.createWriteStream('/path/to/my/reformated.png');
+  stdout.pipe(writeStream);
+});
+
+// combine the two for true streaming image processing
+var readStream = fs.createReadStream('/path/to/my/img.jpg');
+gm(readStream, 'img.jpg')
+.resize('200', '200')
+.stream(function (err, stdout, stderr) {
+  var writeStream = fs.createWriteStream('/path/to/my/resized.jpg');
+  stdout.pipe(writeStream);
+});
+
+// when working with input streams and any 'identify'
+// operation (size, format, etc), you must pass "{bufferStream: true}" if
+// you also need to convert (write() or stream()) the image afterwards
+// NOTE: this temporarily buffers the image stream in Node memory
+var readStream = fs.createReadStream('/path/to/my/img.jpg');
+gm(readStream, 'img.jpg')
+.size({bufferStream: true}, function(err, size) {
+  this.resize(size.width / 2, size.height / 2)
+  this.write('/path/to/resized.jpg', function (err) {
+    if (!err) console.log('done');
+  });
+}
+
+````
 
 ## Getting started
 First download and install [GraphicsMagick](http://www.graphicsmagick.org/)
@@ -80,8 +135,8 @@ or clone the repo:
   There are a few ways you can use the `gm` image constructor.
 
   - 1) `gm(path)` When you pass a string as the first argument it is interpreted as the path to an image you intend to manipulate.
-  - 2) `gm(width, height)` When you pass two arguments it tells gm to create a new image on the fly with the provided dimensions. And you can still chain just like you do with pre-existing images too. See [here](http://github.com/aheckmann/gm/blob/master/examples/new.js) for an example.
-  - 3) `gm(width, height, color)` The same as #2 but you may also specify a background color for the created image.
+  - 2) `gm(stream, [filename])` You may also pass a ReadableStream as the first argument, with an optional file name for format inference.
+  - 3) `gm(width, height, [color])` When you pass two integer arguments, gm will create a new image on the fly with the provided dimensions and an optional background color. And you can still chain just like you do with pre-existing images too. See [here](http://github.com/aheckmann/gm/blob/master/examples/new.js) for an example.
 
 ## Methods
 
@@ -166,6 +221,9 @@ or clone the repo:
     - [strokeWidth](http://aheckmann.github.com/gm/#strokeWidth)
     - [setDraw](http://aheckmann.github.com/gm/#setDraw)
 
+  - image output
+    - **write** - writes the processed image data to the specified filename
+    - **stream** - provides a ReadableStream with the processed image data
 
 ## Node version
 Compatible with > v0.1.96
