@@ -26,7 +26,7 @@ function gm (source, height, color) {
   this._in = [];
   this._out = [];
 
-  if(source instanceof Stream) {
+  if (source instanceof Stream) {
     this.sourceStream = source;
     source = height || 'unknown.jpg';
   } else if (height) {
@@ -46,7 +46,7 @@ function gm (source, height, color) {
   // since stream doesn't use source path
   // eg. "filename.gif[0]"
   var frames;
-  if(frames = source.match(/(\[.+\])$/)) {
+  if (frames = source.match(/(\[.+\])$/)) {
     this.sourceFrames = source.substr(frames.index, frames[0].length);
     source = source.substr(0, frames.index);
   }
