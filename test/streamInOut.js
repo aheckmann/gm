@@ -8,7 +8,7 @@ module.exports = function (_, dir, finish, gm) {
   gm(fs.createReadStream(dir + '/original.jpg'), "original.jpg")
   .stream(function streamOut (err, stdout, stderr) {
     if (err) return finish(err);
-    stdout.pipe(fs.createReadStream(dir + '/streamInOut.jpg'));
+    stdout.pipe(fs.createWriteStream(dir + '/streamInOut.jpg'));
     stdout.on('error', finish);
     stdout.on('close', finish);
   });
