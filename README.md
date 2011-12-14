@@ -226,7 +226,7 @@ or clone the repo:
     - **stream** - provides a ReadableStream with the processed image data
 
 ## Contributors
-[https://github.com/aheckmann/gm/network/members](https://github.com/aheckmann/gm/network/members)
+[https://github.com/aheckmann/gm/contributors](https://github.com/aheckmann/gm/contributors)
 
 ## Inspiration
 http://github.com/quiiver/magickal-node
