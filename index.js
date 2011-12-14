@@ -68,5 +68,5 @@ require("./lib/command")(gm.prototype);
  */
 
 module.exports = gm;
-module.exports.version = "0.5.0";
+module.exports.version = "0.6.0";
 

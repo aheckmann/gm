@@ -1,6 +1,6 @@
 { "name": "gm"
 , "description": "Graphics Magick for node."
-, "version": "0.5.0"
+, "version": "0.6.0"
 , "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>"
 , "keywords": ["nodejs", "graphics magick", "graphics", "magick", "image"]
 , "engines": { "node": ">= 0.4.2" }

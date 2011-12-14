@@ -1,4 +1,8 @@
 
+## v0.6.0 - 12/14/2011
+
+  * added; stream support [kainosnoema] (#22)
+
 ## v0.5.0 - 07/07/2011
 
   * added; gm#trim() support [lepokle]
