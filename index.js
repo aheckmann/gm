@@ -39,7 +39,6 @@ function gm (source, height, color) {
     if (color) {
       this.in("xc:"+ color);
     }
-
   }
 
   // parse out gif frame brackets from filename

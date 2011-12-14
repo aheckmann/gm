@@ -4,12 +4,12 @@
 var fs = require('fs');
 
 module.exports = function (gm, dir, finish) {
-  
+
   gm
-  .stream(function streamOut (err, stdout, stderr){
+  .stream(function streamOut (err, stdout, stderr) {
+    if (err) return finish(err);
     stdout.pipe(fs.createWriteStream(dir + '/streamOut.jpg'));
-    stdout.addListener('close', function() {
-      finish(err);
-    });
+    stdout.on('error', finish);
+    stdout.on('close', finish);
   });
 }
