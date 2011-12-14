@@ -111,7 +111,7 @@ gm(readStream, 'img.jpg')
   this.write('/path/to/resized.jpg', function (err) {
     if (!err) console.log('done');
   });
-}
+});
 
 ````
 
@@ -225,8 +225,8 @@ or clone the repo:
     - **write** - writes the processed image data to the specified filename
     - **stream** - provides a ReadableStream with the processed image data
 
-## Node version
-Compatible with > v0.1.96
+## Contributors
+[https://github.com/aheckmann/gm/network/members](https://github.com/aheckmann/gm/network/members)
 
 ## Inspiration
 http://github.com/quiiver/magickal-node
