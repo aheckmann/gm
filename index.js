@@ -57,7 +57,7 @@ function gm (source, height, color) {
  * Augment the prototype.
  */
 
-require("./lib/getters")(gm.prototype);
+require("./lib/getters")(gm);
 require("./lib/args")(gm.prototype);
 require("./lib/drawing")(gm.prototype);
 require("./lib/convenience")(gm.prototype);
