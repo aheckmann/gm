@@ -53,10 +53,37 @@ function gm (source, height, color) {
   this.source = source;
 }
 
+var super = gm;
+gm.subClass =
+gm.setOptions = function subClass (options) {
+  function gm (source, height, color) {
+    if (!(this instanceof super)) {
+      return new gm(source, height, color);
+    }
+
+    super.call(this, source, height, color);
+  }
+
+  gm.prototype.__proto__ = super.prototype;
+  gm.prototype._options = {};
+
+  var keys = Object.keys(options)
+    , i = keys.length
+    , key
+
+  while (i--) {
+    key = keys[i];
+    gm.prototype._options[key] = options[key];
+  }
+
+  return gm;
+}
+
 /**
  * Augment the prototype.
  */
 
+require("./lib/options")(gm.prototype);
 require("./lib/getters")(gm);
 require("./lib/args")(gm.prototype);
 require("./lib/drawing")(gm.prototype);
@@ -67,6 +94,6 @@ require("./lib/command")(gm.prototype);
  * Expose.
  */
 
-module.exports = gm;
+module.exports = exports = gm;
 module.exports.version = "0.6.0";
 
