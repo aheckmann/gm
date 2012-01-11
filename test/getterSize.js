@@ -11,7 +11,12 @@ module.exports = function (gm, dir, finish) {
 
     assert.equal(size.width, 460);
     assert.equal(size.height, 155);
-    assert.equal(this.data.Geometry, '460x155');
+
+    if (gm._options.imageMagick) {
+      assert.equal(this.data.Geometry, '460x155+0+0');
+    } else {
+      assert.equal(this.data.Geometry, '460x155');
+    }
 
     finish();
   });

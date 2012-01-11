@@ -3,10 +3,13 @@
 
 module.exports = function (gm, dir, finish) {
 
-  gm
-  .monochrome()
-  .dither()
-  .write(dir + '/dither.png', function dither (err) {
+  var g = gm.monochrome()
+
+  if (!g._options.imageMagick) {
+    g.dither()
+  }
+
+  g.write(dir + '/dither.png', function dither (err) {
     finish(err);
   });
 }

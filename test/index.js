@@ -10,7 +10,7 @@ var fs = require('fs');
 var only = process.argv.slice(2);
 
 var files = fs.readdirSync(__dirname).filter(filter);
-var pending, total = pending = files.length;
+var pending, total = pending = files.length * 2;
 
 function filter (file) {
   if (!/\.js$/.test(file)) return false;
@@ -22,7 +22,8 @@ function filter (file) {
   return true;
 }
 
-function test () {
+function test (imagemagick) {
+  if (imagemagick) return gm(dir + '/original.jpg').options({ imageMagick: true });
   return gm(dir + '/original.jpg');
 }
 
@@ -52,4 +53,5 @@ function finish (filename) {
 files.forEach(function (file) {
   var filename = __dirname + '/' + file;
   require(filename)(test(), dir, finish(filename), gm);
+  require(filename)(test(true), dir, finish(filename), gm);
 });

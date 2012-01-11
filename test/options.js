@@ -23,7 +23,7 @@ module.exports = function (_, dir, finish, gm) {
   assert.equal(true, s2._options.subclassed);
   assert.equal(undefined, s2._options.setWithMethod);
 
-  var writeFile = dir + '/IM-negative.png';
+  var writeFile = dir + '/IM-negative' + Math.random() + '.png';
   var imageMagick = gm.subClass({ imageMagick: true });
 
   imageMagick(dir + '/photo.JPG')
