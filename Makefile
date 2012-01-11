@@ -1,5 +1,5 @@
 
 test:
-	@node test/
+	@node test/ $(TESTS)
 
 .PHONY: test

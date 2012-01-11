@@ -7,12 +7,15 @@ var assert = require('assert');
 var gleak = require('gleak')();
 var fs = require('fs');
 
+var only = process.argv.slice(2);
+
 var files = fs.readdirSync(__dirname).filter(filter);
 var pending, total = pending = files.length;
 
 function filter (file) {
   if (!/\.js$/.test(file)) return false;
   if ('index.js' === file) return false;
+  if (only.length && !~only.indexOf(file)) return false;
 
   var filename = __dirname + '/' + file;
   if (!fs.statSync(filename).isFile()) return false;
