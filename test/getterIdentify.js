@@ -7,7 +7,6 @@ module.exports = function (_, dir, finish, gm) {
 
   gm(dir + '/photo.JPG').identify(function (err) {
     if (err) return finish(err);
-    console.error(this.data);
 
     var d = this.data;
 
