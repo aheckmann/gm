@@ -22,6 +22,9 @@ function gm (source, height, color) {
     return new gm(source, height, color);
   }
 
+  this._options = {};
+  this.options(this.__proto__._options);
+
   this.data = {};
   this._in = [];
   this._out = [];
@@ -54,8 +57,7 @@ function gm (source, height, color) {
 }
 
 var super = gm;
-gm.subClass =
-gm.setOptions = function subClass (options) {
+gm.subClass = function subClass (options) {
   function gm (source, height, color) {
     if (!(this instanceof super)) {
       return new gm(source, height, color);
@@ -66,15 +68,7 @@ gm.setOptions = function subClass (options) {
 
   gm.prototype.__proto__ = super.prototype;
   gm.prototype._options = {};
-
-  var keys = Object.keys(options)
-    , i = keys.length
-    , key
-
-  while (i--) {
-    key = keys[i];
-    gm.prototype._options[key] = options[key];
-  }
+  gm.prototype.options(options);
 
   return gm;
 }
