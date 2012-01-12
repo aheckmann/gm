@@ -25,7 +25,7 @@ gm('/path/to/my/img.jpg')
 // output all available image properties
 gm('/path/to/img.png')
 .identify(function (err, data) {
-  if (!err) console.dir(data)
+  if (!err) console.log(data)
 });
 
 // pull out the first frame of an animated gif and save as png
@@ -33,6 +33,13 @@ gm('/path/to/animated.gif[0]')
 .write('/path/to/firstframe.png', function (err) {
   if (err) console.log('aaw, shucks');
 });
+
+// auto-orient an image
+gm('/path/to/img.jpg')
+.autoOrient()
+.write('/path/to/oriented.jpg', function (err) {
+  if (err) ...
+})
 
 // crazytown
 gm('/path/to/my/img.jpg')
@@ -119,15 +126,17 @@ gm(readStream, 'img.jpg')
 First download and install [GraphicsMagick](http://www.graphicsmagick.org/)
 
 then either use npm:
+
     npm install gm
 
 or clone the repo:
+
     git clone git://github.com/aheckmann/gm.git
 
 ## Examples:
 
   Check out the [examples](http://github.com/aheckmann/gm/tree/master/examples/) directory to play around. 
-  Also take a look at the [Extending gm](http://wiki.github.com/aheckmann/gm/extending-gm)
+  Also take a look at the [extending gm](http://wiki.github.com/aheckmann/gm/extending-gm)
   page to see how to customize gm to your own needs.
 
 ## Constructor:
