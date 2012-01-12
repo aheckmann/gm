@@ -1,3 +1,6 @@
+## v1.0.1 - 01/12/2012
+
+  * fixed; use of reserved keyword `super` for node v0.5+
 
 ## v1.0.0 - 01/12/2012
 
