@@ -151,7 +151,7 @@ or clone the repo:
 
   - getters
     - [size](http://aheckmann.github.com/gm/#getters) - returns the size (WxH) of the image
-    - orientation - returns the EXIF orientation of the image
+    - [orientation](http://aheckmann.github.com/gm/#orientation) - returns the EXIF orientation of the image
     - [format](http://aheckmann.github.com/gm/#getters) - returns the image format (gif, jpeg, png, etc)
     - [depth](http://aheckmann.github.com/gm/#getters) - returns the image color depth 
     - [color](http://aheckmann.github.com/gm/#getters) - returns the number of colors
@@ -161,7 +161,7 @@ or clone the repo:
 
   - manipulation
     - [antialias](http://aheckmann.github.com/gm/#antialias)
-    - autoOrient
+    - [autoOrient](http://aheckmann.github.com/gm/#autoOrient)
     - [bitdepth](http://aheckmann.github.com/gm/#bitdepth)
     - [blur](http://aheckmann.github.com/gm/#blur)
     - [charcoal](http://aheckmann.github.com/gm/#charcoal)
