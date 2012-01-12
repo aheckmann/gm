@@ -4,12 +4,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 	<title>gm : GraphicsMagick for node</title>
-	
+  <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch|Open+Sans' rel='stylesheet' type='text/css'>
+
 	<style type="text/css">
 		body {
   		margin-top: 1.0em;
-  		background-color: #EDFFED;
-		  font-family: "Helvetica,Arial,FreeSans";
+  		background-color: #fefefe;
+		  font-family: 'Open Sans', Helvetica, Arial, FreeSans;
   		color: #333;
     }
     #container {
@@ -17,19 +18,20 @@
       width: 700px;
     }
     #drawing-primitives{ margin-top: 35px; }
-		h1 { font-size: 3.8em; margin-bottom: 3px; color: #333; }
-		h1 .small { font-size: 0.4em; }
-		h1 a { text-decoration: none; color: #333; }
+		h1 { margin-bottom: 3px; color: #333; font-family: 'Cabin Sketch'; font-weight: normal; }
+		h1 .small { font-size: 42px; }
+		h1 a { text-decoration: none; color: #333; font-size: 148px; padding-right: 8px; }
 		h2 { font-size: 1.5em; margin-top: 45px; }
+    #docs { padding-left: 39px; }
     li { list-style: none; }
-    code { font: 12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace; }
+    code { font: 14px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-		pre { background: #000; color: #fff; padding: 15px;}
+    .download { position: absolute; right: 132px; top: 0px; }
+		pre { background: #f9f9f9; color: #222; padding: 15px; border: 1px solid #c6c6c6; border-radius: 4px; box-shadow: 0px 2px 10px #ddd; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
 	</style>
-	
+
 </head>
 
 <body>
@@ -48,8 +50,7 @@
       <span class="small">GraphicsMagick for node</span>
     </h1>
 
-    <h2>Documentation</h2>
-    <ul>
+    <ul id='docs'>
       <li id="getters"><h3>getters</h3>
         <p>All getters have the same signature:
 <pre><code>gm("image.png").<b>size</b>(function(err, value){
@@ -64,6 +65,7 @@
           <li id="res"><code>res</code> - returns the image resolution</li>
           <li id="filesize"><code>filesize</code> - returns image filesize</li>
           <li id="identify"><code>identify</code> - returns all image data available</li>
+          <li id="orientation"><code>orientation</code> - returns the EXIF orientation of the image</li>
         </ul>
       </li>
       <li><h3>manipulation</h3>
@@ -71,6 +73,11 @@
           <li id="antialias"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-antialias">antialias</a>
             <p>By default all imgs are anti-aliased by GrahpicsMagick. To disable it pass false.</p>
             <pre><code>gm("img.png").antialias(false)</code></pre>
+          </li>
+          <li id="autoOrient"><a href="#">autoOrient</a>
+            <p>Auto-orients the image according to its EXIF data.</p>
+            <p>GraphicsMagick doesn't actually have the -auto-orient option but we emulate this by first reading the EXIF data and rotate/flip from there.</p>
+            <pre><code>gm("img.jpg").autoOrient()</code></pre>
           </li>
           <li id="bitdepth"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-depth">bitdepth</a>
           <p>Specifies the number of bits of color to preserve in the image. See the <a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-depth">docs</a> for more detail.</p>
