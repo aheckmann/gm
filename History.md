@@ -1,4 +1,14 @@
 
+## v1.0.0 - 01/12/2012
+
+  * added; autoOrient support [kainosnoema] (#21)
+  * added; orientation support [kainosnoema] (#21)
+  * fixed; identify parser now properly JSON formats all data output by `gm identify` such as IPTC, GPS, Make, etc (#20)
+  * added; support for running as imagemagick (#23, #29)
+  * added; subclassing support; useful for setting default constructor options like one constructor for ImageMagick, the other for GM
+  * added; more tests
+  * changed; remove redundant `orientation`, `resolution`, and `filesize` from `this.data` in `indentify()`. Use their uppercase equivalents.
+
 ## v0.6.0 - 12/14/2011
 
   * added; stream support [kainosnoema] (#22)
