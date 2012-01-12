@@ -2,7 +2,7 @@
 , "description": "Graphics Magick for node."
 , "version": "0.6.0"
 , "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>"
-, "keywords": ["nodejs", "graphics magick", "graphics", "magick", "image"]
+, "keywords": ["nodejs", "graphics magick", "graphics", "magick", "image", "graphicsmagick", "imagemagick"]
 , "engines": { "node": ">= 0.4.2" }
 , "bugs": "http://github.com/aheckmann/gm/issues"
 , "licenses": [{ "type": "MIT", "url": "http://www.opensource.org/licenses/mit-license.php"}]
