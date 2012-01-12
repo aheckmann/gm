@@ -9,6 +9,7 @@ module.exports = function (gm, dir, finish) {
   .depth(function getterdepth (err, depth) {
     if (err) return finish(err);
     assert.equal(8, depth);
+    assert.equal(8, this.data.depth);
 
     if (gm._options.imageMagick)
       assert.equal('8-bit', this.data.Depth);

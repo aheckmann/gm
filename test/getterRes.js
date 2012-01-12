@@ -8,7 +8,7 @@ module.exports = function (gm, dir, finish) {
   gm
   .res(function getterres (err, res) {
     if (err) return finish(err);
-    assert.ok(res === this.data.Resolution, this.data.res)
+    assert.equal(res, this.data.Resolution)
     finish();
   });
 }

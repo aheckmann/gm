@@ -25,7 +25,7 @@ module.exports = function (_, dir, finish, gm) {
         gm(filename).identify(function (err) {
           if (err) return finish(err);
 
-          assert.equal('Unknown', this.data.orientation);
+          assert.equal('Unknown', this.data.Orientation);
           assert.ok(! this.data['Profile-EXIF'], 'Profile-EXIF still exists');
           assert.equal('460x155', this.data.Geometry);
 
