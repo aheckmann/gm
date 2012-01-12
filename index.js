@@ -56,17 +56,17 @@ function gm (source, height, color) {
   this.source = source;
 }
 
-var super = gm;
+var parent = gm;
 gm.subClass = function subClass (options) {
   function gm (source, height, color) {
-    if (!(this instanceof super)) {
+    if (!(this instanceof parent)) {
       return new gm(source, height, color);
     }
 
-    super.call(this, source, height, color);
+    parent.call(this, source, height, color);
   }
 
-  gm.prototype.__proto__ = super.prototype;
+  gm.prototype.__proto__ = parent.prototype;
   gm.prototype._options = {};
   gm.prototype.options(options);
 
