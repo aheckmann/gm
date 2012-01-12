@@ -10,6 +10,7 @@
 , "contributors": [
       { "name": "Aaron Heckmann", "email": "aaron.heckmann+github@gmail.com" }
     , { "name": "Tero Parviainen", "github": "http://github.com/teropa" }
+    , { "name": "Evan Owen", "github": "http://github.com/kainosnoema" }
   ]
 , "repository": {
       "type": "git"
