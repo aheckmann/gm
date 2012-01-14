@@ -77,6 +77,7 @@ gm('/path/to/image.jpg')
           <option value="sepia">sepia</option>
           <option value="swirl">swirl</option>
           <option value="rotate">rotate</option>
+          <option value="rotate-edge">rotate-edge</option>
           <option value="flip-rotate-edge">flip-rotate-edge</option>
         </select>
         <input type="submit" value="Go!">
@@ -222,6 +223,17 @@ gm('/path/to/image.jpg')
 
 gm('/path/to/image.jpg')
 .flip()
+.rotate('green', -25)
+.edge(3)
+.resize(resizeX, resizeY)
+.write(response, function (err) {
+  if (err) ...
+});</code>
+<code data-code="rotate-edge">var gm = require('gm')
+  , resizeX = 343
+  , resizeY = 257
+
+gm('/path/to/image.jpg')
 .rotate('green', -25)
 .edge(3)
 .resize(resizeX, resizeY)
