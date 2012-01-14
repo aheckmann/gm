@@ -95,6 +95,7 @@ gm('/path/to/image.jpg')
         , select = $('form')
         , options = select.find('option')
         , wrap = $('#frame-wrap')
+        , exampleCode = $("#example code");
 
       var btns = $('<div id="btns"/>');
 
@@ -113,17 +114,15 @@ gm('/path/to/image.jpg')
       btns.on('click', 'button', function (e) {
         e.preventDefault();
         e.stopPropagation();
+
         var btn = $(e.target);
+        var code = $("#raw-code code[data-code='" + e.target.id + "']").text();
+        exampleCode.text(code);
+
         $("#op").val(e.target.id);
         form.submit();
       });
 
-      var exampleCode = $("#example code");
-      btns.on('hover', 'button', function (e) {
-        var btn = $(e.target);
-        var code = $("#raw-code code[data-code='" + e.target.id + "']").text();
-        exampleCode.text(code);
-      });
     })();
   </script>
 
