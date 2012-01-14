@@ -29,7 +29,14 @@
 		pre { background: #f9f9f9; color: #222; padding: 15px; border: 1px solid #c6c6c6; border-radius: 4px; box-shadow: 0px 2px 10px #ddd; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
-    #example { margin-top: 50px; }
+    #example { float: left; }
+    #example code { display: inline-block; height: 225px; width: 296px; }
+    iframe { width: 350px; height: 310px; float: right; border: 0 none; }
+    #example-wrap:before, #example-wrap:after { content: ""; display: table; visibility: hidden; }
+    #example-wrap:after { clear: both; }
+    #example-wrap { zoom: 1; margin-top: 50px; margin-bottom: -20px;}
+    #frame-wrap { margin-top: 13px; }
+    #btns button { padding-right: 10px; }
 	</style>
 </head>
 <body>
@@ -48,19 +55,180 @@
       <span class="small">GraphicsMagick for node.js</span>
     </h1>
 
-    <pre id="example"><code>var gm = require('gm');
+    <div id=example-wrap>
+      <pre id="example"><code data-code="default">var gm = require('gm');
 
 gm('/path/to/image.jpg')
-.resize(300, 400)
+.resize(353, 257)
 .autoOrient()
 .write(writeStream, function (err) {
   if (!err) console.log(' hooray! ');
 });</code></pre>
-    <!--<h2>Try it!</h2>-->
+      <div id='frame-wrap'>
+        <iframe name="preview" id="preview" scrolling="no" src="examples/imgs/nodejs.png"></iframe>
+      </div>
+      <form action="http://localhost:8900" target="preview">
+        <select name="op">
+          <option value="blur">blur</option>
+          <option value="implode">implode</option>
+          <option value="contrast">constrast</option>
+          <option value="colorize">colorize</option>
+          <option value="equalize">equalize</option>
+          <option value="sepia">sepia</option>
+          <option value="swirl">swirl</option>
+          <option value="rotate">rotate</option>
+          <option value="flip-rotate-edge">flip-rotate-edge</option>
+        </select>
+        <input type="submit" value="Go!">
+      </form>
+    </div>
 
     <h2>Get it!</h2>
     <pre><code>> npm install gm</code></pre>
     <h3><a href="docs.html">Read the documentation</a></h3>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>
+    ;(function(){
+      var form = $('form')
+        , select = $('form')
+        , options = select.find('option')
+        , wrap = $('#frame-wrap')
+
+      var btns = $('<div id="btns"/>');
+
+      options.each(function (_, option) {
+        var o = $(option)
+        var txt = o.text()
+          , id = o.val()
+        btns.append("<button type='button' id="+id+">" + txt + "</button>");
+      });
+
+      form.append("<input type=hidden name=op id=op>")
+      $('form select, form input[type=submit]').remove();
+
+      btns.insertAfter("#example-wrap");
+
+      btns.on('click', 'button', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var btn = $(e.target);
+        $("#op").val(e.target.id);
+        form.submit();
+      });
+
+      var exampleCode = $("#example code");
+      btns.on('hover', 'button', function (e) {
+        var btn = $(e.target);
+        var code = $("#raw-code code[data-code='" + e.target.id + "']").text();
+        exampleCode.text(code);
+      });
+    })();
+  </script>
+
+<div id="raw-code" style="display:none">
+<code data-code="blur">var gm = require('gm')
+  , resizeX = 343
+  , resizeY = 257
+
+gm('/path/to/image.jpg')
+.blur(30, 20)
+.resize(resizeX, resizeY)
+.autoOrient();
+.write(response, function (err) {
+  if (err) ...
+});</code>
+<code data-code="implode">var gm = require('gm')
+  , resizeX = 343
+  , resizeY = 257
+
+gm('/path/to/image.jpg')
+.implode(-1.2)
+.resize(resizeX, resizeY)
+.autoOrient();
+.write(response, function (err) {
+  if (err) ...
+});</code>
+<code data-code="contrast">var gm = require('gm')
+  , resizeX = 343
+  , resizeY = 257
+
+gm('/path/to/image.jpg')
+.contrast(-6)
+.resize(resizeX, resizeY)
+.autoOrient();
+.write(response, function (err) {
+  if (err) ...
+});</code>
+<code data-code="colorize">var gm = require('gm')
+  , resizeX = 343
+  , resizeY = 257
+
+gm('/path/to/image.jpg')
+.colorize(200, 200, 256)
+.resize(resizeX, resizeY)
+.autoOrient();
+.write(response, function (err) {
+  if (err) ...
+});</code>
+<code data-code="equalize">var gm = require('gm')
+  , resizeX = 343
+  , resizeY = 257
+
+gm('/path/to/image.jpg')
+.equalize()
+.resize(resizeX, resizeY)
+.autoOrient();
+.write(response, function (err) {
+  if (err) ...
+});</code>
+<code data-code="sepia">var gm = require('gm')
+  , resizeX = 343
+  , resizeY = 257
+
+gm('/path/to/image.jpg')
+.sepia()
+.resize(resizeX, resizeY)
+.autoOrient();
+.write(response, function (err) {
+  if (err) ...
+});</code>
+<code data-code="swirl">var gm = require('gm')
+  , resizeX = 343
+  , resizeY = 257
+
+gm('/path/to/image.jpg')
+.resize(resizeX, resizeY)
+.region(101, 112, 90, 87)
+.swirl(200)
+.autoOrient();
+.write(response, function (err) {
+  if (err) ...
+});</code>
+<code data-code="rotate">var gm = require('gm')
+  , resizeX = 343
+  , resizeY = 257
+
+gm('/path/to/image.jpg')
+.rotate('green', -25)
+.resize(resizeX, resizeY)
+.autoOrient();
+.write(response, function (err) {
+  if (err) ...
+});</code>
+<code data-code="flip-rotate-edge">var gm = require('gm')
+  , resizeX = 343
+  , resizeY = 257
+
+gm('/path/to/image.jpg')
+.flip()
+.rotate('green', -25)
+.edge(3)
+.resize(resizeX, resizeY)
+.write(response, function (err) {
+  if (err) ...
+});</code>
+</div>
+
 </body>
 </html>
