@@ -58,6 +58,7 @@
         <li><a href="#manipulation">Manipulation</a></li>
         <li><a href="#getters">Getters</a></li>
         <li><a href="#drawing-primitives">Drawing</a></li>
+        <li><a href="#imagemagick">Using Imagemagick</a></li>
       </ul>
     </div>
 
@@ -424,6 +425,16 @@
           </li>
         </ul>
       </li>
+      <li id="imagemagick">
+        <h3>Using ImageMagick</h3>
+        <p>We have compatibility with ImageMagick too. Just subclass the gm constructor passing the imageMagick option.</p>
+        <pre><code>var imageMagick = gm.subClass({ imageMagick: true });</code></pre>
+        <p>Then use <code>imageMagick</code> the same way you'd normally use <code>gm</code>.</p>
+        <pre><code>imageMagick("img.png").autoOrient().write('/path', callback);</code></pre>
+      </li>
+    </ul>
+  <br>
+  <br>
   <br>
   </div>
   <script>;(function(){

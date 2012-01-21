@@ -31,12 +31,22 @@
     .footer { text-align:center; padding-top:30px; font-style: italic; }
     #example { float: left; }
     #example code { display: inline-block; height: 225px; width: 296px; }
-    iframe { width: 350px; height: 310px; float: right; border: 0 none; }
+    #frame-wrap div, iframe { width: 350px; height: 310px; float: right; border: 0 none; }
     #example-wrap:before, #example-wrap:after { content: ""; display: table; visibility: hidden; }
     #example-wrap:after { clear: both; }
     #example-wrap { zoom: 1; margin-top: 50px; margin-bottom: -20px;}
     #frame-wrap { margin-top: 13px; }
-    #btns button { padding-right: 10px; }
+    #frame-wrap img { position: absolute; margin: 112px 172px; display:none; }
+    #btns { clear: both; }
+    #btns button {
+      font-family: arial;
+      font-size: 13px;
+      padding-left: 6px;
+      padding-right: 4px;
+      margin-right: 3px;
+      text-indent: 0;
+      white-space: inherit;
+    }
 	</style>
 </head>
 <body>
@@ -66,6 +76,7 @@ gm('/path/to/image.jpg')
 });</code></pre>
       <div id='frame-wrap'>
         <iframe name="preview" id="preview" scrolling="no" src="examples/imgs/nodejs.png"></iframe>
+        <img src="loader.gif">
       </div>
       <form action="http://freezing-spring-5684.herokuapp.com/" target="preview">
         <select name="op">
@@ -85,6 +96,7 @@ gm('/path/to/image.jpg')
     </div>
 
     <h2>Get it!</h2>
+    <p>First install either <a href="http://www.graphicsmagick.org/" target="_blank">GraphicsMagick</a> or <a href="http://www.imagemagick.org/" target="_blank">ImageMagick</a>. Then:</p>
     <pre><code>> npm install gm</code></pre>
     <h3><a href="docs.html">Read the documentation</a></h3>
   </div>
@@ -95,6 +107,7 @@ gm('/path/to/image.jpg')
         , select = $('form')
         , options = select.find('option')
         , wrap = $('#frame-wrap')
+        , loader = wrap.find('> img')
         , exampleCode = $("#example code");
 
       var btns = $('<div id="btns"/>');
@@ -106,21 +119,34 @@ gm('/path/to/image.jpg')
         btns.append("<button type='button' id="+id+">" + txt + "</button>");
       });
 
-      form.append("<input type=hidden name=op id=op>")
-      $('form select, form input[type=submit]').remove();
-
       btns.insertAfter("#example-wrap");
+
+      form.remove();
+      wrap.find('iframe').remove();
+
+      var preview = $('<div style="background: transparent url(examples/imgs/nodejs.png) no-repeat;">')
+      wrap.prepend(preview);
 
       btns.on('click', 'button', function (e) {
         e.preventDefault();
         e.stopPropagation();
 
+        preview.stop(true, true).fadeTo(400, '0.7');
+
         var btn = $(e.target);
         var code = $("#raw-code code[data-code='" + e.target.id + "']").text();
         exampleCode.text(code);
 
-        $("#op").val(e.target.id);
-        form.submit();
+        var url = 'http://freezing-spring-5684.herokuapp.com/?op='
+                + e.target.id
+
+        var img = new Image;
+        img.onload = function () {
+          preview.css('background-image', 'url('+url+')' );
+          preview.stop(true, true);
+          preview.fadeTo(120, '1.0');
+        }
+        img.src = url;
       });
 
     })();
