@@ -1,3 +1,8 @@
+## v1.0.2 - 01/24/2012
+
+  * added; debugging info on parser errors
+  * fixed; exports.version
+
 ## v1.0.1 - 01/12/2012
 
   * fixed; use of reserved keyword `super` for node v0.5+
