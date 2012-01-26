@@ -7,6 +7,7 @@
 , "bugs": "http://github.com/aheckmann/gm/issues"
 , "licenses": [{ "type": "MIT", "url": "http://www.opensource.org/licenses/mit-license.php"}]
 , "main": "./index"
+, "scripts": { "test": "make test" }
 , "contributors": [
       { "name": "Aaron Heckmann", "email": "aaron.heckmann+github@gmail.com" }
     , { "name": "Tero Parviainen", "github": "http://github.com/teropa" }
