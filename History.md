@@ -1,3 +1,7 @@
+## v1.0.3 - 01/27/2012
+
+  * removed; console.log
+
 ## v1.0.2 - 01/24/2012
 
   * added; debugging info on parser errors
