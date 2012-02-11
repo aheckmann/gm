@@ -1,3 +1,7 @@
+## v1.0.4 - 02/09/2012
+
+  * expose utils
+
 ## v1.0.3 - 01/27/2012
 
   * removed; console.log
