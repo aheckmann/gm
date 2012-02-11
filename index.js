@@ -89,6 +89,7 @@ require("./lib/command")(gm.prototype);
  */
 
 module.exports = exports = gm;
+module.exports.utils = require('./lib/utils');
 module.exports.version = JSON.parse(
   require('fs').readFileSync(__dirname + '/package.json', 'utf8')
 ).version;
