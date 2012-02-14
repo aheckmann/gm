@@ -1,4 +1,3 @@
-
 // gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
 
 /**
@@ -28,6 +27,7 @@ function gm (source, height, color) {
   this.data = {};
   this._in = [];
   this._out = [];
+  this._outputFormat = null;
 
   if (source instanceof Stream) {
     this.sourceStream = source;
