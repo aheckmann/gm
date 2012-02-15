@@ -158,6 +158,14 @@
           <p>Implodes the image pixels around the center. Takes an optional <code>factor</code>.</p>
             <pre><code>gm("img.png").implode([factor])</code></pre>
           </li>
+          <li id="interlace"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-interlace">interlace</a>
+          <p>Specifies the type of interlacing scheme. Defaults to <code>None</code>.</p>
+          <dl>
+            <dt><code>type</code></dt>
+            <dd>None|Line|Plane|Partition</dd>
+          </dl>
+            <pre><code>gm("img.png").interlace(type)</code></pre>
+          </li>
           <li id="label"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-label">label</a>
             <p>Assigns a label to an image.</p>
             <pre><code>gm("img.png").label(name)</code></pre>
@@ -277,6 +285,11 @@
             <p>A convenience method to apply a sepia effect to the image.</p>
             <pre><code>gm("img.png").sepia()</code></pre>
           </li>
+          <li id="setformat"><a href="#">setFormat</a>
+            <p>Overriddes the output image format.</p>
+            <p>Helpful if we are outputting an image with no extention but need to change formats.</p>
+            <pre><code>gm("img.png").setFormat(format)</code></pre>
+          </li>
           <li id="sharpen"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-sharpen">sharpen</a>
             <p>Sharpens the image.</p>
             <pre><code>gm("img.png").sharpen(radius [, sigma])</code></pre>
@@ -288,6 +301,11 @@
           <li id="spread"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-spread">spread</a>
           <p>Desplaces pixels by a random <code>amount</code>.</p>
             <pre><code>gm("img.png").spread(amount)</code></pre>
+          </li>
+          <li id="strip"><a href="http://www.imagemagick.org/script/command-line-options.php#strip">strip</a>
+            <p>Strips the image of any profiles or comments.</p>
+            <p>Similar to <a href="#profile">noProfile()</a> but removes both profile and comment data. <i>only works with imageMagick.</i></p>
+            <pre><code>gm("img.png").strip()</code></pre>
           </li>
           <li id="swirl"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-swirl">swirl</a>
           <p>Swirls pixels arount the center of the image. <code>degrees</code> specifies the tightness of the swirl.</p>
