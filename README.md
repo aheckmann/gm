@@ -209,7 +209,7 @@ or clone the repo:
     - [setFormat](http://aheckmann.github.com/gm/docs.html#setformat)
     - [sharpen](http://aheckmann.github.com/gm/docs.html#sharpen)
     - [solarize](http://aheckmann.github.com/gm/docs.html#solarize)
-    - [strip](http://aheckmann.github.com/gm/docs.html#strip)
+    - [strip](http://aheckmann.github.com/gm/docs.html#strip) _imagemagick only_
     - [spread](http://aheckmann.github.com/gm/docs.html#spread)
     - [swirl](http://aheckmann.github.com/gm/docs.html#swirl)
     - [thumb](http://aheckmann.github.com/gm/docs.html#thumb)
