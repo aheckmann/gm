@@ -1,3 +1,10 @@
+## v1.0.5 - 02/15/2012
+
+  * added; strip() support [Math-]
+  * added; interlace() support [Math-]
+  * added; setFormat() support [Math-]
+  * fixed; regexps for image types [Math-]
+
 ## v1.0.4 - 02/09/2012
 
   * expose utils

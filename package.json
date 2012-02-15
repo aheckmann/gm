@@ -1,6 +1,6 @@
 { "name": "gm"
 , "description": "Graphics Magick for node."
-, "version": "1.0.4"
+, "version": "1.0.5"
 , "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>"
 , "keywords": ["nodejs", "graphics magick", "graphics", "magick", "image", "graphicsmagick", "imagemagick"]
 , "engines": { "node": ">= 0.4.2" }
@@ -12,6 +12,7 @@
       { "name": "Aaron Heckmann", "email": "aaron.heckmann+github@gmail.com" }
     , { "name": "Tero Parviainen", "github": "http://github.com/teropa" }
     , { "name": "Evan Owen", "github": "http://github.com/kainosnoema" }
+    , { "name": "Math-", "github": "http://github.com/Math-" }
   ]
 , "repository": {
       "type": "git"
