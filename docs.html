@@ -118,6 +118,10 @@
           <p>Displace the image colormap by amount. <code>amount</code> is the number of positions each colormap entry is shifted.</p>
             <pre><code>gm("img.png").cycle(amount)</code></pre>
           </li>
+          <li id="density"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-density">density</a>
+            <p>This option specifies the image resolution to store while encoding a raster image or the canvas resolution while rendering (reading) vector formats into an image.</p>
+            <pre><code>gm("img.png").density(width, height)</code></pre>
+          </li>
           <li id="despeckle"><a href="http://www.graphicsmagick.org/GraphicsMagick.html">despeckle</a>
             <p>Reduces the speckles within the image.</p>
             <pre><code>gm("img.png").despeckle()</code></pre>
@@ -141,6 +145,10 @@
           <li id="equalize"><a href="http://www.graphicsmagick.org/GraphicsMagick.html">equalize</a>
             <p>Performs histogram equalization to the image.</p>
             <pre><code>gm("img.png").equalize()</code></pre>
+          </li>
+          <li id="filter"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-filter">filter</a>
+          <p>Specifies the filter to use when resizing. <small>see link for available types.</small></p>
+            <pre><code>gm("img.png").filter(type)</code></pre>
           </li>
           <li id="flip"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-flip">flip</a>
           <p>Creates a mirror image <small>(vertically)</small>.</p>
