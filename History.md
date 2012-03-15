@@ -1,3 +1,10 @@
+## v1.1.0 - 03/15/2012
+
+  * added; filter() support [travisbeck]
+  * added; density() [travisbeck]
+  * fixed; permit either width or height in resize [dambalah]
+  * updated; docs
+
 ## v1.0.5 - 02/15/2012
 
   * added; strip() support [Math-]
