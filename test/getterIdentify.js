@@ -12,7 +12,7 @@ module.exports = function (_, dir, finish, gm) {
 
     assert.equal(d.Orientation, 'TopLeft');
     assert.equal(d['JPEG-Quality'], 96);
-    assert.equal(d['Channel Statistics'].Red['Standard Deviation'], '71.70 (0.2812)');
+    assert.equal(d['Channel Statistics'].Red['Standard Deviation'], '71.71 (0.2812)');
 
     var ex = d['Profile-EXIF'];
     assert.equal(ex.Make, 'Apple');

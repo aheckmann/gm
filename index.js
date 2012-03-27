@@ -83,6 +83,7 @@ require("./lib/args")(gm.prototype);
 require("./lib/drawing")(gm.prototype);
 require("./lib/convenience")(gm.prototype);
 require("./lib/command")(gm.prototype);
+require("./lib/composite")(gm);
 
 /**
  * Expose.

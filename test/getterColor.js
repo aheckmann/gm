@@ -10,8 +10,8 @@ module.exports = function (_, dir, finish, gm) {
 
     assert.equal(2, color)
     assert.equal(this.data.color, color)
-    assert.equal(this.data.Colors['0'], '(  0,  0,255)\t  blue');
-    assert.equal(this.data.Colors['1'], '(  0,  0,  0)\t  black');
+    assert.equal(this.data.Colors['1'], '(  0,  0,255)\t  blue');
+    assert.equal(this.data.Colors['0'], '(  0,  0,  0)\t  black');
     finish();
 
   });
