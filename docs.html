@@ -146,6 +146,10 @@
             <p>Performs histogram equalization to the image.</p>
             <pre><code>gm("img.png").equalize()</code></pre>
           </li>
+          <li id="extent"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-extent">extent</a>
+            <p>composite image on background color canvas image.</p>
+            <pre><code>gm("img.png").extent([width, height, options])</code></pre>
+          </li>
           <li id="filter"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-filter">filter</a>
           <p>Specifies the filter to use when resizing. <small>see link for available types.</small></p>
             <pre><code>gm("img.png").filter(type)</code></pre>
@@ -161,6 +165,14 @@
           <li id="gamma"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-gamma">gamma</a>
             <p>Adjusts the level of gamma correction.</p>
             <pre><code>gm("img.png").gamma(r, g, b)</code></pre>
+          </li>
+          <li id="gravity"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-gravity">gravity</a>
+            <p>The direction the primitive gravitates to when annotating the image. Defaults to NorthWest.</p>
+            <dl>
+              <dt><code>direction</code></dt>
+              <dd>NorthWest|North|NorthEast|West|Center|East|SouthWest|South|SouthEast</dd>
+            </dl>
+            <pre><code>gm("img.png").gravity(direction)</code></pre>
           </li>
           <li id="implode"><a href="http://www.graphicsmagick.org/GraphicsMagick.html">implode</a>
           <p>Implodes the image pixels around the center. Takes an optional <code>factor</code>.</p>
