@@ -10,8 +10,18 @@ module.exports = function (_, dir, finish, gm) {
 
     assert.equal(2, color)
     assert.equal(this.data.color, color)
-    assert.equal(this.data.Colors['0'], '(  0,  0,255)\t  blue');
-    assert.equal(this.data.Colors['1'], '(  0,  0,  0)\t  black');
+
+    var blueWorks = this.data.Colors['0'] == '(  0,  0,255)\t  blue';
+    var blackWorks = this.data.Colors['1'] == '(  0,  0,  0)\t  black';
+
+    if (!blueWorks) {
+      blueWorks = this.data.Colors['1'] == '(  0,  0,255)\t  blue';
+      blackWorks = this.data.Colors['0'] == '(  0,  0,  0)\t  black';
+    }
+
+    assert.ok(blueWorks);
+    assert.ok(blackWorks);
+
     finish();
 
   });
