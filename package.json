@@ -4,7 +4,7 @@
 , "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>"
 , "keywords": ["nodejs", "graphics magick", "graphics", "magick", "image", "graphicsmagick", "imagemagick"]
 , "engines": { "node": ">= 0.4.2" }
-, "bugs": "http://github.com/aheckmann/gm/issues"
+, "bugs": { "url": "http://github.com/aheckmann/gm/issues" }
 , "licenses": [{ "type": "MIT", "url": "http://www.opensource.org/licenses/mit-license.php"}]
 , "main": "./index"
 , "scripts": { "test": "make test" }
