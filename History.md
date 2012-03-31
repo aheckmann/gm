@@ -1,3 +1,7 @@
+## v1.2.0 - 03/30/2012
+
+  * added; extent and gravity support [jwarchol]
+
 ## v1.1.0 - 03/15/2012
 
   * added; filter() support [travisbeck]
