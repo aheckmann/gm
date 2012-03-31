@@ -10,13 +10,14 @@
 , "scripts": { "test": "make test" }
 , "contributors": [
       { "name": "Aaron Heckmann", "email": "aaron.heckmann+github@gmail.com" }
-    , { "name": "Tero Parviainen", "github": "http://github.com/teropa" }
-    , { "name": "Evan Owen", "github": "http://github.com/kainosnoema" }
-    , { "name": "Math-", "github": "http://github.com/Math-" }
-  ]
+    , { "name": "Tero Parviainen", "github": "https://github.com/teropa" }
+    , { "name": "Evan Owen", "github": "https://github.com/kainosnoema" }
+    , { "name": "Math-", "github": "https://github.com/Math-" }
+    , { "name": "Luc Castera", "github": "https://github.com/dambalah" }
+    , { "name": "Joshua Warchol", "github": "https://github.com/jwarchol" } ]
 , "repository": {
       "type": "git"
-    , "url": "http://github.com/aheckmann/gm.git"
+    , "url": "https://github.com/aheckmann/gm.git"
   }
 , "devDependencies": {
       "should": "0.2.1"
