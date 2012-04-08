@@ -1,3 +1,21 @@
+## v1.2.0 - 03/30/2012
+
+  * added; extent and gravity support [jwarchol]
+
+## v1.1.0 - 03/15/2012
+
+  * added; filter() support [travisbeck]
+  * added; density() [travisbeck]
+  * fixed; permit either width or height in resize [dambalah]
+  * updated; docs
+
+## v1.0.5 - 02/15/2012
+
+  * added; strip() support [Math-]
+  * added; interlace() support [Math-]
+  * added; setFormat() support [Math-]
+  * fixed; regexps for image types [Math-]
+
 ## v1.0.4 - 02/09/2012
 
   * expose utils

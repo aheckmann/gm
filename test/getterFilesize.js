@@ -10,7 +10,7 @@ module.exports = function (gm, dir, finish) {
     if (err) return finish(err);
 
     if (this._options.imageMagick) {
-      assert.equal(size, '7.79KB');
+      assert.ok(/7.79KB/.test(size));
     } else {
       assert.equal(size, '7.6K');
     }
@@ -27,7 +27,7 @@ module.exports = function (gm, dir, finish) {
       if (err) return finish(err);
 
       if (this._options.imageMagick) {
-        assert.equal(size, '7.79KB');
+        assert.ok(/7.79KB/.test(size));
       } else {
         assert.equal(size, '7.6K');
       }
