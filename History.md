@@ -1,3 +1,10 @@
+
+## v1.3.0 - 04/11/2012
+
+  * added; flatten support [jwarchol]
+  * added; background support [jwarchol]
+  * fixed; identify parser error [chriso]
+
 ## v1.2.0 - 03/30/2012
 
   * added; extent and gravity support [jwarchol]
