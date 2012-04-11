@@ -3,7 +3,7 @@
 
 var assert = require('assert');
 
-module.exports = function (gm, dir, finish) {
+module.exports = function (gm, dir, finish, GM) {
 
   gm
   .size(function gettersize (err, size) {
@@ -18,6 +18,9 @@ module.exports = function (gm, dir, finish) {
       assert.equal(this.data.Geometry, '460x155');
     }
 
-    finish();
+    GM(dir + '/identifyParseErr.jpg').size(function (err) {
+      if (err) return finish(err);
+      finish();
+    });
   });
 }
