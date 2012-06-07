@@ -1,4 +1,10 @@
 
+## v1.3.1 - 06/06/2012
+
+  * fixed; thumb() alignment and cropping [thomaschaaf]
+  * added; hint when graphicsmagick is not installed (#62)
+  * fixed; minify() (#59)
+
 ## v1.3.0 - 04/11/2012
 
   * added; flatten support [jwarchol]
