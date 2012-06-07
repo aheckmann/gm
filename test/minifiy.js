@@ -2,7 +2,7 @@
 // gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
 
 module.exports = function (gm, dir, finish) {
-  return finish();
+  if (gm._options.imageMagick) return finish();
 
   gm
   .minify()
