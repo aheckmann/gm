@@ -32,23 +32,21 @@ function finish (filename) {
     if (err) throw new Error(err);
 
     --pending;
-    process.stderr.write(
-        '\u001B[30m'
-      + (new Array(total - pending)).join('√')
-      + '\u001B[0m'
-      + '\u001B[30m'
-      + (new Array(pending)).join('░')
-      + '\u001B[0m'
-      + '\r'
-    );
-
+    process.stdout.write('\033[2K');
+    process.stdout.write('\033[0G');
+    process.stdout.write('pending ' + pending);
     if (pending) return;
 
+    process.stdout.write('\033[?25h');
+    process.stdout.write('\033[2K');
+    process.stdout.write('\033[0G');
     var leaks = gleak.detect();
     assert.equal(0, leaks.length, "global leaks detected: " + leaks);
-    console.error("\n\u001B[32mAll tests passed\u001B[0m")
+    console.error("\n\u001B[32mAll tests passed\u001B[0m");
   }
 }
+
+process.stdout.write('\033[?25l');
 
 files.forEach(function (file) {
   var filename = __dirname + '/' + file;

@@ -1,36 +1,36 @@
 
 // gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
 
-var should = require('should');
+var assert = require('assert')
 
 module.exports = function (_, dir, finish, gm) {
   var err;
 
   try {
     var gif = gm('/path/to/blah.gif');
-    gif.inputIs('gif').should.be.true;
-    gif.inputIs('jpg').should.be.false;
-    gif.inputIs('crazy').should.be.false;
+    assert.equal(true, gif.inputIs('gif'));
+    assert.equal(false, gif.inputIs('jpg'));
+    assert.equal(false, gif.inputIs('crazy'));
 
     var png = gm('png.png');
-    png.inputIs('png').should.be.true;
-    png.inputIs('gif').should.be.false;
-    png.inputIs('tif').should.be.false;
+    assert.equal(true, png.inputIs('png'));
+    assert.equal(false, png.inputIs('gif'));
+    assert.equal(false, png.inputIs('tif'));
 
     var jpg = gm('super/duper.jpeg');
-    jpg.inputIs('jpg').should.be.true;
-    jpg.inputIs('jpeg').should.be.true;
-    jpg.inputIs('gif').should.be.false;
-    jpg.inputIs('tif').should.be.false;
-    jpg.inputIs('gif').should.be.false;
+    assert.equal(true, jpg.inputIs('jpg'));
+    assert.equal(true, jpg.inputIs('jpeg'));
+    assert.equal(false, jpg.inputIs('gif'));
+    assert.equal(false, jpg.inputIs('tif'));
+    assert.equal(false, jpg.inputIs('gif'));
 
     var unknown = gm('super.unknown');
-    unknown.inputIs('unknown').should.be.true;
-    unknown.inputIs('.unknown').should.be.true;
-    unknown.inputIs().should.be.false;
-    unknown.inputIs('').should.be.false;
-    unknown.inputIs('png').should.be.false;
-    unknown.inputIs('pngasdf').should.be.false;
+    assert.equal(true, unknown.inputIs('unknown'));
+    assert.equal(true, unknown.inputIs('.unknown'));
+    assert.equal(false, unknown.inputIs());
+    assert.equal(false, unknown.inputIs(''));
+    assert.equal(false, unknown.inputIs('png'));
+    assert.equal(false, unknown.inputIs('pngasdf'));
   } catch (e) {
     err = e;
     console.error(e.stack);
