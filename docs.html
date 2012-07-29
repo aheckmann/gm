@@ -33,7 +33,7 @@
     #doc-nav { width: 100%; margin-top: 0;}
     #doc-nav.fixed { position: fixed; width: 100%; margin-top: 0; top: 0px; background-color: #fefefe; padding-bottom: 12px;}
     #doc-nav li { float: left; margin-right: 10px; }
-    #docs ul li {
+    #docs .items > li {
       padding-top: 35px;
     }
 	</style>
@@ -79,7 +79,7 @@
 
     <ul id='docs'>
       <li><h3 id='manipulation'>manipulation</h3>
-        <ul>
+        <ul class='items'>
           <li id="adjoin"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-adjoin">adjoin</a>
             <pre><code>gm("img.png").adjoin()</code></pre>
           </li>
