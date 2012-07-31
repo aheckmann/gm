@@ -1,3 +1,11 @@
+
+1.4.1 / 2012-07-31
+==================
+
+  * fixed; scenes() args
+  * fixed; accept the left-to-right arg of append()
+  * added; _subCommand
+
 ## v1.4 - 07/28/2012
 
   * added; adjoin() [Math-]
