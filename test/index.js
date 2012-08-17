@@ -29,7 +29,7 @@ function test (imagemagick) {
 
 function finish (filename) {
   return function (err) {
-    if (err) throw new Error(err);
+    if (err) throw err;
 
     --pending;
     process.stdout.write('\033[2K');
