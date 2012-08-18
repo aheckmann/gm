@@ -1,4 +1,11 @@
 
+1.4.2 / 2012-08-17
+==================
+
+  * fixed; identify parsing for ImageMagick exif data (#58)
+  * fixed; when in imageMagick mode, complain about missing imageMagick [bcherry](https://github.com/bcherry) (#73)
+  * added; tests
+
 1.4.1 / 2012-07-31
 ==================
 
