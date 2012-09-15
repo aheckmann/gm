@@ -1,8 +1,8 @@
 { "name": "gm"
 , "description": "Graphics Magick for node."
-, "version": "1.4.2"
+, "version": "1.5.0"
 , "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>"
-, "keywords": ["nodejs", "graphics magick", "graphics", "magick", "image", "graphicsmagick", "imagemagick"]
+, "keywords": ["graphics", "magick", "image", "graphicsmagick", "imagemagick", "gm", "convert", "identify"]
 , "engines": { "node": ">= 0.4.2" }
 , "bugs": { "url": "http://github.com/aheckmann/gm/issues" }
 , "licenses": [{ "type": "MIT", "url": "http://www.opensource.org/licenses/mit-license.php"}]
@@ -21,6 +21,7 @@
       "type": "git"
     , "url": "https://github.com/aheckmann/gm.git"
   }
+, "license": "MIT"
 , "devDependencies": {
       "gleak": "0.2.4"
   }
