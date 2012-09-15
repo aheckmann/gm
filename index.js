@@ -48,8 +48,8 @@ function gm (source, height, color) {
   // parse out gif frame brackets from filename
   // since stream doesn't use source path
   // eg. "filename.gif[0]"
-  var frames;
-  if (frames = source.match(/(\[.+\])$/)) {
+  var frames = source.match(/(\[.+\])$/);
+  if (frames) {
     this.sourceFrames = source.substr(frames.index, frames[0].length);
     source = source.substr(0, frames.index);
   }
