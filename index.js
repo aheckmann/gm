@@ -55,6 +55,14 @@ function gm (source, height, color) {
   }
 
   this.source = source;
+
+  this.addSrcFormatter(function (src) {
+    // must be first source formatter
+    var ret = this.sourceStream ? '-' : this.source;
+    if (ret && this.sourceFrames) ret += this.sourceFrames;
+    src.length = 0;
+    src[0] = ret;
+  });
 }
 
 var parent = gm;

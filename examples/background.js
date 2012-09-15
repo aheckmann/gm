@@ -1,6 +1,6 @@
 var gm = require('../')
   , dir = __dirname + '/imgs'
-  
+
 gm(dir + "/original.jpg")
   .crop(140,100)
   .background("#FF0000")
