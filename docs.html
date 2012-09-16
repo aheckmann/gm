@@ -92,8 +92,34 @@
           </li>
           <li id="append"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-append">append</a>
             <p>Append a set of images</p>
-            <p>If `ltr` is passed, images are appended left to right.</p>
-            <pre><code>gm("img.png").append(ltr)</code></pre>
+            <dl>
+              <dt><code>img</code></dt>
+              <dd>the path to another img</dd>
+              <dt><code>ltr</code> (optional)</dt>
+              <dd><code>Boolean</code> - specifies append direction<br>
+              <code>true</code> for left-to-right<br>
+              <code>false</code> for top-to-bottom (default)</dd>
+            </dl>
+            <pre><code>gm("img.png").append([img] [, ltr])
+
+// appends another.jpg to img.png from left-to-right
+gm("img.png").append("another.jpg").append(true)
+
+// appends another.jpg to img.png from left-to-right
+gm("img.png").append("another.jpg", true)
+
+// appends another.jpg to img.png from top-to-bottom
+gm("img.png").append("another.jpg")
+
+// appends third.gif below another.jpg below img.png
+gm("img.png").append("another.jpg").append("third.gif)
+
+// appends third.gif below another.jpg below img.png
+gm("img.png").append("another.jpg", "third.gif")
+
+// appends third.gif to the right of another.jpg to the right to img.png
+gm("img.png").append("another.jpg", "third.gif", true)
+            </code></pre>
           </li>
           <li id="authenticate"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-authenticate">authenticate</a>
             <pre><code>gm("img.png").authenticate(password)</code></pre>
