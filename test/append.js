@@ -9,7 +9,7 @@ module.exports = function (_, dir, next, gm) {
   } catch (_) {}
 
   gm(dir + '/lost.png')
-  .append(dir + '/original.jpg')
+  .append(dir + '/original.jpg', dir + '/original.jpg')
   .append()
   .background('#222')
   .write(out, function (err) {
@@ -17,7 +17,7 @@ module.exports = function (_, dir, next, gm) {
     gm(out).size(function (err, size) {
       if (err) return next(err);
       assert.equal(460, size.width);
-      assert.equal(280, size.height);
+      assert.equal(435, size.height);
 
       horizontal(dir, next, gm);
     })
