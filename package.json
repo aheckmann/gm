@@ -1,6 +1,6 @@
 { "name": "gm"
 , "description": "Graphics Magick for node."
-, "version": "1.5.0"
+, "version": "1.5.1"
 , "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>"
 , "keywords": ["graphics", "magick", "image", "graphicsmagick", "imagemagick", "gm", "convert", "identify"]
 , "engines": { "node": ">= 0.4.2" }
