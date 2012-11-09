@@ -135,7 +135,7 @@ or clone the repo:
 
 ## Examples:
 
-  Check out the [examples](http://github.com/aheckmann/gm/tree/master/examples/) directory to play around. 
+  Check out the [examples](http://github.com/aheckmann/gm/tree/master/examples/) directory to play around.
   Also take a look at the [extending gm](http://wiki.github.com/aheckmann/gm/extending-gm)
   page to see how to customize gm to your own needs.
 
@@ -153,7 +153,7 @@ or clone the repo:
     - [size](http://aheckmann.github.com/gm/docs.html#getters) - returns the size (WxH) of the image
     - [orientation](http://aheckmann.github.com/gm/docs.html#orientation) - returns the EXIF orientation of the image
     - [format](http://aheckmann.github.com/gm/docs.html#getters) - returns the image format (gif, jpeg, png, etc)
-    - [depth](http://aheckmann.github.com/gm/docs.html#getters) - returns the image color depth 
+    - [depth](http://aheckmann.github.com/gm/docs.html#getters) - returns the image color depth
     - [color](http://aheckmann.github.com/gm/docs.html#getters) - returns the number of colors
     - [res](http://aheckmann.github.com/gm/docs.html#getters)   - returns the image resolution
     - [filesize](http://aheckmann.github.com/gm/docs.html#getters) - returns image filesize
@@ -361,6 +361,10 @@ or clone the repo:
 
 ## Inspiration
 http://github.com/quiiver/magickal-node
+
+## Plugins
+[https://npmjs.org/package/gm-buffer](https://npmjs.org/package/gm-buffer)
+
 
 ## License
 
