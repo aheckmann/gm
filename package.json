@@ -25,4 +25,7 @@
 , "devDependencies": {
       "gleak": "0.2.4"
   }
+, "dependencies": {
+      "debug": "0.7.0"
+  }
 }
