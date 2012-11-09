@@ -252,44 +252,44 @@
 
 ## v0.2.1 - 7/31/2010
 
-  * fixed naming conflict. depth() manipulation method renamed bitdepth() 
+  * fixed naming conflict. depth() manipulation method renamed bitdepth()
   * added better docs
 
 ## v0.2.0 - 7/29/2010
 
 new methods
- 
-  - swirl 
-  - spread 
-  - solarize 
-  - sharpen 
-  - roll 
-  - sepia 
-  - region 
-  - raise 
-  - lower 
-  - paint 
-  - noise 
-  - negative 
-  - morph 
-  - median 
-  - antialias 
-  - limit 
-  - label 
+
+  - swirl
+  - spread
+  - solarize
+  - sharpen
+  - roll
+  - sepia
+  - region
+  - raise
+  - lower
+  - paint
+  - noise
+  - negative
+  - morph
+  - median
+  - antialias
+  - limit
+  - label
   - implode
   - gamma
-  - enhance 
-  - equalize 
+  - enhance
+  - equalize
   - emboss
   - edge
   - dither
   - monochrome
-  - despeckle 
-  - depth 
-  - cycle 
-  - contrast 
-  - comment 
-  - colors 
+  - despeckle
+  - depth
+  - cycle
+  - contrast
+  - comment
+  - colors
 
 added more default args to several methods
 added more examples
