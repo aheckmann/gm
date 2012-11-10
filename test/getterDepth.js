@@ -8,13 +8,13 @@ module.exports = function (gm, dir, finish) {
   gm
   .depth(function getterdepth (err, depth) {
     if (err) return finish(err);
-    assert.equal(8, depth);
-    assert.equal(8, this.data.depth);
-
-    if (gm._options.imageMagick)
-      assert.equal('8-bit', this.data.Depth);
-    else
-      assert.equal('8 bits-per-pixel component', this.data.Depth);
+    if (this._options.imageMagick) {
+      assert.equal(16, depth);
+      assert.equal(16, this.data.depth);
+    } else {
+      assert.equal(8, depth);
+      assert.equal(8, this.data.depth);
+    }
     finish();
   });
 }

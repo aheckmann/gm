@@ -12,12 +12,6 @@ module.exports = function (gm, dir, finish, GM) {
     assert.equal(size.width, 460);
     assert.equal(size.height, 155);
 
-    if (gm._options.imageMagick) {
-      assert.equal(this.data.Geometry, '460x155+0+0');
-    } else {
-      assert.equal(this.data.Geometry, '460x155');
-    }
-
     GM(dir + '/identifyParseErr.jpg').size(function (err) {
       if (err) return finish(err);
       finish();

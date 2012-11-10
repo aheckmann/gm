@@ -9,7 +9,7 @@ module.exports = function (gm, dir, finish) {
     if (err) return finish(err);
 
     assert.equal(format, 'JPEG');
-    assert.equal(this.data.Format, 'JPEG (Joint Photographic Experts Group JFIF format)');
+    assert.equal(gm.data.format, 'JPEG');
 
     finish();
   });
