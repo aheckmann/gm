@@ -1,4 +1,15 @@
 
+1.6.0 / 2012-11-10
+==================
+
+  * changed; rename internal buffer to _buffer #88 [kof](https://github.com/kof)
+  * changed; optimized identify getters (format, depth, size, color, filesize). #83 please read this for details: https://github.com/aheckmann/gm/commit/8fcf3f8f84a02cc2001da874cbebb89bf7084409
+  * added; visionmedia/debug support
+  * added; `gm convert -thumbnail` support. _differs from thumb()._ [danmilon](https://github.com/danmilon)
+  * fixed; -rotate 0 support #90
+  * fixed; multi-execution of same gm instance arguments corruption
+  * fixed; gracefully handle parser errors #94 [eldilibra](https://github.com/eldilibra)
+
 1.5.1 / 2012-10-02
 ==================
 
