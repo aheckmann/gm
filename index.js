@@ -5,6 +5,7 @@
  */
 
 var Stream = require('stream').Stream;
+var EventEmitter = require('events').EventEmitter;
 
 /**
  * Constructor.
@@ -20,6 +21,8 @@ function gm (source, height, color) {
   if (!(this instanceof gm)) {
     return new gm(source, height, color);
   }
+
+  EventEmitter.call(this);
 
   this._options = {};
   this.options(this.__proto__._options);
@@ -63,6 +66,14 @@ function gm (source, height, color) {
     src.length = 0;
     src[0] = ret;
   });
+}
+
+/**
+ * Mixin EventEmitter
+ */
+
+for (var method in EventEmitter.prototype) {
+  gm.prototype[method] = EventEmitter.prototype[method];
 }
 
 var parent = gm;
