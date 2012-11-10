@@ -4,7 +4,6 @@
 var assert = require('assert');
 
 module.exports = function (gm, dir, finish) {
-
   gm
   .format(function getterformat (err, format) {
     if (err) return finish(err);
