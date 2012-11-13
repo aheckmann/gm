@@ -1,4 +1,9 @@
 
+1.6.1 / 2012-11-13
+==================
+
+  * fixed regression; only pass additional params on error #96
+
 1.6.0 / 2012-11-10
 ==================
 
