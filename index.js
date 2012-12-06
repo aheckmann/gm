@@ -48,20 +48,26 @@ function gm (source, height, color) {
     }
   }
 
-  // parse out gif frame brackets from filename
-  // since stream doesn't use source path
-  // eg. "filename.gif[0]"
-  var frames = source.match(/(\[.+\])$/);
-  if (frames) {
-    this.sourceFrames = source.substr(frames.index, frames[0].length);
-    source = source.substr(0, frames.index);
+  if (typeof source === "string") {
+    // then source is a path
+    
+    // parse out gif frame brackets from filename
+    // since stream doesn't use source path
+    // eg. "filename.gif[0]"
+    var frames = source.match(/(\[.+\])$/);
+    if (frames) {
+      this.sourceFrames = source.substr(frames.index, frames[0].length);
+      source = source.substr(0, frames.index);
+    }
   }
 
   this.source = source;
 
   this.addSrcFormatter(function (src) {
     // must be first source formatter
-    var ret = this.sourceStream ? '-' : this.source;
+    var inputFromStdin = this.sourceStream || Buffer.isBuffer(this.source);
+
+    var ret = inputFromStdin ? '-' : this.source;
     if (ret && this.sourceFrames) ret += this.sourceFrames;
     src.length = 0;
     src[0] = ret;
