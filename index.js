@@ -50,7 +50,7 @@ function gm (source, height, color) {
 
   if (typeof source === "string") {
     // then source is a path
-    
+
     // parse out gif frame brackets from filename
     // since stream doesn't use source path
     // eg. "filename.gif[0]"
