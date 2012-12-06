@@ -122,6 +122,25 @@ gm(readStream, 'img.jpg')
 
 ````
 
+## Buffer as source
+```` js
+var gm  = require('../')
+  , fs  = require('fs')
+
+var buf = fs.readFileSync(__dirname + '/image.jpg');
+
+gm(buf)
+.noise('laplacian')
+.write(__dirname + '/out.jpg', function (err) {
+  if (err) {
+    throw err;
+  }
+
+  console.log('Created image from buffer!');
+});
+
+````
+
 ## Getting started
 First download and install [GraphicsMagick](http://www.graphicsmagick.org/)
 
