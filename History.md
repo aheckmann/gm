@@ -1,4 +1,10 @@
 
+1.7.0 / 2012-12-06
+==================
+
+  * added; gm.compare support
+  * added; passing Buffers directly [danmilon](https://github.com/danmilon)
+
 1.6.1 / 2012-11-13
 ==================
 
