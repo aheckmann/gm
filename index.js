@@ -82,6 +82,13 @@ for (var method in EventEmitter.prototype) {
   gm.prototype[method] = EventEmitter.prototype[method];
 }
 
+/**
+ * Subclasses the gm constructor with custom options.
+ *
+ * @param {options} options
+ * @return {gm} the subclasses gm constructor
+ */
+
 var parent = gm;
 gm.subClass = function subClass (options) {
   function gm (source, height, color) {
