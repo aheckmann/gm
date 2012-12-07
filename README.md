@@ -71,10 +71,22 @@ gm(200, 400, "#ddff99f3")
 });
 ````
 
-## Image paths or Streams
+## Buffers
 ```` js
-// can provide either a file path or a ReadableStream
-// (from a local file or incoming network request)
+// A buffer can be passed instead of a filepath as well
+var buf = require('fs').readFileSync('/path/to/image.jpg');
+
+gm(buf, 'image.jpg')
+.noise('laplacian')
+.write('/path/to/out.jpg', function (err) {
+  if (err) return handle(err);
+  console.log('Created an image from a Buffer!');
+});
+````
+
+## Streams
+```` js
+// passing a stream
 var readStream = fs.createReadStream('/path/to/my/img.jpg');
 gm(readStream, 'img.jpg')
 .write('/path/to/reformat.png', function (err) {
@@ -107,6 +119,7 @@ gm(readStream, 'img.jpg')
   stdout.pipe(writeStream);
 });
 
+// GOTCHA:
 // when working with input streams and any 'identify'
 // operation (size, format, etc), you must pass "{bufferStream: true}" if
 // you also need to convert (write() or stream()) the image afterwards
@@ -122,24 +135,6 @@ gm(readStream, 'img.jpg')
 
 ````
 
-## Buffer as source
-```` js
-var gm  = require('../')
-  , fs  = require('fs')
-
-var buf = fs.readFileSync(__dirname + '/image.jpg');
-
-gm(buf)
-.noise('laplacian')
-.write(__dirname + '/out.jpg', function (err) {
-  if (err) {
-    throw err;
-  }
-
-  console.log('Created image from buffer!');
-});
-
-````
 
 ## Getting started
 First download and install [GraphicsMagick](http://www.graphicsmagick.org/)
@@ -163,7 +158,7 @@ or clone the repo:
   There are a few ways you can use the `gm` image constructor.
 
   - 1) `gm(path)` When you pass a string as the first argument it is interpreted as the path to an image you intend to manipulate.
-  - 2) `gm(stream, [filename])` You may also pass a ReadableStream as the first argument, with an optional file name for format inference.
+  - 2) `gm(stream || buffer, [filename])` You may also pass a ReadableStream or Buffer as the first argument, with an optional file name for format inference.
   - 3) `gm(width, height, [color])` When you pass two integer arguments, gm will create a new image on the fly with the provided dimensions and an optional background color. And you can still chain just like you do with pre-existing images too. See [here](http://github.com/aheckmann/gm/blob/master/examples/new.js) for an example.
 
 ## Methods
