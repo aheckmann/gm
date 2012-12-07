@@ -375,6 +375,38 @@ or clone the repo:
     - **write** - writes the processed image data to the specified filename
     - **stream** - provides a ReadableStream with the processed image data
 
+##compare
+
+Graphicsmagicks `compare` command is exposed through `gm.compare()`. This allows us to determine if two images can be considered "equal".
+
+Currently `gm.compare` only accepts file paths.
+
+    gm.compare(path1, path2 [, tolerance], callback)
+
+```js
+gm.compare('/path/to/image1.jpg', '/path/to/another.png', function (err, isEqual, equality, raw) {
+  if (err) return handle(err);
+
+  // if the images were considered equal, `isEqual` will be true, otherwise, false.
+  console.log('The images were equal: %s', isEqual);
+
+  // to see the total equality returned by graphicsmagick we can inspect the `equality` argument.
+  console.log('Actual equality: %d', equality);
+
+  // inspect the raw output
+  console.log(raw)
+})
+```
+
+You may wish to pass a custom tolerance threshold to increase or decrease the default level of `0.4`.
+
+
+```js
+gm.compare('/path/to/image1.jpg', '/path/to/another.png', 1.2, function (err, isEqual) {
+  ...
+})
+```
+
 ## Contributors
 [https://github.com/aheckmann/gm/contributors](https://github.com/aheckmann/gm/contributors)
 
