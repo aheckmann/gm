@@ -956,6 +956,20 @@ gm("img.png").append("another.jpg", "third.gif", true)
           </li>
         </ul>
       </li>
+      <li id="compare">
+        <h3>Image comparisons</h3>
+        <p>Both GraphicsMagick and ImageMagick support image comparisons which are exposed through <code>gm.compare()</code>.</p>
+        <pre><code>var img = gm.compare(path1, path2 [, tolerance], callback);</code></pre>
+        <p>Currently both <code>path1</code> and <code>path2</code> must be strings (no Buffers or Streams). Optionally pass a custom
+        <code>tolerance</code> level if <code>0.4</code> (the default) is too lax for your use case.</p>
+        <p>Your <code>callback</code> will be passed four arguments:</p>
+        <pre><code>gm.compare(path1, path2, function (err, isEqual, equality, raw) {
+  if (err) // handle errors
+  console.log('The images are equal: %s', isEqual);
+  console.log('Actual equality: %d', equality)
+  console.log('Raw output was: %j', raw);
+});</code></pre>
+      </li>
       <li id="imagemagick">
         <h3>Using ImageMagick</h3>
         <p>We have compatibility with ImageMagick too. Just subclass the gm constructor passing the imageMagick option.</p>
