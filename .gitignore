@@ -7,6 +7,7 @@ examples/imgs/*
 !examples/imgs/originalSideways.jpg
 !examples/imgs/morpher.jpg
 !examples/imgs/photo.JPG
-!examples/imgs/orientation
+!examples/imgs/orientation/*\d.jpg
+!examples/imgs/orientation/*.correct.jpg
 *.swp
 *.swo
