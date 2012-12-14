@@ -3,6 +3,9 @@ var assert = require('assert')
 
 module.exports = function (gm, dir, finish, GM) {
 
+  if (gm._options.imageMagick)
+    return finish();
+
   var m = gm
   .magnify();
 
