@@ -7,7 +7,7 @@
 , "bugs": { "url": "http://github.com/aheckmann/gm/issues" }
 , "licenses": [{ "type": "MIT", "url": "http://www.opensource.org/licenses/mit-license.php"}]
 , "main": "./index"
-, "scripts": { "test": "make test" }
+, "scripts": { "test": "make test-unit" }
 , "repository": {
       "type": "git"
     , "url": "https://github.com/aheckmann/gm.git"

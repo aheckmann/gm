@@ -1,9 +1,8 @@
 
-
 test:
-	@node test/ $(TESTS)
-
-test-all:
 	@node test/ --integration $(TESTS)
 
-.PHONY: test
+test-unit:
+	@node test/ $(TESTS)
+
+.PHONY: test test-unit
