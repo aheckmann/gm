@@ -11,9 +11,7 @@ module.exports = function (img, dir, finish, gm) {
 
   var args = m.args();
   assert.equal('convert', args[0]);
-  assert.equal('-size', args[1]);
-  assert.equal('300x300', args[2]);
-  args= args.slice(4);
+  args= args.slice(2);
   assert.deepEqual(args, [
     '-scale',
     '200x100',
