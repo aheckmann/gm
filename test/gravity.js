@@ -10,11 +10,11 @@ module.exports = function (img, dir, finish, gm) {
   .extent(300,300);
 
   var args = m.args();
+  assert.equal('convert', args[0]);
+  assert.equal('-size', args[1]);
+  assert.equal('300x300', args[2]);
+  args= args.slice(4);
   assert.deepEqual(args, [
-    'convert',
-    '-size',
-    '300x300',
-    '/Users/aaronheckmann/test/gm/gm/test/../examples/imgs/original.jpg',
     '-scale',
     '200x100',
     '-gravity',

@@ -10,9 +10,9 @@ module.exports = function (gm, dir, finish, GM) {
   .drawPolygon([60, 10], [183, 73], [185, 13], [167, 35], [165, 17], [163, 19]);
 
   var args = m.args();
+  assert.equal('convert', args[0]);
+  args = args.slice(2);
   assert.deepEqual(args, [
-    'convert',
-    '/Users/aaronheckmann/test/gm/gm/test/../examples/imgs/original.jpg',
     '-blur',
     '8x4',
     '-strokewidth',

@@ -10,9 +10,9 @@ module.exports = function (gm, dir, finish, GM) {
   .drawPolyline([40, 10], [143, 153], [185, 53], [147, 15], [145, 17], [43, 19]);
 
   var args = m.args();
+  assert.equal('convert', args[0]);
+  args = args.slice(2);
   assert.deepEqual(args, [
-    'convert',
-    '/Users/aaronheckmann/test/gm/gm/test/../examples/imgs/original.jpg',
     '-blur',
     '8x4',
     '-strokewidth',
