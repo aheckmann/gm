@@ -8,11 +8,26 @@ module.exports = function (_, dir, next, gm) {
     require('fs').unlinkSync(out);
   } catch (_) {}
 
-  gm(dir + '/lost.png')
+  var m = gm(dir + '/lost.png')
   .append(dir + '/original.jpg', dir + '/original.jpg')
   .append()
   .background('#222')
-  .write(out, function (err) {
+
+  var args = m.args();
+  assert.equal('convert', args[0]);
+  assert.equal('/Users/aaronheckmann/test/gm/gm/test/../examples/imgs/lost.png',args[1]);
+  assert.equal('/Users/aaronheckmann/test/gm/gm/test/../examples/imgs/original.jpg',args[2]);
+  assert.equal('/Users/aaronheckmann/test/gm/gm/test/../examples/imgs/original.jpg',args[3]);
+  assert.equal('-background',args[4]);
+  assert.equal('#222',args[5]);
+  assert.equal('-append',args[6]);
+  assert.equal('-',args[7]);
+
+  if (!gm.integration) {
+    return horizontal(dir, next, gm);
+  }
+
+  m.write(out, function (err) {
     if (err) return next(err);
     gm(out).size(function (err, size) {
       if (err) return next(err);
@@ -26,8 +41,21 @@ module.exports = function (_, dir, next, gm) {
 
 function horizontal (dir, next, gm) {
 
-  gm(dir + '/original.jpg')
-  .append(dir + '/lost.png', true)
+  var m = gm(dir + '/original.jpg')
+  .append(dir + '/lost.png', true);
+
+  var args = m.args();
+  assert.equal('convert', args[0]);
+  assert.equal('/Users/aaronheckmann/test/gm/gm/test/../examples/imgs/original.jpg',args[1]);
+  assert.equal('/Users/aaronheckmann/test/gm/gm/test/../examples/imgs/lost.png',args[2]);
+  assert.equal('+append',args[3]);
+  assert.equal('-',args[4]);
+
+  if (!gm.integration) {
+    return next();
+  }
+
+  m
   .write(out, function (err) {
     if (err) return next(err);
     gm(out).size(function (err, size) {

@@ -1,10 +1,17 @@
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
+var assert = require('assert')
 
-module.exports = function (gm, dir, finish) {
+module.exports = function (gm, dir, finish, GM) {
 
-  gm
-  .setFormat('png')
+  var m = gm
+  .setFormat('png');
+
+  assert.equal('png', m._outputFormat);
+
+  if (!GM.integration)
+    return finish();
+
+  m
   .write(dir + '/setformat', function setformat (err) {
     finish(err);
   });

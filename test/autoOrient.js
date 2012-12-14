@@ -4,6 +4,9 @@
 var assert = require('assert')
 
 module.exports = function (_, dir, finish, gm) {
+  if (!gm.integration)
+    return finish();
+
   var filename = dir + '/autoOrient.jpg';
 
   gm(dir + '/originalSideways.jpg').orientation(function (err, o) {

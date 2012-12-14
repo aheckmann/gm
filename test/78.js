@@ -2,6 +2,8 @@
 var assert = require('assert')
 
 module.exports = function (_, dir, next, gm) {
+  if (!gm.integration) return next();
+
   var magick = _._options.imageMagick;
   var name = magick ? '78-IM' : '78';
   var out = dir + '/' + name;

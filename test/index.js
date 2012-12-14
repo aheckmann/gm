@@ -8,6 +8,8 @@ var gleak = require('gleak')();
 var fs = require('fs');
 
 var only = process.argv.slice(2);
+gm.integration = !! ~process.argv.indexOf('--integration');
+if (gm.integration) only.shift();
 
 var files = fs.readdirSync(__dirname).filter(filter);
 var pending, total = pending = files.length * 2;
@@ -23,7 +25,8 @@ function filter (file) {
 }
 
 function test (imagemagick) {
-  if (imagemagick) return gm(dir + '/original.jpg').options({ imageMagick: true });
+  if (imagemagick)
+    return gm(dir + '/original.jpg').options({ imageMagick: true });
   return gm(dir + '/original.jpg');
 }
 
@@ -50,6 +53,10 @@ process.stdout.write('\033[?25l');
 
 files.forEach(function (file) {
   var filename = __dirname + '/' + file;
+
+  // gm tests
   require(filename)(test(), dir, finish(filename), gm);
+
+  // imagemagick tests
   require(filename)(test(true), dir, finish(filename), gm);
 });

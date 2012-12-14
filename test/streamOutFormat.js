@@ -1,9 +1,18 @@
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-
+var assert = require('assert')
 var fs = require('fs');
 
-module.exports = function (gm, dir, finish) {
+module.exports = function (gm, dir, finish, GM) {
+  assert.throws(function () {
+    gm.stream()
+  }, /expects a callback/);
+
+  assert.throws(function () {
+    gm.stream('PNG')
+  }, /expects a callback/);
+
+  if (!GM.integration)
+    return finish();
 
   gm
   .stream('PNG', function streamOut (err, stdout, stderr) {

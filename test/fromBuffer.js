@@ -8,8 +8,21 @@ module.exports = function (_, dir, finish, gm) {
 
   var buf = fs.readFileSync(original);
 
-  gm(buf)
-  .rotate('red', 30)
+  var m = gm(buf)
+  .rotate('red', 30);
+
+  var args = m.args();
+  assert.equal('convert', args[0]);
+  assert.equal('-', args[1]);
+  assert.equal('-background', args[2]);
+  assert.equal('red', args[3]);
+  assert.equal('-rotate', args[4]);
+  assert.equal(30, args[5]);
+
+  if (!gm.integration)
+    return finish();
+
+  m
   .write(result, function crop (err) {
     if (err) return finish(err);
 

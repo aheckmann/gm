@@ -1,9 +1,10 @@
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-
 var assert = require('assert')
 
 module.exports = function (_, dir, finish, gm) {
+  if (!gm.integration)
+    return finish();
+
   var im = _._options.imageMagick;
 
   var test = gm(dir + '/photo.JPG');

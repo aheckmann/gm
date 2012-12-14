@@ -1,6 +1,4 @@
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-
 var assert = require('assert')
 
 module.exports = function (_, dir, finish, gm) {

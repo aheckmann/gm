@@ -7,6 +7,8 @@ var loading = __dirname + '/fixtures/loading.gif'
 var favicon = __dirname + '/fixtures/favicon.png'
 
 module.exports = function (_, dir, finish, gm) {
+  if (!gm.integration) return finish();
+
   var pending = times/2;
 
   var res = {};

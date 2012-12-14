@@ -1,7 +1,4 @@
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-
-
 var assert = require('assert')
   , fs = require('fs')
 
@@ -25,6 +22,9 @@ module.exports = function (_, dir, finish, gm) {
 
   var writeFile = dir + '/IM-negative' + Math.random() + '.png';
   var imageMagick = gm.subClass({ imageMagick: true });
+
+  if (!gm.integration)
+    return finish();
 
   imageMagick(dir + '/photo.JPG')
   .negative()

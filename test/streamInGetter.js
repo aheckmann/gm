@@ -1,9 +1,10 @@
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-
+var assert = require('assert')
 var fs = require('fs');
 
 module.exports = function (_, dir, finish, gm) {
+  if (!gm.integration)
+    return finish();
 
   gm(fs.createReadStream(dir + '/original.jpg'), "original.jpg")
   .size({bufferStream: true}, function (err, size) {

@@ -5,6 +5,9 @@ var assert = require('assert'),
     fs = require('fs');
 
 module.exports = function (_, dir, finish, gm) {
+  if (!gm.integration)
+    return finish();
+
   var filename = dir + '/autoOrient.jpg';
 
   var beforeValues = {

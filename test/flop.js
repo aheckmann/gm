@@ -1,10 +1,19 @@
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
+var assert =require('assert')
 
-module.exports = function (gm, dir, finish) {
+module.exports = function (gm, dir, finish, GM) {
 
-  gm
-  .flop()
+  var m = gm
+  .flop();
+
+  var args = m.args();
+  assert.equal('convert', args[0]);
+  assert.equal('-flop', args[2]);
+
+  if (!GM.integration)
+    return finish();
+
+  m
   .write(dir + '/flop.png', function flop (err) {
     finish(err);
   });

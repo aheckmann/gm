@@ -1,7 +1,4 @@
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-
-
 var assert = require('assert')
 
 module.exports = function (_, dir, finish, gm) {
@@ -20,6 +17,9 @@ module.exports = function (_, dir, finish, gm) {
 
   var g = gm('test');
   assert.equal(undefined, g._options.imageMagick);
+
+  if (!gm.integration)
+    return finish();
 
   gm(dir + '/photo.JPG')
   .thumb(50, 80, dir + '/SUBthumb.png', function subthumb (err) {
