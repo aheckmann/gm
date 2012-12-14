@@ -215,7 +215,6 @@ or clone the repo:
     - [displace](http://aheckmann.github.com/gm/docs.html#dither)
     - [display](http://aheckmann.github.com/gm/docs.html#display)
     - [dispose](http://aheckmann.github.com/gm/docs.html#dispose)
-    - [dissolve](http://aheckmann.github.com/gm/docs.html#dissolve)
     - [edge](http://aheckmann.github.com/gm/docs.html#edge)
     - [emboss](http://aheckmann.github.com/gm/docs.html#emboss)
     - [encoding](http://aheckmann.github.com/gm/docs.html#encoding)
