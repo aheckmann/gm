@@ -11,9 +11,9 @@ module.exports = function (gm, dir, finish, GM) {
   .drawRectangle(160, 10, 270, 220, 3);
 
   var args = m.args();
+  assert.equal('convert', args[0]);
+  args = args.slice(2);
   assert.deepEqual(args, [
-    'convert',
-    '/Users/aaronheckmann/test/gm/gm/test/../examples/imgs/original.jpg',
     '-blur',
     '8x4',
     '-strokewidth',
