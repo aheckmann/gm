@@ -35,6 +35,9 @@ function gm (source, height, color) {
   if (source instanceof Stream) {
     this.sourceStream = source;
     source = height || 'unknown.jpg';
+  } else if (Buffer.isBuffer(source)) {
+    this.sourceBuffer = source;
+    source = height || 'unknown.jpg';
   } else if (height) {
     // new images
     width = source;
@@ -64,10 +67,12 @@ function gm (source, height, color) {
 
   this.addSrcFormatter(function (src) {
     // must be first source formatter
-    var inputFromStdin = this.sourceStream || Buffer.isBuffer(this.source);
 
+    var inputFromStdin = this.sourceStream || this.sourceBuffer;
     var ret = inputFromStdin ? '-' : this.source;
+
     if (ret && this.sourceFrames) ret += this.sourceFrames;
+
     src.length = 0;
     src[0] = ret;
   });
