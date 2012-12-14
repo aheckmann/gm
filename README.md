@@ -1,6 +1,7 @@
 # gm
 GraphicsMagick for node
 
+[![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)
 
 ## Basic Usage
 ```` js
