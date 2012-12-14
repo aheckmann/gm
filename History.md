@@ -1,4 +1,19 @@
 
+1.8.0 / 2012-12-14
+==================
+
+  * added; geometry support to scale() #98
+  * removed; incorrect/broken dissolve() method (never worked)
+  * fixed; handle child_proc error when using Buffer input #109
+  * fixed; use of Buffers with identify() #109
+  * fixed; no longer include -size arg with resize() #98
+  * fixed; remove -size arg from extent() #103
+  * fixed; magnify support
+  * fixed; autoOrient to work with all types of exif orientations [dambalah](https://github.com/dambalah) #108
+  * tests; npm test runs unit only (now compatible with travis)
+  * tests; fix magnify test on imagemagick
+  * tests; added for cmd line args
+
 1.7.0 / 2012-12-06
 ==================
 
