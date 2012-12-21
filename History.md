@@ -1,4 +1,13 @@
 
+1.8.1 / 2012-12-21
+==================
+
+  * Avoid losing already set arguments on identify #105 #113 #109 [JNissi](https://github.com/JNissi)
+  * tests; add autoOrient + thumb() test
+  * tests; add test case for #113
+  * tests; added test for #109
+  * tests; add resize on buffer test
+
 1.8.0 / 2012-12-14
 ==================
 
