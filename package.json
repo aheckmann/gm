@@ -1,5 +1,5 @@
 { "name": "gm"
-, "description": "Graphics Magick for node."
+, "description": "GraphicsMagick for node.js"
 , "version": "1.8.2-pre"
 , "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>"
 , "keywords": ["graphics", "magick", "image", "graphicsmagick", "imagemagick", "gm", "convert", "identify", "compare"]
