@@ -1,6 +1,6 @@
 { "name": "gm"
 , "description": "GraphicsMagick for node.js"
-, "version": "1.8.2"
+, "version": "1.8.3-pre"
 , "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>"
 , "keywords": ["graphics", "magick", "image", "graphicsmagick", "imagemagick", "gm", "convert", "identify", "compare"]
 , "engines": { "node": ">= 0.4.2" }
