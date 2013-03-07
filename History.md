@@ -1,4 +1,9 @@
 
+1.8.2 / 2013-03-07
+==================
+
+  * include source path in identify data #126 [soupdiver](https://github.com/soupdiver)
+
 1.8.1 / 2012-12-21
 ==================
 
