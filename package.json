@@ -14,7 +14,7 @@
   }
 , "license": "MIT"
 , "devDependencies": {
-      "gleak": "0.2.4"
+      "gleak": "0.3.0"
   }
 , "dependencies": {
       "debug": "0.7.0"
