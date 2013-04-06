@@ -22,8 +22,16 @@ module.exports = function (_, dir, finish, gm) {
       assert.equal(d['Channel depth'].red, '8-bit');
       assert.equal(d['Channel depth'].green, '8-bit');
       assert.equal(d['Channel statistics'].Red.min, '0 (0)');
-      assert.equal(d['Channel statistics'].Red['standard deviation'], '71.6999 (0.281176)');
-      assert.equal(d['Image statistics'].Overall.kurtosis, '-1.09339');
+
+      var sd = d['Channel statistics'].Red['standard deviation'].split(' ')
+      var sd1 = parseFloat(sd[0])
+      var sd2 = parseFloat(sd[1].slice(1, -1))
+      assert.ok(sd1 && Math.abs(sd1 - 71.7079) < .01)
+      assert.ok(sd2 && Math.abs(sd2 - 0.281208) < .001)
+
+      var imageStat = parseFloat(d['Image statistics'].Overall.kurtosis)
+      assert.ok(imageStat && Math.abs(imageStat - -1.09331) < .001)
+
       assert.equal(d['Rendering intent'], 'Perceptual');
       assert.equal(d.Properties['exif:DateTimeDigitized'], '2011:07:01 11:23:16');
       assert.equal(d.Format, 'JPEG (Joint Photographic Experts Group JFIF format)');
