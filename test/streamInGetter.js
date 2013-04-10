@@ -6,9 +6,16 @@ module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  gm(fs.createReadStream(dir + '/original.jpg'), "original.jpg")
-  .size({bufferStream: true}, function (err, size) {
-    this.write(dir + '/streamInGetter.png', function streamInGetter (err){
+  var imageStream = fs.createReadStream(dir + '/original.jpg')
+
+  var buffers = []
+  imageStream.on('data', function (chunk) {
+    buffers.push(chunk)
+  })
+
+  gm(imageStream)
+  .size(function (err, size) {
+    gm(Buffer.concat(buffers)).write(dir + '/streamInGetter.png', function streamInGetter (err){
       finish(err);
     });
   });
