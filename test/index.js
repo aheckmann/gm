@@ -1,6 +1,7 @@
 
 // gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
 
+var async = require('async');
 var dir = __dirname + '/../examples/imgs';
 var gm = require('../');
 var assert = require('assert');
@@ -32,7 +33,10 @@ function test (imagemagick) {
 
 function finish (filename) {
   return function (err) {
-    if (err) throw err;
+    if (err) {
+      console.error('\n\nError occured with file: ' + filename);
+      throw err;
+    }
 
     --pending;
     process.stdout.write('\033[2K');
@@ -51,12 +55,26 @@ function finish (filename) {
 
 process.stdout.write('\033[?25l');
 
+var q = async.queue(function (task, callback) {
+  var filename = task.filename;
+  var im = test.imagemagick
+
+  require(filename)(test(im), dir, function (err) {
+    finish(filename)(err);
+    callback();
+  }, gm);
+}, 5);
+
 files.forEach(function (file) {
   var filename = __dirname + '/' + file;
 
-  // gm tests
-  require(filename)(test(), dir, finish(filename), gm);
+  q.push({
+    imagemagick: false,
+    filename: filename
+  });
 
-  // imagemagick tests
-  require(filename)(test(true), dir, finish(filename), gm);
+  q.push({
+    imagemagick: true,
+    filename: filename
+  });
 });
