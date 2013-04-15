@@ -9,7 +9,7 @@ module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  var filename = dir + '/autoOrient.jpg';
+  var filename = dir + '/autoOrientStream.jpg';
 
   gm(fs.createReadStream(dir + '/originalSideways.jpg')).orientation(function (err, o) {
     if (err) return finish(err);

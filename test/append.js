@@ -1,8 +1,7 @@
 var assert = require('assert')
-var out;
 
 module.exports = function (_, dir, next, gm) {
-  out = require('path').resolve(dir + '/append.jpg');
+  var out = require('path').resolve(dir + '/append.jpg');
 
   try {
     require('fs').unlinkSync(out);
@@ -40,6 +39,7 @@ module.exports = function (_, dir, next, gm) {
 }
 
 function horizontal (dir, next, gm) {
+  var out = require('path').resolve(dir + '/appendHorizontal.jpg');
 
   var m = gm(dir + '/original.jpg')
   .append(dir + '/lost.png', true);
