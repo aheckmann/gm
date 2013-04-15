@@ -65,16 +65,20 @@ var q = async.queue(function (task, callback) {
   }, gm);
 }, 5);
 
-files.forEach(function (file) {
-  var filename = __dirname + '/' + file;
+files = files.map(function (file) {
+  return __dirname + '/' + file
+})
 
+files.forEach(function (file) {
   q.push({
     imagemagick: false,
-    filename: filename
-  });
+    filename: file
+  })
+})
 
+files.forEach(function (file) {
   q.push({
     imagemagick: true,
-    filename: filename
-  });
-});
+    filename: file
+  })
+})
