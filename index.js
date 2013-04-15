@@ -5,6 +5,9 @@
 
 var Stream = require('stream').Stream;
 var EventEmitter = require('events').EventEmitter;
+var util = require('util');
+
+util.inherits(gm, EventEmitter)
 
 /**
  * Constructor.
@@ -76,14 +79,6 @@ function gm (source, height, color) {
     src.length = 0;
     src[0] = ret;
   });
-}
-
-/**
- * Mixin EventEmitter
- */
-
-for (var method in EventEmitter.prototype) {
-  gm.prototype[method] = EventEmitter.prototype[method];
 }
 
 /**
