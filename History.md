@@ -1,3 +1,8 @@
+1.8.3pre
+
+  * added; node v0.10 support
+  * removed; node < v0.8 support - `Buffer.concat()`
+  * tests; all tests now run on Travis
 
 1.8.2 / 2013-03-07
 ==================
