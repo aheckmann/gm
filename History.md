@@ -1,4 +1,5 @@
 1.8.3pre
+==================
 
   * added; node v0.10 support
   * removed; node < v0.8 support - `Buffer.concat()`
