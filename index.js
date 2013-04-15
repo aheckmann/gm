@@ -7,7 +7,7 @@ var Stream = require('stream').Stream;
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 
-util.inherits(gm, EventEmitter)
+util.inherits(gm, EventEmitter);
 
 /**
  * Constructor.
