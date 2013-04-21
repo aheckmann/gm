@@ -4,6 +4,8 @@
   * added; node v0.10 support
   * removed; node < v0.8 support - `Buffer.concat()`
   * tests; all tests now run on Travis
+  * added; gm().stream() returns a stream when no callback is present
+  * added; gm().toBuffer(callback)
 
 1.8.2 / 2013-03-07
 ==================
