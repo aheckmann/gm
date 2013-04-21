@@ -4,7 +4,8 @@ GraphicsMagick for node
 [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)
 
 ## Basic Usage
-```` js
+
+```js
 var fs = require('fs')
   , gm = require('./gm');
 
@@ -70,23 +71,11 @@ gm(200, 400, "#ddff99f3")
 .write("/path/to/brandNewImg.jpg", function (err) {
   // ...
 });
-````
-
-## Buffers
-```` js
-// A buffer can be passed instead of a filepath as well
-var buf = require('fs').readFileSync('/path/to/image.jpg');
-
-gm(buf, 'image.jpg')
-.noise('laplacian')
-.write('/path/to/out.jpg', function (err) {
-  if (err) return handle(err);
-  console.log('Created an image from a Buffer!');
-});
-````
+```
 
 ## Streams
-```` js
+
+```js
 // passing a stream
 var readStream = fs.createReadStream('/path/to/my/img.jpg');
 gm(readStream, 'img.jpg')
@@ -103,6 +92,14 @@ gm('/path/to/my/img.jpg')
   stdout.pipe(writeStream);
 });
 
+// without a callback, .stream() returns a stream
+// this is just a convenience wrapper for above.
+var writeStream = fs.createWriteStream('/path/to/my/resized.jpg');
+gm('/path/to/my/img.jpg')
+.resize('200', '200')
+.stream()
+.pipe(writeStream);
+
 // pass a format or filename to stream() and
 // gm will provide image data in that format
 gm('/path/to/my/img.jpg')
@@ -110,6 +107,12 @@ gm('/path/to/my/img.jpg')
   var writeStream = fs.createWriteStream('/path/to/my/reformated.png');
   stdout.pipe(writeStream);
 });
+
+// or without the callback
+var writeStream = fs.createWriteStream('/path/to/my/reformated.png');
+gm('/path/to/my/img.jpg')
+.stream('png')
+.pipe(writeStream);
 
 // combine the two for true streaming image processing
 var readStream = fs.createReadStream('/path/to/my/img.jpg');
@@ -134,11 +137,36 @@ gm(readStream, 'img.jpg')
   });
 });
 
-````
+```
+
+## Buffers
+
+```js
+// A buffer can be passed instead of a filepath as well
+var buf = require('fs').readFileSync('/path/to/image.jpg');
+
+gm(buf, 'image.jpg')
+.noise('laplacian')
+.write('/path/to/out.jpg', function (err) {
+  if (err) return handle(err);
+  console.log('Created an image from a Buffer!');
+});
+
+// A buffer can also be returned instead of a stream
+gm('img.jpg')
+.resize(100, 100)
+.toBuffer(function (err, buffer) {
+  if (err) return handle(err);
+  console.log('done!');
+})
+```
 
 
 ## Getting started
-First download and install [GraphicsMagick](http://www.graphicsmagick.org/)
+First download and install [GraphicsMagick](http://www.graphicsmagick.org/) or [ImageMagick](http://www.imagemagick.org/). In Mac OS X, you can simply use Homebrew and do:
+
+    brew install imagemagick
+    brew install graphicsmagick
 
 then either use npm:
 
