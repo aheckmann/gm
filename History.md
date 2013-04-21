@@ -6,6 +6,7 @@
   * tests; all tests now run on Travis
   * added; gm().stream() returns a stream when no callback is present
   * added; gm().toBuffer(callback)
+  * fixed; gm().size() only returns the size of the first frame of a GIF
 
 1.8.2 / 2013-03-07
 ==================
