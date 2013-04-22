@@ -223,6 +223,10 @@ or clone the repo:
 
     git clone git://github.com/aheckmann/gm.git
 
+## Platform differences
+
+Please document and refer to any [platform or ImageMagick/GraphicsMagick issues/differences here](https://github.com/aheckmann/gm/wiki/GraphicsMagick-and-ImageMagick-versions).
+
 ## Examples:
 
   Check out the [examples](http://github.com/aheckmann/gm/tree/master/examples/) directory to play around.
