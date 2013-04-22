@@ -1,7 +1,6 @@
-# gm
-GraphicsMagick for node
+# gm v1.9.0 [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)
 
-[![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)
+GraphicsMagick for node
 
 ## Basic Usage
 
@@ -127,7 +126,7 @@ gm(readStream, 'img.jpg')
 // when working with input streams and any 'identify'
 // operation (size, format, etc), you must pass "{bufferStream: true}" if
 // you also need to convert (write() or stream()) the image afterwards
-// NOTE: this temporarily buffers the image stream in Node memory
+// NOTE: this buffers the readStream in memory!
 var readStream = fs.createReadStream('/path/to/my/img.jpg');
 gm(readStream, 'img.jpg')
 .size({bufferStream: true}, function(err, size) {
@@ -161,9 +160,57 @@ gm('img.jpg')
 })
 ```
 
+## Custom Arguments
+
+If `gm` does not supply you with a method you need or does not work as you'd like, you can simply use `gm().in()` or `gm().out()` to set your own arguments.
+
+- `gm().in()` - Custom input arguments
+- `gm().out()` - Custom output arguments
+
+The command will be formatted in the following order:
+
+1. `command` - ie `gm convert` or `convert`
+2. `in` - the input arguments
+3. `source` - stdin or an image file
+4. `out` - the output arguments
+5. `output` - stdout or the image file to write to
+
+For example, suppose you want the following command:
+
+```bash
+gm "convert" "label:Offline" "PNG:-"
+```
+
+However, using `gm().label()` may not work as intended for you:
+
+```js
+gm()
+.label('Offline')
+.stream();
+```
+
+would yield:
+
+```bash
+gm "convert" "-label" "\"Offline\"" "PNG:-"
+```
+
+Instead, you can use `gm().out()`:
+
+```js
+gm()
+.out('label:Offline')
+.stream();
+```
+
+which correctly yields:
+
+```bash
+gm "convert" "label:Offline" "PNG:-"
+```
 
 ## Getting started
-First download and install [GraphicsMagick](http://www.graphicsmagick.org/) or [ImageMagick](http://www.imagemagick.org/). In Mac OS X, you can simply use Homebrew and do:
+First download and install [GraphicsMagick](http://www.graphicsmagick.org/) or [ImageMagick](http://www.imagemagick.org/). In Mac OS X, you can simply use [Homebrew](http://mxcl.github.io/homebrew/) and do:
 
     brew install imagemagick
     brew install graphicsmagick
@@ -396,7 +443,8 @@ or clone the repo:
 
   - image output
     - **write** - writes the processed image data to the specified filename
-    - **stream** - provides a ReadableStream with the processed image data
+    - **stream** - provides a `ReadableStream` with the processed image data
+    - **toBuffer** - returns the image as a `Buffer` instead of a stream
 
 ##compare
 
