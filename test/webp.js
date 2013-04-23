@@ -4,10 +4,11 @@ var fs = require('fs')
 module.exports = function (_, dir, finish, gm, im) {
   if (!gm.integration) return finish()
 
-  if (!im) {
-    // GraphicsMagick currently does not support webp :(
-    return finish()
-  }
+  // Don't know how to install IM with WEBP on ubuntu
+  if (require('os').platform() === 'linux') return finish()
+
+  // GraphicsMagick currently does not support webp :(
+  if (!im) return finish()
 
   gm = gm.subClass({
     imageMagick: true
@@ -30,7 +31,7 @@ module.exports = function (_, dir, finish, gm, im) {
         if (err) return done(err)
 
         assert.ok(value)
-        assert.equal(value.format, 'PNG')
+        assert.equal(value.format, 'WEBP')
         done()
       })
     })
@@ -45,7 +46,7 @@ module.exports = function (_, dir, finish, gm, im) {
         if (err) return done(err)
 
         assert.ok(value)
-        assert.equal(value.format, 'PNG')
+        assert.equal(value.format, 'WEBP')
 
         done()
       })
