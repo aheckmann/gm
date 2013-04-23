@@ -5,9 +5,13 @@ module.exports = function (_, dir, finish, gm, im) {
   if (!gm.integration) return finish()
 
   if (!im) {
-    console.log('GraphicsMagick currently does not support webp :(')
+    // GraphicsMagick currently does not support webp :(
     return finish()
   }
+
+  gm = gm.subClass({
+    imageMagick: true
+  })
 
   var image = dir + '/original.png'
 
@@ -26,9 +30,7 @@ module.exports = function (_, dir, finish, gm, im) {
         if (err) return done(err)
 
         assert.ok(value)
-        console.log(value)
-        assert.equal(value.format = 'webp')
-
+        assert.equal(value.format, 'PNG')
         done()
       })
     })
@@ -43,7 +45,7 @@ module.exports = function (_, dir, finish, gm, im) {
         if (err) return done(err)
 
         assert.ok(value)
-        assert.equal(value.format = 'webp')
+        assert.equal(value.format, 'PNG')
 
         done()
       })
