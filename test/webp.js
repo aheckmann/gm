@@ -1,10 +1,10 @@
 var assert = require('assert')
 var fs = require('fs')
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, im) {
   if (!gm.integration) return finish()
 
-  if (!_._options.imageMagick) {
+  if (!im) {
     console.log('GraphicsMagick currently does not support webp :(')
     return finish()
   }

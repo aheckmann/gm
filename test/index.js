@@ -57,12 +57,12 @@ process.stdout.write('\033[?25l');
 
 var q = async.queue(function (task, callback) {
   var filename = task.filename;
-  var im = test.imagemagick
+  var im = task.imagemagick;
 
   require(filename)(test(im), dir, function (err) {
     finish(filename)(err);
     callback();
-  }, gm);
+  }, gm, im);
 }, 5);
 
 files = files.map(function (file) {
