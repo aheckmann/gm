@@ -637,7 +637,12 @@ gm("img.png").append("another.jpg", "third.gif", true)
           </li>
           <li id="resize"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-resize">resize</a>
             <p>Resize the image.</p>
-            <pre><code>gm("img.png").resize(width, height)</code></pre>
+            <dl>
+              <dt><code>options</code></dt>
+              <dd><code>%, @, !, &lt; or &gt;</code> see the <a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-resize">GraphicsMagick docs</a> for details</dd>
+            </dl>
+            <pre><code>gm("img.png").resize(width, height [, options])</code></pre>
+            <p>For example, to override the images proportions and force a resize to 40x50: <code>gm("img.png").resize(40, 50, "!")</code></p>
           </li>
           <li id="roll"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-roll">roll</a>
             <p>Rolls an image vertically or horizontally.</p>
