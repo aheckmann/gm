@@ -7,7 +7,11 @@ module.exports = function (gm, dir, finish, GM) {
   var args = a.args();
   assert.equal('convert', args[0]);
   assert.equal('-resize', args[2]);
-  assert.equal('10', args[3]);
+  if (a._options.imageMagick) {
+    assert.equal('10', args[3]);
+  } else {
+    assert.equal('10x', args[3]);
+  }
 
   var a = GM('img.png').resize(10, 20);
   var args = a.args();
@@ -19,13 +23,21 @@ module.exports = function (gm, dir, finish, GM) {
   var args = a.args();
   assert.equal('convert', args[0]);
   assert.equal('-resize', args[2]);
-  assert.equal('10%', args[3]);
+  if (a._options.imageMagick) {
+    assert.equal('10%', args[3]);
+  } else {
+    assert.equal('10x%', args[3]);
+  }
 
   var a = GM('img.png').resize('10%');
   var args = a.args();
   assert.equal('convert', args[0]);
   assert.equal('-resize', args[2]);
-  assert.equal('10%', args[3]);
+  if (a._options.imageMagick) {
+    assert.equal('10%', args[3]);
+  } else {
+    assert.equal('10%x', args[3]);
+  }
 
   var m = gm
   .resize(58, 50, '%');
