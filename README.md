@@ -164,12 +164,13 @@ gm('img.jpg')
 
 If `gm` does not supply you with a method you need or does not work as you'd like, you can simply use `gm().in()` or `gm().out()` to set your own arguments.
 
+- `gm().command()` - Custom command such as `identify` or `convert`
 - `gm().in()` - Custom input arguments
 - `gm().out()` - Custom output arguments
 
 The command will be formatted in the following order:
 
-1. `command` - ie `gm convert` or `convert`
+1. `command` - ie `convert`
 2. `in` - the input arguments
 3. `source` - stdin or an image file
 4. `out` - the output arguments
@@ -214,6 +215,10 @@ First download and install [GraphicsMagick](http://www.graphicsmagick.org/) or [
 
     brew install imagemagick
     brew install graphicsmagick
+
+If you want WebP support with ImageMagick, you must add the WebP option:
+
+    brew install imagemagick --with-webp
 
 then either use npm:
 
