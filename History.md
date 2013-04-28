@@ -1,4 +1,10 @@
-1.9.0
+1.9.1
+==================
+
+  * fixed; gm().resize(width) always only resizes width
+  * fixed; gm('img.gif').format() returns the format of the first frame
+
+1.9.0 / 2012-04-21
 ==================
 
   * added; node v0.10 support
