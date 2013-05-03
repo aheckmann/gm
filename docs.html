@@ -641,8 +641,11 @@ gm("img.png").append("another.jpg", "third.gif", true)
               <dt><code>options</code></dt>
               <dd><code>%, @, !, &lt; or &gt;</code> see the <a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-resize">GraphicsMagick docs</a> for details</dd>
             </dl>
-            <pre><code>gm("img.png").resize(width, height [, options])</code></pre>
-            <p>For example, to override the images proportions and force a resize to 40x50: <code>gm("img.png").resize(40, 50, "!")</code></p>
+            <pre><code>gm("img.png").resize(width [, height [, options]])</code></pre>
+            <p>To resize an image to a width of 40px while maintaining aspect ratio: <code>gm("img.png").resize(40)</code></p>
+            <p>To resize an image to a height of 50px while maintaining aspect ratio: <code>gm("img.png").resize(null, 50)</code></p>
+            <p>To resize an image to a fit a 40x50 rectangle while maintaining aspect ratio: <code>gm("img.png").resize(40, 50)</code></p>
+            <p>To override the image's proportions and force a resize to 40x50: <code>gm("img.png").resize(40, 50, "!")</code></p>
           </li>
           <li id="roll"><a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-roll">roll</a>
             <p>Rolls an image vertically or horizontally.</p>
@@ -978,6 +981,11 @@ gm("img.png").append("another.jpg", "third.gif", true)
         <pre><code>var imageMagick = gm.subClass({ imageMagick: true });</code></pre>
         <p>Then use <code>imageMagick</code> the same way you'd normally use <code>gm</code>.</p>
         <pre><code>imageMagick("img.png").autoOrient().write('/path', callback);</code></pre>
+
+        <h3>ImageMagick Options</h3>
+        <p>Unlike GraphicsMagick, ImageMagick supports the WebP format. However, you must compile ImageMagick with the WebP option. To do so on OS X, install ImageMagick with the following command using Homebrew:</p>
+        <pre><code>brew install imagemagick --with-webp</code></pre>
+        <p>If you have already installed ImageMagick, you would have to uninstall it then reinstall it.</p>
       </li>
     </ul>
   <br>
