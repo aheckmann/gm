@@ -72,7 +72,9 @@ function gm (source, height, color) {
     // must be first source formatter
 
     var inputFromStdin = this.sourceStream || this.sourceBuffer;
-    var ret = inputFromStdin ? '-' : this.source;
+    var ret = source.slice(-2) === ':-' ? source
+      : inputFromStdin ? '-'
+      : this.source;
 
     if (ret && this.sourceFrames) ret += this.sourceFrames;
 
