@@ -1,4 +1,4 @@
-1.9.1
+1.9.1 / 2012-05-07
 ==================
 
   * fixed; gm().resize(width) always only resizes width
