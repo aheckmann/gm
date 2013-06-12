@@ -19,7 +19,11 @@ module.exports = function (gm, dir, finish, GM) {
   withCallback(function (err) {
     if (err) return finish(err);
 
-    withoutCallback(finish);
+    withoutCallback(function (err) {
+      if (err) return finish(err);
+
+      checkOutputFormat(finish);
+    });
   });
 
   function withCallback(done) {
@@ -37,5 +41,17 @@ module.exports = function (gm, dir, finish, GM) {
     stream.on('error', done)
     stream.pipe(fs.createWriteStream(dir + '/streamOut2.png'))
     stream.on('end', done)
+  }
+
+  function checkOutputFormat(done) {
+    var stream = gm.stream('PNG')
+    stream.on('error', done)
+    GM(stream).format(function (err, value) {
+      if (err)
+        return done(err)
+
+      assert.equal(value.toLowerCase(), 'png')
+      done()
+    })
   }
 }

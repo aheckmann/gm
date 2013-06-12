@@ -1,15 +1,16 @@
-1.9.2
+1.9.2 / 2013-06-12
 ==================
 
   * refactor; move `streamToBuffer` to a separate module
+  * fixed; .stream(format) without a callback
 
-1.9.1 / 2012-05-07
+1.9.1 / 2013-05-07
 ==================
 
   * fixed; gm().resize(width) always only resizes width
   * fixed; gm('img.gif').format() returns the format of the first frame
 
-1.9.0 / 2012-04-21
+1.9.0 / 2013-04-21
 ==================
 
   * added; node v0.10 support
