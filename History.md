@@ -1,3 +1,8 @@
+1.9.2
+==================
+
+  * refactor; move `streamToBuffer` to a separate module
+
 1.9.1 / 2012-05-07
 ==================
 
