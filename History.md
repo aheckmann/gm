@@ -1,3 +1,8 @@
+1.10.0 / 2013-06-27
+===================
+
+* refactor; use native `-auto-orient` for imagemagick
+
 1.9.2 / 2013-06-12
 ==================
 
