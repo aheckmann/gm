@@ -3,14 +3,14 @@
 
 var assert = require('assert'),
     fs = require('fs'),
-    os = require('os'),
-    isLinux = os.platform() === 'linux';
+    os = require('os');
 
 module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
   var beforeValues = {
+    'Landscape_1.jpg': ['TopLeft', 1, '600x450'],
     'Landscape_2.jpg': ['TopRight', 2, '600x450'],
     'Landscape_3.jpg': ['BottomRight', 3, '600x450'],
     'Landscape_4.jpg': ['BottomLeft', 4, '600x450'],
@@ -18,6 +18,7 @@ module.exports = function (_, dir, finish, gm) {
     'Landscape_6.jpg': ['RightTop', 6, '450x600'],
     'Landscape_7.jpg': ['RightBottom', 7, '450x600'],
     'Landscape_8.jpg': ['LeftBottom', 8, '450x600'],
+    'Portrait_1.jpg': ['TopLeft', 1, '450x600'],
     'Portrait_2.jpg': ['TopRight', 2, '450x600'],
     'Portrait_3.jpg': ['BottomRight', 3, '450x600'],
     'Portrait_4.jpg': ['BottomLeft', 4, '450x600'],
@@ -28,29 +29,23 @@ module.exports = function (_, dir, finish, gm) {
   };
 
   var afterValues = {
-    'Landscape_2.jpg': ['Unknown', true, '600x450'],
-    'Landscape_3.jpg': ['Unknown', true, '600x450'],
-    'Landscape_4.jpg': ['Unknown', true, '600x450'],
-    'Landscape_5.jpg': ['Unknown', true, '600x450'],
-    'Landscape_6.jpg': ['Unknown', true, '600x450'],
-    'Landscape_7.jpg': ['Unknown', true, '600x450'],
-    'Landscape_8.jpg': ['Unknown', true, '600x450'],
-    'Portrait_2.jpg': ['Unknown', true, '450x600'],
-    'Portrait_3.jpg': ['Unknown', true, '450x600'],
-    'Portrait_4.jpg': ['Unknown', true, '450x600'],
-    'Portrait_5.jpg': ['Unknown', true, '450x600'],
-    'Portrait_6.jpg': ['Unknown', true, '450x600'],
-    'Portrait_7.jpg': ['Unknown', true, '450x600'],
-    'Portrait_8.jpg': ['Unknown', true, '450x600']
+    'Landscape_1.jpg': '600x450',
+    'Landscape_2.jpg': '600x450',
+    'Landscape_3.jpg': '600x450',
+    'Landscape_4.jpg': '600x450',
+    'Landscape_5.jpg': '600x450',
+    'Landscape_6.jpg': '600x450',
+    'Landscape_7.jpg': '600x450',
+    'Landscape_8.jpg': '600x450',
+    'Portrait_1.jpg': '450x600',
+    'Portrait_2.jpg': '450x600',
+    'Portrait_3.jpg': '450x600',
+    'Portrait_4.jpg': '450x600',
+    'Portrait_5.jpg': '450x600',
+    'Portrait_6.jpg': '450x600',
+    'Portrait_7.jpg': '450x600',
+    'Portrait_8.jpg': '450x600'
   };
-
-  if (!isLinux) {
-    // For whatever reason, linux doesn't work.
-    beforeValues['Landscape_1.jpg'] = ['TopLeft', 1, '600x450']
-    beforeValues['Portrait_1.jpg'] = ['TopLeft', 1, '450x600']
-    afterValues['Landscape_1.jpg'] = ['TopLeft', false, '600x450']
-    afterValues['Portrait_1.jpg'] = ['TopLeft', false, '450x600']
-  }
 
   fs.readdir(dir + '/orientation/', function(err, files) {
     if (err) return finish(err);
@@ -91,9 +86,9 @@ module.exports = function (_, dir, finish, gm) {
             gm(newFilename).identify(function (err) {
               if (err) return finish(err);
 
-              assert.equal(afterValues[filename][0], this.data.Orientation, 'Bad-Orientation for ' + filename);
-              assert.equal(afterValues[filename][1], !this.data['Profile-EXIF'], 'Profile-EXIF still exists');
-              assert.equal(afterValues[filename][2], this.data.Geometry, 'Bad-Geometry for ' + filename);
+              assert.equal('Unknown', this.data.Orientation);
+              assert.ok(!this.data['Profile-EXIF'])
+              assert.equal(afterValues[filename], this.data.Geometry, 'Bad-Geometry for ' + filename);
 
               gm.compare(newFilename, constant, 0.1, function (err, equal) {
                 if (err) return finish(err);
@@ -108,4 +103,3 @@ module.exports = function (_, dir, finish, gm) {
   });
 
 };
-

@@ -20,22 +20,18 @@ module.exports = function (_, dir, finish, gm) {
     // try opening it in a browser to see its true orientation
     gm(dir + '/originalSideways.jpg')
     .autoOrient()
-    .write(filename, function autoOrient (err) {
+    .stream(function (err, stream) {
       if (err) return finish(err);
 
-      // fs race condition
-      setTimeout(function () {
-        gm(filename).identify(function (err) {
-          if (err) return finish(err);
+      gm(stream).identify(function (err, data) {
+        if (err) return finish(err);
 
-          assert.equal('Unknown', this.data.Orientation);
-          assert.ok(! this.data['Profile-EXIF'], 'Profile-EXIF still exists');
-          assert.equal('460x155', this.data.Geometry);
+        assert.equal('Unknown', data.Orientation);
+        assert.ok(! this.data['Profile-EXIF'], 'Profile-EXIF still exists');
+        assert.equal('460x155', data.Geometry);
 
-          finish(err);
-        });
-      }, 200);
-    });
+        finish(err);
+      })
+    })
   });
-
 }
