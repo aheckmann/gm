@@ -1,3 +1,10 @@
+1.10.0 / 2013-06-27
+==================
+
+  * refactor; use native -auto-orient command
+  * refactor; -strip works for gm as well
+  * refactor; remove processing
+
 1.9.2 / 2013-06-12
 ==================
 
