@@ -43,7 +43,7 @@ module.exports = function (_, dir, finish, gm) {
 
 
   function size (file, cb) {
-    gm(file).identify(result, function (err, data) {
+    gm(file).identify(function (err, data) {
       if (err) return cb(err);
       cb(err, data.size);
     });

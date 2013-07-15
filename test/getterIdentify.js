@@ -59,10 +59,12 @@ module.exports = function (_, dir, finish, gm) {
       assert.equal(d['Geometry'], '430x488');
     }
 
-    gif();
+    gif(function () {
+      pattern();
+    });
   });
 
-  function gif () {
+  function gif (callback) {
     var test = gm(dir + '/blue.gif');
     if (im) test.options({ imageMagick: true });
     test.identify(function (err) {
@@ -94,6 +96,19 @@ module.exports = function (_, dir, finish, gm) {
         assert.ok(blueWorks);
         assert.ok(blackWorks);
       }
+
+      callback();
+    });
+  }
+
+  function pattern () {
+    var test = gm(dir + '/blue.gif');
+
+    if (im) test.options({ imageMagick: true });
+    test.identify('%f: %m, %wx%h', function (err, result) {
+      if (err) return finish(err);
+
+      assert.equal(result, 'blue.gif: GIF, 100x200');
 
       finish();
     });
