@@ -8,22 +8,31 @@ module.exports = function (gm, dir, finish, GM) {
   var validResult = 'original.jpg: JPEG, 460x155';
 
   // pass string test
+  var gmObject =
   gm
-  .format('%f: %m, %wx%h', function getterformatcustom (err, format) {
+  .custom('%f: %m, %wx%h', function getterformatcustom (err, custom) {
     if (err) return finish(err);
 
-    assert.equal(format, validResult);
-    assert.equal(gm.data.format, validResult);
+    assert.equal(custom, validResult);
+    assert.equal(gm.data.custom, validResult);
 
     // pass object test
     gm
-    .format({ custom: '%f: %m, %wx%h' }, function getterformatcustom (err, format) {
+    .custom({ pattern: '%f: %m, %wx%h' }, function getterformatcustom (err, custom) {
       if (err) return finish(err);
 
-      assert.equal(format, validResult);
-      assert.equal(gm.data.format, validResult);
+      assert.equal(custom, validResult);
+      assert.equal(gm.data.custom, validResult);
 
-      finish();
+      gmObject
+      .custom('%f: %m, %wx%h', function getterformatcustom (err, custom) {
+        if (err) return finish(err);
+
+        assert.equal(custom, validResult);
+        assert.equal(gm.data.custom, validResult);
+
+        finish();
+      });
     });
   });
 }
