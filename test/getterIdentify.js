@@ -60,6 +60,7 @@ module.exports = function (_, dir, finish, gm) {
     }
 
     gif();
+    pattern();
   });
 
   function gif () {
@@ -94,6 +95,19 @@ module.exports = function (_, dir, finish, gm) {
         assert.ok(blueWorks);
         assert.ok(blackWorks);
       }
+    });
+  }
+
+  function pattern () {
+    var test = gm(dir + '/blue.gif');
+    var validResult = 'blue.gif: GIF, 100x200';
+
+    if (im) test.options({ imageMagick: true });
+    test.identify('%f: %m, %wx%h', function (err, result) {
+      if (err) return finish(err);
+
+      assert.equal(result, validResult);
+      assert.equal(test.data.pattern, validResult);
 
       finish();
     });
