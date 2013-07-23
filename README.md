@@ -1,4 +1,4 @@
-# gm v1.10.0 [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)
+# gm v1.11.0 [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)
 
 GraphicsMagick for node
 
@@ -204,6 +204,26 @@ gm()
 .stream();
 ```
 
+### Custom Identify Format String
+
+When identifying an image, you may want to use a custom formatting string instead of using `-verbose`, which is quite slow.
+You can use your own [formatting string](http://www.imagemagick.org/script/escape.php) when using `gm().identify(format, callback)`.
+For example,
+
+```js
+gm('img.png').format(function (err, format) {
+
+})
+
+// is equivalent to
+
+gm('img.png').identify('%m', function (err, format) {
+
+})
+```
+
+since `%m` is the format option for getting the image file format.
+
 which correctly yields:
 
 ```bash
@@ -256,7 +276,7 @@ Please document and refer to any [platform or ImageMagick/GraphicsMagick issues/
     - [color](http://aheckmann.github.com/gm/docs.html#getters) - returns the number of colors
     - [res](http://aheckmann.github.com/gm/docs.html#getters)   - returns the image resolution
     - [filesize](http://aheckmann.github.com/gm/docs.html#getters) - returns image filesize
-    - [identify](http://aheckmann.github.com/gm/docs.html#getters) - returns all image data available
+    - [identify](http://aheckmann.github.com/gm/docs.html#getters) - returns all image data available. Takes an optional format string.
 
   - manipulation
     - [adjoin](http://aheckmann.github.com/gm/docs.html#adjoin)

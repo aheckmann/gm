@@ -1,3 +1,9 @@
+1.11.0 / 2013-07-23
+===================
+
+* added; optional formatting string for gm().identify(format, callback)
+* removed; error messages when gm/im binary is not installed
+
 1.10.0 / 2013-06-27
 ===================
 
