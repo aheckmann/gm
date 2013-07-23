@@ -103,14 +103,25 @@ module.exports = function (_, dir, finish, gm) {
 
   function pattern () {
     var test = gm(dir + '/blue.gif');
+    var format = '%f: %m, %wx%h';
+    var value = 'blue.gif: GIF, 100x200';
 
     if (im) test.options({ imageMagick: true });
-    test.identify('%f: %m, %wx%h', function (err, result) {
+
+    test.identify(format, function (err, result) {
       if (err) return finish(err);
 
-      assert.equal(result, 'blue.gif: GIF, 100x200');
+      assert.equal(result, value);
 
-      finish();
+      test.identify({
+        format: format
+      }, function (err, result) {
+        if (err) return finish(err);
+
+        assert.equal(result, value);
+
+        finish();
+      })
     });
   }
 }
