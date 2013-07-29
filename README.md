@@ -204,6 +204,12 @@ gm()
 .stream();
 ```
 
+which correctly yields:
+
+```bash
+gm "convert" "label:Offline" "PNG:-"
+```
+
 ### Custom Identify Format String
 
 When identifying an image, you may want to use a custom formatting string instead of using `-verbose`, which is quite slow.
@@ -223,12 +229,6 @@ gm('img.png').identify('%m', function (err, format) {
 ```
 
 since `%m` is the format option for getting the image file format.
-
-which correctly yields:
-
-```bash
-gm "convert" "label:Offline" "PNG:-"
-```
 
 ## Getting started
 First download and install [GraphicsMagick](http://www.graphicsmagick.org/) or [ImageMagick](http://www.imagemagick.org/). In Mac OS X, you can simply use [Homebrew](http://mxcl.github.io/homebrew/) and do:
