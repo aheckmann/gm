@@ -1,3 +1,8 @@
+1.11.1 / 2013-08-17
+===================
+* added; proto.selectFrame(#)
+* fixed; getters should not ignore frame selection
+
 1.11.0 / 2013-07-23
 ===================
 
