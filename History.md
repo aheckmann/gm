@@ -1,3 +1,7 @@
+1.12.0 / 2013-08-27
+===================
+* added; diff image output file
+
 1.11.1 / 2013-08-17
 ===================
 * added; proto.selectFrame(#)
