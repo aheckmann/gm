@@ -1,4 +1,8 @@
-1.12.1 / 2013-08-29
+1.12.2 / 2013-08-29
+===================
+* fixed; fallback to through in node 0.8
+
+1.12.1 / 2013-08-29 (unpublished)
 ===================
 * refactor; replace through with stream.PassThrough
 
