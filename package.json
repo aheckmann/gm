@@ -1,26 +1,48 @@
-{ "name": "gm"
-, "description": "GraphicsMagick for node.js"
-, "version": "1.12.1"
-, "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>"
-, "keywords": ["graphics", "magick", "image", "graphicsmagick", "imagemagick", "gm", "convert", "identify", "compare"]
-, "engines": { "node": ">= 0.8.0" }
-, "bugs": { "url": "http://github.com/aheckmann/gm/issues" }
-, "licenses": [{ "type": "MIT", "url": "http://www.opensource.org/licenses/mit-license.php"}]
-, "main": "./index"
-, "scripts": { "test": "make test-unit; make test;" }
-, "repository": {
-      "type": "git"
-    , "url": "https://github.com/aheckmann/gm.git"
-  }
-, "license": "MIT"
-, "devDependencies": {
-      "gleak": "0.4.0",
-      "async": "~0.2.7"
-  }
-, "dependencies": {
-      "debug": "0.7.0",
-      "array-series": "~0.1.0",
-      "array-parallel": "~0.1.0",
-      "stream-to-buffer": "~0.0.1"
+{
+  "name": "gm",
+  "description": "GraphicsMagick for node.js",
+  "version": "1.12.1",
+  "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>",
+  "keywords": [
+    "graphics",
+    "magick",
+    "image",
+    "graphicsmagick",
+    "imagemagick",
+    "gm",
+    "convert",
+    "identify",
+    "compare"
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "bugs": {
+    "url": "http://github.com/aheckmann/gm/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "main": "./index",
+  "scripts": {
+    "test": "make test-unit; make test;"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aheckmann/gm.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "gleak": "0.4.0",
+    "async": "~0.2.7"
+  },
+  "dependencies": {
+    "debug": "0.7.0",
+    "array-series": "~0.1.0",
+    "array-parallel": "~0.1.0",
+    "stream-to-buffer": "~0.0.1"
   }
 }
