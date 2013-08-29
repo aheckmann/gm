@@ -1,3 +1,7 @@
+1.12.1 / 2013-08-29
+===================
+* refactor; replace through with stream.PassThrough
+
 1.12.0 / 2013-08-27
 ===================
 * added; diff image output file
