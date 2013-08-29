@@ -43,6 +43,7 @@
     "debug": "0.7.0",
     "array-series": "~0.1.0",
     "array-parallel": "~0.1.0",
-    "stream-to-buffer": "~0.0.1"
+    "stream-to-buffer": "~0.0.1",
+    "through": "~2.3.1"
   }
 }
