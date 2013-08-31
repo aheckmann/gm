@@ -2,10 +2,10 @@
 node_modules
 examples/imgs/*
 !examples/imgs/original.jpg
-!examples/imgs/noise1.png
 !examples/imgs/original.png
 !examples/imgs/original.gif
 !examples/imgs/originalSideways.jpg
+!examples/imgs/originalCompare.jpg
 !examples/imgs/morpher.jpg
 !examples/imgs/photo.JPG
 !examples/imgs/orientation/*\d.jpg
