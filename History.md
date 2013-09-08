@@ -1,3 +1,7 @@
+1.13.0 / 2013-09-07
+===================
+* added; morph more than two images (overra)
+
 1.12.2 / 2013-08-29
 ===================
 * fixed; fallback to through in node 0.8
@@ -8,7 +12,7 @@
 
 1.12.0 / 2013-08-27
 ===================
-* added; diff image output file
+* added; diff image output file (chenglou)
 
 1.11.1 / 2013-08-17
 ===================
@@ -18,7 +22,7 @@
 1.11.0 / 2013-07-23
 ===================
 
-* added; optional formatting string for gm().identify(format, callback)
+* added; optional formatting string for gm().identify(format, callback) (tornillo)
 * removed; error messages when gm/im binary is not installed
 
 1.10.0 / 2013-06-27
