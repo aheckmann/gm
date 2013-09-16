@@ -1,3 +1,7 @@
+1.13.1 / 2013-09-15
+===================
+* added; boolean for % crop
+
 1.13.0 / 2013-09-07
 ===================
 * added; morph more than two images (overra)
