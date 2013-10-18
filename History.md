@@ -1,3 +1,7 @@
+1.13.2 / 2013-10-18
+===================
+* fixed; density is a setting not an operator
+
 1.13.1 / 2013-09-15
 ===================
 * added; boolean for % crop

@@ -21,7 +21,6 @@ module.exports = function (_, dir, finish, gm) {
 
     if (im) {
       assert.equal(d.Orientation, 'TopLeft');
-      assert.equal(d['Quality'], 96);
       assert.equal(d['Geometry'], '430x488+0+0');
       assert.equal(d['Print size'], '5.97222x6.77778');
       assert.equal(d['Channel depth'].red, '8-bit');
