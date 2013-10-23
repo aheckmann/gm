@@ -1,3 +1,7 @@
+1.13.3 / 2013-10-22
+===================
+* fixed; escape diffOptions.file in compare (dwabyick)
+
 1.13.2 / 2013-10-18
 ===================
 * fixed; density is a setting not an operator

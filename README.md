@@ -1,4 +1,4 @@
-# gm v1.13.2 [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)
+# gm v1.13.3 [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)
 
 GraphicsMagick and ImageMagick for node
 
