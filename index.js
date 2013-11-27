@@ -115,6 +115,7 @@ require("./lib/args")(gm.prototype);
 require("./lib/drawing")(gm.prototype);
 require("./lib/convenience")(gm.prototype);
 require("./lib/command")(gm.prototype);
+require("./lib/compare")(gm.prototype);
 
 /**
  * Expose.
@@ -122,7 +123,7 @@ require("./lib/command")(gm.prototype);
 
 module.exports = exports = gm;
 module.exports.utils = require('./lib/utils');
-module.exports.compare = require('./lib/compare');
+module.exports.compare = require('./lib/compare')();
 module.exports.version = JSON.parse(
   require('fs').readFileSync(__dirname + '/package.json', 'utf8')
 ).version;

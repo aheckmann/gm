@@ -10,3 +10,4 @@ examples/imgs/*
 !examples/imgs/orientation/*\d.jpg
 !examples/imgs/orientation/*.correct.jpg
 *.sw*
+.idea
