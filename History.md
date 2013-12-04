@@ -1,33 +1,46 @@
+1.14.0 / 2013-12-04
+===================
+
+* added; compare method for imagemagick (longlho)
+
 1.13.3 / 2013-10-22
 ===================
+
 * fixed; escape diffOptions.file in compare (dwabyick)
 
 1.13.2 / 2013-10-18
 ===================
+
 * fixed; density is a setting not an operator
 
 1.13.1 / 2013-09-15
 ===================
+
 * added; boolean for % crop
 
 1.13.0 / 2013-09-07
 ===================
+
 * added; morph more than two images (overra)
 
 1.12.2 / 2013-08-29
 ===================
+
 * fixed; fallback to through in node 0.8
 
 1.12.1 / 2013-08-29 (unpublished)
 ===================
+
 * refactor; replace through with stream.PassThrough
 
 1.12.0 / 2013-08-27
 ===================
+
 * added; diff image output file (chenglou)
 
 1.11.1 / 2013-08-17
 ===================
+
 * added; proto.selectFrame(#)
 * fixed; getters should not ignore frame selection
 
