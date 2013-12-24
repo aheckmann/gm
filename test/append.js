@@ -14,11 +14,11 @@ module.exports = function (_, dir, next, gm) {
 
   var args = m.args();
   assert.equal('convert', args[0]);
-  assert.ok(/examples\/imgs\/lost\.png$/.test(args[1]));
-  assert.ok(/examples\/imgs\/original\.jpg$/,args[2]);
-  assert.ok(/examples\/imgs\/original\.jpg$/,args[3]);
-  assert.equal('-background',args[4]);
-  assert.equal('#222',args[5]);
+  assert.equal('-background',args[1]);
+  assert.equal('#222',args[2]);
+  assert.ok(/examples\/imgs\/lost\.png$/.test(args[3]));
+  assert.ok(/examples\/imgs\/original\.jpg$/,args[4]);
+  assert.ok(/examples\/imgs\/original\.jpg$/,args[5]);
   assert.equal('-append',args[6]);
   assert.equal('-',args[7]);
 
