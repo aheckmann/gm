@@ -9,10 +9,10 @@ module.exports = function (gm, dir, finish, GM) {
 
   var args = m.args();
   assert.equal('convert', args[0]);
-  assert.equal('-crop', args[2]);
-  assert.equal('140x100+0+0', args[3]);
-  assert.equal('-background', args[4]);
-  assert.equal('#FF0000', args[5]);
+  assert.equal('-background', args[1]);
+  assert.equal('#FF0000', args[2]);
+  assert.equal('-crop', args[4]);
+  assert.equal('140x100+0+0', args[5]);
   assert.equal('-extent', args[6]);
   assert.equal('340x300', args[7]);
 
