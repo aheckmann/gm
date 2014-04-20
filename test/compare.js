@@ -13,6 +13,7 @@ module.exports = function (gm, dir, finish, GM) {
 
       var options = {
         highlightColor: 'yellow',
+        highlightStyle: 'XOR',
         file: dir + '/diff.png'
       };
 
@@ -26,5 +27,6 @@ module.exports = function (gm, dir, finish, GM) {
         });
       });
     })
+    
   });
 };
