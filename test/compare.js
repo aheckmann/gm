@@ -13,12 +13,14 @@ module.exports = function (gm, dir, finish, GM) {
 
       var options = {
         highlightColor: 'yellow',
-        file: dir + '/diff.png'
+        file: dir + '/diff.png',
+        tolerance: 0.001
       };
 
-      // Compare these images and write to a file.
-      GM.compare(dir + '/original.jpg', dir + '/noise3.png', options, function(err) {
+      // Compare these images and write diff to a file.
+      GM.compare(dir + '/original.jpg', dir + '/noise3.png', options, function(err, same) {
         if (err) return finish(err);
+        if (!same) return finish(new Error('Compare should be the same!'));
 
         fs.exists(options.file, function(exists) {
           if (exists) finish();

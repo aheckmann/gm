@@ -484,7 +484,7 @@ Graphicsmagicks `compare` command is exposed through `gm.compare()`. This allows
 
 Currently `gm.compare` only accepts file paths.
 
-    gm.compare(path1, path2 [, tolerance], callback)
+    gm.compare(path1, path2 [, options], callback)
 
 ```js
 gm.compare('/path/to/image1.jpg', '/path/to/another.png', function (err, isEqual, equality, raw) {
@@ -506,6 +506,20 @@ You may wish to pass a custom tolerance threshold to increase or decrease the de
 
 ```js
 gm.compare('/path/to/image1.jpg', '/path/to/another.png', 1.2, function (err, isEqual) {
+  ...
+})
+```
+
+To output a diff image, pass a configuration object to define the diff options and tolerance.
+
+
+```js
+var options = {
+  file: '/path/to/diff.png',
+  highlightColor: 'yellow',
+  tolerance: 0.02
+}
+gm.compare('/path/to/image1.jpg', '/path/to/another.png', options, function (err, isEqual, equality, raw) {
   ...
 })
 ```
