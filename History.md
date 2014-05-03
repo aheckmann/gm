@@ -1,3 +1,13 @@
+
+1.15.0 / 2014-05-03
+===================
+
+ * changed; gm.compare logic to always run the mse comparison as expected #258 [Vokkim](https://github.com/Vokkim)
+ * added; `tolerance` to gm.compare options object #258 [Vokkim](https://github.com/Vokkim)
+ * added; option to set ImageMagick application path explicitly #250 (akreitals)
+ * fixed; gm.compare: support values like 9.51582e-05 #260 [normanrz](https://github.com/normanrz)
+ * README: add call for maintainers
+
 1.14.2 / 2013-12-24
 ===================
 
