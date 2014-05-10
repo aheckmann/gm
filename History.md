@@ -1,4 +1,10 @@
 
+1.16.0 / 2014-05-09
+==================
+
+ * fixed; dropped "+" when 0 passed as vertical roll amt #267 [dwtkns](https://github.com/dwtkns)
+ * added; highlight-style support #272 [fdecampredon](https://github.com/fdecampredon)
+
 1.15.0 / 2014-05-03
 ===================
 
