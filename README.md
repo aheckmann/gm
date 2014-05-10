@@ -1,9 +1,28 @@
 
 THIS REPOSITORY NEEDS A MAINTAINER. IF YOU'RE INTERESTED IN MAINTAING THIS MODULE, PLEASE LET US KNOW!
 
-# gm v1.14.2 [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)
+# gm v1.15.0 [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)
 
 GraphicsMagick and ImageMagick for node
+
+## Getting started
+First download and install [GraphicsMagick](http://www.graphicsmagick.org/) or [ImageMagick](http://www.imagemagick.org/). In Mac OS X, you can simply use [Homebrew](http://mxcl.github.io/homebrew/) and do:
+
+    brew install imagemagick
+    brew install graphicsmagick
+
+If you want WebP support with ImageMagick, you must add the WebP option:
+
+    brew install imagemagick --with-webp
+
+then either use npm:
+
+    npm install gm
+
+or clone the repo:
+
+    git clone git://github.com/aheckmann/gm.git
+
 
 ## Basic Usage
 
@@ -232,24 +251,6 @@ gm('img.png').identify('%m', function (err, format) {
 ```
 
 since `%m` is the format option for getting the image file format.
-
-## Getting started
-First download and install [GraphicsMagick](http://www.graphicsmagick.org/) or [ImageMagick](http://www.imagemagick.org/). In Mac OS X, you can simply use [Homebrew](http://mxcl.github.io/homebrew/) and do:
-
-    brew install imagemagick
-    brew install graphicsmagick
-
-If you want WebP support with ImageMagick, you must add the WebP option:
-
-    brew install imagemagick --with-webp
-
-then either use npm:
-
-    npm install gm
-
-or clone the repo:
-
-    git clone git://github.com/aheckmann/gm.git
 
 ## Platform differences
 
