@@ -19,6 +19,7 @@ module.exports = function (gm, dir, finish, GM) {
 
         var options = {
           highlightColor: 'yellow',
+          highlightStyle: 'XOR',
           file: dir + '/diff.png',
           tolerance: 0.001
         };
