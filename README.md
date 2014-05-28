@@ -1,6 +1,4 @@
 
-THIS REPOSITORY NEEDS A MAINTAINER. IF YOU'RE INTERESTED IN MAINTAING THIS MODULE, PLEASE LET US KNOW!
-
 # gm v1.16.0 [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)
 
 GraphicsMagick and ImageMagick for node
