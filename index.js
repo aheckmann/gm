@@ -51,6 +51,17 @@ function gm (source, height, color) {
     if (color) {
       this.in("xc:"+ color);
     }
+  } else if(source.width && source.height) {
+    // new images
+    width = source.width;
+    height = source.height;
+    source = "";
+
+    this.in("-size", width + "x" + height);
+
+    if (color) {
+      this.in("xc:"+ color);
+    }
   }
 
   if (typeof source === "string") {
