@@ -22,6 +22,22 @@ or clone the repo:
     git clone git://github.com/aheckmann/gm.git
 
 
+## Use ImageMagick insted of gm
+
+Just pass the option `{imageMagick: true}` to enable ImageMagick
+
+```js
+var fs = require('fs')
+  , gm = require('./gm');
+
+// resize and remove EXIF profile data
+gm('/path/to/my/img.jpg')
+.options({imageMagick: true})
+.resize(240, 240)
+...
+```
+
+
 ## Basic Usage
 
 ```js
