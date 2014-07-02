@@ -502,7 +502,7 @@ Currently `gm.compare` only accepts file paths.
     gm.compare(path1, path2 [, options], callback)
 
 ```js
-gm.compare('/path/to/image1.jpg', '/path/to/another.png', function (err, isEqual, equality, raw) {
+gm.compare('/path/to/image1.jpg', '/path/to/another.png', function (err, isEqual, equality, raw, path1, path2) {
   if (err) return handle(err);
 
   // if the images were considered equal, `isEqual` will be true, otherwise, false.
@@ -512,7 +512,10 @@ gm.compare('/path/to/image1.jpg', '/path/to/another.png', function (err, isEqual
   console.log('Actual equality: %d', equality);
 
   // inspect the raw output
-  console.log(raw)
+  console.log(raw);
+
+  // print file paths
+  console.log(path1, path2);
 })
 ```
 
