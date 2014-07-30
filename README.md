@@ -187,10 +187,13 @@ gm(buf, 'image.jpg')
   console.log('Created an image from a Buffer!');
 });
 
-// A buffer can also be returned instead of a stream
+/*
+A buffer can also be returned instead of a stream
+The first argument to toBuffer is optional, it specifies the image format
+*/
 gm('img.jpg')
 .resize(100, 100)
-.toBuffer(function (err, buffer) {
+.toBuffer('PNG',function (err, buffer) {
   if (err) return handle(err);
   console.log('done!');
 })
