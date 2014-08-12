@@ -22,7 +22,7 @@ or clone the repo:
     git clone git://github.com/aheckmann/gm.git
 
 
-## Use ImageMagick insted of gm
+## Use ImageMagick instead of gm
 
 Just pass the option `{imageMagick: true}` to enable ImageMagick
 
