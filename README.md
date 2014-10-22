@@ -555,12 +555,12 @@ Currently, `gm.composite()` only accepts file paths.
     gm.composite(other [, mask])
 
 ```js
-    gm('/path/to/image.jpg')
-    .composite('/path/to/second_image.jpg')
-    .geometry('+100+150')
-    .write('/path/to/composite.png', function(err) {
-      if(!err) console.log("Written composite image.");
-    });
+gm('/path/to/image.jpg')
+.composite('/path/to/second_image.jpg')
+.geometry('+100+150')
+.write('/path/to/composite.png', function(err) {
+    if(!err) console.log("Written composite image.");
+});
 ```
 
 ## Contributors
