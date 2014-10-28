@@ -1,3 +1,14 @@
+1.17.0 / 2014-10-28
+==================
+
+ * changed: extended compare callback also returns the file names #297 [mastix](https://github.com/mastix)
+ * changed: pass spawn crash to callback #306 [medikoo](https://github.com/medikoo)
+ * changed: geometry supports arbitary string as first argument #330 [jdiez17](https://github.com/jdiez17)
+ * added: support for repage+ option #275 [desigens](https://github.com/desigens)
+ * added: added the dissolve command #300 [microadm](https://github.com/microadam)
+ * added: composite method #332 [jdiez17](https://github.com/jdiez17)
+ * fixed: cannot set tolerance to 0 #302 [rwky](https://github.com/rwky)
+ * fixed: handle empty buffers #330 [alcidesv](https://github.com/alcidesv)
 
 1.16.0 / 2014-05-09
 ==================
