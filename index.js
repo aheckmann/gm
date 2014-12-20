@@ -117,6 +117,7 @@ require("./lib/convenience")(gm.prototype);
 require("./lib/command")(gm.prototype);
 require("./lib/compare")(gm.prototype);
 require("./lib/composite")(gm.prototype);
+require("./lib/montage")(gm.prototype);
 
 /**
  * Expose.
