@@ -22,7 +22,7 @@ module.exports = function (gm, dir, finish, GM) {
   if (!GM.integration)
     return finish();
 
-  im.write(dir + '/density.png', function density (err) {
+  g.write(dir + '/density.png', function density (err) {
     finish(err);
   });
 };
