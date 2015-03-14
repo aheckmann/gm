@@ -7,6 +7,7 @@ module.exports = function (img, dir, finish, gm) {
   var m = img
   .scale(200, 100)
   .gravity("South")
+  .gravity("southeast") // check for case-insensitive value
   .extent(300,300);
 
   var args = m.args();
@@ -17,6 +18,8 @@ module.exports = function (img, dir, finish, gm) {
     '200x100',
     '-gravity',
     'South',
+    '-gravity',
+    'SouthEast',
     '-extent',
     '300x300',
     '-' ])

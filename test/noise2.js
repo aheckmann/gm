@@ -9,7 +9,7 @@ module.exports = function (gm, dir, finish, GM) {
   var args = m.args();
   assert.equal('convert', args[0]);
   assert.equal('+noise', args[2]);
-  assert.equal('laplacian', args[3]);
+  assert.equal('Laplacian', args[3]);
 
   if (!GM.integration)
     return finish();
