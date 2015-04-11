@@ -12,6 +12,5 @@ module.exports = function (gm, dir, finish, GM) {
   assert.equal('-geometry', args[2]);
   assert.equal('x100', args[3]); // Keep-aspect-ratio command
 
-  if (!GM.integration)
     return finish();
 }

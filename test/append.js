@@ -1,6 +1,6 @@
 var assert = require('assert')
 
-module.exports = function (_, dir, next, gm) {
+module.exports = function (_, dir, finish, gm) {
   var out = require('path').resolve(dir + '/append.jpg');
 
   try {
@@ -23,22 +23,22 @@ module.exports = function (_, dir, next, gm) {
   assert.equal('-',args[7]);
 
   if (!gm.integration) {
-    return horizontal(dir, next, gm);
+    return horizontal(dir, finish, gm);
   }
 
   m.write(out, function (err) {
-    if (err) return next(err);
+    if (err) return finish(err);
     gm(out).size(function (err, size) {
-      if (err) return next(err);
+      if (err) return finish(err);
       assert.equal(460, size.width);
       assert.equal(435, size.height);
 
-      horizontal(dir, next, gm);
+      horizontal(dir, finish, gm);
     })
   });
 }
 
-function horizontal (dir, next, gm) {
+function horizontal (dir, finish, gm) {
   var out = require('path').resolve(dir + '/appendHorizontal.jpg');
 
   var m = gm(dir + '/original.jpg')
@@ -52,18 +52,18 @@ function horizontal (dir, next, gm) {
   assert.equal('-',args[4]);
 
   if (!gm.integration) {
-    return next();
+    return finish();
   }
 
   m
   .write(out, function (err) {
-    if (err) return next(err);
+    if (err) return finish(err);
     gm(out).size(function (err, size) {
-      if (err) return next(err);
+      if (err) return finish(err);
       assert.equal(697, size.width);
       assert.equal(155, size.height);
 
-      next();
+      finish();
     })
   });
 

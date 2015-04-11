@@ -15,7 +15,6 @@ module.exports = function (_, dir, finish, gm) {
     assert.ok(err, "Expecting error on this buffer");
   });
 
-  if (!gm.integration)
-    return finish();
+  return finish();
 
 }
