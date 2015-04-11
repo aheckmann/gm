@@ -15,7 +15,6 @@ module.exports = function (_, dir, finish, gm, im) {
     "Extract",
     "Copy",
     "Shape",
-    "Remove",
     "Background"
   ];
   // alpha not supported by GM so only test IM
