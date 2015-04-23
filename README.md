@@ -24,15 +24,14 @@ or clone the repo:
 
 ## Use ImageMagick instead of gm
 
-Just pass the option `{imageMagick: true}` to enable ImageMagick
+Subclass `gm` to enable ImageMagick
 
 ```js
 var fs = require('fs')
-  , gm = require('./gm');
+  , gm = require('./gm').subClass({imageMagick: true});
 
 // resize and remove EXIF profile data
 gm('/path/to/my/img.jpg')
-.options({imageMagick: true})
 .resize(240, 240)
 ...
 ```
@@ -151,7 +150,7 @@ gm('/path/to/my/img.jpg')
 
 // combine the two for true streaming image processing
 var readStream = fs.createReadStream('/path/to/my/img.jpg');
-gm(readStream, 'img.jpg')
+gm(readStream)
 .resize('200', '200')
 .stream(function (err, stdout, stderr) {
   var writeStream = fs.createWriteStream('/path/to/my/resized.jpg');
@@ -164,7 +163,7 @@ gm(readStream, 'img.jpg')
 // you also need to convert (write() or stream()) the image afterwards
 // NOTE: this buffers the readStream in memory!
 var readStream = fs.createReadStream('/path/to/my/img.jpg');
-gm(readStream, 'img.jpg')
+gm(readStream)
 .size({bufferStream: true}, function(err, size) {
   this.resize(size.width / 2, size.height / 2)
   this.write('/path/to/resized.jpg', function (err) {
