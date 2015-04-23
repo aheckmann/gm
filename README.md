@@ -24,15 +24,14 @@ or clone the repo:
 
 ## Use ImageMagick instead of gm
 
-Just pass the option `{imageMagick: true}` to enable ImageMagick
+Subclass `gm` to enable ImageMagick
 
 ```js
 var fs = require('fs')
-  , gm = require('./gm');
+  , gm = require('./gm').subClass({imageMagick: true});
 
 // resize and remove EXIF profile data
 gm('/path/to/my/img.jpg')
-.options({imageMagick: true})
 .resize(240, 240)
 ...
 ```
