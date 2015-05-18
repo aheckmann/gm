@@ -1,3 +1,19 @@
+1.18.0 / 2015-05-18
+
+* changed: Removed support for node 0.8 and added support for 0.12
+* changed: Listen to stdin error event for spawn errors [kapouer](https://github.com/kapouer)
+* changed: Improved error handling when gm isn't installed [FreshXOpenSource](https://github.com/FreshXOpenSource)
+* changed: Allow append method to use an array of arguments [emohacker](https://github.com/emohacker)
+* changed: appPath option now specifies full path to gm binary John Borkowski
+* changed: Ignore warning messages for identify [asrail](https://github.com/asrail)
+* added: Montage method [donaldpcook](https://github.com/donaldpcook)
+* added: Progressive option to thumb [mohebifar](https://github.com/mohebifar)
+* added: Native gm auto-orient for use with gm >= 1.3.18 [bog](https://github.com/bog)
+* added: Timeout support by passing the timeout option in milliseconds [marcbachmann](https://github.com/marcbachmann)
+* fixed: density when using ImageMagick [syzer](https://github.com/syzer)
+* fixed: resize behaviour for falsy values [adius](https://github.com/adius)
+
+
 1.17.0 / 2014-10-28
 ==================
 
