@@ -8,6 +8,9 @@ var assert = require('assert');
 var gleak = require('gleak')();
 var fs = require('fs');
 
+gleak.whitelist.push(clearImmediate);
+gleak.whitelist.push(setImmediate);
+
 var only = process.argv.slice(2);
 gm.integration = !! ~process.argv.indexOf('--integration');
 if (gm.integration) only.shift();

@@ -1,6 +1,10 @@
+1.18.1 / 2015-05-18
+
+* changed: Added io.js support [rwky](https://github.com/rwky)
+
 1.18.0 / 2015-05-18
 
-* changed: Removed support for node 0.8 and added support for 0.12
+* changed: Removed support for node 0.8 and added support for 0.12 [rwky](https://github.com/rwky)
 * changed: Listen to stdin error event for spawn errors [kapouer](https://github.com/kapouer)
 * changed: Improved error handling when gm isn't installed [FreshXOpenSource](https://github.com/FreshXOpenSource)
 * changed: Allow append method to use an array of arguments [emohacker](https://github.com/emohacker)
