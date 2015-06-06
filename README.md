@@ -28,7 +28,7 @@ Subclass `gm` to enable ImageMagick
 
 ```js
 var fs = require('fs')
-  , gm = require('./gm').subClass({imageMagick: true});
+  , gm = require('gm').subClass({imageMagick: true});
 
 // resize and remove EXIF profile data
 gm('/path/to/my/img.jpg')
@@ -41,7 +41,7 @@ gm('/path/to/my/img.jpg')
 
 ```js
 var fs = require('fs')
-  , gm = require('./gm');
+  , gm = require('gm');
 
 // resize and remove EXIF profile data
 gm('/path/to/my/img.jpg')
