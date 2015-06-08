@@ -9,6 +9,9 @@ var util = require('util');
 
 util.inherits(gm, EventEmitter);
 
+// error handling when GraphicsMagick or ImageMagick aren't installed
+require('child_process').execSync('gm version');
+
 /**
  * Constructor.
  *
