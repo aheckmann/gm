@@ -1,12 +1,10 @@
-var fs = require('fs')
-  , gm = require('./gm')
-  , dir = __dirname + '/imgs';
+var gm = require('../')
+  , dir = __dirname + '/imgs'
+  , out = dir + '/appendMultiple.jpg';
 
-var out = dir + '/append.jpg'
-
-//use * for all appending all images
-gm(dir+'/*')
-.append(dir+'/four.jpg')
+// using globbing feature
+gm(dir+'/*.jpg')
+.append(dir+'/lost.png')
 .append()
 .background('#222')
 .write(out, function (err) {
