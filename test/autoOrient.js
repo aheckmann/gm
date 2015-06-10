@@ -14,7 +14,6 @@ module.exports = function (_, dir, finish, gm) {
 
     assert.equal('RightTop', o);
     assert.ok(!! this.data['Profile-EXIF'], 'No Profile-EXIF data found');
-    assert.equal('155x460', this.data.Geometry);
 
     // this image is sideways, but may be auto-oriented by modern OS's
     // try opening it in a browser to see its true orientation
