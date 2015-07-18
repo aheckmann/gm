@@ -8,7 +8,7 @@ module.exports = function (_, dir, finish, gm) {
   var original = dir + '/original.png';
   var resized = dir + '/resize';
   var widths = [300, 700, 400, 800, 200], i, cb;
-  var resize = function (width, index) {
+  var resizeExact = function (width, index) {
     var name = resized + index + '.png';
 
     if (index == widths.length) {
@@ -17,7 +17,7 @@ module.exports = function (_, dir, finish, gm) {
       index++;
     }
     gm(original)
-      .resize(width)
+      .resizeExact(width)
       .write(name, function(err){
         if (err) return finish(err);
 
@@ -25,26 +25,14 @@ module.exports = function (_, dir, finish, gm) {
           .size(function (err, size) {
             if (err) return finish(err);
             if (size.width !== width) {
-              gm(original)
-                .resizeExact(width)
-                .write(name, function (err) {
-                  if (err) return finish(err);
-
-                  gm(name)
-                    .size(function (err, size) {
-                      if (err) return finish(err);
-                      if (size.width !== width) {
-                        return finish("Wrong resizing on requested:" + width + ", resized:" + size.width);
-                      }
-                    });
-                });
+              return finish("Wrong resizing on requested:" + width + ", resized:" + size.width);
             }
 
             if (cb) return cb();
-            resize(widths[index], index);
+            resizeExact(widths[index], index);
           });
       });
   };
 
-  resize(widths[0], 0);
+  resizeExact(widths[0], 0);
 }
