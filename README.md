@@ -51,6 +51,23 @@ gm('/path/to/my/img.jpg')
   if (!err) console.log('done');
 });
 
+// some files would not be resized appropriately
+// http://stackoverflow.com/questions/5870466/imagemagick-incorrect-dimensions
+// you have two options:
+// use the '!' flag to ignore aspect ratio
+gm('/path/to/my/img.jpg')
+.resize(240, 240, '!')
+.write('/path/to/resize.png', function (err) {
+  if (!err) console.log('done');
+});
+
+// use the .resizeExact with only width and/or height arguments
+gm('/path/to/my/img.jpg')
+.resizeExact(240, 240)
+.write('/path/to/resize.png', function (err) {
+  if (!err) console.log('done');
+});
+
 // obtain the size of an image
 gm('/path/to/my/img.jpg')
 .size(function (err, size) {
