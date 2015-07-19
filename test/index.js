@@ -56,7 +56,7 @@ var q = async.queue(function (task, callback) {
     finish(filename)(err);
     callback();
   }, gm, im);
-}, 10);
+}, 1);
 
 q.drain = function(){
 
