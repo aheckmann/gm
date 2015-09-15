@@ -19,12 +19,22 @@ util.inherits(gm, EventEmitter);
 
 function gm (source, height, color) {
   var width;
+  var pid;
 
   if (!(this instanceof gm)) {
     return new gm(source, height, color);
   }
 
   EventEmitter.call(this);
+
+  this.on("pid-announce", function(data) {
+    this.pid = data.pid
+    console.log(this.pid)
+  });
+
+  this.sharePid = function(pid){
+    this.emit("pid-announce", {pid:pid});
+  }
 
   this._options = {};
   this.options(this.__proto__._options);
