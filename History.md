@@ -1,3 +1,14 @@
+1.19 / 2015-09-16
+
+* changed: Added error to notify about image magick not supporting minify [encima](https://github.com/encima)
+* changed: Refactored orientation getter to use faster identify call [lbeschastny](https://github.com/lbeschastny)
+* added: resizeExact function [DanMMX](https://github.com/DanMMX)
+* added: thumbExact function [DanMMX](https://github.com/DanMMX)
+* added: Add format inference from filename for buffers/streams [adurrive](https://github.com/adurrive)
+* fixed: Hex values when passed to compare aren't quoted automatically [DanMMX](https://github.com/DanMMX)
+* fixed: identify returning last frame size instead of the larges on animated gifs [preynal](https://github.com/preynal)
+* docs: Updated docs [laurilehmijoki](https://github.com/laurilehmijoki)
+
 1.18.1 / 2015-05-18
 
 * changed: Added io.js support [rwky](https://github.com/rwky)
