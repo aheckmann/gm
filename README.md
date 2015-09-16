@@ -1,7 +1,11 @@
 
-# gm v1.18.1 [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)  [![NPM Version](https://img.shields.io/npm/v/gm.svg?style=flat)](https://www.npmjs.org/package/gm)
+# gm [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)  [![NPM Version](https://img.shields.io/npm/v/gm.svg?style=flat)](https://www.npmjs.org/package/gm)
 
 GraphicsMagick and ImageMagick for node
+
+## Bug Reports
+
+When reporting bugs please include the version of graphicsmagick/imagemagick you're using (gm -version/convert -version) as well as the version of this module and copies of any images you're having problems with.
 
 ## Getting started
 First download and install [GraphicsMagick](http://www.graphicsmagick.org/) or [ImageMagick](http://www.imagemagick.org/). In Mac OS X, you can simply use [Homebrew](http://mxcl.github.io/homebrew/) and do:
@@ -302,6 +306,8 @@ Please document and refer to any [platform or ImageMagick/GraphicsMagick issues/
   - 1) `gm(path)` When you pass a string as the first argument it is interpreted as the path to an image you intend to manipulate.
   - 2) `gm(stream || buffer, [filename])` You may also pass a ReadableStream or Buffer as the first argument, with an optional file name for format inference.
   - 3) `gm(width, height, [color])` When you pass two integer arguments, gm will create a new image on the fly with the provided dimensions and an optional background color. And you can still chain just like you do with pre-existing images too. See [here](http://github.com/aheckmann/gm/blob/master/examples/new.js) for an example.
+
+The links below refer to an older version of gm but everything should still work, if anyone feels like updating them please make a PR
 
 ## Methods
 
