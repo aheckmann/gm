@@ -30,7 +30,7 @@ function gm (source, height, color) {
     this.pid = data.pid
   })
 
-  this.sharePid = function (pid) {
+  this.announcePid = function (pid) {
     this.emit("pid-announce", {pid: pid});
   }
 
