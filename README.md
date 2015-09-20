@@ -268,6 +268,16 @@ gm('img.png').identify('%m', function (err, format) {
 
 since `%m` is the format option for getting the image file format.
 
+## Events
+Gm  supports notifying parent process about events via "pid-announce":
+
+```js
+gm(dir + '/original.png')
+  .colorize(80, 0, 30)
+  .on("pid-announce", function(data){console.log("Child Process spawned with pid:", data.pid)})
+  .write(dir + '/colorize.jpg', function(err){})
+```
+  
 ## Platform differences
 
 Please document and refer to any [platform or ImageMagick/GraphicsMagick issues/differences here](https://github.com/aheckmann/gm/wiki/GraphicsMagick-and-ImageMagick-versions).
