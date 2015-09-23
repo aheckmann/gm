@@ -159,12 +159,12 @@ gm('/path/to/my/img.jpg')
 // gm will provide image data in that format
 gm('/path/to/my/img.jpg')
 .stream('png', function (err, stdout, stderr) {
-  var writeStream = fs.createWriteStream('/path/to/my/reformated.png');
+  var writeStream = fs.createWriteStream('/path/to/my/reformatted.png');
   stdout.pipe(writeStream);
 });
 
 // or without the callback
-var writeStream = fs.createWriteStream('/path/to/my/reformated.png');
+var writeStream = fs.createWriteStream('/path/to/my/reformatted.png');
 gm('/path/to/my/img.jpg')
 .stream('png')
 .pipe(writeStream);
