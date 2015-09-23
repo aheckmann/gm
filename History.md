@@ -1,4 +1,8 @@
-1.19 / 2015-09-16
+1.20.0 / 2015-09-23
+
+* changed: Reverted "Add format inference from filename for buffers/streams" due to errors #448
+
+1.19.0 / 2015-09-16
 
 * changed: Added error to notify about image magick not supporting minify [encima](https://github.com/encima)
 * changed: Refactored orientation getter to use faster identify call [lbeschastny](https://github.com/lbeschastny)
