@@ -17,6 +17,13 @@ module.exports = function (gm, dir, finish, GM) {
   var args2 = m2.args();
   assert.equal('200x155+300+0%', args2[3]);
 
+  var m3 = GM(dir + '/image.png')
+  .crop(200, 155, 300, 0, '!');
+
+  var args3 = m3.args();
+  assert.equal('200x155+300+0!', args3[3]);
+
+
   if (!GM.integration)
     return finish();
 
