@@ -74,7 +74,6 @@ function gm (source, height, color) {
     var inputFromStdin = this.sourceStream || this.sourceBuffer;
     var ret = inputFromStdin ? '-' : this.source;
 
-    if (inputFromStdin && this.source && this.source !== 'unknown.jpg') ret = this.source.split('.').pop() + ':-';
     if (ret && this.sourceFrames) ret += this.sourceFrames;
 
     src.length = 0;

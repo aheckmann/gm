@@ -7,7 +7,8 @@ module.exports = function (_, dir, finish, gm) {
   // The following invocation should fail, because 'convert' 
   // has no way of interpreting the file.
   gm(
-    svg_file
+    svg_file, 
+    './test.svg' // fiction
     ).options({
       imageMagick: true
   }).setFormat('png').toBuffer(function(err, buffer) {
