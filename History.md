@@ -1,3 +1,7 @@
+1.21.1 / 2015-10-26
+
+* fixed: Fixed #465 hard coded gm binary, also fixed issues with compare and fixed tests so they will fail on subsequent runs when they should do [rwky](https://github.com/rwky)
+
 1.21.0 / 2015-10-26 **contains security fix**
 
 * fixed: gm.compare fails to escape arguments properly (Reported by Brendan Scarvell) [rwky](https://github.com/rwky)
