@@ -1,3 +1,7 @@
+1.21.0 / 2015-10-26 **contains security fix**
+
+* fixed: gm.compare fails to escape arguments properly (Reported by Brendan Scarvell) [rwky](https://github.com/rwky)
+
 1.20.0 / 2015-09-23
 
 * changed: Reverted "Add format inference from filename for buffers/streams" due to errors #448
