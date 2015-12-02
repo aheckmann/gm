@@ -6,8 +6,8 @@ module.exports = function (gm, dir, finish, GM) {
   if (!GM.integration)
     return finish();
 
-  gm(__dirname + '/fixtures/doge.jpg')
-  .avatar(__dirname + '/fixtures/doge-avatar.png', function(err)
+  gm
+  .avatar(__dirname + '/fixtures/avatar.png', function(err)
   {
     if(err)
     {
@@ -15,7 +15,7 @@ module.exports = function (gm, dir, finish, GM) {
     }
     else
     {
-      gm.compare(__dirname + '/fixtures/doge-avatar.png', __dirname + '/fixtures/doge-avatar-compare.png',
+      gm.compare(__dirname + '/fixtures/avatar.png', __dirname + '/fixtures/avatar-compare.png',
       function (err, isEqual)
       {
         if (err) return handle(err);
