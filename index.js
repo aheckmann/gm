@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -20,11 +19,14 @@ util.inherits(gm, EventEmitter);
 function gm(source, height, color) {
   var width;
 
+
   if (!(this instanceof gm)) {
     return new gm(source, height, color);
   }
 
   EventEmitter.call(this);
+
+  this.initMonitoring();
 
   this._options = {};
   this.options(this.__proto__._options);
@@ -130,4 +132,3 @@ module.exports.compare = require('./lib/compare')();
 module.exports.version = JSON.parse(
   require('fs').readFileSync(__dirname + '/package.json', 'utf8')
 ).version;
-
