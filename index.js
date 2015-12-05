@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -17,14 +16,17 @@ util.inherits(gm, EventEmitter);
  * @param {String} [color] - optional hex background color of created img
  */
 
-function gm (source, height, color) {
+function gm(source, height, color) {
   var width;
+
 
   if (!(this instanceof gm)) {
     return new gm(source, height, color);
   }
 
   EventEmitter.call(this);
+
+  this.initMonitoring();
 
   this._options = {};
   this.options(this.__proto__._options);
@@ -49,7 +51,7 @@ function gm (source, height, color) {
     this.in("-size", width + "x" + height);
 
     if (color) {
-      this.in("xc:"+ color);
+      this.in("xc:" + color);
     }
   }
 
@@ -68,7 +70,7 @@ function gm (source, height, color) {
 
   this.source = source;
 
-  this.addSrcFormatter(function (src) {
+  this.addSrcFormatter(function(src) {
     // must be first source formatter
 
     var inputFromStdin = this.sourceStream || this.sourceBuffer;
@@ -89,8 +91,8 @@ function gm (source, height, color) {
  */
 
 var parent = gm;
-gm.subClass = function subClass (options) {
-  function gm (source, height, color) {
+gm.subClass = function subClass(options) {
+  function gm(source, height, color) {
     if (!(this instanceof parent)) {
       return new gm(source, height, color);
     }
@@ -118,6 +120,7 @@ require("./lib/command")(gm.prototype);
 require("./lib/compare")(gm.prototype);
 require("./lib/composite")(gm.prototype);
 require("./lib/montage")(gm.prototype);
+require("./lib/monitor")(gm.prototype);
 
 /**
  * Expose.
@@ -129,4 +132,3 @@ module.exports.compare = require('./lib/compare')();
 module.exports.version = JSON.parse(
   require('fs').readFileSync(__dirname + '/package.json', 'utf8')
 ).version;
-
