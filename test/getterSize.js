@@ -11,9 +11,13 @@ module.exports = function (_, dir, finish, gm) {
     sizeGIF(function (err) {
       if (err) return finish(err);
 
-      sizePNG(finish);
-    })
-  })
+      sizePNG(function (err) {
+        if (err) return finish(err);
+
+        sizeSVG(finish);
+      });
+    });
+  });
 
   function sizeJPEG(done) {
     gm(dir + '/original.jpg')
@@ -32,11 +36,11 @@ module.exports = function (_, dir, finish, gm) {
     .size(function (err, size) {
       if (err) return done(err);
 
-      assert.equal(size.width, 192)
-      assert.equal(size.height, 56)
+      assert.equal(size.width, 192);
+      assert.equal(size.height, 56);
 
-      done()
-    })
+      done();
+    });
   }
 
   function sizePNG(done) {
@@ -44,10 +48,22 @@ module.exports = function (_, dir, finish, gm) {
     .size(function (err, size) {
       if (err) return done(err);
 
-      assert.equal(size.width, 460)
-      assert.equal(size.height, 155)
+      assert.equal(size.width, 460);
+      assert.equal(size.height, 155);
 
-      done()
-    })
+      done();
+    });
+  }
+
+  function sizeSVG(done) {
+    gm(dir + '/original.svg')
+    .size(function (err, size) {
+      if (err) return done(err);
+
+      assert.equal(size.width, 216);
+      assert.equal(size.height, 216);
+
+      done();
+    });
   }
 }

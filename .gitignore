@@ -4,6 +4,7 @@ examples/imgs/*
 !examples/imgs/original.jpg
 !examples/imgs/original.png
 !examples/imgs/original.gif
+!examples/imgs/original.svg
 !examples/imgs/originalSideways.jpg
 !examples/imgs/morpher.jpg
 !examples/imgs/photo.JPG
