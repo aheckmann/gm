@@ -64,6 +64,12 @@ function gm (source, height, color) {
       this.sourceFrames = source.substr(frames.index, frames[0].length);
       source = source.substr(0, frames.index);
     }
+
+    // parse out extension
+    var ext = source.match(/\.(\w+)$/);
+    if (ext && source !== 'unknown.jpg') {
+      this.sourceExt = ext[1].toLowerCase();
+    }
   }
 
   this.source = source;
@@ -74,6 +80,7 @@ function gm (source, height, color) {
     var inputFromStdin = this.sourceStream || this.sourceBuffer;
     var ret = inputFromStdin ? '-' : this.source;
 
+    if (inputFromStdin && this.sourceExt) ret = this.sourceExt + ':-';
     if (ret && this.sourceFrames) ret += this.sourceFrames;
 
     src.length = 0;

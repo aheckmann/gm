@@ -7,7 +7,7 @@ module.exports = function (_, dir, finish, gm) {
 
   var args = m.args();
   assert.equal('convert', args[0]);
-  assert.equal('-[0]', args[1]);
+  assert.equal('gif:-[0]', args[1]);
 
   if (!gm.integration)
     return finish();
