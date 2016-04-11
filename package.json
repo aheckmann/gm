@@ -1,7 +1,7 @@
 {
   "name": "gm",
   "description": "GraphicsMagick and ImageMagick for node.js",
-  "version": "1.21.1",
+  "version": "1.22.0",
   "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>",
   "keywords": [
     "graphics",

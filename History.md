@@ -1,3 +1,11 @@
+
+1.22.0 / 2016-04-07
+
+ * fixed; identity parser: support multi-value keys by creating an array #508 #509 [emaniacs](https://github.com/emaniacs)
+ * fixed; error handling if gm is not installed #499 [aeo3](https://github.com/aeo3)
+ * fixed; highlightColor typo in compare #504 [DanielHudson](https://github.com/DanielHudson)
+ * docs; Fix typo #475 [rodrigoalviani](https://github.com/rodrigoalviani)
+
 1.21.1 / 2015-10-26
 
 * fixed: Fixed #465 hard coded gm binary, also fixed issues with compare and fixed tests so they will fail on subsequent runs when they should do [rwky](https://github.com/rwky)
