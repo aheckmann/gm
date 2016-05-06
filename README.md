@@ -45,7 +45,8 @@ gm('/path/to/my/img.jpg')
 
 ```js
 var fs = require('fs')
-  , gm = require('gm');
+  , gm = require('gm')
+  , im = require('gm').subClass({ imageMagick: true });
 
 // resize and remove EXIF profile data
 gm('/path/to/my/img.jpg')
@@ -124,6 +125,24 @@ gm('/path/to/my/img.jpg')
 gm(200, 400, "#ddff99f3")
 .drawText(10, 50, "from scratch")
 .write("/path/to/brandNewImg.jpg", function (err) {
+  // ...
+});
+
+// also supports imagemagick stacks
+im('test.psd[0]')
+.rotate('green', '-90') // rotates only once for both outputs
+.pipeline()
+  .clone(0)
+  .autoOrient()
+  .resize(100, 100)
+  .write('test100.png')
+.close()
+.pipeline()
+  .clone(0)
+  .resize(500, 500)
+  .write('test500.jpg')
+.close()
+.write("NULL:", function (err) { // throw away the collection of layers
   // ...
 });
 ```
