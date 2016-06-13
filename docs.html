@@ -678,6 +678,10 @@ gm("img.png").append("another.jpg", "third.gif", true)
             <p>See the <a href="http://www.graphicsmagick.org/GraphicsMagick.html#details-segment">docs</a> for detail.</p>
             <pre><code>gm("img.png").segment(clusterThreshold, smoothingThreshold)</code></pre>
           </li>
+          <li id="selectframe"><a href="#">selectFrame</a>
+            <p>Helpful if we process a large .gif so we don't load in memory each frame.</p>
+            <pre><code>gm("img.png").selectFrame(0)</code></pre>
+          </li>
           <li id="sepia"><a href="#">sepia</a>
             <p>A convenience method to apply a sepia effect to the image.</p>
             <pre><code>gm("img.png").sepia()</code></pre>
