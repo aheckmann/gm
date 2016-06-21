@@ -138,6 +138,18 @@ gm(readStream, 'img.jpg')
   if (!err) console.log('done');
 });
 
+
+// passing a downloadable image by url
+
+var request = require('request');
+var url = "www.abc.com/pic.jpg"
+
+gm(request(url))
+.write('/path/to/reformat.png', function (err) {
+  if (!err) console.log('done');
+});
+
+
 // can also stream output to a ReadableStream
 // (can be piped to a local file or remote server)
 gm('/path/to/my/img.jpg')
