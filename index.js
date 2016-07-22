@@ -126,7 +126,10 @@ require("./lib/montage")(gm.prototype);
 module.exports = exports = gm;
 module.exports.utils = require('./lib/utils');
 module.exports.compare = require('./lib/compare')();
-module.exports.version = JSON.parse(
-  require('fs').readFileSync(__dirname + '/package.json', 'utf8')
-).version;
 
+var fs = require('fs');
+if (fs.readFileSync) {
+  module.exports.version = JSON.parse(
+    fs.readFileSync(__dirname + '/package.json', 'utf8')
+  ).version;
+}
