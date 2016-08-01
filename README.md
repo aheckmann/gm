@@ -325,7 +325,7 @@ The links below refer to an older version of gm but everything should still work
 
   - getters
     - [size](http://aheckmann.github.com/gm/docs.html#getters) - returns the size (WxH) of the image
-    - [orientation](http://aheckmann.github.com/gm/docs.html#orientation) - returns the EXIF orientation of the image
+    - [orientation](http://aheckmann.github.com/gm/docs.html#getters) - returns the EXIF orientation of the image
     - [format](http://aheckmann.github.com/gm/docs.html#getters) - returns the image format (gif, jpeg, png, etc)
     - [depth](http://aheckmann.github.com/gm/docs.html#getters) - returns the image color depth
     - [color](http://aheckmann.github.com/gm/docs.html#getters) - returns the number of colors
