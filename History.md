@@ -1,4 +1,14 @@
 
+1.23.0 / 2016-08-03
+
+ * fixed; webpack support #547 sean-shirazi
+ * fixed; windows support - use cross-spawn to spawn processes #537 bdukes
+ * added; allow thumbnail to accept the same options as resize #527 Sebmaster
+ * added; dispose support #487 dlwr
+ * docs; add example of loading image from URL #544 wahengchang
+ * docs; Fix a link in README.md #532 clbn
+ * travis; update travis versions #551 amilajack
+
 1.22.0 / 2016-04-07
 
  * fixed; identity parser: support multi-value keys by creating an array #508 #509 [emaniacs](https://github.com/emaniacs)
