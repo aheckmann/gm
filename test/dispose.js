@@ -7,9 +7,9 @@ module.exports = function (img, dir, finish, gm) {
   assert.equal(undefined, gm.prototype._options.disposers);
   assert.equal(undefined, img._options.disposers);
 
-  emitter = new EventEmitter();
+  var emitter = new EventEmitter();
 
-  disposer = {
+  var disposer = {
     emitter: emitter,
     events: ['pleaseDispose', 'readyToDispose']
   };
@@ -36,8 +36,6 @@ module.exports = function (img, dir, finish, gm) {
   function noDispose() {
     gm(dir + '/photo.JPG').options({ disposers: [ disposer ]})
     .thumb(1000, 1000, dir + '/dispose.png', function (err) {
-      delete emitter;
-      delete disposer;
       finish(err);
     });
     emitter.emit('disposeOK');
