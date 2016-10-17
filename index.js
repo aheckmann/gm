@@ -33,6 +33,7 @@ function gm (source, height, color) {
   this._in = [];
   this._out = [];
   this._outputFormat = null;
+  this._inputFormat = null;
   this._subCommand = 'convert';
 
   if (source instanceof Stream) {
@@ -73,6 +74,10 @@ function gm (source, height, color) {
 
     var inputFromStdin = this.sourceStream || this.sourceBuffer;
     var ret = inputFromStdin ? '-' : this.source;
+
+    if (this._inputFormat) {
+      ret = this._inputFormat + ':' + ret;
+    }
 
     if (ret && this.sourceFrames) ret += this.sourceFrames;
 
