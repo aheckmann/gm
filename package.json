@@ -4,17 +4,17 @@
 , "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>"
 , "keywords": ["nodejs", "graphics magick", "graphics", "magick", "image", "graphicsmagick", "imagemagick"]
 , "engines": { "node": ">= 0.4.2" }
-, "bugs": "http://github.com/aheckmann/gm/issues"
-, "licenses": [{ "type": "MIT", "url": "http://www.opensource.org/licenses/mit-license.php"}]
+, "bugs": "https://github.com/aheckmann/gm/issues"
+, "licenses": [{ "type": "MIT", "url": "https//www.opensource.org/licenses/mit-license.php"}]
 , "main": "./index"
 , "contributors": [
       { "name": "Aaron Heckmann", "email": "aaron.heckmann+github@gmail.com" }
-    , { "name": "Tero Parviainen", "github": "http://github.com/teropa" }
-    , { "name": "Evan Owen", "github": "http://github.com/kainosnoema" }
+    , { "name": "Tero Parviainen", "github": "https://github.com/teropa" }
+    , { "name": "Evan Owen", "github": "https://github.com/kainosnoema" }
   ]
 , "repository": {
       "type": "git"
-    , "url": "http://github.com/aheckmann/gm.git"
+    , "url": "https://github.com/aheckmann/gm.git"
   }
 , "devDependencies": {
       "should": "0.2.1"
