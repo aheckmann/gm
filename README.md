@@ -16,6 +16,11 @@ First download and install [GraphicsMagick](http://www.graphicsmagick.org/) or [
 If you want WebP support with ImageMagick, you must add the WebP option:
 
     brew install imagemagick --with-webp
+    
+On Linux
+
+    apt-get install imagemagick
+    apt-get install graphicsmagick
 
 then either use npm:
 
