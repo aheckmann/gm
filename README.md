@@ -22,6 +22,10 @@ On Linux
     apt-get install imagemagick
     apt-get install graphicsmagick
 
+If you also need support for WebP:
+
+    apt-get install libwebp-dev
+
 then either use npm:
 
     npm install gm
