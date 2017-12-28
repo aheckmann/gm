@@ -1,7 +1,7 @@
 
 # gm [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)  [![NPM Version](https://img.shields.io/npm/v/gm.svg?style=flat)](https://www.npmjs.org/package/gm)
 
-GraphicsMagick and ImageMagick for node
+GraphicsMagick and ImageMagick (up to 6th version) for node
 
 ## Bug Reports
 
@@ -10,8 +10,10 @@ When reporting bugs please include the version of graphicsmagick/imagemagick you
 ## Getting started
 First download and install [GraphicsMagick](http://www.graphicsmagick.org/) or [ImageMagick](http://www.imagemagick.org/). In Mac OS X, you can simply use [Homebrew](http://mxcl.github.io/homebrew/) and do:
 
-    brew install imagemagick
+    brew install imagemagick@6
     brew install graphicsmagick
+    
+*Note: latest version of ImageMagick is not yet supported. You need to install 6th version*
 
 If you want WebP support with ImageMagick, you must add the WebP option:
 
