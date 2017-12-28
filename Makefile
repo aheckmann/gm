@@ -1,8 +1,11 @@
 
-test:
+test: security
 	@node test/ --integration $(TESTS)
 
-test-unit:
+test-unit: security
 	@node test/ $(TESTS)
 
-.PHONY: test test-unit
+security:
+	@node_modules/.bin/nsp check
+
+.PHONY: test test-unit security

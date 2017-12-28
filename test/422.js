@@ -29,7 +29,9 @@ module.exports = function (gm, dir, finish, GM) {
           if (err) return finish(err);
 
           fs.exists(options.file, function(exists) {
-            if (exists) finish();
+            if (exists) {
+		fs.unlink(options.file, finish);
+		}
             else finish(new Error('Diff file does not exist.'));
           });
         });

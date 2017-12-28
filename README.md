@@ -138,6 +138,18 @@ gm(readStream, 'img.jpg')
   if (!err) console.log('done');
 });
 
+
+// passing a downloadable image by url
+
+var request = require('request');
+var url = "www.abc.com/pic.jpg"
+
+gm(request(url))
+.write('/path/to/reformat.png', function (err) {
+  if (!err) console.log('done');
+});
+
+
 // can also stream output to a ReadableStream
 // (can be piped to a local file or remote server)
 gm('/path/to/my/img.jpg')
@@ -159,12 +171,12 @@ gm('/path/to/my/img.jpg')
 // gm will provide image data in that format
 gm('/path/to/my/img.jpg')
 .stream('png', function (err, stdout, stderr) {
-  var writeStream = fs.createWriteStream('/path/to/my/reformated.png');
+  var writeStream = fs.createWriteStream('/path/to/my/reformatted.png');
   stdout.pipe(writeStream);
 });
 
 // or without the callback
-var writeStream = fs.createWriteStream('/path/to/my/reformated.png');
+var writeStream = fs.createWriteStream('/path/to/my/reformatted.png');
 gm('/path/to/my/img.jpg')
 .stream('png')
 .pipe(writeStream);
@@ -313,7 +325,7 @@ The links below refer to an older version of gm but everything should still work
 
   - getters
     - [size](http://aheckmann.github.com/gm/docs.html#getters) - returns the size (WxH) of the image
-    - [orientation](http://aheckmann.github.com/gm/docs.html#orientation) - returns the EXIF orientation of the image
+    - [orientation](http://aheckmann.github.com/gm/docs.html#getters) - returns the EXIF orientation of the image
     - [format](http://aheckmann.github.com/gm/docs.html#getters) - returns the image format (gif, jpeg, png, etc)
     - [depth](http://aheckmann.github.com/gm/docs.html#getters) - returns the image color depth
     - [color](http://aheckmann.github.com/gm/docs.html#getters) - returns the number of colors

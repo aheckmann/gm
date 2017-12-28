@@ -5,12 +5,7 @@ var async = require('async');
 var dir = __dirname + '/../examples/imgs';
 var gm = require('../');
 var assert = require('assert');
-var gleak = require('gleak')();
 var fs = require('fs');
-
-gleak.whitelist.push(clearImmediate);
-gleak.whitelist.push(setImmediate);
-
 var only = process.argv.slice(2);
 gm.integration = !! ~process.argv.indexOf('--integration');
 if (gm.integration) only.shift();
@@ -63,8 +58,6 @@ q.drain = function(){
 process.stdout.write('\033[?25h');
     process.stdout.write('\033[2K');
     process.stdout.write('\033[0G');
-    var leaks = gleak.detect();
-    assert.equal(0, leaks.length, "global leaks detected: " + leaks);
     console.error("\n\u001B[32mAll tests passed\u001B[0m");
 };
 
