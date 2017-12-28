@@ -1,4 +1,10 @@
 
+1.23.1 / 2017-12-27
+
+ * fixed: use debug > 2.6.9 because of security issue #685 danez
+ * tests; add nsp check
+ * tests; get tests passing on OSX
+
 1.23.0 / 2016-08-03
 
  * fixed; webpack support #547 sean-shirazi
