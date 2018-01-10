@@ -154,9 +154,13 @@ gm(request(url))
 // (can be piped to a local file or remote server)
 gm('/path/to/my/img.jpg')
 .resize('200', '200')
-.stream(function (err, stdout, stderr) {
+.stream(function (err, stdout, stderr, cmd, proc) {
   var writeStream = fs.createWriteStream('/path/to/my/resized.jpg');
   stdout.pipe(writeStream);
+
+  proc.on('error', function (e) {
+    // Handle error.
+  });
 });
 
 // without a callback, .stream() returns a stream
@@ -170,7 +174,7 @@ gm('/path/to/my/img.jpg')
 // pass a format or filename to stream() and
 // gm will provide image data in that format
 gm('/path/to/my/img.jpg')
-.stream('png', function (err, stdout, stderr) {
+.stream('png', function (err, stdout, stderr, cmd, proc) {
   var writeStream = fs.createWriteStream('/path/to/my/reformatted.png');
   stdout.pipe(writeStream);
 });
@@ -185,7 +189,7 @@ gm('/path/to/my/img.jpg')
 var readStream = fs.createReadStream('/path/to/my/img.jpg');
 gm(readStream)
 .resize('200', '200')
-.stream(function (err, stdout, stderr) {
+.stream(function (err, stdout, stderr, cmd, proc) {
   var writeStream = fs.createWriteStream('/path/to/my/resized.jpg');
   stdout.pipe(writeStream);
 });
