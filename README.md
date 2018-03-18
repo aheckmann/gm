@@ -580,6 +580,24 @@ gm.compare('/path/to/image1.jpg', '/path/to/another.png', options, function (err
 })
 ```
 
+You can also provide a `flags` property, which you can use to directly set
+additional [command-line options](http://www.imagemagick.org/script/compare.php):
+
+```js
+var options = {
+  file: '/path/to/diff.png',
+  highlightColor: 'yellow',
+  tolerance: 0.02,
+  flags: {
+    '-compare': 'src',
+    '-colorspace': 'CMYK'
+  }
+}
+gm.compare('/path/to/image1.jpg', '/path/to/another.png', options, function (err, isEqual, equality, raw) {
+  ...
+})
+```
+
 ##composite
 
 GraphicsMagick supports compositing one image on top of another. This is exposed through `gm.composite()`. Its first argument is an image path with the changes to the base image, and an optional mask image.
