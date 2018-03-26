@@ -126,6 +126,13 @@ gm(200, 400, "#ddff99f3")
 .write("/path/to/brandNewImg.jpg", function (err) {
   // ...
 });
+
+// nice
+gm('/path/to/my/img.jpg')
+.options({nice: 10})
+.write('/path/to/resize.png', function (err) {
+  if (!err) console.log('done');
+});
 ```
 
 ## Streams
