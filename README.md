@@ -12,6 +12,7 @@ First download and install [GraphicsMagick](http://www.graphicsmagick.org/) or [
 
     brew install imagemagick
     brew install graphicsmagick
+    brew install ghostscript
 
 If you want WebP support with ImageMagick, you must add the WebP option:
 
