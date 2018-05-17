@@ -12,7 +12,7 @@ util.inherits(gm, EventEmitter);
 /**
  * Constructor.
  *
- * @param {String|Number} path - path to img source or ReadableStream or width of img to create
+ * @param {String|Number} path - path or array of paths to img source or ReadableStream or width of img to create
  * @param {Number} [height] - optional filename of ReadableStream or height of img to create
  * @param {String} [color] - optional hex background color of created img
  */
@@ -64,6 +64,13 @@ function gm (source, height, color) {
       this.sourceFrames = source.substr(frames.index, frames[0].length);
       source = source.substr(0, frames.index);
     }
+  }
+  
+  if (Array.isArray(source)) {
+    // then source is an array of paths
+    // this allow set programatically several sources 
+    this.in.apply(this, source); //ES6 this.in(...source);
+    source = undefined;
   }
 
   this.source = source;
