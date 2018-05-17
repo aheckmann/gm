@@ -126,6 +126,18 @@ gm(200, 400, "#ddff99f3")
 .write("/path/to/brandNewImg.jpg", function (err) {
   // ...
 });
+
+// several source images to one file that allow pages (pdf, gif, tiff)
+gm(['/path/to/img1.jpg', '/path/to/img2.png'])
+.write("/path/to/pdfWithImagesInPages.pdf", function (err) {
+  // ...
+});
+
+// several source pdf pages to one file that allow pages even other pdf (pdf, gif, tiff)
+gm(['/path/to/file.pdf[0]', '/path/to/file.pdf[1]'])
+.write("/path/to/pdfWithSelectedPages.pdf", function (err) {
+  // ...
+});
 ```
 
 ## Streams
