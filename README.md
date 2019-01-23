@@ -28,7 +28,7 @@ or clone the repo:
 
 ## Use ImageMagick instead of gm
 
-Subclass `gm` to enable ImageMagick
+Subclass `gm` to enable ImageMagick 7- or 7+ with legacy utilities installed
 
 ```js
 var fs = require('fs')
@@ -38,6 +38,13 @@ var fs = require('fs')
 gm('/path/to/my/img.jpg')
 .resize(240, 240)
 ...
+```
+
+Subclass `gm` to enable ImageMagick 7+
+
+```
+var fs = require('fs')
+  , gm = require('gm').subClass({imageMagick: '7+'});
 ```
 
 
