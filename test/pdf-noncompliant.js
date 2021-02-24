@@ -1,5 +1,6 @@
 'use strict';
 
+//https://github.com/aheckmann/gm/issues/820
 var assert = require('assert');
 var fs = require('fs');
 var path = require('path');
