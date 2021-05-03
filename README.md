@@ -40,6 +40,24 @@ gm('/path/to/my/img.jpg')
 ...
 ```
 
+## Typescript
+
+```ts
+import gm from 'gm';
+
+// any gm command
+```
+
+### ImageMagick Subclass
+
+```ts
+
+import { subClass } from 'gm';
+
+const gm = subClass({imageMagick: true});
+
+// any gm command
+```
 
 ## Basic Usage
 
