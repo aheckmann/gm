@@ -11,3 +11,4 @@ examples/imgs/*
 !examples/imgs/orientation/*.correct.jpg
 *.sw*
 .idea
+.vscode
