@@ -13,11 +13,6 @@ First download and install [GraphicsMagick](http://www.graphicsmagick.org/) or [
     brew install imagemagick
     brew install graphicsmagick
 
-If you want WebP support, you must add the WebP option:
-
-    brew install imagemagick --with-webp
-    brew install graphicsmagick --with-webp
-
 then either use npm:
 
     npm install gm
