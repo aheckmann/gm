@@ -2,7 +2,6 @@
 var assert = require('assert')
 
 module.exports = function (_, dir, finish, gm) {
-
   assert.equal('gm', gm('test').constructor.name);
   assert.equal(undefined, gm.prototype._options.imageMagick);
 
@@ -17,6 +16,9 @@ module.exports = function (_, dir, finish, gm) {
 
   var g = gm('test');
   assert.equal(undefined, g._options.imageMagick);
+
+  var imageMagick7 = gm.subClass({ imageMagick: '7+'});
+  assert.equal('7+', imageMagick7.prototype._options.imageMagick);
 
   if (!gm.integration)
     return finish();

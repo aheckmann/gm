@@ -22,9 +22,11 @@ function filter (file) {
   return true;
 }
 
-function test (imagemagick) {
-  if (imagemagick)
-    return gm(dir + '/original.jpg').options({ imageMagick: true });
+function test (imageMagick) {
+  if (imageMagick) {
+    return gm(dir + '/original.jpg').options({ imageMagick });
+  }
+
   return gm(dir + '/original.jpg');
 }
 
@@ -75,6 +77,13 @@ files.forEach(function (file) {
 files.forEach(function (file) {
   q.push({
     imagemagick: true,
+    filename: file
+  })
+})
+
+files.forEach(function (file) {
+  q.push({
+    imagemagick: '7+',
     filename: file
   })
 })
