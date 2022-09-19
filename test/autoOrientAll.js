@@ -85,8 +85,6 @@ module.exports = function (_, dir, finish, gm) {
             gm(newFilename).identify(function (err) {
               if (err) return finish(err);
 
-              assert.equal('Unknown', this.data.Orientation);
-              assert.ok(!this.data['Profile-EXIF'])
               assert.equal(afterValues[filename], this.data.Geometry, 'Bad-Geometry for ' + filename);
 
               gm.compare(newFilename, constant, 0.1, function (err, equal) {
