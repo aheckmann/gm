@@ -24,30 +24,30 @@ or clone the repo:
 
 ## Use ImageMagick instead of gm
 
-Subclass `gm` to enable ImageMagick, optionally specifying the path to the executable.
+Subclass `gm` to enable [ImageMagick 7+](https://imagemagick.org/script/porting.php)
+
+```js
+const fs = require('fs')
+const gm = require('gm').subClass({ imageMagick: '7+' });
+```
+
+Or, to enable ImageMagick legacy mode (for ImageMagick version < 7)
+
+```js
+const fs = require('fs')
+const gm = require('gm').subClass({ imageMagick: true });
+```
+
+## Specify the executable path
+
+Optionally specify the path to the executable.
 
 ```js
 const fs = require('fs')
 const gm = require('gm').subClass({
-  imageMagick: true,
   appPath: String.raw`C:\Program Files\ImageMagick-7.1.0-Q16-HDRI\magick.exe`
 });
-
-// resize and remove EXIF profile data
-gm('/path/to/my/img.jpg')
-.resize(240, 240)
-...
 ```
-
-Subclass `gm` to enable ImageMagick 7+
-
-```js
-var fs = require('fs')
-  , gm = require('gm').subClass({imageMagick: '7+'});
-
-...
-```
-
 
 ## Basic Usage
 
