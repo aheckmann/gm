@@ -1,3 +1,11 @@
+1.24.0 / 2022-09-18
+
+* fixed: infering format of buffered or streamed ico files #429 freund17
+* fixed; preserve color info duing autoOrient() #714, #844 reco
+* tests; switch to Github Actions
+* docs; fix links #834 delesseps
+* docs; clarify install directions #689 PatrykMiszczak
+* refactor; clean up compare.js #788 LongTengDao
 
 1.23.1 / 2017-12-27
 
