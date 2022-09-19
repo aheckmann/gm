@@ -1,10 +1,11 @@
 const assert = require('assert');
 const fs = require('fs');
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
   if (!GM.integration)  return finish();
 
-  const ico = `${__dirname}/fixtures/test.ico`;
+  const ico = path.join(__dirname, 'fixtures', 'test.ico');
   const buffer = fs.readFileSync(ico);
   const stream = fs.createReadStream(ico);
 

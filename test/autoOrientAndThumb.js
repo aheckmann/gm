@@ -1,12 +1,12 @@
-var assert = require('assert')
-var fs = require('fs')
+const assert = require('assert')
+const path = require('path');
 
 module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  var original = dir + '/orientation/Portrait_7.jpg';
-  var result = dir + '/autoOrientAndThumb.png';
+  var original = path.join(dir, 'orientation', 'Portrait_7.jpg');
+  var result = path.join(dir, 'autoOrientAndThumb.png');
 
   size(original, function (err, origSize) {
     if (err) return finish(err);
@@ -28,7 +28,6 @@ module.exports = function (_, dir, finish, gm) {
 
     });
   });
-
 
   function size (file, cb) {
     gm(file).identify(function (err, data) {

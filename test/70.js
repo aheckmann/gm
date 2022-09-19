@@ -1,10 +1,10 @@
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-var assert = require('assert')
-var times = 16;
+const assert = require('assert')
+const path = require('path');
 
-var loading = __dirname + '/fixtures/loading.gif'
-var favicon = __dirname + '/fixtures/favicon.png'
+var times = 16;
+var loading = path.join(__dirname, 'fixtures', 'loading.gif');
+var favicon = path.join(__dirname, 'fixtures', 'favicon.png');
 
 module.exports = function (_, dir, finish, gm) {
   if (!gm.integration) return finish();

@@ -1,17 +1,14 @@
-var assert = require('assert')
-var fs = require('fs')
+const fs = require('fs');
+const path = require('path');
 
 module.exports = function (_, dir, finish, gm) {
-  if (!gm.integration)
-    return finish();
+  if (!gm.integration) return finish();
 
-  var original = dir + '/original.jpg';
-  var result = dir + '/fromBuffer.png';
+  const original = path.join(dir, 'original.jpg');
+  const buf = fs.readFileSync(original);
+  const m = gm(buf, 'original.jpg');
 
-  var buf = fs.readFileSync(original);
-  var m = gm(buf, 'original.jpg');
-
-  m.identify(function (err, x) {
+  m.identify(function (err, _) {
     finish(err);
   });
 

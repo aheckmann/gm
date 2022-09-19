@@ -1,13 +1,11 @@
-'use strict';
-
-var assert = require('assert');
-var fs = require('fs');
-var path = require('path');
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)  return finish();
 
-  var imagePath = path.join(__dirname, './fixtures/nyancat.gif');
+  var imagePath = path.join(__dirname, './fixtures', 'nyancat.gif');
   var inputStream = fs.createReadStream(imagePath);
   gm(inputStream)
     .identify({ bufferStream: true }, function(err, value) {

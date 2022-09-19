@@ -1,11 +1,10 @@
+const cp = require('child_process');
+const path = require('path');
+const Async = require('async');
+const dir = path.join(__dirname, '..', 'examples', 'imgs');
+const gm = require('..');
+const fs = require('fs');
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-
-var async = require('async');
-var dir = __dirname + '/../examples/imgs';
-var gm = require('../');
-var assert = require('assert');
-var fs = require('fs');
 var only = process.argv.slice(2);
 gm.integration = !! ~process.argv.indexOf('--integration');
 if (gm.integration) only.shift();
@@ -17,17 +16,19 @@ function filter (file) {
   if ('index.js' === file) return false;
   if (only.length && !~only.indexOf(file)) return false;
 
-  var filename = __dirname + '/' + file;
+  var filename = path.join(__dirname, file);
   if (!fs.statSync(filename).isFile()) return false;
   return true;
 }
 
+const originalPathName = path.join(dir, 'original.jpg');
+
 function test (imageMagick) {
   if (imageMagick) {
-    return gm(dir + '/original.jpg').options({ imageMagick });
+    return gm(originalPathName).options({ imageMagick });
   }
 
-  return gm(dir + '/original.jpg');
+  return gm(originalPathName);
 }
 
 function finish (filename) {
@@ -43,9 +44,18 @@ function finish (filename) {
   }
 }
 
+function isMagickInstalled() {
+  try {
+    cp.execSync('magick -version');
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
 process.stdout.write('\033[?25l');
 
-var q = async.queue(function (task, callback) {
+var q = Async.queue(function (task, callback) {
   var filename = task.filename;
   var im = task.imagemagick;
 
@@ -56,34 +66,37 @@ var q = async.queue(function (task, callback) {
 }, 1);
 
 q.drain = function(){
-
-process.stdout.write('\033[?25h');
-    process.stdout.write('\033[2K');
-    process.stdout.write('\033[0G');
-    console.error("\n\u001B[32mAll tests passed\u001B[0m");
+  process.stdout.write('\033[?25h');
+  process.stdout.write('\033[2K');
+  process.stdout.write('\033[0G');
+  console.error("\n\u001B[32mAll tests passed\u001B[0m");
 };
 
 files = files.map(function (file) {
-  return __dirname + '/' + file
-})
+  return path.join(__dirname, file);
+});
 
-files.forEach(function (file) {
+files.forEach(function (filename) {
   q.push({
     imagemagick: false,
-    filename: file
+    filename
   })
-})
+});
 
-files.forEach(function (file) {
+files.forEach(function (filename) {
   q.push({
     imagemagick: true,
-    filename: file
+    filename
   })
-})
+});
 
-files.forEach(function (file) {
-  q.push({
-    imagemagick: '7+',
-    filename: file
-  })
-})
+if (isMagickInstalled()) {
+  console.log('magick is installed');
+
+  files.forEach(function (filename) {
+    q.push({
+      imagemagick: '7+',
+      filename
+    })
+  });
+}

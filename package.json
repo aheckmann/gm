@@ -28,7 +28,10 @@
   ],
   "main": "./index",
   "scripts": {
-    "test": "make test;"
+    "security": "npm audit",
+    "test": "npm run security && npm run test-integration",
+    "test-integration": "node test/ --integration",
+    "test-unit": "node test/"
   },
   "repository": {
     "type": "git",

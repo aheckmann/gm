@@ -1,21 +1,19 @@
-
-var assert = require('assert')
+const assert = require('assert')
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
+  const m = gm.contrast(2);
 
-  var m = gm
-  .contrast(2);
-
-  var args = m.args();
+  const args = m.args();
   assert.equal('convert', args[0]);
   assert.equal('+contrast', args[2]);
   assert.equal('+contrast', args[3]);
 
-  if (!GM.integration)
-    return finish();
+  if (!GM.integration) return finish();
 
-  m
-  .write(dir + '/contrast.png', function contrast (err) {
+  const destPath = path.join(dir, 'contrast.png');
+
+  m.write(destPath, function contrast (err) {
     finish(err);
   });
 }

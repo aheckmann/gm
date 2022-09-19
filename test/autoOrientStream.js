@@ -2,23 +2,25 @@
 // gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
 // This is a copy of `autoOrient.js` using streams
 
-var assert = require('assert')
-var fs = require('fs')
+const assert = require('assert')
+const fs = require('fs')
+const path = require('path');
 
 module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  var filename = dir + '/autoOrientStream.jpg';
+  const filename = path.join(dir, 'autoOrientStream.jpg');
+  const sidewaysPathName = path.join(dir, 'originalSideways.jpg');
 
-  gm(fs.createReadStream(dir + '/originalSideways.jpg')).identify(function (err) {
+  gm(fs.createReadStream(sidewaysPathName)).identify(function (err) {
     if (err) return finish(err);
 
     assert.equal('155x460', this.data.Geometry);
 
     // this image is sideways, but may be auto-oriented by modern OS's
     // try opening it in a browser to see its true orientation
-    gm(fs.createReadStream(dir + '/originalSideways.jpg'))
+    gm(fs.createReadStream(sidewaysPathName))
     .autoOrient()
     .write(filename, function autoOrient (err) {
       if (err) return finish(err);

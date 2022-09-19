@@ -1,13 +1,9 @@
-
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-
-var assert = require('assert'),
-    fs = require('fs'),
-    os = require('os');
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = function (_, dir, finish, gm) {
-  if (!gm.integration)
-    return finish();
+  if (!gm.integration) return finish();
 
   var beforeValues = {
     'Landscape_1.jpg': ['TopLeft', 1, '600x450'],
@@ -47,7 +43,9 @@ module.exports = function (_, dir, finish, gm) {
     'Portrait_8.jpg': '450x600'
   };
 
-  fs.readdir(dir + '/orientation/', function(err, files) {
+  const orientationDir = path.join(dir, 'orientation');
+
+  fs.readdir(orientationDir, function(err, files) {
     if (err) return finish(err);
 
     var originalFiles = files.filter(function(file) {
@@ -63,9 +61,9 @@ module.exports = function (_, dir, finish, gm) {
     function test (filename) {
       if (!filename) return finish();
 
-      var fileToAutoOrient = dir + '/orientation/' + filename;
-      var newFilename = fileToAutoOrient + '.oriented.jpg';
-      var constant = fileToAutoOrient + '.correct.jpg';
+      const fileToAutoOrient = path.join(orientationDir, filename);
+      const newFilename = fileToAutoOrient + '.oriented.jpg';
+      const constant = fileToAutoOrient + '.correct.jpg';
 
       gm(fileToAutoOrient).orientation(function (err, o) {
         if (err) return finish(err);
