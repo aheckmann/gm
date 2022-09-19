@@ -530,7 +530,7 @@ The links below refer to an older version of gm but everything should still work
     - **stream** - provides a `ReadableStream` with the processed image data
     - **toBuffer** - returns the image as a `Buffer` instead of a stream
 
-##compare
+## compare
 
 Graphicsmagicks `compare` command is exposed through `gm.compare()`. This allows us to determine if two images can be considered "equal".
 
@@ -579,7 +579,7 @@ gm.compare('/path/to/image1.jpg', '/path/to/another.png', options, function (err
 })
 ```
 
-##composite
+## composite
 
 GraphicsMagick supports compositing one image on top of another. This is exposed through `gm.composite()`. Its first argument is an image path with the changes to the base image, and an optional mask image.
 
@@ -596,7 +596,7 @@ gm('/path/to/image.jpg')
 });
 ```
 
-##montage
+## montage
 
 GraphicsMagick supports montage for combining images side by side. This is exposed through `gm.montage()`. Its only argument is an image path with the changes to the base image.
 
