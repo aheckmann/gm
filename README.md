@@ -39,6 +39,15 @@ gm('/path/to/my/img.jpg')
 ...
 ```
 
+Subclass `gm` to enable ImageMagick 7+
+
+```js
+var fs = require('fs')
+  , gm = require('gm').subClass({imageMagick: '7+'});
+
+...
+```
+
 
 ## Basic Usage
 
