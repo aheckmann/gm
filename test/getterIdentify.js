@@ -4,7 +4,7 @@ var os = require('os')
 
 var isLinux = os.platform() === 'linux'
 // Be more lax with the errors if we're on linux
-var errorFactor = isLinux ? 10 : 1
+var errorFactor = isLinux ? 10 : 1.1
 
 module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
