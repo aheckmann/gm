@@ -1,14 +1,15 @@
-
-var assert = require('assert')
-var fs = require('fs');
+const path = require('path');
+const fs = require('fs');
 
 module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  gm(fs.createReadStream(dir + '/original.jpg'))
+  const originalPath = path.join(dir, 'original.jpg');
+  gm(fs.createReadStream(originalPath))
   .size({bufferStream: true}, function (err, size) {
-    this.write(dir + '/streamInGetter.png', function streamInGetter (err){
+    const destPath = path.join(dir, 'streamInGetter.png');
+    this.write(destPath, function streamInGetter (err){
       finish(err);
     });
   });

@@ -1,5 +1,5 @@
-
-var assert = require('assert')
+const assert = require('assert');
+const path = require('path');
 
 module.exports = function (_, dir, finish, gm) {
 
@@ -37,8 +37,8 @@ module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  m
-  .write(dir + '/new.png', function New (err){
+  const destPath = path.join(dir, 'new.png');
+  m.write(destPath, function New (err){
     finish(err);
   });
 }

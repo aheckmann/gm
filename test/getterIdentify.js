@@ -1,6 +1,6 @@
-
-var assert = require('assert')
-var os = require('os')
+const assert = require('assert');
+const path = require('path');
+const os = require('os')
 
 var isLinux = os.platform() === 'linux'
 // Be more lax with the errors if we're on linux
@@ -12,8 +12,10 @@ module.exports = function (_, dir, finish, gm) {
 
   var im = _._options.imageMagick;
 
-  var test = gm(dir + '/photo.JPG');
+  const photoPath = path.join(dir, 'photo.JPG');
+  var test = gm(photoPath);
   if (im) test.options({ imageMagick: true });
+
   test.identify(function (err) {
     if (err) return finish(err);
 
@@ -64,8 +66,10 @@ module.exports = function (_, dir, finish, gm) {
   });
 
   function gif (callback) {
-    var test = gm(dir + '/blue.gif');
+    const bluePath = path.join(dir, 'blue.gif');
+    var test = gm(bluePath);
     if (im) test.options({ imageMagick: true });
+
     test.identify(function (err) {
       if (err) return finish(err);
 
@@ -99,7 +103,8 @@ module.exports = function (_, dir, finish, gm) {
   }
 
   function pattern () {
-    var test = gm(dir + '/blue.gif');
+    const bluePath = path.join(dir, 'blue.gif');
+    var test = gm(bluePath);
     var format = '%f: %m, %wx%h';
     var value = 'blue.gif: GIF, 100x200';
 

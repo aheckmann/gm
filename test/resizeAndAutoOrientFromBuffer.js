@@ -1,10 +1,11 @@
-var assert = require('assert')
-var fs = require('fs')
+const assert = require('assert');
+const path = require('path');
+const fs = require('fs')
 
 module.exports = function (_, dir, finish, gm) {
 
-  var original = dir + '/orientation/Portrait_7.jpg';
-  var result = dir + '/resizeAutoOrientFromBuffer.png';
+  const original = path.join(dir, 'orientation', 'Portrait_7.jpg');
+  const result = path.join(dir, 'resizeAutoOrientFromBuffer.png');
 
   var buf = fs.readFileSync(original);
 

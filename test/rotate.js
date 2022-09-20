@@ -1,5 +1,5 @@
-
-var assert = require('assert')
+const assert = require('assert');
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
 
@@ -16,13 +16,13 @@ module.exports = function (gm, dir, finish, GM) {
   if (!GM.integration)
     return finish();
 
-  m
-  .write(dir + '/rotate.png', function rotate (err, _0, _1, cmd) {
+  const destPath = path.join(dir, 'rotate.png');
+  m.write(destPath, function rotate (err, _0, _1, cmd) {
     assert.ok(/"-rotate" "-40"/.test(cmd));
 
     m
     .rotate('red', 0)
-    .write(dir + '/rotate.png', function rotate (err, _0, _1, cmd) {
+    .write(destPath, function rotate (err, _0, _1, cmd) {
       assert.ok(!/"-rotate" "-40"/.test(cmd));
       assert.ok(/"-rotate" "0"/.test(cmd));
       finish(err);

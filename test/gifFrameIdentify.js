@@ -1,9 +1,9 @@
-
-var assert = require('assert')
-var fs = require('fs');
+const assert = require('assert')
+const path = require('path');
 
 module.exports = function (_, dir, finish, gm) {
-  var m = gm(dir + '/original.gif[0]')
+  const originalGifPath = path.join(dir, 'original.gif[0]');
+  var m = gm(originalGifPath);
 
   if (!gm.integration)
     return finish();

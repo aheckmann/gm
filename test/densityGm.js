@@ -2,6 +2,8 @@ const assert = require('assert')
 const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
+  const isImageMagickTest = !!gm._options.imageMagick;
+
   var NUMBER = 100;
   var NUMBER2 = 200;
 
@@ -12,11 +14,8 @@ module.exports = function (gm, dir, finish, GM) {
   assert.equal('-density', gArgs[1]);
   assert.equal(NUMBER + 'x' + NUMBER2, gArgs[2]);
 
-  if (gm._options.imageMagick)
-    return finish();
-
-  if (!GM.integration)
-    return finish();
+  if (isImageMagickTest) return finish();
+  if (!GM.integration) return finish();
 
   const destPath = path.join(dir, 'density.png');
   g.write(destPath, function density (err) {

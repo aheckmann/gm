@@ -1,4 +1,5 @@
-var assert = require('assert')
+const assert = require('assert');
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM, im) {
 
@@ -15,8 +16,8 @@ module.exports = function (gm, dir, finish, GM, im) {
   if (!GM.integration)
     return finish();
 
-  m
-  .write(dir + '/repage.png', function blur (err) {
+  const destPath = path.join(dir, 'repage.png');
+  m.write(destPath, function blur (err) {
     finish(err);
   });
 }

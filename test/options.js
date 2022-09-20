@@ -1,6 +1,6 @@
-
-var assert = require('assert')
-  , fs = require('fs')
+const assert = require('assert');
+const path = require('path');
+const fs = require('fs');
 
 module.exports = function (_, dir, finish, gm) {
 
@@ -20,13 +20,14 @@ module.exports = function (_, dir, finish, gm) {
   assert.equal(true, s2._options.subclassed);
   assert.equal(undefined, s2._options.setWithMethod);
 
-  var writeFile = dir + '/IM-negative' + Math.random() + '.png';
-  var imageMagick = gm.subClass({ imageMagick: true });
+  const writeFile = path.join(dir, `IM-negative${Math.random()}.png`);
+  const imageMagick = gm.subClass({ imageMagick: true });
 
   if (!gm.integration)
     return finish();
 
-  imageMagick(dir + '/photo.JPG')
+  const photoPath = path.join(dir, 'photo.JPG');
+  imageMagick(photoPath)
   .negative()
   .write(writeFile, function (err, _1, _2, cmd) {
     if (err) return finish(err);
@@ -40,7 +41,7 @@ module.exports = function (_, dir, finish, gm) {
       } catch (e) {}
 
       /// inline options
-      gm(dir + '/photo.JPG')
+      gm(photoPath)
       .negative()
       .options({ imageMagick: true })
       .write(writeFile, function (err, _1, _2, cmd) {

@@ -5,11 +5,14 @@ const dir = path.join(__dirname, '..', 'examples', 'imgs');
 const gm = require('..');
 const fs = require('fs');
 
-var only = process.argv.slice(2);
+const only = process.argv.slice(2);
 gm.integration = !! ~process.argv.indexOf('--integration');
 if (gm.integration) only.shift();
 
-var files = fs.readdirSync(__dirname).filter(filter);
+let files = fs.readdirSync(__dirname).filter(filter);
+if (files.length === 0) {
+  console.log('No tests found matching', only);
+}
 
 function filter (file) {
   if (!/\.js$/.test(file)) return false;

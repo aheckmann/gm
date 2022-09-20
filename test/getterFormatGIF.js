@@ -1,11 +1,12 @@
-
-var assert = require('assert');
+const assert = require('assert');
+const path = require('path');
 
 module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  gm(dir + '/original.gif')
+  const destPath = path.join(dir, 'original.gif');
+  gm(destPath)
   .format(function (err, type) {
     if (err) return finish(err);
 

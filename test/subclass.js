@@ -1,5 +1,5 @@
-
-var assert = require('assert')
+const assert = require('assert');
+const path = require('path');
 
 module.exports = function (_, dir, finish, gm) {
   assert.equal('gm', gm('test').constructor.name);
@@ -23,8 +23,10 @@ module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  gm(dir + '/photo.JPG')
-  .thumb(50, 80, dir + '/SUBthumb.png', function subthumb (err) {
+  const sourcePath = path.join(dir, 'photo.JPG');
+  const destPath = path.join(dir, 'subclass.png');
+  gm(sourcePath)
+  .thumb(50, 80, destPath, function subthumb (err) {
     if (err) return finish(err);
     finish();
   });

@@ -1,28 +1,22 @@
-
-var assert = require('assert');
+const assert = require('assert')
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
-  'use strict';
+  const isImageMagickTest = !!gm._options.imageMagick;
 
-  // a magic number
   var NUMBER = 100;
-
-  // image magic version
   var im = gm.options({imageMagick: true}).density(NUMBER);
 
   var imArgs = im.args();
-
   assert.equal('convert', imArgs[0]);
   assert.equal('-density', imArgs[1]);
   assert.equal(NUMBER, imArgs[2]);
 
-  if (gm._options.imageMagick)
-    return finish();
+  if (isImageMagickTest) return finish();
+  if (!GM.integration) return finish();
 
-  if (!GM.integration)
-    return finish();
-
-  im.write(dir + '/density.png', function density (err) {
+  const destPath = path.join(dir, 'density.png');
+  im.write(destPath, function density (err) {
     finish(err);
   });
 };

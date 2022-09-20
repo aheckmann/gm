@@ -1,13 +1,12 @@
-
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-
-var assert = require('assert')
+const assert = require('assert')
+const path = require('path');
 
 module.exports = function (_, dir, finish, gm) {
   var err;
 
   try {
-    var gif = gm('/path/to/blah.gif');
+    const blahPath = path.join('path', 'to', 'blah.gif') ;
+    var gif = gm(blahPath);
     assert.equal(true, gif.inputIs('gif'));
     assert.equal(false, gif.inputIs('jpg'));
     assert.equal(false, gif.inputIs('crazy'));
@@ -17,7 +16,8 @@ module.exports = function (_, dir, finish, gm) {
     assert.equal(false, png.inputIs('gif'));
     assert.equal(false, png.inputIs('tif'));
 
-    var jpg = gm('super/duper.jpeg');
+    const jpgPath = path.join('super', 'duper.jpeg')
+    var jpg = gm(jpgPath);
     assert.equal(true, jpg.inputIs('jpg'));
     assert.equal(true, jpg.inputIs('jpeg'));
     assert.equal(false, jpg.inputIs('gif'));

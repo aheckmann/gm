@@ -1,12 +1,11 @@
-var assert = require('assert')
-var fs = require('fs')
+const path = require('path');
 
 module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  var original = dir + '/original.png';
-  var resized = dir + '/resize';
+  const original = path.join(dir, 'original.png');
+  const resized = path.join(dir, 'resize');
   var widths = [300, 700, 400, 800, 200], i, cb;
   var resizeExact = function (width, index) {
     var name = resized + index + '.png';

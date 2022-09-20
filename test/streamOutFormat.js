@@ -1,18 +1,8 @@
-
-var assert = require('assert')
-var fs = require('fs');
+const assert = require('assert')
+const path = require('path');
+const fs = require('fs');
 
 module.exports = function (gm, dir, finish, GM) {
-  /*
-  assert.throws(function () {
-    gm.stream()
-  }, /expects a callback/);
-
-  assert.throws(function () {
-    gm.stream('PNG')
-  }, /expects a callback/);
-  */
-
   if (!GM.integration)
     return finish();
 
@@ -30,7 +20,8 @@ module.exports = function (gm, dir, finish, GM) {
     gm
     .stream('PNG', function streamOut (err, stdout, stderr) {
       if (err) return done(err);
-      stdout.pipe(fs.createWriteStream(dir + '/streamOut.png'));
+      const destPath = path.join(dir, 'streamOutFormat.png');
+      stdout.pipe(fs.createWriteStream(destPath));
       stdout.on('error', done);
       stdout.on('close', done);
     });
@@ -39,7 +30,8 @@ module.exports = function (gm, dir, finish, GM) {
   function withoutCallback(done) {
     var stream = gm.stream('PNG')
     stream.on('error', done)
-    stream.pipe(fs.createWriteStream(dir + '/streamOut2.png'))
+    const destPath = path.join(dir, 'streamOutFormat2.png');
+    stream.pipe(fs.createWriteStream(destPath))
     stream.on('end', done)
   }
 

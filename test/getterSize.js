@@ -1,5 +1,5 @@
-
-var assert = require('assert');
+const assert = require('assert');
+const path = require('path');
 
 module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
@@ -16,19 +16,22 @@ module.exports = function (_, dir, finish, gm) {
   })
 
   function sizeJPEG(done) {
-    gm(dir + '/original.jpg')
+    const originalPath = path.join(dir, 'original.jpg');
+    gm(originalPath)
     .size(function gettersize (err, size) {
       if (err) return done(err);
 
       assert.equal(size.width, 460);
       assert.equal(size.height, 155);
 
-      gm(dir + '/identifyParseErr.jpg').size(done);
+      const identifyParseErrPath = path.join(dir, 'identifyParseErr.jpg');
+      gm(identifyParseErrPath).size(done);
     });
   }
 
   function sizeGIF(done) {
-    gm(dir + '/original.gif')
+    const originalGifPath = path.join(dir, 'original.gif');
+    gm(originalGifPath)
     .size(function (err, size) {
       if (err) return done(err);
 
@@ -40,7 +43,8 @@ module.exports = function (_, dir, finish, gm) {
   }
 
   function sizePNG(done) {
-    gm(dir + '/original.png')
+    const originalPngPath = path.join(dir, 'original.png');
+    gm(originalPngPath)
     .size(function (err, size) {
       if (err) return done(err);
 

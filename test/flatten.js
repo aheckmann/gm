@@ -1,4 +1,5 @@
-var assert = require('assert')
+const assert = require('assert');
+const path = require('path');
 
 module.exports = function (img, dir, finish, gm) {
   // graphicsmagick considers PSD broken
@@ -7,7 +8,8 @@ module.exports = function (img, dir, finish, gm) {
     return finish();
   }
 
-  var m = gm(dir + '/layers.psd')
+  const layersPath = path.join(dir, 'layers.psd');
+  var m = gm(layersPath)
   .options({ imageMagick: true })
   .flatten();
 
@@ -18,8 +20,8 @@ module.exports = function (img, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  m
-  .write(dir + '/unlayered.jpg', function (err) {
+  const destPath = path.join(dir, 'unlayered.jpg');
+  m.write(destPath, function (err) {
     finish(err);
   });
 }

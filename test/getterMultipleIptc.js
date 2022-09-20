@@ -1,5 +1,5 @@
-
-var assert = require('assert')
+const assert = require('assert');
+const path = require('path');
 
 module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
@@ -7,7 +7,8 @@ module.exports = function (_, dir, finish, gm) {
 
   var im = _._options.imageMagick;
 
-  var test = gm(__dirname + '/fixtures/iptc-multiple.jpg');
+  const iptcPath = path.join(__dirname, 'fixtures', 'iptc-multiple.jpg');
+  var test = gm(iptcPath);
   if (im) test.options({ imageMagick: true });
 
   test.identify(function (err) {

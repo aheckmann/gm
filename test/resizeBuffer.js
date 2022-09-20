@@ -1,10 +1,11 @@
-var assert = require('assert')
-var fs = require('fs')
+const assert = require('assert');
+const path = require('path');
+const fs = require('fs')
 
 module.exports = function (_, dir, finish, gm) {
 
-  var original = dir + '/original.jpg';
-  var result = dir + '/resizeFromBuffer.png';
+  var original = path.join(dir, 'original.jpg');
+  var result = path.join(dir, 'resizeFromBuffer.png');
 
   var buf = fs.readFileSync(original);
 

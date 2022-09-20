@@ -1,5 +1,5 @@
-
-var assert = require('assert')
+const assert = require('assert');
+const path = require('path');
 
 module.exports = function (img, dir, finish, gm) {
 
@@ -16,16 +16,18 @@ module.exports = function (img, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  gm(dir + '/photo.JPG').options({ timeout: 1 })
-  .thumb(50, 80, dir + '/timeout.png', function subthumb (err) {
+  const sourcePath = path.join(dir, 'photo.JPG');
+  const timeoutPath = path.join(dir, 'timeout.png');
+  gm(sourcePath).options({ timeout: 1 })
+  .thumb(50, 80, timeoutPath, function subthumb (err) {
     assert.ok(err, "Expecting a timeout error");
     noTimeout();
   });
 
 
   function noTimeout() {
-    gm(dir + '/photo.JPG').options({ timeout: 0 })
-    .thumb(50, 80, dir + '/timeout.png', function subthumb (err) {
+    gm(sourcePath).options({ timeout: 0 })
+    .thumb(50, 80, timeoutPath, function subthumb (err) {
       finish(err);
     });
   }
