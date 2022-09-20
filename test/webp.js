@@ -2,7 +2,7 @@ const assert = require('assert');
 const path = require('path');
 const fs = require('fs')
 
-module.exports = function (_, dir, finish, gm, im) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration) return finish()
 
   // Don't know how to install IM with WEBP on ubuntu
@@ -12,7 +12,7 @@ module.exports = function (_, dir, finish, gm, im) {
   // if (!im) return finish()
 
   gm = gm.subClass({
-    imageMagick: true
+    imageMagick
   })
 
   const imagePath = path.join(dir, 'original.png');

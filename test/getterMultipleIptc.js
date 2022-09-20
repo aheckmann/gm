@@ -1,22 +1,19 @@
 const assert = require('assert');
 const path = require('path');
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration)
     return finish();
 
-  var im = _._options.imageMagick;
-
   const iptcPath = path.join(__dirname, 'fixtures', 'iptc-multiple.jpg');
-  var test = gm(iptcPath);
-  if (im) test.options({ imageMagick: true });
+  var test = gm(iptcPath).options({imageMagick})
 
   test.identify(function (err) {
     if (err) return finish(err);
 
     var d = this.data;
 
-    if (im) {
+    if (imageMagick) {
       var iptc = d['Profiles'] && d['Profiles']['Profile-iptc'];
       var keywords = iptc['Keyword[2,25]'];
       assert(Array.isArray(keywords));

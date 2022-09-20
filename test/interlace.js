@@ -13,8 +13,8 @@ module.exports = function (gm, dir, finish, GM) {
   if (!GM.integration)
     return finish();
 
-  const destPath = path.join(dir, 'edge.png');
-  m.write(destPath, function edge (err) {
+  const destPath = path.join(dir, 'interlace.png');
+  m.write(destPath, function interlace (err) {
     finish(err);
   });
 }

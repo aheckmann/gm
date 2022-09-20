@@ -1,12 +1,12 @@
 const path = require('path');
 const fs = require('fs');
 
-module.exports = function (gm, dir, finish, GM) {
+module.exports = function (gm, dir, finish) {
   // Same image
   const originalJPGFilePath = path.join(dir, 'original.jpg');
   const originalPNGFilePath = path.join(dir, 'original.png');
 
-  GM.compare(originalJPGFilePath, originalPNGFilePath, function(err, same) {
+  gm.compare(originalJPGFilePath, originalPNGFilePath, function(err, same) {
     if (err) return finish(err);
     if (!same) return finish(new Error('Compare should be the same!'));
 
@@ -24,15 +24,14 @@ module.exports = function (gm, dir, finish, GM) {
       gm.noise(0.3).write(noisePath, function (err) {
         if (err) return finish(err);
 
-        var options = {
+        const options = {
           highlightColor: 'yellow',
-          highlightStyle: 'XOR',
           file: path.join(dir, `compare-test-${Date.now()}.png`),
           tolerance: 0.001
         };
 
         // Compare these images and write to a file.
-        GM.compare(originalJPGFilePath, noisePath, options, function(err) {
+        gm.compare(originalJPGFilePath, noisePath, options, function(err) {
           if (err) return finish(err);
 
           fs.access(options.file, fs.constants.F_OK, function(err) {

@@ -16,7 +16,7 @@ module.exports = function (gm, dir, finish, GM) {
     return finish();
 
   const destPath = path.join(dir, 'strip.png');
-  m.write(destPath, function edge (err) {
+  m.write(destPath, function strip (err) {
     finish(err);
   });
 }

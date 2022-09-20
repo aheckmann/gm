@@ -1,9 +1,9 @@
 const assert = require('assert');
 const path = require('path');
 
-module.exports = function (gm, dir, finish, GM) {
+module.exports = function (gm, dir, finish, GM, imageMagick) {
 
-  var a = GM('img.png').scale(100);
+  var a = GM('img.png').options({imageMagick}).scale(100);
   var args = a.args();
   assert.equal('convert', args[0]);
   assert.equal('-scale', args[2]);
@@ -13,21 +13,19 @@ module.exports = function (gm, dir, finish, GM) {
     assert.equal('100x', args[3]);
   }
 
-  var a = GM('img.png').scale(100, 200, '%');
+  var a = GM('img.png').options({imageMagick}).scale(100, 200, '%');
   var args = a.args();
   assert.equal('convert', args[0]);
   assert.equal('-scale', args[2]);
   assert.equal('100x200%', args[3]);
 
-  var a = GM('img.png').scale(100, '200%');
+  var a = GM('img.png').options({imageMagick}).scale(100, '200%');
   var args = a.args();
   assert.equal('convert', args[0]);
   assert.equal('-scale', args[2]);
   assert.equal('100x200%', args[3]);
 
-  var m = gm
-  .scale(100, 100);
-
+  var m = gm.options({imageMagick}).scale(100, 100);
   var args = m.args();
   assert.equal('convert', args[0]);
   assert.equal('-scale', args[2]);

@@ -1,13 +1,16 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = function (gm, dir, finish, GM) {
+module.exports = function (gm, dir, finish, GM, imageMagick) {
   // Same image
   const originalPathName = path.join(dir, 'original.jpg');
 
-  GM.compare(originalPathName, originalPathName, function(err, same) {
+  gm.compare(originalPathName, originalPathName, function(err, same, diff) {
     if (err) return finish(err);
-    if (!same) return finish(new Error('Compare should be the same!'));
+    if (!same) {
+      const msg = `Compare should be the same! "${same}" "${diff}"`;
+      return finish(new Error(msg));
+    }
 
     // Compare almost similar images for which ImageMagick
     // returns an exponent-style floating point number
@@ -16,7 +19,10 @@ module.exports = function (gm, dir, finish, GM) {
 
     gm.compare(compare1PathName, compare2PathName, function(err, same, diff) {
       if (err) return finish(err);
-      if (!same) return finish(new Error('Compare should be the same!'));
+      if (!same) {
+        const msg = `Compare should be the same! "${same}" "${diff}"`;
+        return finish(new Error(msg));
+      }
 
       const noisePathName = path.join(dir, 'noise3.png');
 
@@ -26,7 +32,6 @@ module.exports = function (gm, dir, finish, GM) {
 
         var options = {
           highlightColor: '#fff',
-          highlightStyle: 'XOR',
           file: path.join(dir, 'diff.png'),
           tolerance: 0.001
         };
@@ -34,7 +39,7 @@ module.exports = function (gm, dir, finish, GM) {
         const originalPathName = path.join(dir, 'original.jpg');
 
         // Compare these images and write to a file.
-        GM.compare(originalPathName, noisePathName, options, function(err) {
+        gm.compare(originalPathName, noisePathName, options, function(err) {
           if (err) return finish(err);
 
           fs.access(options.file, fs.constants.F_OK, function(err) {

@@ -1,7 +1,7 @@
 const assert = require('assert');
 const path = require('path');
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   assert.equal('gm', gm('test').constructor.name);
   assert.equal(undefined, gm.prototype._options.imageMagick);
 
@@ -25,7 +25,8 @@ module.exports = function (_, dir, finish, gm) {
 
   const sourcePath = path.join(dir, 'photo.JPG');
   const destPath = path.join(dir, 'subclass.png');
-  gm(sourcePath)
+  const m = gm.subClass({ imageMagick });
+  m(sourcePath)
   .thumb(50, 80, destPath, function subthumb (err) {
     if (err) return finish(err);
     finish();

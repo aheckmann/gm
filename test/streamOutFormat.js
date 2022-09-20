@@ -2,7 +2,7 @@ const assert = require('assert')
 const path = require('path');
 const fs = require('fs');
 
-module.exports = function (gm, dir, finish, GM) {
+module.exports = function (gm, dir, finish, GM, imageMagick) {
   if (!GM.integration)
     return finish();
 
@@ -38,7 +38,7 @@ module.exports = function (gm, dir, finish, GM) {
   function checkOutputFormat(done) {
     var stream = gm.stream('PNG')
     stream.on('error', done)
-    GM(stream).format(function (err, value) {
+    GM(stream).options({imageMagick}).format(function (err, value) {
       if (err)
         return done(err)
 

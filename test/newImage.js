@@ -3,7 +3,7 @@
 const path = require('path');
 const fs = require('fs')
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration)
     return finish();
 
@@ -24,6 +24,7 @@ module.exports = function (_, dir, finish, gm) {
 
   function createImage() {
     return gm(70, 30, '#000')
+      .options({imageMagick})
       .font("arial", 20)
       .stroke("#fff", 2)
       .fill("#888")

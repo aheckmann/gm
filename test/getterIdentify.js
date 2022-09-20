@@ -6,22 +6,19 @@ var isLinux = os.platform() === 'linux'
 // Be more lax with the errors if we're on linux
 var errorFactor = isLinux ? 10 : 1.1
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration)
     return finish();
 
-  var im = _._options.imageMagick;
-
   const photoPath = path.join(dir, 'photo.JPG');
-  var test = gm(photoPath);
-  if (im) test.options({ imageMagick: true });
+  var test = gm(photoPath).options({ imageMagick });
 
   test.identify(function (err) {
     if (err) return finish(err);
 
     var d = this.data;
 
-    if (im) {
+    if (imageMagick) {
       assert.equal(d.Orientation, 'TopLeft');
       assert.equal(d['Geometry'], '430x488+0+0');
       assert.equal(d['Print size'], '5.97222x6.77778');
@@ -67,13 +64,12 @@ module.exports = function (_, dir, finish, gm) {
 
   function gif (callback) {
     const bluePath = path.join(dir, 'blue.gif');
-    var test = gm(bluePath);
-    if (im) test.options({ imageMagick: true });
+    var test = gm(bluePath).options({ imageMagick });
 
     test.identify(function (err) {
       if (err) return finish(err);
 
-      if (im) {
+      if (imageMagick) {
         if (!isLinux) {
           assert.equal(1, this.data.color);
         }
@@ -108,7 +104,7 @@ module.exports = function (_, dir, finish, gm) {
     var format = '%f: %m, %wx%h';
     var value = 'blue.gif: GIF, 100x200';
 
-    if (im) test.options({ imageMagick: true });
+    test.options({ imageMagick });
 
     test.identify(format, function (err, result) {
       if (err) return finish(err);

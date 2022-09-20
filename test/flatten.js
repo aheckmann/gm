@@ -1,16 +1,16 @@
 const assert = require('assert');
 const path = require('path');
 
-module.exports = function (img, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   // graphicsmagick considers PSD broken
   // http://www.graphicsmagick.org/NEWS.html#may-30-2016
-  if (!img._options.imageMagick) {
+  if (!imageMagick) {
     return finish();
   }
 
   const layersPath = path.join(dir, 'layers.psd');
   var m = gm(layersPath)
-  .options({ imageMagick: true })
+  .options({ imageMagick })
   .flatten();
 
   var args = m.args();

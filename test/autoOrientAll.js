@@ -2,7 +2,7 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration) return finish();
 
   var beforeValues = {
@@ -65,7 +65,7 @@ module.exports = function (_, dir, finish, gm) {
       const newFilename = fileToAutoOrient + '.oriented.jpg';
       const constant = fileToAutoOrient + '.correct.jpg';
 
-      gm(fileToAutoOrient).orientation(function (err, o) {
+      gm(fileToAutoOrient).options({imageMagick}).orientation(function (err, o) {
         if (err) return finish(err);
 
         assert.equal(beforeValues[filename][0], o);
@@ -74,18 +74,20 @@ module.exports = function (_, dir, finish, gm) {
         // this image is sideways, but may be auto-oriented by modern OS's
         // try opening it in a browser to see its true orientation
         gm(fileToAutoOrient)
+        .options({ imageMagick })
         .autoOrient()
         .write(newFilename, function autoOrient (err) {
           if (err) return finish(err);
 
           // fs race condition
           setTimeout(function () {
-            gm(newFilename).identify(function (err) {
+            gm(newFilename).options({ imageMagick }).identify(function (err) {
               if (err) return finish(err);
 
-              assert.equal(afterValues[filename], this.data.Geometry, 'Bad-Geometry for ' + filename);
+              const afterValue = imageMagick ? `${afterValues[filename]}+0+0` : afterValues[filename];
+              assert.equal(afterValue, this.data.Geometry, `Bad-Geometry for ${filename}. Got "${this.data.Geometry}"`);
 
-              gm.compare(newFilename, constant, 0.1, function (err, equal) {
+              gm().options({imageMagick}).compare(newFilename, constant, 0.1, function (err, equal) {
                 if (err) return finish(err);
                 assert.ok(equal);
                 next();

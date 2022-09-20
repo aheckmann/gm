@@ -1,7 +1,7 @@
 const assert = require('assert')
 const path = require('path');
 
-module.exports = function (gm, dir, finish, GM) {
+module.exports = function (gm, dir, finish, GM, imageMagick) {
   const m = gm.crop(200, 155, 300, 0);
 
   const args = m.args();
@@ -10,7 +10,7 @@ module.exports = function (gm, dir, finish, GM) {
   assert.equal('200x155+300+0', args[3]);
 
   const imagePath = path.join(dir, 'image.png');
-  const m2 = GM(imagePath).crop(200, 155, 300, 0, true);
+  const m2 = GM(imagePath).options({ imageMagick }).crop(200, 155, 300, 0, true);
 
   const args2 = m2.args();
   assert.equal('200x155+300+0%', args2[3]);

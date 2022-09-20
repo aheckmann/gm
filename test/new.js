@@ -1,9 +1,10 @@
 const assert = require('assert');
 const path = require('path');
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
 
   var m = gm(525, 110, "#00ff55aa")
+  .options({imageMagick})
   .fontSize(68)
   .stroke("#efe", 2)
   .fill("#555")

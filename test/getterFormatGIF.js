@@ -1,12 +1,12 @@
 const assert = require('assert');
 const path = require('path');
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration)
     return finish();
 
   const destPath = path.join(dir, 'original.gif');
-  gm(destPath)
+  gm(destPath).options({imageMagick})
   .format(function (err, type) {
     if (err) return finish(err);
 

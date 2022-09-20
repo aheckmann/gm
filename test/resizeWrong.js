@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration)
     return finish();
 
@@ -16,11 +16,12 @@ module.exports = function (_, dir, finish, gm) {
       index++;
     }
     gm(original)
+      .options({imageMagick})
       .resizeExact(width)
       .write(name, function(err){
         if (err) return finish(err);
 
-        gm(name)
+        gm(name).options({imageMagick})
           .size(function (err, size) {
             if (err) return finish(err);
             if (size.width !== width) {

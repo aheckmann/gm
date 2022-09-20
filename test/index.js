@@ -4,6 +4,7 @@ const Async = require('async');
 const dir = path.join(__dirname, '..', 'examples', 'imgs');
 const gm = require('..');
 const fs = require('fs');
+const os = require('os');
 
 const only = process.argv.slice(2);
 gm.integration = !! ~process.argv.indexOf('--integration');
@@ -27,11 +28,7 @@ function filter (file) {
 const originalPathName = path.join(dir, 'original.jpg');
 
 function test (imageMagick) {
-  if (imageMagick) {
-    return gm(originalPathName).options({ imageMagick });
-  }
-
-  return gm(originalPathName);
+  return gm(originalPathName).options({ imageMagick });
 }
 
 function finish (filename) {
@@ -70,6 +67,8 @@ function isMagickInstalled() {
   }
 }
 
+const isWindows = () => os.platform() === 'win32';
+
 var q = Async.queue(function (task, callback) {
   var filename = task.filename;
   var im = task.imagemagick;
@@ -99,7 +98,9 @@ if (isGraphicsMagickInstalled()) {
   });
 }
 
-if (isConvertInstalled()) {
+if (!isWindows() && isConvertInstalled()) {
+  // windows has a different convert binary
+
   console.log('convert is installed');
   files.forEach(function (filename) {
     q.push({

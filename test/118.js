@@ -9,14 +9,14 @@
 const assert = require('assert')
 const path = require('path');
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration) return finish();
 
   var src = path.join(dir, 'originalSideways.jpg');
   var dst = path.join(dir, 'originalSideways10x.jpg');
 
-  gm(src).resize(10).write(dst, function(err) {
-    gm(dst).size(function(err, size) {
+  gm(src).options({ imageMagick }).resize(10).write(dst, function(err) {
+    gm(dst).options({ imageMagick }).size(function(err, size) {
       if (err) return finish(err);
       assert.equal(10, size.width);
       finish();

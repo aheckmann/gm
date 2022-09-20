@@ -2,9 +2,10 @@ const assert = require('assert')
 const path = require('path');
 const fs = require('fs');
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   const originalGifPath = path.join(dir, 'original.gif');
-  var m = gm(fs.createReadStream(originalGifPath), "original.gif[0]")
+  const readStream = fs.createReadStream(originalGifPath);
+  const m = gm(readStream, "original.gif[0]").options({imageMagick});
 
   var args = m.args();
   assert.equal('convert', args[0]);
