@@ -40,10 +40,24 @@ function finish (filename) {
       console.error('\n\nError occured with file: ' + filename);
       throw err;
     }
+  }
+}
 
-    process.stdout.write('\033[2K');
-    process.stdout.write('\033[0G');
-    process.stdout.write('pending ' + (q.length()+q.running()));
+function isGraphicsMagickInstalled() {
+  try {
+    cp.execSync('gm -version');
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
+function isConvertInstalled() {
+  try {
+    cp.execSync('convert -version');
+    return true;
+  } catch (_) {
+    return false;
   }
 }
 
@@ -56,12 +70,11 @@ function isMagickInstalled() {
   }
 }
 
-process.stdout.write('\033[?25l');
-
 var q = Async.queue(function (task, callback) {
   var filename = task.filename;
   var im = task.imagemagick;
 
+  console.log(`Testing ${filename} ..`);
   require(filename)(test(im), dir, function (err) {
     finish(filename)(err);
     callback();
@@ -69,29 +82,32 @@ var q = Async.queue(function (task, callback) {
 }, 1);
 
 q.drain = function(){
-  process.stdout.write('\033[?25h');
-  process.stdout.write('\033[2K');
-  process.stdout.write('\033[0G');
-  console.error("\n\u001B[32mAll tests passed\u001B[0m");
+  console.log("\n\u001B[32mAll tests passed\u001B[0m");
 };
 
 files = files.map(function (file) {
   return path.join(__dirname, file);
 });
 
-files.forEach(function (filename) {
-  q.push({
-    imagemagick: false,
-    filename
-  })
-});
+if (isGraphicsMagickInstalled()) {
+  console.log('gm is installed');
+  files.forEach(function (filename) {
+    q.push({
+      imagemagick: false,
+      filename
+    })
+  });
+}
 
-files.forEach(function (filename) {
-  q.push({
-    imagemagick: true,
-    filename
-  })
-});
+if (isConvertInstalled()) {
+  console.log('convert is installed');
+  files.forEach(function (filename) {
+    q.push({
+      imagemagick: true,
+      filename
+    })
+  });
+}
 
 if (isMagickInstalled()) {
   console.log('magick is installed');
