@@ -134,6 +134,22 @@ gm(200, 400, "#ddff99f3")
 .write("/path/to/brandNewImg.jpg", function (err) {
   // ...
 });
+
+// distorting an image
+// array of arrays with from -> to objects
+// fx,fy -> tx,ty
+
+// It will only works with imageMagick subclass
+gm("image.jpg")
+.distort([
+    [{x:99,y:71}, {x:0,y:0}],
+    [{x:299,y:71}, {x:479,y:0}],
+    [{x:100,y:270}, {x:0,y:477}],
+    [{x:299,y:270}, {x:479,y:476}],
+])
+.write("/path/to/brandNewImg.jpg", function (err) {
+  // ...
+});
 ```
 
 ## Streams
