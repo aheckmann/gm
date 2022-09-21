@@ -1,6 +1,7 @@
-var assert = require('assert');
+const assert = require('assert')
+const path = require('path');
 
-module.exports = function (img, dir, finish, gm) {
+module.exports = function (img, dir, finish, gm, imageMagick) {
   var EventEmitter = require('events').EventEmitter;
   EventEmitter.prototype._maxListeners = 100;
 
@@ -14,18 +15,21 @@ module.exports = function (img, dir, finish, gm) {
     events: ['pleaseDispose', 'readyToDispose']
   };
 
-  var g = gm('test').options({ disposers: [ disposer ] });
+  var g = gm('test').options({ disposers: [ disposer ], imageMagick });
   assert.deepEqual([disposer], g._options.disposers);
 
-  var sub = gm.subClass({ disposers: [ disposer ]});
+  var sub = gm.subClass({ disposers: [ disposer ], imageMagick });
   assert.deepEqual([disposer], sub.prototype._options.disposers);
 
   if (!gm.integration) {
     return finish();
   }
 
-  gm(dir + '/photo.JPG').options({ disposers: [ disposer ]})
-  .thumb(1000, 1000, dir + '/dispose.png', function (err) {
+  const photoPath = path.join(dir, 'photo.JPG');
+  const disposePath = path.join(dir, 'dispose.png');
+
+  gm(photoPath).options({ disposers: [ disposer ], imageMagick })
+  .thumb(1000, 1000, disposePath, function (err) {
     assert.ok(err, "Expecting a disposed error");
   });
 
@@ -34,8 +38,8 @@ module.exports = function (img, dir, finish, gm) {
   noDispose();
 
   function noDispose() {
-    gm(dir + '/photo.JPG').options({ disposers: [ disposer ]})
-    .thumb(1000, 1000, dir + '/dispose.png', function (err) {
+    gm(photoPath).options({ disposers: [ disposer ], imageMagick })
+    .thumb(1000, 1000, disposePath, function (err) {
       finish(err);
     });
     emitter.emit('disposeOK');

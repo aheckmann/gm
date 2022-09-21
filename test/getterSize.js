@@ -1,7 +1,7 @@
+const assert = require('assert');
+const path = require('path');
 
-var assert = require('assert');
-
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration)
     return finish();
 
@@ -16,20 +16,21 @@ module.exports = function (_, dir, finish, gm) {
   })
 
   function sizeJPEG(done) {
-    gm(dir + '/original.jpg')
-    .size(function gettersize (err, size) {
+    const originalPath = path.join(dir, 'original.jpg');
+    gm(originalPath).options({imageMagick}).size(function gettersize (err, size) {
       if (err) return done(err);
 
       assert.equal(size.width, 460);
       assert.equal(size.height, 155);
 
-      gm(dir + '/identifyParseErr.jpg').size(done);
+      const identifyParseErrPath = path.join(dir, 'identifyParseErr.jpg');
+      gm(identifyParseErrPath).options({imageMagick}).size(done);
     });
   }
 
   function sizeGIF(done) {
-    gm(dir + '/original.gif')
-    .size(function (err, size) {
+    const originalGifPath = path.join(dir, 'original.gif');
+    gm(originalGifPath).options({imageMagick}).size(function (err, size) {
       if (err) return done(err);
 
       assert.equal(size.width, 192)
@@ -40,8 +41,8 @@ module.exports = function (_, dir, finish, gm) {
   }
 
   function sizePNG(done) {
-    gm(dir + '/original.png')
-    .size(function (err, size) {
+    const originalPngPath = path.join(dir, 'original.png');
+    gm(originalPngPath).options({imageMagick}).size(function (err, size) {
       if (err) return done(err);
 
       assert.equal(size.width, 460)

@@ -1,5 +1,5 @@
-
-var assert = require('assert')
+const assert = require('assert');
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
   var m = gm.minify();
@@ -11,11 +11,12 @@ module.exports = function (gm, dir, finish, GM) {
   if(gm._options.imageMagick) {
     assert.throws(
       function() {
-        m.write(dir + '/minify.png', function minify (err) { throw err;})
+        const destPath = path.join(dir, 'minify.png');
+        m.write(destPath, function minify (err) { throw err;})
       },
       Error
     );
   }
-  return finish();  
+  return finish();
 
 }

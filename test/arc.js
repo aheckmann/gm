@@ -1,5 +1,5 @@
-
-var assert = require('assert')
+const assert = require('assert')
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
 
@@ -22,11 +22,11 @@ module.exports = function (gm, dir, finish, GM) {
   assert.equal('-draw', args[10]);
   assert.equal('arc 80,10 90,20 0,180', args[11]);
 
-  if (!GM.integration)
-    return finish();
+  if (!GM.integration) return finish();
 
-  m
-  .write(dir + '/arc.png', function arc (err) {
+  const arcPath = path.join(dir, 'arc.png');
+
+  m.write(arcPath, function arc (err) {
     finish(err);
   });
 }

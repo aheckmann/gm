@@ -1,11 +1,12 @@
+const assert = require('assert');
+const path = require('path');
+const fs = require('fs');
 
-var assert = require('assert')
-var fs = require('fs');
+module.exports = function (_, dir, finish, gm, imageMagick) {
 
-module.exports = function (_, dir, finish, gm) {
-
-  var stream = fs.createReadStream(dir + '/original.jpg');
-  var m = gm(stream, "original.jpg");
+  const originalPath = path.join(dir, 'original.jpg');
+  const stream = fs.createReadStream(originalPath);
+  const m = gm(stream, "original.jpg").options({imageMagick});
 
   assert.equal(stream, m.sourceStream);
   assert.equal('original.jpg', m.source);
@@ -13,8 +14,8 @@ module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  m
-  .write(dir + '/streamIn.png', function streamIn (err) {
+  const destPath = path.join(dir, 'streamIn.png');
+  m.write(destPath, function streamIn (err) {
     finish(err);
   });
 }

@@ -1,5 +1,5 @@
-
-var assert = require('assert')
+const assert = require('assert')
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
   if (gm._options.imageMagick)
@@ -15,7 +15,8 @@ module.exports = function (gm, dir, finish, GM) {
   if (!GM.integration)
     return finish();
 
-  g.write(dir + '/dither.png', function dither (err) {
+  const destPath = path.join(dir, 'dither.png');
+  g.write(destPath, function dither (err) {
     finish(err);
   });
 }

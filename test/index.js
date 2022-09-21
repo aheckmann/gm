@@ -1,31 +1,34 @@
+const cp = require('child_process');
+const path = require('path');
+const Async = require('async');
+const dir = path.join(__dirname, '..', 'examples', 'imgs');
+const gm = require('..');
+const fs = require('fs');
+const os = require('os');
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-
-var async = require('async');
-var dir = __dirname + '/../examples/imgs';
-var gm = require('../');
-var assert = require('assert');
-var fs = require('fs');
-var only = process.argv.slice(2);
+const only = process.argv.slice(2);
 gm.integration = !! ~process.argv.indexOf('--integration');
 if (gm.integration) only.shift();
 
-var files = fs.readdirSync(__dirname).filter(filter);
+let files = fs.readdirSync(__dirname).filter(filter);
+if (files.length === 0) {
+  console.log('No tests found matching', only);
+}
 
 function filter (file) {
   if (!/\.js$/.test(file)) return false;
   if ('index.js' === file) return false;
   if (only.length && !~only.indexOf(file)) return false;
 
-  var filename = __dirname + '/' + file;
+  var filename = path.join(__dirname, file);
   if (!fs.statSync(filename).isFile()) return false;
   return true;
 }
 
-function test (imagemagick) {
-  if (imagemagick)
-    return gm(dir + '/original.jpg').options({ imageMagick: true });
-  return gm(dir + '/original.jpg');
+const originalPathName = path.join(dir, 'original.jpg');
+
+function test (imageMagick) {
+  return gm(originalPathName).options({ imageMagick });
 }
 
 function finish (filename) {
@@ -34,19 +37,43 @@ function finish (filename) {
       console.error('\n\nError occured with file: ' + filename);
       throw err;
     }
-
-    process.stdout.write('\033[2K');
-    process.stdout.write('\033[0G');
-    process.stdout.write('pending ' + (q.length()+q.running()));
   }
 }
 
-process.stdout.write('\033[?25l');
+function isGraphicsMagickInstalled() {
+  try {
+    cp.execSync('gm -version');
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
 
-var q = async.queue(function (task, callback) {
+function isConvertInstalled() {
+  try {
+    cp.execSync('convert -version');
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
+function isMagickInstalled() {
+  try {
+    cp.execSync('magick -version');
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
+const isWindows = () => os.platform() === 'win32';
+
+var q = Async.queue(function (task, callback) {
   var filename = task.filename;
   var im = task.imagemagick;
 
+  console.log(`Testing ${filename} ..`);
   require(filename)(test(im), dir, function (err) {
     finish(filename)(err);
     callback();
@@ -54,27 +81,42 @@ var q = async.queue(function (task, callback) {
 }, 1);
 
 q.drain = function(){
-
-process.stdout.write('\033[?25h');
-    process.stdout.write('\033[2K');
-    process.stdout.write('\033[0G');
-    console.error("\n\u001B[32mAll tests passed\u001B[0m");
+  console.log("\n\u001B[32mAll tests passed\u001B[0m");
 };
 
 files = files.map(function (file) {
-  return __dirname + '/' + file
-})
+  return path.join(__dirname, file);
+});
 
-files.forEach(function (file) {
-  q.push({
-    imagemagick: false,
-    filename: file
-  })
-})
+if (isGraphicsMagickInstalled()) {
+  console.log('gm is installed');
+  files.forEach(function (filename) {
+    q.push({
+      imagemagick: false,
+      filename
+    })
+  });
+}
 
-files.forEach(function (file) {
-  q.push({
-    imagemagick: true,
-    filename: file
-  })
-})
+if (!isWindows() && isConvertInstalled()) {
+  // windows has a different convert binary
+
+  console.log('convert is installed');
+  files.forEach(function (filename) {
+    q.push({
+      imagemagick: true,
+      filename
+    })
+  });
+}
+
+if (isMagickInstalled()) {
+  console.log('magick is installed');
+
+  files.forEach(function (filename) {
+    q.push({
+      imagemagick: '7+',
+      filename
+    })
+  });
+}

@@ -1,12 +1,11 @@
-
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
   if (!GM.integration)
     return finish();
 
-  gm
-  .write(dir + '/changedformat.png', function changeformat (err) {
+  const outpath = path.join(dir, 'changedformat.png');
+  gm.write(outpath, function changeformat (err) {
     finish(err);
   });
 }

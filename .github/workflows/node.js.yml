@@ -11,21 +11,36 @@ on:
 
 jobs:
   build:
+    runs-on: ${{ matrix.os }}
 
-    runs-on: ubuntu-latest
+    env:
+      DEBUG: "gm*"
 
     strategy:
       matrix:
+        os: [windows-latest, ubuntu-latest]
         node-version: [14.x, 16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - name: Install GraphicsMagic and Imagemagick
+    - name: Install GraphicsMagic and Imagemagick on Ubuntu
+      if: contains(matrix.os, 'ubuntu')
       run: sudo apt-get install -y imagemagick graphicsmagick
+    - name: Install GraphicsMagic and Imagemagick on Windows
+      if: contains(matrix.os, 'windows')
+      run: choco install -y imagemagick graphicsmagick
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm i
-    - run: npm test
+    - name: Run tests on Windows
+      if: contains(matrix.os, 'windows')
+      shell: cmd
+      run: |
+        call refreshenv
+        npm test
+    - name: Run tests on Ubuntu
+      if: contains(matrix.os, 'ubuntu')
+      run: npm test

@@ -1,8 +1,22 @@
+const assert = require('assert');
+const path = require('path');
+const fs = require('fs');
 
-var assert = require('assert')
-  , fs = require('fs')
+const checkCmd = (cmd, imageMagick) => {
+  switch (imageMagick) {
+    case true:
+      assert.ok(/^convert /.test(cmd));
+      break;
+    case '7+':
+      assert.ok(/^magick "convert" /.test(cmd));
+      break;
+    default:
+      assert.ok(/^gm "convert" /.test(cmd));
+      break;
+  }
+}
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
 
   var sub = gm.subClass({ subclassed: true });
   var s = sub('test').options({ setWithMethod: 2 });
@@ -20,36 +34,41 @@ module.exports = function (_, dir, finish, gm) {
   assert.equal(true, s2._options.subclassed);
   assert.equal(undefined, s2._options.setWithMethod);
 
-  var writeFile = dir + '/IM-negative' + Math.random() + '.png';
-  var imageMagick = gm.subClass({ imageMagick: true });
-
   if (!gm.integration)
     return finish();
 
-  imageMagick(dir + '/photo.JPG')
+  // test commands
+  // test with subclass
+
+  const photoPath = path.join(dir, 'photo.JPG');
+  const writeFile = path.join(dir, `options${Math.random()}.png`);
+  const instance = gm.subClass({ imageMagick });
+
+  instance(photoPath)
   .negative()
   .write(writeFile, function (err, _1, _2, cmd) {
     if (err) return finish(err);
 
-    assert.ok(/^convert /.test(cmd));
+    checkCmd(cmd, imageMagick);
 
     fs.stat(writeFile, function (err) {
-      if (err) return finish(new Error('imagemagick did not write file'));
+      if (err) return finish(new Error('did not write file'));
+
       try {
         fs.unlinkSync(writeFile);
       } catch (e) {}
 
       /// inline options
-      gm(dir + '/photo.JPG')
+      gm(photoPath)
       .negative()
-      .options({ imageMagick: true })
+      .options({ imageMagick })
       .write(writeFile, function (err, _1, _2, cmd) {
         if (err) return finish(err);
 
-        assert.ok(/^convert /.test(cmd));
+        checkCmd(cmd, imageMagick);
 
         fs.stat(writeFile, function (err) {
-          if (err) return finish(new Error('imagemagick did not write file'));
+          if (err) return finish(new Error('did not write 2nd file'));
           try {
             fs.unlinkSync(writeFile);
           } catch (e) {}

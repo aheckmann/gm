@@ -1,5 +1,5 @@
-
-var assert = require('assert')
+const assert = require('assert')
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
 
@@ -26,7 +26,7 @@ module.exports = function (gm, dir, finish, GM) {
     return finish();
 
   m
-  .write(dir + '/bezier.png', function bezier (err) {
+  .write(path.join(dir, 'bezier.png'), function bezier (err) {
     finish(err);
   });
 }

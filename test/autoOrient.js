@@ -1,30 +1,35 @@
+const assert = require('assert');
+const path = require('path');
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-
-var assert = require('assert')
-
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration)
     return finish();
 
-  var filename = dir + '/autoOrient.jpg';
+  const sidewaysPath = path.join(dir, 'originalSideways.jpg');
 
-  gm(dir + '/originalSideways.jpg').identify(function (err, o) {
+  gm(sidewaysPath)
+  .options({imageMagick})
+  .identify(function (err, o) {
     if (err) return finish(err);
 
-    assert.equal('155x460', o.Geometry);
+    const geo = imageMagick ? '155x460+0+0' : '155x460';
+    assert.equal(geo, o.Geometry);
 
     // this image is sideways, but may be auto-oriented by modern OS's
     // try opening it in a browser to see its true orientation
-    gm(dir + '/originalSideways.jpg')
+    gm(sidewaysPath)
+    .options({imageMagick})
     .autoOrient()
     .stream(function (err, stream) {
       if (err) return finish(err);
 
-      gm(stream).identify(function (err, data) {
+      gm(stream)
+      .options({imageMagick})
+      .identify(function (err, data) {
         if (err) return finish(err);
 
-        assert.equal('460x155', data.Geometry);
+        const geo2 = imageMagick ? '460x155+0+0' : '460x155';
+        assert.equal(geo2, data.Geometry);
         finish(err);
       })
     })

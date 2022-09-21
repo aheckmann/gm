@@ -1,12 +1,11 @@
-var assert = require('assert')
-var fs = require('fs')
+const path = require('path');
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration)
     return finish();
 
-  var original = dir + '/original.png';
-  var resized = dir + '/resize';
+  const original = path.join(dir, 'original.png');
+  const resized = path.join(dir, 'resize');
   var widths = [300, 700, 400, 800, 200], i, cb;
   var resizeExact = function (width, index) {
     var name = resized + index + '.png';
@@ -17,11 +16,12 @@ module.exports = function (_, dir, finish, gm) {
       index++;
     }
     gm(original)
+      .options({imageMagick})
       .resizeExact(width)
       .write(name, function(err){
         if (err) return finish(err);
 
-        gm(name)
+        gm(name).options({imageMagick})
           .size(function (err, size) {
             if (err) return finish(err);
             if (size.width !== width) {
