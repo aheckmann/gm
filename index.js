@@ -74,6 +74,11 @@ function gm (source, height, color) {
     var inputFromStdin = this.sourceStream || this.sourceBuffer;
     var ret = inputFromStdin ? '-' : this.source;
 
+    const fileNameProvied = typeof height === 'string';
+    if (inputFromStdin && fileNameProvied && /\.ico$/i.test(this.source)) {
+      ret = `ico:-`;
+    }
+
     if (ret && this.sourceFrames) ret += this.sourceFrames;
 
     src.length = 0;
@@ -126,7 +131,4 @@ require("./lib/montage")(gm.prototype);
 module.exports = exports = gm;
 module.exports.utils = require('./lib/utils');
 module.exports.compare = require('./lib/compare')();
-module.exports.version = JSON.parse(
-  require('fs').readFileSync(__dirname + '/package.json', 'utf8')
-).version;
-
+module.exports.version = require('./package.json').version;

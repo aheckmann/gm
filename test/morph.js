@@ -1,5 +1,4 @@
-
-var assert = require('assert')
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
 
@@ -8,10 +7,10 @@ module.exports = function (gm, dir, finish, GM) {
   if (!GM.integration)
     return finish();
 
-  // todo, improve this api to allow multiple images
+  const morpherPath = path.join(dir, 'morpher.jpg');
+  const morphedPath = path.join(dir, 'morphed.jpg');
 
-  gm
-  .morph(dir + '/morpher.jpg', dir + '/morphed.jpg', function morph (err) {
+  gm.morph(morpherPath, morphedPath, function morph (err) {
     finish(err);
   });
 }

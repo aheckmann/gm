@@ -1,20 +1,21 @@
-var assert = require('assert')
-var fs = require('fs')
+const assert = require('assert');
+const path = require('path');
+const fs = require('fs')
 
-module.exports = function (_, dir, finish, gm, im) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration) return finish()
 
   // Don't know how to install IM with WEBP on ubuntu
-  if (require('os').platform() === 'linux') return finish()
+  // if (require('os').platform() === 'linux') return finish()
 
   // GraphicsMagick currently does not support webp :(
-  if (!im) return finish()
+  // if (!im) return finish()
 
   gm = gm.subClass({
-    imageMagick: true
+    imageMagick
   })
 
-  var image = dir + '/original.png'
+  const imagePath = path.join(dir, 'original.png');
 
   write(function (err) {
     if (err) return finish(err)
@@ -23,11 +24,12 @@ module.exports = function (_, dir, finish, gm, im) {
   })
 
   function write(done) {
-    gm(image)
-    .write(dir + '/original.x.webp', function (err) {
+    const webpPath = path.join(dir, 'original.x.webp');
+    gm(imagePath)
+    .write(webpPath, function (err) {
       if (err) return done(err)
 
-      gm(dir + '/original.x.webp').identify(function (err, value) {
+      gm(webpPath).identify(function (err, value) {
         if (err) return done(err)
 
         assert.ok(value)
@@ -38,7 +40,7 @@ module.exports = function (_, dir, finish, gm, im) {
   }
 
   function stream(done) {
-    gm(image)
+    gm(imagePath)
     .stream('webp', function (err, stdout) {
       if (err) return done(err)
 

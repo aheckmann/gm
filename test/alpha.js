@@ -1,7 +1,8 @@
-var assert = require('assert');
-var async = require('async');
+const assert = require('assert');
+const Async = require('async');
+const path = require('path');
 
-module.exports = function (_, dir, finish, gm, im) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration) return finish();
 
   var alphaTypes = [
@@ -17,25 +18,29 @@ module.exports = function (_, dir, finish, gm, im) {
     "Shape",
     "Background"
   ];
+
+  const edgePath = path.join(dir, 'original.png');
+  const failPath = path.join(dir, 'alpha_fail.png');
+
   // alpha not supported by GM so only test IM
-  if (!im) {
+  if (!imageMagick) {
     assert.throws(function() {
-        gm(dir + '/edge.png')
-          .alpha( alphaTypes.pop() ).write(dir+'/alpha_fail.png');
- 
+      gm(edgePath)
+        .alpha(alphaTypes.pop())
+        .write(failPath);
     });
     finish();
   } else {
 
-  async.eachSeries(alphaTypes,function(alphaType,cb) {
-    var m = gm(dir + '/edge.png').options({imageMagick: im}).alpha( alphaType );
-    var args = m.args();
-    assert.equal('convert', args[0]);
-    assert.equal('-alpha', args[2]);
-    assert.equal(alphaType, args[3]);
+    Async.eachSeries(alphaTypes, function(alphaType, cb) {
+      var m = gm(edgePath).options({imageMagick}).alpha( alphaType );
+      var args = m.args();
+      assert.equal('convert', args[0]);
+      assert.equal('-alpha', args[2]);
+      assert.equal(alphaType, args[3]);
 
-    m.write( dir + '/alpha_' + alphaType + '.png', cb);
-
-  },finish);
-}
+      const writePath = path.join(dir, `alpha_${alphaType}.png`);
+      m.write(writePath, cb);
+    }, finish);
+  }
 }

@@ -1,8 +1,7 @@
-
-var assert = require('assert')
+const assert = require('assert');
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
-
   var m = gm
   .blur(8, 4)
   .stroke("red", 1)
@@ -25,8 +24,8 @@ module.exports = function (gm, dir, finish, GM) {
   if (!GM.integration)
     return finish();
 
-  m
-  .write(dir + '/circle.png', function circle (err) {
+  const outpath = path.join(dir, 'circle.png');
+  m.write(outpath, function circle (err) {
     finish(err);
   });
 }

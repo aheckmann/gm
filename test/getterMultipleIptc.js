@@ -5,7 +5,7 @@ module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration)
     return finish();
 
-  const iptcPath = path.join(__dirname, 'fixtures', 'iptc.jpg');
+  const iptcPath = path.join(__dirname, 'fixtures', 'iptc-multiple.jpg');
   var test = gm(iptcPath).options({imageMagick})
 
   test.identify(function (err) {
@@ -15,7 +15,12 @@ module.exports = function (_, dir, finish, gm, imageMagick) {
 
     if (imageMagick) {
       var iptc = d['Profiles'] && d['Profiles']['Profile-iptc'];
-      assert.equal(iptc['Caption[2,120]'], 'Some caption with colon space: for example');
+      var keywords = iptc['Keyword[2,25]'];
+      assert(Array.isArray(keywords));
+      assert.equal(keywords.length, 5);
+
+      // just make sure another value
+      assert(! Array.isArray(iptc['Headline[2,105]']));
     }
 
     finish();

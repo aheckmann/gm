@@ -1,10 +1,8 @@
-
-var assert = require('assert')
+const assert = require('assert')
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
-
-  var m = gm
-  .despeckle();
+  var m = gm.despeckle();
 
   var args = m.args();
   assert.equal('convert', args[0]);
@@ -13,8 +11,8 @@ module.exports = function (gm, dir, finish, GM) {
   if (!GM.integration)
     return finish();
 
-  m
-  .write(dir + '/despeckle.png', function despeckle (err) {
+  const destPath = path.join(dir, 'despeckle.png');
+  m.write(destPath, function despeckle (err) {
     finish(err);
   });
 }

@@ -1,14 +1,16 @@
-var assert = require('assert')
-var fs = require('fs')
+const assert = require('assert');
+const path = require('path');
+const fs = require('fs')
 
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
 
-  var original = dir + '/original.jpg';
-  var result = dir + '/resizeFromBuffer.png';
+  var original = path.join(dir, 'original.jpg');
+  var result = path.join(dir, 'resizeFromBuffer.png');
 
   var buf = fs.readFileSync(original);
 
   var m = gm(buf, 'resizefrombuffer.jpg')
+  .options({imageMagick})
   .resize('48%')
 
   var args = m.args();
@@ -24,14 +26,14 @@ module.exports = function (_, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  size(original, function (err, origSize) {
+  size(original, imageMagick, function (err, origSize) {
     if (err) return finish(err);
 
     m
     .write(result, function resizeFromBuffer (err) {
       if (err) return finish(err);
 
-      size(result, function (err, newSize) {
+      size(result, imageMagick, function (err, newSize) {
         if (err) return finish(err);
         assert.ok(origSize.width / 2 >= newSize.width);
         assert.ok(origSize.height / 2 >= newSize.height);
@@ -41,8 +43,8 @@ module.exports = function (_, dir, finish, gm) {
   });
 
 
-  function size (file, cb) {
-    gm(file).identify(function (err, data) {
+  function size (file, imageMagick, cb) {
+    gm(file).options({imageMagick}).identify(function (err, data) {
       if (err) return cb(err);
       cb(err, data.size);
     });

@@ -1,13 +1,14 @@
-var assert = require('assert');
-var fs = require('fs')
+const assert = require('assert');
+const path = require('path');
 
-module.exports = function (_, dir, finish, gm) {
-  var m = gm(dir + '/original.gif[0]')
+module.exports = function (_, dir, finish, gm, imageMagick) {
+  const gifPath = path.join(dir, 'original.gif[0]');
+  var m = gm(gifPath);
 
   if (!gm.integration)
     return finish();
 
-  m.identify('%#', function (err, hash1) {
+  m.options({imageMagick}).identify('%#', function (err, hash1) {
     if (err) return finish(err);
 
     m.selectFrame(2).identify('%#', function (err, hash2) {

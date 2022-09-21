@@ -1,12 +1,12 @@
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-var assert = require('assert')
+const assert = require('assert')
+const path = require('path');
+
 var times = 16;
+var loading = path.join(__dirname, 'fixtures', 'loading.gif');
+var favicon = path.join(__dirname, 'fixtures', 'favicon.png');
 
-var loading = __dirname + '/fixtures/loading.gif'
-var favicon = __dirname + '/fixtures/favicon.png'
-
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration) return finish();
 
   var pending = times/2;
@@ -24,8 +24,7 @@ module.exports = function (_, dir, finish, gm) {
 
   new Array(times).join('x').split('x').forEach(function (_, i) {
     ;[loading, favicon].forEach(function (img) {
-      gm(img)
-      .size(function edge (err, size) {
+      gm(img).options({imageMagick}).size(function (err, size) {
         if (err) return done(err);
 
         'width height'.split(' ').forEach(function (prop) {
