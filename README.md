@@ -622,15 +622,6 @@ http://github.com/quiiver/magickal-node
 ## Plugins
 [https://github.com/aheckmann/gm/wiki](https://github.com/aheckmann/gm/wiki)
 
-## Tests
-`npm test`
-
-To run a single test:
-
-```
-node test --integration pdf-noncompliant.js
-```
-
 ## License
 
 (The MIT License)
