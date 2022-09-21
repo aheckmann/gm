@@ -1,3 +1,9 @@
+1.25.0 / 2022-09-21
+
+* fixed: windows support #846, #774, #594, #524, #528, #559, #652, #682 [piotr-cz](https://github.com/piotr-cz)
+* docs; improvements from #821 [agokhale](https://github.com/agokhale)
+* docs; improvements #801 [aarongarciah](https://github.com/aarongarciah)
+
 1.24.0 / 2022-09-18
 
 * fixed: infering format of buffered or streamed ico files #429 freund17
