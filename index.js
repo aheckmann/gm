@@ -75,8 +75,11 @@ function gm (source, height, color) {
     var ret = inputFromStdin ? '-' : this.source;
 
     const fileNameProvied = typeof height === 'string';
-    if (inputFromStdin && fileNameProvied && /\.ico$/i.test(this.source)) {
-      ret = `ico:-`;
+    if (inputFromStdin && fileNameProvied) {
+      const extensionMatch = this.source.match(/\.(avi|apng|avif|bmp|cgm|dcm|epdf|epi|eps2?|eps3|epsf|ept|fax|fpx|g3|gif87?|ico|jpe?g|mng|mpeg|png|pdf|ps2?|ps3|svg|tiff?|wbmp|webp)$/i);
+      if (extensionMatch) {
+        ret = `${extensionMatch[1].toLowerCase()}:-`;
+      }
     }
 
     if (ret && this.sourceFrames) ret += this.sourceFrames;
