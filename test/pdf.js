@@ -7,9 +7,9 @@ module.exports = function (_, dir, finish, gm, imageMagick) {
 
     var imagePath = path.join(__dirname, 'fixtures', 'test.pdf');
     var inputStream = fs.createReadStream(imagePath);
-    gm(inputStream, 'test.pdf').options({ imageMagick }).identify('%p', function(err, value) {
+    gm(inputStream, 'test.pdf').options({ imageMagick }).identify('%w %h', function(err, value) {
         if (err) return finish(err);
-        assert.equal(value, '1');
+        assert.equal(value, '612 792');
         finish();
     });
 }
