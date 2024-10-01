@@ -9,7 +9,7 @@ module.exports = function (_, dir, finish, gm, imageMagick) {
 
   var buf = fs.readFileSync(original);
 
-  var m = gm(buf, 'resizefrombuffer.jpg')
+  var m = gm(buf)
   .options({imageMagick})
   .autoOrient()
   .resize('20%')

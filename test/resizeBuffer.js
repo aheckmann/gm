@@ -15,7 +15,7 @@ module.exports = function (_, dir, finish, gm, imageMagick) {
 
   var args = m.args();
   assert.equal('convert', args[0]);
-  assert.equal('-', args[1]);
+  assert.equal('jpg:-', args[1]);
   assert.equal('-resize', args[2]);
   if (m._options.imageMagick) {
     assert.equal('48%', args[3]);
