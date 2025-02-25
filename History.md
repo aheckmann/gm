@@ -1,3 +1,7 @@
+1.25.1 / 2025-02-24
+
+* deps: bump cross-spawn [talyuk](https://github.com/talyuk)
+
 1.25.0 / 2022-09-21
 
 * fixed: windows support #846, #774, #594, #524, #528, #559, #652, #682 [piotr-cz](https://github.com/piotr-cz)
