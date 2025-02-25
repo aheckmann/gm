@@ -1,3 +1,26 @@
+# 2025-02-24 This project is not maintained
+
+Instead of using this project, execute the `gm` or `magick` binaries using
+[`cross-spawn`](https://www.npmjs.com/package/cross-spawn) directly.
+
+Nearly [15 years ago](https://github.com/aheckmann/gm/commit/defc7360d70d87f7a13da4f6e2ef0104594776b9) I started this project as part of my start up which I sold later that year (2010). Having not used this project in over a decade and with no contributors for years, it's time to officially sunset `gm`.
+
+No further Issues will be addressed. No Pull Requests will be merged. No new commits or npm releases will be made.
+
+---
+
+😍 _Massive **thank you** to [everyone](https://github.com/aheckmann/gm/graphs/contributors) who contributed to this project over the years._ 😍
+
+---
+
+## I want to continue using gm. What do I do?
+
+All past `gm` releases published to the npm registry will continue to be available for install. However, you should **prioritize moving off of this project to an alternative** because the risk of unpatched vulnerabilities in this project will continue to _increase_ over time. No new commits will land and no new releases will be published.
+
+The most obvious alternative to `gm` I see is installing [cross-spawn](https://www.npmjs.com/package/cross-spawn) and executing the GraphicsMagick or ImageMagick binaries directly, after all, that's pretty much all this project did. There may be other `gm` alternatives on npm but I don't what they are offhand so you'll need to search for something suitable yourself.
+
+---
+
 
 # gm [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)  [![NPM Version](https://img.shields.io/npm/v/gm.svg?style=flat)](https://www.npmjs.org/package/gm)
 
