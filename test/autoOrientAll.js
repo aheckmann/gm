@@ -1,13 +1,9 @@
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
 
-// gm - Copyright Aaron Heckmann <aaron.heckmann+github@gmail.com> (MIT Licensed)
-
-var assert = require('assert'),
-    fs = require('fs'),
-    os = require('os');
-
-module.exports = function (_, dir, finish, gm) {
-  if (!gm.integration)
-    return finish();
+module.exports = function (_, dir, finish, gm, imageMagick) {
+  if (!gm.integration) return finish();
 
   var beforeValues = {
     'Landscape_1.jpg': ['TopLeft', 1, '600x450'],
@@ -47,7 +43,9 @@ module.exports = function (_, dir, finish, gm) {
     'Portrait_8.jpg': '450x600'
   };
 
-  fs.readdir(dir + '/orientation/', function(err, files) {
+  const orientationDir = path.join(dir, 'orientation');
+
+  fs.readdir(orientationDir, function(err, files) {
     if (err) return finish(err);
 
     var originalFiles = files.filter(function(file) {
@@ -63,11 +61,11 @@ module.exports = function (_, dir, finish, gm) {
     function test (filename) {
       if (!filename) return finish();
 
-      var fileToAutoOrient = dir + '/orientation/' + filename;
-      var newFilename = fileToAutoOrient + '.oriented.jpg';
-      var constant = fileToAutoOrient + '.correct.jpg';
+      const fileToAutoOrient = path.join(orientationDir, filename);
+      const newFilename = fileToAutoOrient + '.oriented.jpg';
+      const constant = fileToAutoOrient + '.correct.jpg';
 
-      gm(fileToAutoOrient).orientation(function (err, o) {
+      gm(fileToAutoOrient).options({imageMagick}).orientation(function (err, o) {
         if (err) return finish(err);
 
         assert.equal(beforeValues[filename][0], o);
@@ -76,20 +74,20 @@ module.exports = function (_, dir, finish, gm) {
         // this image is sideways, but may be auto-oriented by modern OS's
         // try opening it in a browser to see its true orientation
         gm(fileToAutoOrient)
+        .options({ imageMagick })
         .autoOrient()
         .write(newFilename, function autoOrient (err) {
           if (err) return finish(err);
 
           // fs race condition
           setTimeout(function () {
-            gm(newFilename).identify(function (err) {
+            gm(newFilename).options({ imageMagick }).identify(function (err) {
               if (err) return finish(err);
 
-              assert.equal('Unknown', this.data.Orientation);
-              assert.ok(!this.data['Profile-EXIF'])
-              assert.equal(afterValues[filename], this.data.Geometry, 'Bad-Geometry for ' + filename);
+              const afterValue = imageMagick ? `${afterValues[filename]}+0+0` : afterValues[filename];
+              assert.equal(afterValue, this.data.Geometry, `Bad-Geometry for ${filename}. Got "${this.data.Geometry}"`);
 
-              gm.compare(newFilename, constant, 0.1, function (err, equal) {
+              gm().options({imageMagick}).compare(newFilename, constant, 0.1, function (err, equal) {
                 if (err) return finish(err);
                 assert.ok(equal);
                 next();

@@ -1,19 +1,16 @@
+const assert = require('assert');
+const path = require('path');
 
-var assert = require('assert')
-
-module.exports = function (_, dir, finish, gm) {
+module.exports = function (_, dir, finish, gm, imageMagick) {
   if (!gm.integration) return finish();
 
-  var magick = _._options.imageMagick;
-  var name = magick ? '78-IM' : '78';
-  var out = dir + '/' + name;
+  var name = imageMagick ? '78-IM' : '78';
+  var out = path.join(dir, name);
 
   _.resize(600, 450, '!').write(out + '.png', function (err) {
     if (err) return finish(err);
 
-    var img = gm(out + '.png');
-    if (magick)
-      img.options({ imageMagick: true });
+    var img = gm(out + '.png').options({ imageMagick });
 
     img
     .crop(70, 70, 100, 100)

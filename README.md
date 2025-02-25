@@ -1,3 +1,26 @@
+# 2025-02-24 This project is not maintained
+
+Instead of using this project, execute the `gm` or `magick` binaries using
+[`cross-spawn`](https://www.npmjs.com/package/cross-spawn) directly.
+
+Nearly [15 years ago](https://github.com/aheckmann/gm/commit/defc7360d70d87f7a13da4f6e2ef0104594776b9) I started this project as part of my start up which I sold later that year (2010). Having not used this project in over a decade and with no contributors for years, it's time to officially sunset `gm`.
+
+No further Issues will be addressed. No Pull Requests will be merged. No new commits or npm releases will be made.
+
+---
+
+😍 _Massive **thank you** to [everyone](https://github.com/aheckmann/gm/graphs/contributors) who contributed to this project over the years._ 😍
+
+---
+
+## I want to continue using gm. What do I do?
+
+All past `gm` releases published to the npm registry will continue to be available for install. However, you should **prioritize moving off of this project to an alternative** because the risk of unpatched vulnerabilities in this project will continue to _increase_ over time. No new commits will land and no new releases will be published.
+
+The most obvious alternative to `gm` I see is installing [cross-spawn](https://www.npmjs.com/package/cross-spawn) and executing the GraphicsMagick or ImageMagick binaries directly, after all, that's pretty much all this project did. There may be other `gm` alternatives on npm but I don't what they are offhand so you'll need to search for something suitable yourself.
+
+---
+
 
 # gm [![Build Status](https://travis-ci.org/aheckmann/gm.png?branch=master)](https://travis-ci.org/aheckmann/gm)  [![NPM Version](https://img.shields.io/npm/v/gm.svg?style=flat)](https://www.npmjs.org/package/gm)
 
@@ -13,10 +36,6 @@ First download and install [GraphicsMagick](http://www.graphicsmagick.org/) or [
     brew install imagemagick
     brew install graphicsmagick
 
-If you want WebP support with ImageMagick, you must add the WebP option:
-
-    brew install imagemagick --with-webp
-
 then either use npm:
 
     npm install gm
@@ -28,18 +47,30 @@ or clone the repo:
 
 ## Use ImageMagick instead of gm
 
-Subclass `gm` to enable ImageMagick
+Subclass `gm` to enable [ImageMagick 7+](https://imagemagick.org/script/porting.php)
 
 ```js
-var fs = require('fs')
-  , gm = require('gm').subClass({imageMagick: true});
-
-// resize and remove EXIF profile data
-gm('/path/to/my/img.jpg')
-.resize(240, 240)
-...
+const fs = require('fs')
+const gm = require('gm').subClass({ imageMagick: '7+' });
 ```
 
+Or, to enable ImageMagick legacy mode (for ImageMagick version < 7)
+
+```js
+const fs = require('fs')
+const gm = require('gm').subClass({ imageMagick: true });
+```
+
+## Specify the executable path
+
+Optionally specify the path to the executable.
+
+```js
+const fs = require('fs')
+const gm = require('gm').subClass({
+  appPath: String.raw`C:\Program Files\ImageMagick-7.1.0-Q16-HDRI\magick.exe`
+});
+```
 
 ## Basic Usage
 
@@ -138,6 +169,18 @@ gm(readStream, 'img.jpg')
   if (!err) console.log('done');
 });
 
+
+// passing a downloadable image by url
+
+var request = require('request');
+var url = "www.abc.com/pic.jpg"
+
+gm(request(url))
+.write('/path/to/reformat.png', function (err) {
+  if (!err) console.log('done');
+});
+
+
 // can also stream output to a ReadableStream
 // (can be piped to a local file or remote server)
 gm('/path/to/my/img.jpg')
@@ -159,12 +202,12 @@ gm('/path/to/my/img.jpg')
 // gm will provide image data in that format
 gm('/path/to/my/img.jpg')
 .stream('png', function (err, stdout, stderr) {
-  var writeStream = fs.createWriteStream('/path/to/my/reformated.png');
+  var writeStream = fs.createWriteStream('/path/to/my/reformatted.png');
   stdout.pipe(writeStream);
 });
 
 // or without the callback
-var writeStream = fs.createWriteStream('/path/to/my/reformated.png');
+var writeStream = fs.createWriteStream('/path/to/my/reformatted.png');
 gm('/path/to/my/img.jpg')
 .stream('png')
 .pipe(writeStream);
@@ -312,214 +355,214 @@ The links below refer to an older version of gm but everything should still work
 ## Methods
 
   - getters
-    - [size](http://aheckmann.github.com/gm/docs.html#getters) - returns the size (WxH) of the image
-    - [orientation](http://aheckmann.github.com/gm/docs.html#orientation) - returns the EXIF orientation of the image
-    - [format](http://aheckmann.github.com/gm/docs.html#getters) - returns the image format (gif, jpeg, png, etc)
-    - [depth](http://aheckmann.github.com/gm/docs.html#getters) - returns the image color depth
-    - [color](http://aheckmann.github.com/gm/docs.html#getters) - returns the number of colors
-    - [res](http://aheckmann.github.com/gm/docs.html#getters)   - returns the image resolution
-    - [filesize](http://aheckmann.github.com/gm/docs.html#getters) - returns image filesize
-    - [identify](http://aheckmann.github.com/gm/docs.html#getters) - returns all image data available. Takes an optional format string.
+    - [size](http://aheckmann.github.io/gm/docs.html#getters) - returns the size (WxH) of the image
+    - [orientation](http://aheckmann.github.io/gm/docs.html#getters) - returns the EXIF orientation of the image
+    - [format](http://aheckmann.github.io/gm/docs.html#getters) - returns the image format (gif, jpeg, png, etc)
+    - [depth](http://aheckmann.github.io/gm/docs.html#getters) - returns the image color depth
+    - [color](http://aheckmann.github.io/gm/docs.html#getters) - returns the number of colors
+    - [res](http://aheckmann.github.io/gm/docs.html#getters)   - returns the image resolution
+    - [filesize](http://aheckmann.github.io/gm/docs.html#getters) - returns image filesize
+    - [identify](http://aheckmann.github.io/gm/docs.html#getters) - returns all image data available. Takes an optional format string.
 
   - manipulation
-    - [adjoin](http://aheckmann.github.com/gm/docs.html#adjoin)
-    - [affine](http://aheckmann.github.com/gm/docs.html#affine)
-    - [antialias](http://aheckmann.github.com/gm/docs.html#antialias)
-    - [append](http://aheckmann.github.com/gm/docs.html#append)
-    - [authenticate](http://aheckmann.github.com/gm/docs.html#authenticate)
-    - [autoOrient](http://aheckmann.github.com/gm/docs.html#autoOrient)
-    - [average](http://aheckmann.github.com/gm/docs.html#average)
-    - [backdrop](http://aheckmann.github.com/gm/docs.html#backdrop)
-    - [bitdepth](http://aheckmann.github.com/gm/docs.html#bitdepth)
-    - [blackThreshold](http://aheckmann.github.com/gm/docs.html#blackThreshold)
-    - [bluePrimary](http://aheckmann.github.com/gm/docs.html#bluePrimary)
-    - [blur](http://aheckmann.github.com/gm/docs.html#blur)
-    - [border](http://aheckmann.github.com/gm/docs.html#border)
-    - [borderColor](http://aheckmann.github.com/gm/docs.html#borderColor)
-    - [box](http://aheckmann.github.com/gm/docs.html#box)
-    - [channel](http://aheckmann.github.com/gm/docs.html#channel)
-    - [charcoal](http://aheckmann.github.com/gm/docs.html#charcoal)
-    - [chop](http://aheckmann.github.com/gm/docs.html#chop)
-    - [clip](http://aheckmann.github.com/gm/docs.html#clip)
-    - [coalesce](http://aheckmann.github.com/gm/docs.html#coalesce)
-    - [colors](http://aheckmann.github.com/gm/docs.html#colors)
-    - [colorize](http://aheckmann.github.com/gm/docs.html#colorize)
-    - [colorMap](http://aheckmann.github.com/gm/docs.html#colorMap)
-    - [colorspace](http://aheckmann.github.com/gm/docs.html#colorspace)
-    - [comment](http://aheckmann.github.com/gm/docs.html#comment)
-    - [compose](http://aheckmann.github.com/gm/docs.html#compose)
-    - [compress](http://aheckmann.github.com/gm/docs.html#compress)
-    - [contrast](http://aheckmann.github.com/gm/docs.html#contrast)
-    - [convolve](http://aheckmann.github.com/gm/docs.html#convolve)
-    - [createDirectories](http://aheckmann.github.com/gm/docs.html#createDirectories)
-    - [crop](http://aheckmann.github.com/gm/docs.html#crop)
-    - [cycle](http://aheckmann.github.com/gm/docs.html#cycle)
-    - [deconstruct](http://aheckmann.github.com/gm/docs.html#deconstruct)
-    - [delay](http://aheckmann.github.com/gm/docs.html#delay)
-    - [define](http://aheckmann.github.com/gm/docs.html#define)
-    - [density](http://aheckmann.github.com/gm/docs.html#density)
-    - [despeckle](http://aheckmann.github.com/gm/docs.html#despeckle)
-    - [dither](http://aheckmann.github.com/gm/docs.html#dither)
-    - [displace](http://aheckmann.github.com/gm/docs.html#dither)
-    - [display](http://aheckmann.github.com/gm/docs.html#display)
-    - [dispose](http://aheckmann.github.com/gm/docs.html#dispose)
-    - [dissolve](http://aheckmann.github.com/gm/docs.html#dissolve)
-    - [edge](http://aheckmann.github.com/gm/docs.html#edge)
-    - [emboss](http://aheckmann.github.com/gm/docs.html#emboss)
-    - [encoding](http://aheckmann.github.com/gm/docs.html#encoding)
-    - [enhance](http://aheckmann.github.com/gm/docs.html#enhance)
-    - [endian](http://aheckmann.github.com/gm/docs.html#endian)
-    - [equalize](http://aheckmann.github.com/gm/docs.html#equalize)
-    - [extent](http://aheckmann.github.com/gm/docs.html#extent)
-    - [file](http://aheckmann.github.com/gm/docs.html#file)
-    - [filter](http://aheckmann.github.com/gm/docs.html#filter)
-    - [flatten](http://aheckmann.github.com/gm/docs.html#flatten)
-    - [flip](http://aheckmann.github.com/gm/docs.html#flip)
-    - [flop](http://aheckmann.github.com/gm/docs.html#flop)
-    - [foreground](http://aheckmann.github.com/gm/docs.html#foreground)
-    - [frame](http://aheckmann.github.com/gm/docs.html#frame)
-    - [fuzz](http://aheckmann.github.com/gm/docs.html#fuzz)
-    - [gamma](http://aheckmann.github.com/gm/docs.html#gamma)
-    - [gaussian](http://aheckmann.github.com/gm/docs.html#gaussian)
-    - [geometry](http://aheckmann.github.com/gm/docs.html#geometry)
-    - [gravity](http://aheckmann.github.com/gm/docs.html#gravity)
-    - [greenPrimary](http://aheckmann.github.com/gm/docs.html#greenPrimary)
-    - [highlightColor](http://aheckmann.github.com/gm/docs.html#highlightColor)
-    - [highlightStyle](http://aheckmann.github.com/gm/docs.html#highlightStyle)
-    - [iconGeometry](http://aheckmann.github.com/gm/docs.html#iconGeometry)
-    - [implode](http://aheckmann.github.com/gm/docs.html#implode)
-    - [intent](http://aheckmann.github.com/gm/docs.html#intent)
-    - [interlace](http://aheckmann.github.com/gm/docs.html#interlace)
-    - [label](http://aheckmann.github.com/gm/docs.html#label)
-    - [lat](http://aheckmann.github.com/gm/docs.html#lat)
-    - [level](http://aheckmann.github.com/gm/docs.html#level)
-    - [list](http://aheckmann.github.com/gm/docs.html#list)
-    - [limit](http://aheckmann.github.com/gm/docs.html#limit)
-    - [log](http://aheckmann.github.com/gm/docs.html#log)
-    - [loop](http://aheckmann.github.com/gm/docs.html#loop)
-    - [lower](http://aheckmann.github.com/gm/docs.html#lower)
-    - [magnify](http://aheckmann.github.com/gm/docs.html#magnify)
-    - [map](http://aheckmann.github.com/gm/docs.html#map)
-    - [matte](http://aheckmann.github.com/gm/docs.html#matte)
-    - [matteColor](http://aheckmann.github.com/gm/docs.html#matteColor)
-    - [mask](http://aheckmann.github.com/gm/docs.html#mask)
-    - [maximumError](http://aheckmann.github.com/gm/docs.html#maximumError)
-    - [median](http://aheckmann.github.com/gm/docs.html#median)
-    - [minify](http://aheckmann.github.com/gm/docs.html#minify)
-    - [mode](http://aheckmann.github.com/gm/docs.html#mode)
-    - [modulate](http://aheckmann.github.com/gm/docs.html#modulate)
-    - [monitor](http://aheckmann.github.com/gm/docs.html#monitor)
-    - [monochrome](http://aheckmann.github.com/gm/docs.html#monochrome)
-    - [morph](http://aheckmann.github.com/gm/docs.html#morph)
-    - [mosaic](http://aheckmann.github.com/gm/docs.html#mosaic)
-    - [motionBlur](http://aheckmann.github.com/gm/docs.html#motionBlur)
-    - [name](http://aheckmann.github.com/gm/docs.html#name)
-    - [negative](http://aheckmann.github.com/gm/docs.html#negative)
-    - [noise](http://aheckmann.github.com/gm/docs.html#noise)
-    - [noop](http://aheckmann.github.com/gm/docs.html#noop)
-    - [normalize](http://aheckmann.github.com/gm/docs.html#normalize)
-    - [noProfile](http://aheckmann.github.com/gm/docs.html#profile)
-    - [opaque](http://aheckmann.github.com/gm/docs.html#opaque)
-    - [operator](http://aheckmann.github.com/gm/docs.html#operator)
-    - [orderedDither](http://aheckmann.github.com/gm/docs.html#orderedDither)
-    - [outputDirectory](http://aheckmann.github.com/gm/docs.html#outputDirectory)
-    - [paint](http://aheckmann.github.com/gm/docs.html#paint)
-    - [page](http://aheckmann.github.com/gm/docs.html#page)
-    - [pause](http://aheckmann.github.com/gm/docs.html#pause)
-    - [pen](http://aheckmann.github.com/gm/docs.html#pen)
-    - [ping](http://aheckmann.github.com/gm/docs.html#ping)
-    - [pointSize](http://aheckmann.github.com/gm/docs.html#pointSize)
-    - [preview](http://aheckmann.github.com/gm/docs.html#preview)
-    - [process](http://aheckmann.github.com/gm/docs.html#process)
-    - [profile](http://aheckmann.github.com/gm/docs.html#profile)
-    - [progress](http://aheckmann.github.com/gm/docs.html#progress)
-    - [quality](http://aheckmann.github.com/gm/docs.html#quality)
-    - [raise](http://aheckmann.github.com/gm/docs.html#raise)
-    - [rawSize](http://aheckmann.github.com/gm/docs.html#rawSize)
-    - [randomThreshold](http://aheckmann.github.com/gm/docs.html#randomThreshold)
-    - [recolor](http://aheckmann.github.com/gm/docs.html#recolor)
-    - [redPrimary](http://aheckmann.github.com/gm/docs.html#redPrimary)
-    - [region](http://aheckmann.github.com/gm/docs.html#region)
-    - [remote](http://aheckmann.github.com/gm/docs.html#remote)
-    - [render](http://aheckmann.github.com/gm/docs.html#render)
-    - [repage](http://aheckmann.github.com/gm/docs.html#repage)
-    - [resample](http://aheckmann.github.com/gm/docs.html#resample)
-    - [resize](http://aheckmann.github.com/gm/docs.html#resize)
-    - [roll](http://aheckmann.github.com/gm/docs.html#roll)
-    - [rotate](http://aheckmann.github.com/gm/docs.html#rotate)
-    - [sample](http://aheckmann.github.com/gm/docs.html#sample)
-    - [samplingFactor](http://aheckmann.github.com/gm/docs.html#samplingFactor)
-    - [scale](http://aheckmann.github.com/gm/docs.html#scale)
-    - [scene](http://aheckmann.github.com/gm/docs.html#scene)
-    - [scenes](http://aheckmann.github.com/gm/docs.html#scenes)
-    - [screen](http://aheckmann.github.com/gm/docs.html#screen)
-    - [segment](http://aheckmann.github.com/gm/docs.html#segment)
-    - [sepia](http://aheckmann.github.com/gm/docs.html#sepia)
-    - [set](http://aheckmann.github.com/gm/docs.html#set)
-    - [setFormat](http://aheckmann.github.com/gm/docs.html#setformat)
-    - [shade](http://aheckmann.github.com/gm/docs.html#shade)
-    - [shadow](http://aheckmann.github.com/gm/docs.html#shadow)
-    - [sharedMemory](http://aheckmann.github.com/gm/docs.html#sharedMemory)
-    - [sharpen](http://aheckmann.github.com/gm/docs.html#sharpen)
-    - [shave](http://aheckmann.github.com/gm/docs.html#shave)
-    - [shear](http://aheckmann.github.com/gm/docs.html#shear)
-    - [silent](http://aheckmann.github.com/gm/docs.html#silent)
-    - [solarize](http://aheckmann.github.com/gm/docs.html#solarize)
-    - [snaps](http://aheckmann.github.com/gm/docs.html#snaps)
-    - [stegano](http://aheckmann.github.com/gm/docs.html#stegano)
-    - [stereo](http://aheckmann.github.com/gm/docs.html#stereo)
-    - [strip](http://aheckmann.github.com/gm/docs.html#strip) _imagemagick only_
-    - [spread](http://aheckmann.github.com/gm/docs.html#spread)
-    - [swirl](http://aheckmann.github.com/gm/docs.html#swirl)
-    - [textFont](http://aheckmann.github.com/gm/docs.html#textFont)
-    - [texture](http://aheckmann.github.com/gm/docs.html#texture)
-    - [threshold](http://aheckmann.github.com/gm/docs.html#threshold)
-    - [thumb](http://aheckmann.github.com/gm/docs.html#thumb)
-    - [tile](http://aheckmann.github.com/gm/docs.html#tile)
-    - [transform](http://aheckmann.github.com/gm/docs.html#transform)
-    - [transparent](http://aheckmann.github.com/gm/docs.html#transparent)
-    - [treeDepth](http://aheckmann.github.com/gm/docs.html#treeDepth)
-    - [trim](http://aheckmann.github.com/gm/docs.html#trim)
-    - [type](http://aheckmann.github.com/gm/docs.html#type)
-    - [update](http://aheckmann.github.com/gm/docs.html#update)
-    - [units](http://aheckmann.github.com/gm/docs.html#units)
-    - [unsharp](http://aheckmann.github.com/gm/docs.html#unsharp)
-    - [usePixmap](http://aheckmann.github.com/gm/docs.html#usePixmap)
-    - [view](http://aheckmann.github.com/gm/docs.html#view)
-    - [virtualPixel](http://aheckmann.github.com/gm/docs.html#virtualPixel)
-    - [visual](http://aheckmann.github.com/gm/docs.html#visual)
-    - [watermark](http://aheckmann.github.com/gm/docs.html#watermark)
-    - [wave](http://aheckmann.github.com/gm/docs.html#wave)
-    - [whitePoint](http://aheckmann.github.com/gm/docs.html#whitePoint)
-    - [whiteThreshold](http://aheckmann.github.com/gm/docs.html#whiteThreshold)
-    - [window](http://aheckmann.github.com/gm/docs.html#window)
-    - [windowGroup](http://aheckmann.github.com/gm/docs.html#windowGroup)
+    - [adjoin](http://aheckmann.github.io/gm/docs.html#adjoin)
+    - [affine](http://aheckmann.github.io/gm/docs.html#affine)
+    - [antialias](http://aheckmann.github.io/gm/docs.html#antialias)
+    - [append](http://aheckmann.github.io/gm/docs.html#append)
+    - [authenticate](http://aheckmann.github.io/gm/docs.html#authenticate)
+    - [autoOrient](http://aheckmann.github.io/gm/docs.html#autoOrient)
+    - [average](http://aheckmann.github.io/gm/docs.html#average)
+    - [backdrop](http://aheckmann.github.io/gm/docs.html#backdrop)
+    - [bitdepth](http://aheckmann.github.io/gm/docs.html#bitdepth)
+    - [blackThreshold](http://aheckmann.github.io/gm/docs.html#blackThreshold)
+    - [bluePrimary](http://aheckmann.github.io/gm/docs.html#bluePrimary)
+    - [blur](http://aheckmann.github.io/gm/docs.html#blur)
+    - [border](http://aheckmann.github.io/gm/docs.html#border)
+    - [borderColor](http://aheckmann.github.io/gm/docs.html#borderColor)
+    - [box](http://aheckmann.github.io/gm/docs.html#box)
+    - [channel](http://aheckmann.github.io/gm/docs.html#channel)
+    - [charcoal](http://aheckmann.github.io/gm/docs.html#charcoal)
+    - [chop](http://aheckmann.github.io/gm/docs.html#chop)
+    - [clip](http://aheckmann.github.io/gm/docs.html#clip)
+    - [coalesce](http://aheckmann.github.io/gm/docs.html#coalesce)
+    - [colors](http://aheckmann.github.io/gm/docs.html#colors)
+    - [colorize](http://aheckmann.github.io/gm/docs.html#colorize)
+    - [colorMap](http://aheckmann.github.io/gm/docs.html#colorMap)
+    - [colorspace](http://aheckmann.github.io/gm/docs.html#colorspace)
+    - [comment](http://aheckmann.github.io/gm/docs.html#comment)
+    - [compose](http://aheckmann.github.io/gm/docs.html#compose)
+    - [compress](http://aheckmann.github.io/gm/docs.html#compress)
+    - [contrast](http://aheckmann.github.io/gm/docs.html#contrast)
+    - [convolve](http://aheckmann.github.io/gm/docs.html#convolve)
+    - [createDirectories](http://aheckmann.github.io/gm/docs.html#createDirectories)
+    - [crop](http://aheckmann.github.io/gm/docs.html#crop)
+    - [cycle](http://aheckmann.github.io/gm/docs.html#cycle)
+    - [deconstruct](http://aheckmann.github.io/gm/docs.html#deconstruct)
+    - [delay](http://aheckmann.github.io/gm/docs.html#delay)
+    - [define](http://aheckmann.github.io/gm/docs.html#define)
+    - [density](http://aheckmann.github.io/gm/docs.html#density)
+    - [despeckle](http://aheckmann.github.io/gm/docs.html#despeckle)
+    - [dither](http://aheckmann.github.io/gm/docs.html#dither)
+    - [displace](http://aheckmann.github.io/gm/docs.html#dither)
+    - [display](http://aheckmann.github.io/gm/docs.html#display)
+    - [dispose](http://aheckmann.github.io/gm/docs.html#dispose)
+    - [dissolve](http://aheckmann.github.io/gm/docs.html#dissolve)
+    - [edge](http://aheckmann.github.io/gm/docs.html#edge)
+    - [emboss](http://aheckmann.github.io/gm/docs.html#emboss)
+    - [encoding](http://aheckmann.github.io/gm/docs.html#encoding)
+    - [enhance](http://aheckmann.github.io/gm/docs.html#enhance)
+    - [endian](http://aheckmann.github.io/gm/docs.html#endian)
+    - [equalize](http://aheckmann.github.io/gm/docs.html#equalize)
+    - [extent](http://aheckmann.github.io/gm/docs.html#extent)
+    - [file](http://aheckmann.github.io/gm/docs.html#file)
+    - [filter](http://aheckmann.github.io/gm/docs.html#filter)
+    - [flatten](http://aheckmann.github.io/gm/docs.html#flatten)
+    - [flip](http://aheckmann.github.io/gm/docs.html#flip)
+    - [flop](http://aheckmann.github.io/gm/docs.html#flop)
+    - [foreground](http://aheckmann.github.io/gm/docs.html#foreground)
+    - [frame](http://aheckmann.github.io/gm/docs.html#frame)
+    - [fuzz](http://aheckmann.github.io/gm/docs.html#fuzz)
+    - [gamma](http://aheckmann.github.io/gm/docs.html#gamma)
+    - [gaussian](http://aheckmann.github.io/gm/docs.html#gaussian)
+    - [geometry](http://aheckmann.github.io/gm/docs.html#geometry)
+    - [gravity](http://aheckmann.github.io/gm/docs.html#gravity)
+    - [greenPrimary](http://aheckmann.github.io/gm/docs.html#greenPrimary)
+    - [highlightColor](http://aheckmann.github.io/gm/docs.html#highlightColor)
+    - [highlightStyle](http://aheckmann.github.io/gm/docs.html#highlightStyle)
+    - [iconGeometry](http://aheckmann.github.io/gm/docs.html#iconGeometry)
+    - [implode](http://aheckmann.github.io/gm/docs.html#implode)
+    - [intent](http://aheckmann.github.io/gm/docs.html#intent)
+    - [interlace](http://aheckmann.github.io/gm/docs.html#interlace)
+    - [label](http://aheckmann.github.io/gm/docs.html#label)
+    - [lat](http://aheckmann.github.io/gm/docs.html#lat)
+    - [level](http://aheckmann.github.io/gm/docs.html#level)
+    - [list](http://aheckmann.github.io/gm/docs.html#list)
+    - [limit](http://aheckmann.github.io/gm/docs.html#limit)
+    - [log](http://aheckmann.github.io/gm/docs.html#log)
+    - [loop](http://aheckmann.github.io/gm/docs.html#loop)
+    - [lower](http://aheckmann.github.io/gm/docs.html#lower)
+    - [magnify](http://aheckmann.github.io/gm/docs.html#magnify)
+    - [map](http://aheckmann.github.io/gm/docs.html#map)
+    - [matte](http://aheckmann.github.io/gm/docs.html#matte)
+    - [matteColor](http://aheckmann.github.io/gm/docs.html#matteColor)
+    - [mask](http://aheckmann.github.io/gm/docs.html#mask)
+    - [maximumError](http://aheckmann.github.io/gm/docs.html#maximumError)
+    - [median](http://aheckmann.github.io/gm/docs.html#median)
+    - [minify](http://aheckmann.github.io/gm/docs.html#minify)
+    - [mode](http://aheckmann.github.io/gm/docs.html#mode)
+    - [modulate](http://aheckmann.github.io/gm/docs.html#modulate)
+    - [monitor](http://aheckmann.github.io/gm/docs.html#monitor)
+    - [monochrome](http://aheckmann.github.io/gm/docs.html#monochrome)
+    - [morph](http://aheckmann.github.io/gm/docs.html#morph)
+    - [mosaic](http://aheckmann.github.io/gm/docs.html#mosaic)
+    - [motionBlur](http://aheckmann.github.io/gm/docs.html#motionBlur)
+    - [name](http://aheckmann.github.io/gm/docs.html#name)
+    - [negative](http://aheckmann.github.io/gm/docs.html#negative)
+    - [noise](http://aheckmann.github.io/gm/docs.html#noise)
+    - [noop](http://aheckmann.github.io/gm/docs.html#noop)
+    - [normalize](http://aheckmann.github.io/gm/docs.html#normalize)
+    - [noProfile](http://aheckmann.github.io/gm/docs.html#profile)
+    - [opaque](http://aheckmann.github.io/gm/docs.html#opaque)
+    - [operator](http://aheckmann.github.io/gm/docs.html#operator)
+    - [orderedDither](http://aheckmann.github.io/gm/docs.html#orderedDither)
+    - [outputDirectory](http://aheckmann.github.io/gm/docs.html#outputDirectory)
+    - [paint](http://aheckmann.github.io/gm/docs.html#paint)
+    - [page](http://aheckmann.github.io/gm/docs.html#page)
+    - [pause](http://aheckmann.github.io/gm/docs.html#pause)
+    - [pen](http://aheckmann.github.io/gm/docs.html#pen)
+    - [ping](http://aheckmann.github.io/gm/docs.html#ping)
+    - [pointSize](http://aheckmann.github.io/gm/docs.html#pointSize)
+    - [preview](http://aheckmann.github.io/gm/docs.html#preview)
+    - [process](http://aheckmann.github.io/gm/docs.html#process)
+    - [profile](http://aheckmann.github.io/gm/docs.html#profile)
+    - [progress](http://aheckmann.github.io/gm/docs.html#progress)
+    - [quality](http://aheckmann.github.io/gm/docs.html#quality)
+    - [raise](http://aheckmann.github.io/gm/docs.html#raise)
+    - [rawSize](http://aheckmann.github.io/gm/docs.html#rawSize)
+    - [randomThreshold](http://aheckmann.github.io/gm/docs.html#randomThreshold)
+    - [recolor](http://aheckmann.github.io/gm/docs.html#recolor)
+    - [redPrimary](http://aheckmann.github.io/gm/docs.html#redPrimary)
+    - [region](http://aheckmann.github.io/gm/docs.html#region)
+    - [remote](http://aheckmann.github.io/gm/docs.html#remote)
+    - [render](http://aheckmann.github.io/gm/docs.html#render)
+    - [repage](http://aheckmann.github.io/gm/docs.html#repage)
+    - [resample](http://aheckmann.github.io/gm/docs.html#resample)
+    - [resize](http://aheckmann.github.io/gm/docs.html#resize)
+    - [roll](http://aheckmann.github.io/gm/docs.html#roll)
+    - [rotate](http://aheckmann.github.io/gm/docs.html#rotate)
+    - [sample](http://aheckmann.github.io/gm/docs.html#sample)
+    - [samplingFactor](http://aheckmann.github.io/gm/docs.html#samplingFactor)
+    - [scale](http://aheckmann.github.io/gm/docs.html#scale)
+    - [scene](http://aheckmann.github.io/gm/docs.html#scene)
+    - [scenes](http://aheckmann.github.io/gm/docs.html#scenes)
+    - [screen](http://aheckmann.github.io/gm/docs.html#screen)
+    - [segment](http://aheckmann.github.io/gm/docs.html#segment)
+    - [sepia](http://aheckmann.github.io/gm/docs.html#sepia)
+    - [set](http://aheckmann.github.io/gm/docs.html#set)
+    - [setFormat](http://aheckmann.github.io/gm/docs.html#setformat)
+    - [shade](http://aheckmann.github.io/gm/docs.html#shade)
+    - [shadow](http://aheckmann.github.io/gm/docs.html#shadow)
+    - [sharedMemory](http://aheckmann.github.io/gm/docs.html#sharedMemory)
+    - [sharpen](http://aheckmann.github.io/gm/docs.html#sharpen)
+    - [shave](http://aheckmann.github.io/gm/docs.html#shave)
+    - [shear](http://aheckmann.github.io/gm/docs.html#shear)
+    - [silent](http://aheckmann.github.io/gm/docs.html#silent)
+    - [solarize](http://aheckmann.github.io/gm/docs.html#solarize)
+    - [snaps](http://aheckmann.github.io/gm/docs.html#snaps)
+    - [stegano](http://aheckmann.github.io/gm/docs.html#stegano)
+    - [stereo](http://aheckmann.github.io/gm/docs.html#stereo)
+    - [strip](http://aheckmann.github.io/gm/docs.html#strip) _imagemagick only_
+    - [spread](http://aheckmann.github.io/gm/docs.html#spread)
+    - [swirl](http://aheckmann.github.io/gm/docs.html#swirl)
+    - [textFont](http://aheckmann.github.io/gm/docs.html#textFont)
+    - [texture](http://aheckmann.github.io/gm/docs.html#texture)
+    - [threshold](http://aheckmann.github.io/gm/docs.html#threshold)
+    - [thumb](http://aheckmann.github.io/gm/docs.html#thumb)
+    - [tile](http://aheckmann.github.io/gm/docs.html#tile)
+    - [transform](http://aheckmann.github.io/gm/docs.html#transform)
+    - [transparent](http://aheckmann.github.io/gm/docs.html#transparent)
+    - [treeDepth](http://aheckmann.github.io/gm/docs.html#treeDepth)
+    - [trim](http://aheckmann.github.io/gm/docs.html#trim)
+    - [type](http://aheckmann.github.io/gm/docs.html#type)
+    - [update](http://aheckmann.github.io/gm/docs.html#update)
+    - [units](http://aheckmann.github.io/gm/docs.html#units)
+    - [unsharp](http://aheckmann.github.io/gm/docs.html#unsharp)
+    - [usePixmap](http://aheckmann.github.io/gm/docs.html#usePixmap)
+    - [view](http://aheckmann.github.io/gm/docs.html#view)
+    - [virtualPixel](http://aheckmann.github.io/gm/docs.html#virtualPixel)
+    - [visual](http://aheckmann.github.io/gm/docs.html#visual)
+    - [watermark](http://aheckmann.github.io/gm/docs.html#watermark)
+    - [wave](http://aheckmann.github.io/gm/docs.html#wave)
+    - [whitePoint](http://aheckmann.github.io/gm/docs.html#whitePoint)
+    - [whiteThreshold](http://aheckmann.github.io/gm/docs.html#whiteThreshold)
+    - [window](http://aheckmann.github.io/gm/docs.html#window)
+    - [windowGroup](http://aheckmann.github.io/gm/docs.html#windowGroup)
 
   - drawing primitives
-    - [draw](http://aheckmann.github.com/gm/docs.html#draw)
-    - [drawArc](http://aheckmann.github.com/gm/docs.html#drawArc)
-    - [drawBezier](http://aheckmann.github.com/gm/docs.html#drawBezier)
-    - [drawCircle](http://aheckmann.github.com/gm/docs.html#drawCircle)
-    - [drawEllipse](http://aheckmann.github.com/gm/docs.html#drawEllipse)
-    - [drawLine](http://aheckmann.github.com/gm/docs.html#drawLine)
-    - [drawPoint](http://aheckmann.github.com/gm/docs.html#drawPoint)
-    - [drawPolygon](http://aheckmann.github.com/gm/docs.html#drawPolygon)
-    - [drawPolyline](http://aheckmann.github.com/gm/docs.html#drawPolyline)
-    - [drawRectangle](http://aheckmann.github.com/gm/docs.html#drawRectangle)
-    - [drawText](http://aheckmann.github.com/gm/docs.html#drawText)
-    - [fill](http://aheckmann.github.com/gm/docs.html#fill)
-    - [font](http://aheckmann.github.com/gm/docs.html#font)
-    - [fontSize](http://aheckmann.github.com/gm/docs.html#fontSize)
-    - [stroke](http://aheckmann.github.com/gm/docs.html#stroke)
-    - [strokeWidth](http://aheckmann.github.com/gm/docs.html#strokeWidth)
-    - [setDraw](http://aheckmann.github.com/gm/docs.html#setDraw)
+    - [draw](http://aheckmann.github.io/gm/docs.html#draw)
+    - [drawArc](http://aheckmann.github.io/gm/docs.html#drawArc)
+    - [drawBezier](http://aheckmann.github.io/gm/docs.html#drawBezier)
+    - [drawCircle](http://aheckmann.github.io/gm/docs.html#drawCircle)
+    - [drawEllipse](http://aheckmann.github.io/gm/docs.html#drawEllipse)
+    - [drawLine](http://aheckmann.github.io/gm/docs.html#drawLine)
+    - [drawPoint](http://aheckmann.github.io/gm/docs.html#drawPoint)
+    - [drawPolygon](http://aheckmann.github.io/gm/docs.html#drawPolygon)
+    - [drawPolyline](http://aheckmann.github.io/gm/docs.html#drawPolyline)
+    - [drawRectangle](http://aheckmann.github.io/gm/docs.html#drawRectangle)
+    - [drawText](http://aheckmann.github.io/gm/docs.html#drawText)
+    - [fill](http://aheckmann.github.io/gm/docs.html#fill)
+    - [font](http://aheckmann.github.io/gm/docs.html#font)
+    - [fontSize](http://aheckmann.github.io/gm/docs.html#fontSize)
+    - [stroke](http://aheckmann.github.io/gm/docs.html#stroke)
+    - [strokeWidth](http://aheckmann.github.io/gm/docs.html#strokeWidth)
+    - [setDraw](http://aheckmann.github.io/gm/docs.html#setDraw)
 
   - image output
     - **write** - writes the processed image data to the specified filename
     - **stream** - provides a `ReadableStream` with the processed image data
     - **toBuffer** - returns the image as a `Buffer` instead of a stream
 
-##compare
+## compare
 
 Graphicsmagicks `compare` command is exposed through `gm.compare()`. This allows us to determine if two images can be considered "equal".
 
@@ -568,7 +611,7 @@ gm.compare('/path/to/image1.jpg', '/path/to/another.png', options, function (err
 })
 ```
 
-##composite
+## composite
 
 GraphicsMagick supports compositing one image on top of another. This is exposed through `gm.composite()`. Its first argument is an image path with the changes to the base image, and an optional mask image.
 
@@ -585,7 +628,7 @@ gm('/path/to/image.jpg')
 });
 ```
 
-##montage
+## montage
 
 GraphicsMagick supports montage for combining images side by side. This is exposed through `gm.montage()`. Its only argument is an image path with the changes to the base image.
 
@@ -610,6 +653,15 @@ http://github.com/quiiver/magickal-node
 
 ## Plugins
 [https://github.com/aheckmann/gm/wiki](https://github.com/aheckmann/gm/wiki)
+
+## Tests
+`npm test`
+
+To run a single test:
+
+```
+npm test -- alpha.js
+```
 
 ## License
 

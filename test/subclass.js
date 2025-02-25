@@ -1,8 +1,7 @@
+const assert = require('assert');
+const path = require('path');
 
-var assert = require('assert')
-
-module.exports = function (_, dir, finish, gm) {
-
+module.exports = function (_, dir, finish, gm, imageMagick) {
   assert.equal('gm', gm('test').constructor.name);
   assert.equal(undefined, gm.prototype._options.imageMagick);
 
@@ -18,11 +17,17 @@ module.exports = function (_, dir, finish, gm) {
   var g = gm('test');
   assert.equal(undefined, g._options.imageMagick);
 
+  var imageMagick7 = gm.subClass({ imageMagick: '7+'});
+  assert.equal('7+', imageMagick7.prototype._options.imageMagick);
+
   if (!gm.integration)
     return finish();
 
-  gm(dir + '/photo.JPG')
-  .thumb(50, 80, dir + '/SUBthumb.png', function subthumb (err) {
+  const sourcePath = path.join(dir, 'photo.JPG');
+  const destPath = path.join(dir, 'subclass.png');
+  const m = gm.subClass({ imageMagick });
+  m(sourcePath)
+  .thumb(50, 80, destPath, function subthumb (err) {
     if (err) return finish(err);
     finish();
   });

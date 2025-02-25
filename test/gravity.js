@@ -1,4 +1,5 @@
-var assert = require('assert')
+const assert = require('assert')
+const path = require('path');
 
 module.exports = function (img, dir, finish, gm) {
   var changed = gm('whatever.png').gravity("Souths")
@@ -24,8 +25,8 @@ module.exports = function (img, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  m
-  .write(dir + '/gravity.png', function resize (err) {
+  const destPath = path.join(dir, 'gravity.png');
+  m.write(destPath, function resize (err) {
     finish(err);
   });
 }

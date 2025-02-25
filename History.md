@@ -1,4 +1,58 @@
-1.19 / 2015-09-16
+1.25.1 / 2025-02-24
+
+* deps: bump cross-spawn [talyuk](https://github.com/talyuk)
+
+1.25.0 / 2022-09-21
+
+* fixed: windows support #846, #774, #594, #524, #528, #559, #652, #682 [piotr-cz](https://github.com/piotr-cz)
+* docs; improvements from #821 [agokhale](https://github.com/agokhale)
+* docs; improvements #801 [aarongarciah](https://github.com/aarongarciah)
+
+1.24.0 / 2022-09-18
+
+* fixed: infering format of buffered or streamed ico files #429 freund17
+* fixed; preserve color info duing autoOrient() #714, #844 reco
+* tests; switch to Github Actions
+* docs; fix links #834 delesseps
+* docs; clarify install directions #689 PatrykMiszczak
+* refactor; clean up compare.js #788 LongTengDao
+
+1.23.1 / 2017-12-27
+
+ * fixed: use debug > 2.6.9 because of security issue #685 danez
+ * tests; add nsp check
+ * tests; get tests passing on OSX
+
+1.23.0 / 2016-08-03
+
+ * fixed; webpack support #547 sean-shirazi
+ * fixed; windows support - use cross-spawn to spawn processes #537 bdukes
+ * added; allow thumbnail to accept the same options as resize #527 Sebmaster
+ * added; dispose support #487 dlwr
+ * docs; add example of loading image from URL #544 wahengchang
+ * docs; Fix a link in README.md #532 clbn
+ * travis; update travis versions #551 amilajack
+
+1.22.0 / 2016-04-07
+
+ * fixed; identity parser: support multi-value keys by creating an array #508 #509 [emaniacs](https://github.com/emaniacs)
+ * fixed; error handling if gm is not installed #499 [aeo3](https://github.com/aeo3)
+ * fixed; highlightColor typo in compare #504 [DanielHudson](https://github.com/DanielHudson)
+ * docs; Fix typo #475 [rodrigoalviani](https://github.com/rodrigoalviani)
+
+1.21.1 / 2015-10-26
+
+* fixed: Fixed #465 hard coded gm binary, also fixed issues with compare and fixed tests so they will fail on subsequent runs when they should do [rwky](https://github.com/rwky)
+
+1.21.0 / 2015-10-26 **contains security fix**
+
+* fixed: gm.compare fails to escape arguments properly (Reported by Brendan Scarvell) [rwky](https://github.com/rwky)
+
+1.20.0 / 2015-09-23
+
+* changed: Reverted "Add format inference from filename for buffers/streams" due to errors #448
+
+1.19.0 / 2015-09-16
 
 * changed: Added error to notify about image magick not supporting minify [encima](https://github.com/encima)
 * changed: Refactored orientation getter to use faster identify call [lbeschastny](https://github.com/lbeschastny)

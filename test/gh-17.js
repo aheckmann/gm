@@ -1,5 +1,5 @@
-
-var assert =require('assert')
+const assert = require('assert');
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
   var m = gm
@@ -16,8 +16,8 @@ module.exports = function (gm, dir, finish, GM) {
   if (!GM.integration)
     return finish();
 
-  m
-  .write(dir + '/cropresize.png', function crop (err) {
+  const destPath = path.join(dir, 'cropresize.png');
+  m.write(destPath, function crop (err) {
     finish(err);
   });
 }

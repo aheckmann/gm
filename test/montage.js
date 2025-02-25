@@ -1,20 +1,24 @@
-
-var assert = require('assert')
+const assert = require('assert');
+const path = require('path');
 
 module.exports = function (gm, dir, finish, GM) {
-  gm.source = __dirname + '/fixtures/compare_1.png';
-  var a = gm.montage(__dirname + '/fixtures/favicon.png')
+  const fixturesPath = path.join(__dirname, 'fixtures');
+  const srcPath = path.join(fixturesPath, 'compare_1.png');
+
+  gm.source = srcPath;
+  const faviconPath = path.join(fixturesPath, 'favicon.png');
+  var a = gm.montage(faviconPath);
 
   var args = a.args();
   assert.equal('montage', args[0]);
-  assert.equal(__dirname + '/fixtures/favicon.png', args[1]);
-  assert.equal(__dirname + '/fixtures/compare_1.png', args[2]);
+  assert.equal(faviconPath, args[1]);
+  assert.equal(srcPath, args[2]);
 
   if (!GM.integration)
     return finish();
 
-  a 
-  .write(dir + '/montage.png', function(err) {
+  const destPath = path.join(dir, 'montage.png');
+  a.write(destPath, function(err) {
     finish(err);
   });
 }

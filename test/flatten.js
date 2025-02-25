@@ -1,10 +1,16 @@
-var assert = require('assert')
+const assert = require('assert');
+const path = require('path');
 
-module.exports = function (img, dir, finish, gm) {
-  var changed = gm('whatever.png').gravity("Souths")
-  assert.equal(changed._out[1], 'NorthWest');
+module.exports = function (_, dir, finish, gm, imageMagick) {
+  // graphicsmagick considers PSD broken
+  // http://www.graphicsmagick.org/NEWS.html#may-30-2016
+  if (!imageMagick) {
+    return finish();
+  }
 
-  var m = gm(dir + '/layers.psd')
+  const layersPath = path.join(dir, 'layers.psd');
+  var m = gm(layersPath)
+  .options({ imageMagick })
   .flatten();
 
   var args = m.args();
@@ -14,8 +20,8 @@ module.exports = function (img, dir, finish, gm) {
   if (!gm.integration)
     return finish();
 
-  m
-  .write(dir + '/unlayered.jpg', function (err) {
+  const destPath = path.join(dir, 'unlayered.jpg');
+  m.write(destPath, function (err) {
     finish(err);
   });
 }
